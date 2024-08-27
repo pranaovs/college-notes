@@ -1,5 +1,26 @@
 # Cyber Security Essentials
 
+## DNS Records
+
+**Domain Name System**
+
+Commonly used to resolve domain names to IP addresses.
+
+Commonly looks like _x.y.z_ where x is name server, y is top level domain server and z is root server.
+
+Example: <www.example.com>
+
+| Record Type   | Usage    |
+|--------------- | --------------- |
+| A   | Resolve domain name to IPv4 addresses   |
+| AAAA   | Resolve domain name to IPv6 addresses   |
+| MX   | Mail Exchange record. Resolves a mail server address to an ip usually for an email client   |
+| SRV | Service record. Has a poert entry to resolve a domain name to a port in a server   |
+| TXT | Misc information about the domain |
+| CNAME | Resolve domain name to another domain name. Used for aliasing or forwarding |
+| NS | Name Server record. Used to redirect a DNS request to a name server from a top level server
+| SOA | Start Of Authority record. Stores inportant information about a domain or a zone, and TTL |
+
 ## OSI Model
 
 Open Systems Interconnection model.
