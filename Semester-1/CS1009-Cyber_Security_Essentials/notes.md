@@ -75,3 +75,29 @@ A subnet mask is used to divide IP addresses into multiple subnets. A subnet mas
 It is a fixed value which is assigned for a hardware.
 
 A laptop, for example, has two WiFi MAC addresses, one for wired NIC and one for wireless NIC.
+
+### Firewall
+
+A firewall blocks network access from outside the network to inside (or vice versa).
+It acts as a network barrier.
+
+A firewall blocks harmful activity from outside the network to inside.
+
+A firewall filters the incoming network packets and decided whether it is allowed to enter. It is a set of rules called an Access Control List (ACL).
+
+Firewall rules can be based on:
+
+* IP Address
+* Domain names
+* Word list
+* Ports
+
+Types of firewall:
+
+1. Host-based firewall:
+It is a software firewall that is installed on a system and it protects the computer only.
+Example: Zonewall, 3rd party anti-virus programs, Microsoft Windows firewall preinstalled in Windows OSes.
+2. Network-based firewall:
+Protects the entire network. It is a combination of hardware or software. Can be a stand alone device, a software or can be cloud based.
+
+Usually, both firewalls are used in a network.
