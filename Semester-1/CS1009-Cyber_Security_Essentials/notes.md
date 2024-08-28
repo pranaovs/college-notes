@@ -18,7 +18,7 @@ Example: <www.example.com>
 | SRV | Service record. Has a poert entry to resolve a domain name to a port in a server   |
 | TXT | Misc information about the domain |
 | CNAME | Resolve domain name to another domain name. Used for aliasing or forwarding |
-| NS | Name Server record. Used to redirect a DNS request to a name server from a top level server
+| NS | Name Server record. Used to redirect a DNS request to a name server from a top level server |
 | SOA | Start Of Authority record. Stores inportant information about a domain or a zone, and TTL |
 
 ## OSI Model
