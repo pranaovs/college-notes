@@ -58,3 +58,34 @@ Memory addresses are stored in hexadecimal
 First digit of a binary number is called **MSB (Most signifiant bit)**
 
 Last digit of a binary number is called **LSB (Least signifiant bit)**
+
+## Software development life cycle
+
+| Number | Phase | Engineer |
+| --------------- | --------------- | --------------- |
+| 1 | Analysis | Product Owner, Project Manager, Business Analysist, CTO |
+| 2 | Design | System architect, Ui/UX Designer |
+| 3 | Development | Front-end developer, Back-end developer |
+| 4 | Testing | Solutions Architect, QA Engineer, Tester, DevOps |
+| 5 | Deployment | Data Administrator, DevOps |
+| 6 | Maintanence | Users, Testers, Support managers|
+
+**Designing is important for software development. Planning is required**
+
+## Algorithm
+
+**An algorithm is a step by step process to solve a problem**
+An algorithm is essentially a plan
+
+### Flowchart
+
+Diagrammatic representation of an algorithm
+
+| Column1   | Column2    |
+|--------------- | --------------- |
+| Oval   | Terminal (Start/Stop)  |
+| Rectangle   | Process   |
+| Diamond   | Decision   |
+| Parallelogram   | Input/Output   |
+| Circle | Connector |
+| Arrow/Line ---> | Flow Line |
