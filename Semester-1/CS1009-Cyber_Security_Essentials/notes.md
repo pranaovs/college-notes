@@ -101,3 +101,18 @@ Example: Zonewall, 3rd party anti-virus programs, Microsoft Windows firewall pre
 Protects the entire network. It is a combination of hardware or software. Can be a stand alone device, a software or can be cloud based.
 
 Usually, both firewalls are used in a network.
+
+## Encryption
+
+There are two types of encryption.
+
+1. Asymmetric encryption
+2. Symmetric encryption
+
+### Symmetric encryption
+
+Symmetric encryption is a method to encrypt a message using a common password/passphrase. It is a common shared key used for encryption and decryption.
+
+### Asymmetric encryption
+
+Uses public-private key to encrypt messages. A keypair is generated and only the public key is shared. Other users use the public key to encrypt a message and send it to the owner. The encrypted message can be decrypted using the private key. One common encryption algorithm is RSA (Rivest-Shamir-Adleman). ECC (Elliptic-curve cryptography) is another asymmetric encryption algorithm.
