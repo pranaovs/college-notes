@@ -89,3 +89,39 @@ Diagrammatic representation of an algorithm
 | Parallelogram   | Input/Output   |
 | Circle | Connector |
 | Arrow/Line ---> | Flow Line |
+
+## Variable declaration
+
+* A CPU does processes in the computer
+* We can access the CPU using main memory or RAM
+* The OS (Kernel) manages the RAM
+* To give Input to a computer to perform any operation or process, the program requests memory location from the kernel (OS). It is done with the help of **variable declaration**.
+
+Variables are names of location. They are used to store data. It is used for simplicity since there are so many memory addresses, a human-readable name is given. The kernel manages variable name to address mapping.
+
+### Syntax
+
+`datatype identifier1, identifier2, ..., identifierN;`
+
+### Definitions
+
+An **undefined value** is returned when a variable is accesses without assigning a value.
+
+Assigning a value to an empty variable is called a **Initialization Statement**
+
+Assigning a new value to a variable is called **Assignment Statement**
+
+`=` is called the **Assignment Operator**
+
+```c
+int num1,num2 = 15; //Assignment, Initialization
+float num3
+num1 = 5 //Initialization
+```
+
+#### Keywords
+
+1. `int` - 4 bytes (32 bits)
+2. `float` - 4 bytes (32 bits)
+3. `char` - 1 byte (8 bits)
+4. `double` - 8 bytes (64 bits)
