@@ -1,4 +1,65 @@
-# Mathematics
+# Linear Algebra
+## MA1001 - Dr. Venugopal
+
+## Binary operations
+
+> A Set is a collection of well defined objects
+
+Let $S$ be a non empty set, then $*$ is said to be a binary operation on $S$, if $a*b$ is defined for all $a,b$ in $S$.
+That is, Binary operation $*$ is a rule defined by $S*S \rightarrow S$
+
+1. Denoted by $(S,*)$
+2. Some of the binary operations are: Addition $(+)$, Subtraction $(-)$, Multiplication $(\times)$, Division $(\div)$. Combination of the above are also binary operations.
+
+### Properties of Binary Operations
+
+#### 1. Closure Property:
+
+An operation $*$ on a non-empty set $A$ has closure property, if $a,b \in A \implies a * b \in A$.
+
+Example: $(N, +) ~ \forall ~ (a,b) \in N$
+
+#### 2. Commutative property
+
+A binary operation on $*$ non-empty set $A$ is commutative if $a*b = b*a ~\forall~ a,b \in A$.
+
+Example: Let $a,b \in N$, $(N, +)$ is commutative but $(N, -)$ is not.
+
+#### 3. Associative Property
+
+A binary operation $*$ on a non-empty set $A$ is Associative if $a*(b*c) = (a*b)*c$.
+
+Example: Let $a,b,c \in N$, $a*(b*c) = (a*b)*c$ if $(* = +$ or $\times)$
+
+#### 4. Distributive Property
+
+Let $+$ and $\times$ be two binary operations defined on a non-empty set $A$. Then binary operations are distributive if:
+
+$$
+a \cdot (b + c) = a \cdot b + a \cdot c
+\\
+\text{(or)}
+\\
+(b+c) \cdot a = b \cdot a + c \cdot a
+$$
+
+#### 5. Identity Property
+
+Let $A$ be a non-empty set and $*$ be the binary operation on $A$. An element $e$ is the identity element on set $A$ if $a*e = e*a=a ~\forall~ a \in A$.
+
+Example:
+1. $(N, +)$ does not satisfy identity property as $0 \notin N$
+2. $(N, \times)$ satisfies identity property as $1 \in N$
+3. $(N, \div)$ does not satisfy identity property
+
+#### 6. Inverse property
+
+Let $A$ be a non-empty set and $*$ be the binary operation on $A$. An element $b$ is said to be the inverse element of $a \in A$ if $a*b = b*a = e ~\forall~ a,b \in A$
+
+We can write $b$ as $a^{-1}$
+
+$a * a^{-1} = a^{-1}*a = e$
+
 
 ## Semigroup
 
