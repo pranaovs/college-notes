@@ -125,3 +125,72 @@ num1 = 5 //Initialization
 2. `float` - 4 bytes (32 bits)
 3. `char` - 1 byte (8 bits)
 4. `double` - 8 bytes (64 bits)
+
+## Library
+
+Library is a set of programs written by someone else (or even personally). It is used to de-duplicate and reduce boilerplate code, by abstracting complex code.
+
+Also know as the __Header File__.
+__stdio.h__ - Standard Input/Output. Contains `printf` and `scanf`.
+
+To add a library to a program, use the `include` keyword.
+
+__Syntax__
+
+```c
+#include <headerFile.h>
+
+int main() {
+  return 0;
+}
+```
+
+A program starts execution at the `main()` function.
+
+## Format specifier
+
+A format specifier is a way to present data.
+
+| Format specifier   | Data type    |
+|--------------- | --------------- |
+| %d   | Integers   |
+| %f   | Float   |
+| %c   | Characters   |
+| %s   | Strings   |
+| %p | Memory Addresses (Pointers) |
+| %x | Hexadecimal values |
+
+
+## Print Formatted (`printf`)
+
+`printf` is an _identifier_.
+
+### Syntax
+
+```c
+int main() {
+  printf("Hello, World!");
+  return 0;
+}
+```
+
+It returns the number of characters printed, or returns negative value if failed.
+
+### Printing Variables
+
+To print variables, we specify `printf` and pass in the format string and argument list (variables) as arguments.
+
+#### Syntax
+
+```c
+#include <stdio.h>
+
+int main() {
+  int a = 10;
+
+  printf("Hello, World!\n%d", a);
+  return 0;
+}
+```
+
+> `\` is called an escape sequence. It is used to escape normal operation and modify. Example, `\n` is used to print a newline. `\\` is used to insert literal `\`.
