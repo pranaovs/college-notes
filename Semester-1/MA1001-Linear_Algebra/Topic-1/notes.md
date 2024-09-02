@@ -1,5 +1,50 @@
 # Linear Algebra
-## MA1001 - Dr. Venugopal
+
+<!--toc:start-->
+- [Linear Algebra](#linear-algebra)
+  - [Binary operations](#binary-operations)
+    - [Properties of Binary Operations](#properties-of-binary-operations)
+      - [1. Closure Property:](#1-closure-property)
+      - [2. Commutative property](#2-commutative-property)
+      - [3. Associative Property](#3-associative-property)
+      - [4. Distributive Property](#4-distributive-property)
+      - [5. Identity Property](#5-identity-property)
+      - [6. Inverse property](#6-inverse-property)
+  - [Semigroup](#semigroup)
+    - [Example:](#example)
+      - [__Let A = ${1,3,5, ...}$, the set of all odd positive integers and the binary operations * is usual multiplication. Is $(A, *)$ is a semigroup?__](#let-a-135-the-set-of-all-odd-positive-integers-and-the-binary-operations-is-usual-multiplication-is-a-is-a-semigroup)
+  - [Moniod](#moniod)
+  - [Group](#group)
+    - [Examples](#examples)
+  - [Abelian Group](#abelian-group)
+    - [Examples:](#examples)
+    - [Not abelian group examples:](#not-abelian-group-examples)
+  - [Ring](#ring)
+    - [Examples:](#examples)
+  - [Field](#field)
+    - [Examples:](#examples)
+  - [Scalars and Vectors](#scalars-and-vectors)
+    - [Scalar](#scalar)
+    - [Vector](#vector)
+    - [Graphical representation of a Vector](#graphical-representation-of-a-vector)
+    - [Matrix representation of a Vector](#matrix-representation-of-a-vector)
+    - [Addition of Vectors](#addition-of-vectors)
+    - [Multiplication of a Vector by a scalar](#multiplication-of-a-vector-by-a-scalar)
+  - [Vector Space](#vector-space)
+      - [Examples](#examples)
+    - [Subspace](#subspace)
+<!--toc:end-->
+
+---
+Title: Linear Algebra
+
+Author: Pranaov
+
+Lecturer: Dr. Venugopal
+
+Subject Code: MA1001
+
+---
 
 ## Binary operations
 
