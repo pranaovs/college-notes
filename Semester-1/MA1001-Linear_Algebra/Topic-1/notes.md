@@ -414,3 +414,62 @@ $$
 
 Since all the properties of vector spaces are satisfied, $R^{n}$ (or) $V_{n}(F)$ is a vector space.
 
+### Subspace
+
+**Definition:**
+A subset $W$ of a vector space $V$ over a field $F$ is called a subspace of $V$ if $W$ is a vector space over $F$ with the operations of vector addition and scalar multiplication defined on $V$.
+
+**Note:**
+
+1. $V$ and $V\{0\}$ are called improper or trivial subspaces.
+2. $W$ subset of $V$ is called proper subspace of $V$.
+
+**Examples:**
+
+1. $R^{2}$
+    1. It is a vector space
+    2. Subspace of $R^{2}$
+
+> As $W$ is a subspace of $V$, commutative and associative properties under addition hold good. Also the properties of scalar multiplication $V$ satisfies on $W$. Therefore, to prove $W$ is a subspace of $V$, it is enough to verify closure property, identity property and inverse property (optional).
+
+
+**Theorem:**
+
+A non empty subset $W$ of a vector space $V$ is a subspace of $V$ only if $W$ is closed under addition and scalar multiplication.
+
+(or)
+
+Let $V$ be a vector space, then $W$ is a subspace of $V$ only if the following 3 conditions hold for the operations defined in V.
+
+1. $0 \in W$
+2. $x + y \in W ~\forall~ x,y \in W$
+3. $\alpha x \in W ~\forall~ x \in W ~\&~ \alpha \in F$
+
+<!--#### Examples-->
+<!---->
+<!--1. Check whether the set $W = \{(a_{1}, a_{2}, a_{3}) \in R^{3}: 5 a_{1}^{2}-3a_{2}^{2}+6a_{3}^{2} = 0\}$ is a subspace of $R^{3}$-->
+<!---->
+<!--    1. $$-->
+<!--0 = (0,0,0) \in R^{3}\\-->
+<!--\text{Now}~5(0)^{3} - 3(0)^{3} + 6(0)^{3} = 0 \\-->
+<!--\therefore 0 \in W-->
+<!--$$-->
+<!---->
+<!--    2. $$-->
+<!--\text{Let}~x = (a_{1},a_{2},a_{3})~\&~ y = (b_{1},b_{2},b_{3}) \\-->
+<!--\implies 5 a_{1}^{2} - 3a_{2}^{2} + 6a_{3}^{2} = 0\\-->
+<!--\&~ 5 b_{1}^{2} - 3b_{2}^{2} + 6b_{3}^{2} = 0\\-->
+<!--~\\-->
+<!--\text{Now } x + y = (a_{1}, a_{2}, a_{3}) + (b_{1}, b_{2}, b_{3}) \\-->
+<!--= ((a_{1} + b_{1}), (a_{2} + b_{2}), (a_{3} + b_{3}))\\-->
+<!--5(a_{1} + b_{1})^{2} - 3(a_{2} + b_{2})^{2} + 6(a_{3} + b_{3})^{2}  \\-->
+<!---->
+<!--\# TODO-->
+<!--$$-->
+<!---->
+<!--2. Let $V = R^{3}$, check whether $W = \{a_{1}, a_{2}, a_{3} \in R^{3}: a_{1} = a_{3}+2\}$ is a vector subspace of $R^{3}$-->
+<!---->
+<!---->
+<!--3. Check whether the set $W = \{(a_{1}, a_{2}, a_{3}) \in R^{3}: a_{1}+2a_{2}+3a_{3} = 0\}$ is a subspace of $R^{3}$-->
+<!---->
+<!--j-->
