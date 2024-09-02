@@ -168,6 +168,8 @@ A format specifier is a way to present data.
 ### Syntax
 
 ```c
+#include <stdio.h>
+
 int main() {
   printf("Hello, World!");
   return 0;
