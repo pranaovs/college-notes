@@ -251,3 +251,58 @@ __Note:__
 1. By multiplying a vector by minus $(-)$ sign, its direction is inverted.
 2. Scalar multiplication is just scaling a vector.
 
+## Vector Space
+
+It is a set of vectors with rules for vector addition and scalar multiplication.
+
+**Definition:** A non empty set $V$ is said to be a vector space over a field $F$ if there are 2 binary operators (Vector Addition and Scalar Multiplication) satisfying the following properties:
+
+Let $x,y,z \in V$ and $\alpha,\beta \in F$
+
+1. **For vector addition:**
+    1. Closure property
+
+    $$x,y \in V \implies x + y \in V$$
+
+    2. Associative property
+
+    $$(x+y)+z = x + (y+z)$$
+
+    3. Commutative property
+    
+    $$x + y = y + x$$
+
+    4. Existence of Identity
+
+    $$\textrm{There exists identity element } 0 \in V \textrm{ such that } x + 0 = 0 + x = x \textrm{ for all } x \in B$$
+
+    5. Existence of Inverse
+
+    $$~\forall~a\in B, \exist (-a) \textrm{ in } B\\ \ni a + (-a) = (-a) + a = 0$$
+
+2. **For Scalar Multiplication**
+
+    1. Closure property
+    $$\alpha \in F,~x \in V\\\implies\alpha x \in V $$
+
+    2. Distributive property (1)
+    $$\alpha (x + y) = \alpha x + \alpha y$$
+
+    3. Distributive property (2)
+    $$(\alpha + \beta)x = \alpha x + \beta x$$
+
+    4. Associative property
+    $$(\alpha \beta) x = \alpha (\beta x)$$
+
+    5. Unitary property
+
+    $$1 \cdot x = x ~\forall~ 1 \in F ~\&~ x \in B$$
+
+**Note:**
+
+1. The vector space $B$ over a field $F$ is denoted as $B(F)$
+2. Also known as _Linear Space_
+3. The elements of the field are scalar the elements of vector space $V$ are vectors.
+
+
+#### TODO: add examples
