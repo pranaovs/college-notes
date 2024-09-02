@@ -305,4 +305,112 @@ Let $x,y,z \in V$ and $\alpha,\beta \in F$
 3. The elements of the field are scalar the elements of vector space $V$ are vectors.
 
 
-#### TODO: add examples
+#### Examples
+
+1. Prove that the set $V_n(F)$ of all ordered n-tuples of all elements is a vector space with respect to vector addition and scalar multiplication component wise.
+
+$$
+\textrm{Let }x,y,z \in R^{n} \\
+
+\implies x = (x_{1}, x_{2}, x_{3} \dots x_{n} )~\&\\
+y = (y_{1}, y_{2}, y_{3}\dots y_{n})~\&\\
+z = (z_{1}, z_{2}, z_{3}\dots z_{n} ) \\
+
+\textrm{and let } \alpha,\beta \in F\\
+~\\
+x + y = (x_{1}, x_{2}, x_{3} \dots x_{n} ) + (y_{1}, y_{2}, y_{3} \dots y_{n} ) \\
+\implies (x_{1} + y_{1}) + (x_{2}  + y_{2}) + \dots + (x_{n} + y_{n})\\
+~\\
+\textrm{Scalar Multiplication is defined as, }\\
+\alpha x = \alpha x_{1} + \alpha x_{2} + \alpha x_{3} + \dots + \alpha x_{n}\\
+~\\
+
+\textrm{\textbf{Vector Addition}}\\~\\
+\textrm{1. Closure property}\\
+x + y = (x_{1} + y_{1}, x_{2} + y_{2}, \dots, x_{n} + y_{n}) \in R^{n} \\
+\therefore \textrm{Closure property is satisfied}\\~\\
+
+2. \textrm{ Associative property}\\
+x + (y + z) = (x_{1} ,x_{2}, \dots, x_{n}) + (y_{1} + z_{1}, y_{2} + z_{2}, \dots, y_{n} + z_{n})\\
+= x_{1} + (y_{1} + z_{1}) + x_{2} + (y_{2}+z_{2}) + \dots + x_{n} + (y_{n} + z_{n}) \\
+= ((x_{1}+y_{1})+ z_{1}) + (x_{2} + (y_{2} + z_{2})) + \dots + (x_{n} + (y_{n} + z_{n})) \\
+= (x_{1} + y_{1}, x_{2}+ y_{2}, x_{3}+ y_{3} + \dots + x_{n} + y_{n} ) + (z_{1} + z_{2} + z_{3} + \dots + z_{n}) \\
+= (x + y) + z\\
+\therefore \textrm{Associative property satisfied} \\~\\
+
+3. \textrm{ Commutative property}\\
+x + y = (x_{1} + y_{1}, x_{2} + y_{2}, x_{3} + y_{3} + \dots + x_{n} + y_{n})\\
+(y_{1} + x_{1}, y_{2}+ x_{2}, y_{3}+ y_{3} + \dots + y_{n} + x_{n})\\
+= y + x\\
+\therefore \textrm{Commutative property satisfied} \\~\\
+
+4. \textrm{ Identity property}\\
+\textrm{For every element }x = (x_{1}, x_{2}, x_{3}, \dots, x_{n}) \in R^{n}, \textrm{there exists }\\
+x + 0 = (x_{1}+0, x_{2}+0, x_{3}+0, \dots, x_{n} + 0) \\
+= (x_{1} + x_{2} + x_{3} + \dots + x_{n}) = x \\
+
+\textrm{Similarly: } 0 + x = x\\
+
+\therefore \textrm{Identity property is satisfied}\\
+0 = (0, 0, 0, \dots, 0)\textrm{ is said to be null vector/identity element} \\~\\
+
+5. \textrm{ Inverse property}\\
+
+\textrm{For every element } x = (x_{1}, x_{2}, x_{3}, \dots, x_{n}) \in R^{n}\\
+\textrm{There exist } -x = (x_{1}, x_{2}, \dots, x_{n}) \in R^{n}\\
+\textrm{Such that: } x + (-x) = 0\\
+(x-x_{1}, x-x_{2}, \dots, x-x_{n})\\
+= (0,0,\dots, 0)\\
+= 0\\
+
+\therefore \textrm{Inverse property exists. It is }0\\~\\
+
+\textrm{\textbf{Scalar multiplication}}\\~\\
+
+1. \textrm{ Closure property}\\
+\textrm{Let } \alpha \in F ~\&~x = (x_{1}, x_{2}, x_{3}, \dots, x_{n}) \in R^{n}\\
+\textrm{Now, } \alpha x = (\alpha x_{1}, \alpha x_{2}, \alpha x_{3}, \dots, \alpha x^{n}) \in R^{n}\\
+
+\therefore \textrm{Closure property satisfied} \\~\\
+
+2. \textrm{ Distributive property}\\
+\textrm{Let } \alpha,\beta \in F ~\&~ x \in R^{n}\\
+(\alpha + \beta)x =  (\alpha + \beta)(x_{1},x_{2},\dots, x_{n})\\
+= ((\alpha + \beta)x_{1}, (\alpha + \beta) x_{2}, \dots, (\alpha + \beta)x_{n})\\
+= (\alpha x_{1} + \beta x_{1}, \alpha x_{2} + \beta x_{2}, \dots, \alpha x_{n} + \beta x_{n})\\
+= (\alpha x_{1} + \alpha x_{2} + \dots + \alpha x_{n}) + (\beta x_{1} + \beta x_{2} + \dots + \beta x_{n})\\
+= \alpha x + \beta x\\
+\therefore \textrm{Distributive property satisfied}\\~\\
+
+3. \textrm{Distributive property}\\
+\textrm{Let } \alpha \in F ~\&~ x,y \in R^{n}\\
+\alpha(x+y) =  \alpha(x_{1} + y_{1},x_{2} + y_{2},\dots, x_{n} + y_{n})\\
+= \alpha (x_{1} + y_{1}), (\alpha  x_{2} + y_{2}), \dots, \alpha (x_{n} + y_{n})\\
+= \alpha x_{1} + \alpha y_{1}, \alpha x_{2} + \alpha y_{2}, \dots,  \alpha x_{n} + \alpha y_{n}\\
+= \alpha (x_{1} + x_{2} + \dots + x_{n}) + \alpha (y_{1} + y_{2} + \dots + y_{n})\\
+= \alpha x + \alpha y\\
+\therefore \textrm{Distributive property satisfied}\\~\\
+
+
+4. \textrm{ Associative property}\\
+\textrm{Let }\alpha, \beta ~\&~ x \in R^{n}\\
+
+(\alpha \beta)x = (\alpha \beta)[x_{1},x_{2}, \dots x_{n}]\\
+= [\alpha \beta (x_{1}), \alpha \beta (x_{2}), \dots, \alpha \beta (x_{n})]\\
+= [\alpha (\beta x_{1}), \alpha (\beta x_{2}), \dots, \alpha (\beta x_{n})]\\
+= \alpha (\beta x_{1}, \beta x_{2}, \dots, \beta x_{n})\\
+= \alpha (\beta x)\\
+\therefore \textrm{Associative property satisfied}\\~\\
+
+5. \textrm{ Unitary property}
+1 \in F ~\&~ x \in R^{n}\\
+
+\textrm{Now, } 1 \cdot x = 1 \cdot (x_{1},x_{2},x_{3}, \dots x_{n})\\
+= (1 \cdot x_{1}, 1 \cdot x_{2}, 1 \cdot x_{3}, \dots, 1 \cdot x_{n})
+= (x_{1},x_{2},x_{3},\dots, x_{n}) = x\\
+
+\therefore \textrm{Unitary property satisfied}
+$$
+
+Since all the properties of vector spaces are satisfied, $R^{n}$ (or) $V_{n}(F)$ is a vector space.
+
