@@ -1,5 +1,29 @@
 # Programming in C
 
+
+<!--toc:start-->
+- [Programming in C](#programming-in-c)
+  - [Introduction to C](#introduction-to-c)
+    - [Tokens](#tokens)
+    - [Compiler and Linker](#compiler-and-linker)
+  - [Data](#data)
+    - [Data Types](#data-types)
+    - [Memory storage](#memory-storage)
+  - [Software development life cycle](#software-development-life-cycle)
+  - [Algorithm](#algorithm)
+    - [Flowchart](#flowchart)
+  - [Variable declaration](#variable-declaration)
+    - [Syntax](#syntax)
+    - [Definitions](#definitions)
+      - [Keywords](#keywords)
+  - [Library](#library)
+  - [Format specifier](#format-specifier)
+  - [Print Formatted (`printf`)](#print-formatted-printf)
+    - [Syntax](#syntax)
+    - [Printing Variables](#printing-variables)
+      - [Syntax](#syntax)
+<!--toc:end-->
+
 ## Introduction to C
 
 ### Tokens
