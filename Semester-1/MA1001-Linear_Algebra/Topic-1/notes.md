@@ -188,5 +188,66 @@ __A non empty set F with at least two elements and two binary operations ($+$) a
 1. Set of non-zero real numbers $R$, with usual addition ($+$) and multiplication ($\cdot$)
 2. Set $Z$ is not a field. Inverse property does not satisfy. But it is a ring.
 
+## Scalars and Vectors
 
+### Scalar
+
+A quantity that has only magnitude but no direction is known as a scalar. Example: Speed, Distance.
+
+### Vector
+
+A quantity that has both magnitude and direction is known as a vector. Example: Velocity, Displacement.
+
+### Graphical representation of a Vector
+
+Vectors are graphically represented by an arrow or a directed line segment.
+The length of the arrow indicated the magnitude of the vector and the direction pointed by the head is the direction of the vector.
+
+### Matrix representation of a Vector
+
+An object moving 5 km/h in East direction: $\begin{bmatrix}5 \\0\end{bmatrix}$
+
+$\bar a = (x, y) = \begin{bmatrix}x\\y\end{bmatrix}$
+
+A set of numbers written in row form $(\begin{bmatrix}x&y\end{bmatrix})$ or column form $(\begin{bmatrix}x\\y\end{bmatrix})$ is said to be a _Row Vector_ or _Column Vector_.
+
+The integral numbers in the vector are called _components_ or _entry_ or _elements_.
+
+A vector having $n$ elements is called _n-dimensional vector_ or _n-tuple_.
+
+### Addition of Vectors
+
+To add two vectors, we have to add the corresponding elemetns of the vector, i.e. if $\bar x = (x_{1}, x_{2})$ and $\bar y = (y_{1}, y_{2})$, then $\bar x + \bar y = (x_{1}+ y_{1}, x_{2}+ y_{2})$
+
+Example:
+
+$$
+\bar x = (4, -3)\\
+\bar y = (-2, -5)\\
+\\
+\bar x + \bar y = (4 + (-2), -3 + (-5))\\
+\bar x + \bar y = (2, -8)
+$$
+
+### Multiplication of a Vector by a scalar
+
+To multiply a vector by a scalar multiplying the scalar to each components.
+
+If $\bar x = (x_{1} + x_{2})$, then $\alpha x = (\alpha x_{1}, \alpha x_{2})$, where $\alpha$ is a scalar.
+
+Example:
+$$
+\bar x = (3,5) \\
+4 \bar x = (4 \times 3, 4 \times 5) \\
+4 \bar x = (12, 20)\\
+|\bar x| = \sqrt{3^{2} + 5^{2}} \\
+|4 \bar x| = \sqrt{12^{2} + 20^{2}} = \sqrt{544} = \sqrt{14\times 34}  \\
+= 4\sqrt{34}
+$$ 
+
+Multiplication of a vector by a scalar by $\alpha$ times increasing the magnitude of vector (by $\alpha$ times)
+
+__Note:__
+1. By multiplying a vector by minus $(-)$ sign, its direction is inverted.
+2. Scalar multiplication is just scaling a vector.
 
