@@ -33,6 +33,8 @@
   - [Vector Space](#vector-space)
       - [Examples](#examples)
     - [Subspace](#subspace)
+      - [Single point criterion](#single-point-criterion)
+        - [Proof](#proof)
 <!--toc:end-->
 
 ---
@@ -518,3 +520,36 @@ Let $V$ be a vector space, then $W$ is a subspace of $V$ only if the following 3
 <!--3. Check whether the set $W = \{(a_{1}, a_{2}, a_{3}) \in R^{3}: a_{1}+2a_{2}+3a_{3} = 0\}$ is a subspace of $R^{3}$-->
 <!---->
 <!--j-->
+
+#### Single point criterion
+
+A non empty subset, $W \subset V$ is a subspace of $V(F)$ if and only if $\alpha, \beta \in F ~\&~ x,y \in W$, implies $\alpha x + \beta y \in W$ 
+
+* $W \subset V \iff \alpha, \beta \in F ~\&~ x,y \in W \implies \alpha x + \beta y \in W$
+
+##### Proof
+
+$$
+1. \textrm{Part 1}\\~\\
+\textrm{Let } W \subset V(f) \textrm{ be a subspace}\\~\\
+
+\textrm{Let }\alpha, \beta \in F ~\&~ x,y \in W\\
+\alpha x, \beta y \in W \textrm{ (Closed with respect to scalar multiplication)}\\
+\implies \alpha x + \beta y \in W \textrm{ (Closed with respect to vector addition)} \\~\\
+\textrm{Converse part}\\
+\textrm{Let } \alpha x + \beta y \in W ~\forall~\alpha,\beta \in F ~\&~ x,y \in W \rightarrow 1\\~\\
+
+\textrm{To prove: W is a subspace of V}\\~\\
+
+1. \textrm{Put }\alpha = 0, \beta = 0 \textrm{ in } 1\\
+0 \in W ~(\therefore \textrm{ Identity exists})\\~\\
+
+2. \textrm{Put } \alpha = \beta = 2 \textrm{ in } 1\\
+x + y \in W ~(\therefore \textrm{ Closed with respect to vector addition})\\~\\
+
+3. \textrm{Put } \beta = 0 \textrm{ in }1\\
+\alpha x \in W ~(\therefore \textrm{ Closed with respect to scalar multiplication})\\~\\
+
+\therefore \textrm{W is a subspace of V}\\
+\textrm{Hence proved}
+$$
