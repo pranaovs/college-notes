@@ -331,6 +331,21 @@ $$
 y = \overline{(A + B)} \\
 \implies y = \bar A \cdot \bar B
 $$
+
+#### Examples
+
+1. $Z = [A + \bar BC + D + EF][A + \bar BC + \overline{(D + EF)}]$
+
+$$
+Z = [a + b][a + \bar b]~(\textrm{where } a = A + \bar BC, b = D + EF)\\
+= [aa + a \bar b + ab +  b \bar b]\\
+= [a + a \bar b + ab + 0]\\
+= a + a[\bar b + b]\\
+= [a + a]\\
+= a\\
+= A + \bar BC
+$$
+  
 2. $\bar AB + \bar A \bar B \bar C \bar D + ABC\bar D$
 
 $$
