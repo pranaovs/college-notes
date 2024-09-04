@@ -2,6 +2,8 @@
 
 ---
 
+Topic: Cyber Security Essentials
+
 Author: Pranaov S
 
 Lecturer: Mr. Praveen Raj
@@ -121,10 +123,10 @@ A firewall filters the incoming network packets and decided whether it is allowe
 
 Firewall rules can be based on:
 
-* IP Address
-* Domain names
-* Word list
-* Ports
+- IP Address
+- Domain names
+- Word list
+- Ports
 
 Types of firewall:
 
