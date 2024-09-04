@@ -46,6 +46,7 @@ Subject Code: MA1001
     - [Subspace](#subspace)
       - [Single point criterion](#single-point-criterion)
         - [Proof](#proof)
+    - [Linear combination and linear systems of equations](#linear-combination-and-linear-systems-of-equations)
 <!--toc:end-->
 
 ## Binary operations
@@ -552,3 +553,53 @@ x + y \in W ~(\therefore \textrm{ Closed with respect to vector addition})\\~\\
 \therefore \textrm{W is a subspace of V}\\
 \textrm{Hence proved}
 $$
+
+### Linear combination and linear systems of equations
+
+Let S be non non empty subset of the vector space $V(F)$.
+A vector $v \in V ~\&~ \notin S$ is called a linear combination of vectors of $S$,
+if there exists finite vectors that $x_{1},x_{2},x_{3},\dots , x_{n} \in S$ and scalars $\alpha_{1}, \alpha_{2}\, \alpha_{3}, \dots, \alpha_{n}$
+
+$$\sum_{i=1}^{n}\alpha_{i}x_{i}$$
+
+__Note:__
+
+1. Here $\alpha_{1}, \alpha_{2}\, \alpha_{3}, \dots, \alpha_{n}$ are called coefficient of linear combination.
+2. In any vector space $V$, $0 \cdot v = 0$ for each $v \in V$, this implies, zero vector can be written as linear combination of non-empty set of vectors of $V$, i.e. $0 = 0 \cdot x_{1} + 0 \cdot x_{2} + \dots + 0 \cdot x_{n}$
+
+__Examples:__
+
+1. Express $x = (1, 7, -4)$ is a linear combination of vectors $x_{1} = (1, -3,4)$ and $x_{2} = (2, -1, 1)$ in a vector space $V_{3}(R)$
+
+$$
+\textrm{The linear combination of x in terms of } x_{1} \textrm{ and } x_{2} \textrm{ is: }\\
+
+x = a x_{1} + b x_{2}\\
+
+(1,7,-4) = (a + 2b, -3-b, 2a + b)\\~\\
+
+\textrm{Equating the corresponding components: }\\
+
+1 = a + 2b \rightarrow 1\\
+7 = -3a -b \rightarrow 2\\
+-4 = 2a + b \rightarrow 3\\~\\
+
+1:~ a + 2b = 1\\
+2: ~ 4a + 2b = -8\\~\\
+
+\implies a = -3 \textrm{ and } b = 2\\~\\
+
+\textrm{Substituting } a = -3 \textrm{ and } b = 2 \textrm{ in equation }3 \\
+
+7 = -3(-3) -2 \\
+= 9-2 \\
+= 7 \textrm{ (Satisfied)} \\~\\
+
+\therefore x \textrm{ can be written as a linear combination with } x_{1} \textrm{ and } x_{2} \textrm{, i.e. } x = -3 x_{1} + 2 x_{2}
+
+$$
+
+__Note:__
+
+1. While solving the system of equations, the values obtained for the coefficients $\alpha_{1}, \alpha_{2}$, must satisfy all the equations, otherwise we say the system is inconsistent (no solution).
+In such case, we say linear combination does not exist.
