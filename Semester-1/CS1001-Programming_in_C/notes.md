@@ -33,6 +33,8 @@ Subject Code: CS1001
     - [Syntax](#syntax)
     - [Printing Variables](#printing-variables)
       - [Syntax](#syntax)
+  - [Pointers](#pointers)
+    - [Syntax](#syntax)
 <!--toc:end-->
 
 ## Introduction to C
@@ -230,3 +232,37 @@ int main() {
 ```
 
 > `\` is called an escape sequence. It is used to escape normal operation and modify. Example, `\n` is used to print a newline. `\\` is used to insert literal `\`.
+
+---
+
+## Pointers
+
+Pointers are special variables to store addresses.
+
+> Declaration
+Telling the computer that you are going to use a variable/memory location with a specific name.
+
+### Syntax
+
+Syntax + Pointer declaration
+
+`datatype *identifier;`
+
+Use `&` to get the address of a variable
+
+`identifier = &var;`
+
+```c
+#include<stdio.h>
+
+int main() {
+  int a = 5;
+  int *b = &a;
+
+  printf("%p\n", b); //prints value of b (memory address of a)
+  printf("%p\n", &b); //prints memory address of b
+  printf("%d\n", *b); //prints data stored in pointer b (value of a)
+
+  return 0;
+}
+```
