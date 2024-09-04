@@ -1,5 +1,17 @@
 # Digital Design
 
+---
+
+Topic: Digital Design
+
+Author: Pranaov S
+
+Lecturer: Mr. Dinesh Ganesan
+
+Subject Code: CS1703
+
+---
+
 ## Conversion from one number system to another
 
 | Decimal Digit | 8-4-2-1 Code (BCD) | 6-3-1-1 Code | Excess Code | Gray Code |
