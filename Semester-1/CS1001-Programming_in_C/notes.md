@@ -41,12 +41,12 @@ Subject Code: CS1001
 
 **Tokens are the smallest unit in a program**
 
-* Identifiers
-* Keywords (32)
-* Constants (Literals)
-* Strings
-* Special symbols/characters
-* Operators
+- Identifiers
+- Keywords (32)
+- Constants (Literals)
+- Strings
+- Special symbols/characters
+- Operators
 
 ### Compiler and Linker
 
@@ -55,40 +55,40 @@ Compiler and linker are between OS and C Program
 
 ## Data
 
-* Data - Raw facts
-* Information - Processed meaningful data
+- Data - Raw facts
+- Information - Processed meaningful data
 
 ### Data Types
 
 1. Basic datatypes
 
-* int
-* float
-* char
-* void
-* double
-* short
-* long
-* string
+- int
+- float
+- char
+- void
+- double
+- short
+- long
+- string
 
 2. Derived datatypes
 
-* Arrays
-* Functions
-* Pointers
-* Unions (`union`)
-* Structures (`struct`)
+- Arrays
+- Functions
+- Pointers
+- Unions (`union`)
+- Structures (`struct`)
 
 3. Enumeration datatypes
 
-* `enum`
+- `enum`
 
 ### Memory storage
 
 Memory addresses are stored in hexadecimal
 
-* Binary digit is called a **bit**
-* 8 Bits = 1 Byte
+- Binary digit is called a **bit**
+- 8 Bits = 1 Byte
 
 First digit of a binary number is called **MSB (Most signifiant bit)**
 
@@ -127,10 +127,10 @@ Diagrammatic representation of an algorithm
 
 ## Variable declaration
 
-* A CPU does processes in the computer
-* We can access the CPU using main memory or RAM
-* The OS (Kernel) manages the RAM
-* To give Input to a computer to perform any operation or process, the program requests memory location from the kernel (OS). It is done with the help of **variable declaration**.
+- A CPU does processes in the computer
+- We can access the CPU using main memory or RAM
+- The OS (Kernel) manages the RAM
+- To give Input to a computer to perform any operation or process, the program requests memory location from the kernel (OS). It is done with the help of **variable declaration**.
 
 Variables are names of location. They are used to store data. It is used for simplicity since there are so many memory addresses, a human-readable name is given. The kernel manages variable name to address mapping.
 
@@ -165,12 +165,12 @@ num1 = 5 //Initialization
 
 Library is a set of programs written by someone else (or even personally). It is used to de-duplicate and reduce boilerplate code, by abstracting complex code.
 
-Also know as the __Header File__.
-__stdio.h__ - Standard Input/Output. Contains `printf` and `scanf`.
+Also know as the **Header File**.
+**stdio.h** - Standard Input/Output. Contains `printf` and `scanf`.
 
 To add a library to a program, use the `include` keyword.
 
-__Syntax__
+**Syntax**
 
 ```c
 #include <headerFile.h>
@@ -194,7 +194,6 @@ A format specifier is a way to present data.
 | %s   | Strings   |
 | %p | Memory Addresses (Pointers) |
 | %x | Hexadecimal values |
-
 
 ## Print Formatted (`printf`)
 
