@@ -1,5 +1,16 @@
 # Programming in C
 
+---
+
+Topic: Programming in C
+
+Author: Pranaov S
+
+Lecturer: Mr. Subin Sahayam
+
+Subject Code: CS1001
+
+---
 
 <!--toc:start-->
 - [Programming in C](#programming-in-c)
