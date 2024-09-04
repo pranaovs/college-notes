@@ -1,28 +1,39 @@
 # Linear Algebra
 
+---
+Title: Linear Algebra
+
+Author: Pranaov S
+
+Lecturer: Dr. Venugopal
+
+Subject Code: MA1001
+
+---
+
 <!--toc:start-->
 - [Linear Algebra](#linear-algebra)
   - [Binary operations](#binary-operations)
     - [Properties of Binary Operations](#properties-of-binary-operations)
-      - [1. Closure Property:](#1-closure-property)
+      - [1. Closure Property](#1-closure-property)
       - [2. Commutative property](#2-commutative-property)
       - [3. Associative Property](#3-associative-property)
       - [4. Distributive Property](#4-distributive-property)
       - [5. Identity Property](#5-identity-property)
       - [6. Inverse property](#6-inverse-property)
   - [Semigroup](#semigroup)
-    - [Example:](#example)
+    - [Example](#example)
       - [__Let A = ${1,3,5, ...}$, the set of all odd positive integers and the binary operations * is usual multiplication. Is $(A, *)$ is a semigroup?__](#let-a-135-the-set-of-all-odd-positive-integers-and-the-binary-operations-is-usual-multiplication-is-a-is-a-semigroup)
   - [Moniod](#moniod)
   - [Group](#group)
     - [Examples](#examples)
   - [Abelian Group](#abelian-group)
-    - [Examples:](#examples)
-    - [Not abelian group examples:](#not-abelian-group-examples)
+    - [Examples](#examples)
+    - [Not abelian group examples](#not-abelian-group-examples)
   - [Ring](#ring)
-    - [Examples:](#examples)
+    - [Examples](#examples)
   - [Field](#field)
-    - [Examples:](#examples)
+    - [Examples](#examples)
   - [Scalars and Vectors](#scalars-and-vectors)
     - [Scalar](#scalar)
     - [Vector](#vector)
@@ -31,22 +42,11 @@
     - [Addition of Vectors](#addition-of-vectors)
     - [Multiplication of a Vector by a scalar](#multiplication-of-a-vector-by-a-scalar)
   - [Vector Space](#vector-space)
-      - [Examples](#examples)
+    - [Examples](#examples)
     - [Subspace](#subspace)
       - [Single point criterion](#single-point-criterion)
         - [Proof](#proof)
 <!--toc:end-->
-
----
-Title: Linear Algebra
-
-Author: Pranaov
-
-Lecturer: Dr. Venugopal
-
-Subject Code: MA1001
-
----
 
 ## Binary operations
 
@@ -60,7 +60,7 @@ That is, Binary operation $*$ is a rule defined by $S*S \rightarrow S$
 
 ### Properties of Binary Operations
 
-#### 1. Closure Property:
+#### 1. Closure Property
 
 An operation $*$ on a non-empty set $A$ has closure property, if $a,b \in A \implies a * b \in A$.
 
@@ -95,6 +95,7 @@ $$
 Let $A$ be a non-empty set and $*$ be the binary operation on $A$. An element $e$ is the identity element on set $A$ if $a*e = e*a=a ~\forall~ a \in A$.
 
 Example:
+
 1. $(N, +)$ does not satisfy identity property as $0 \notin N$
 2. $(N, \times)$ satisfies identity property as $1 \in N$
 3. $(N, \div)$ does not satisfy identity property
@@ -107,7 +108,6 @@ We can write $b$ as $a^{-1}$
 
 $a * a^{-1} = a^{-1}*a = e$
 
-
 ## Semigroup
 
 __A nonempty set $S$ together with a binary operation $*$ defined on it, is said   to be a semigroup if the following properties are satisfied:__
@@ -115,9 +115,9 @@ __A nonempty set $S$ together with a binary operation $*$ defined on it, is said
 1. $a * b \in G, \forall a,b \in G$ (Closure property)
 2. $(a *b)* c = a *(b* c), \forall a,b,c \in G$ (Associative property)
 
-**Note: It is denoted by $(S, *)$**
+__Note: It is denoted by $(S, *)$__
 
-### Example:
+### Example
 
 #### __Let A = ${1,3,5, ...}$, the set of all odd positive integers and the binary operations * is usual multiplication. Is $(A, *)$ is a semigroup?__
 
@@ -135,8 +135,9 @@ __A non empty set M is said to be a Moniod with respect to binary operation $*$ 
 3. For every $a \in M$, there exists an element $e \in M$ (called identity) such that $a*e = e*a = a$ (Identity property satisfied)
 
 __Note:__
-* A semigroup satisfying identity property is called a Moniod.
-* Denoted be $(M, *)$
+
+- A semigroup satisfying identity property is called a Moniod.
+- Denoted be $(M, *)$
 
 ## Group
 
@@ -147,7 +148,7 @@ __A non empty set $M$ is said to be a Moniod with respect to binary operation $*
 3. For every $a \in M$, there exists an element $e \in M$ (called identity) such that $a *e = e* a = a$ (Identity property satisfied)
 4. For every $a \in G$, there exists an element $a^{-1} \in G$, such that $a * a^{-1} = a^{-1} * a = e$ (Existence of inverse)
 
-* Note: It is denoted be $(G, *)$
+- Note: It is denoted be $(G, *)$
 
 ### Examples
 
@@ -195,13 +196,13 @@ Hence the set of natural numbers N is __not__ a group with usual multiplication 
 
 __A group $(G,*)$ is said to be an Abelian group or commutative group if $a* b = b * a$, for ever $a,b \in G$.__
 
-### Examples:
+### Examples
 
 1. $(Z,+)$, $(Q, +)$, $(R, +)$, $(C, +)$ are abelian group.
 2. Set of non real numbers for multiplication.
 3. Set of non zero, Integers, Rational numbers for multiplication.
 
-### Not abelian group examples:
+### Not abelian group examples
 
 1. The set of square matrices of order $n$, with matrix multiplication $(I_{n \times n}, \times)$. Matrix multiplication is not commutative. Hence it is not an abelian group.
 
@@ -213,9 +214,9 @@ __A non empty set $R$ is said to be a ring with two binary operations, $+$ and $
 2. Multiplication is associative
 3. Left and right distributive laws hold
 
-* Note: A ring in with the multiplicative operation is commutative, it is called commutative ring.
+- Note: A ring in with the multiplicative operation is commutative, it is called commutative ring.
 
-### Examples:
+### Examples
 
 1. $(Z; +, \cdot)$, $(Q; +, \cdot)$, $(R; +, \cdot)$, $(C; +, \cdot)$
 2. $N$ is __not__ a ring for usual addition and multiplication: There is no additive identity element, $0 \notin N$
@@ -230,7 +231,7 @@ __A non empty set F with at least two elements and two binary operations ($+$) a
 2. $(F - \{0\}, \cdot)$ is an abelian group
 3. Distributive laws hold
 
-### Examples:
+### Examples
 
 1. Set of non-zero real numbers $R$, with usual addition ($+$) and multiplication ($\cdot$)
 2. Set $Z$ is not a field. Inverse property does not satisfy. But it is a ring.
@@ -256,11 +257,11 @@ An object moving 5 km/h in East direction: $\begin{bmatrix}5 \\0\end{bmatrix}$
 
 $\bar a = (x, y) = \begin{bmatrix}x\\y\end{bmatrix}$
 
-A set of numbers written in row form $(\begin{bmatrix}x&y\end{bmatrix})$ or column form $(\begin{bmatrix}x\\y\end{bmatrix})$ is said to be a _Row Vector_ or _Column Vector_.
+A set of numbers written in row form $(\begin{bmatrix}x&y\end{bmatrix})$ or column form $(\begin{bmatrix}x\\y\end{bmatrix})$ is said to be a *Row Vector* or *Column Vector*.
 
-The integral numbers in the vector are called _components_ or _entry_ or _elements_.
+The integral numbers in the vector are called *components* or *entry* or *elements*.
 
-A vector having $n$ elements is called _n-dimensional vector_ or _n-tuple_.
+A vector having $n$ elements is called *n-dimensional vector* or *n-tuple*.
 
 ### Addition of Vectors
 
@@ -290,11 +291,12 @@ $$
 |\bar x| = \sqrt{3^{2} + 5^{2}} \\
 |4 \bar x| = \sqrt{12^{2} + 20^{2}} = \sqrt{544} = \sqrt{14\times 34}  \\
 = 4\sqrt{34}
-$$ 
+$$
 
 Multiplication of a vector by a scalar by $\alpha$ times increasing the magnitude of vector (by $\alpha$ times)
 
 __Note:__
+
 1. By multiplying a vector by minus $(-)$ sign, its direction is inverted.
 2. Scalar multiplication is just scaling a vector.
 
@@ -302,11 +304,11 @@ __Note:__
 
 It is a set of vectors with rules for vector addition and scalar multiplication.
 
-**Definition:** A non empty set $V$ is said to be a vector space over a field $F$ if there are 2 binary operators (Vector Addition and Scalar Multiplication) satisfying the following properties:
+__Definition:__ A non empty set $V$ is said to be a vector space over a field $F$ if there are 2 binary operators (Vector Addition and Scalar Multiplication) satisfying the following properties:
 
 Let $x,y,z \in V$ and $\alpha,\beta \in F$
 
-1. **For vector addition:**
+1. __For vector addition:__
     1. Closure property
 
     $$x,y \in V \implies x + y \in V$$
@@ -316,7 +318,7 @@ Let $x,y,z \in V$ and $\alpha,\beta \in F$
     $$(x+y)+z = x + (y+z)$$
 
     3. Commutative property
-    
+
     $$x + y = y + x$$
 
     4. Existence of Identity
@@ -327,7 +329,7 @@ Let $x,y,z \in V$ and $\alpha,\beta \in F$
 
     $$~\forall~a\in B, \exist (-a) \textrm{ in } B\\ \ni a + (-a) = (-a) + a = 0$$
 
-2. **For Scalar Multiplication**
+2. __For Scalar Multiplication__
 
     1. Closure property
     $$\alpha \in F,~x \in V\\\implies\alpha x \in V $$
@@ -345,12 +347,11 @@ Let $x,y,z \in V$ and $\alpha,\beta \in F$
 
     $$1 \cdot x = x ~\forall~ 1 \in F ~\&~ x \in B$$
 
-**Note:**
+__Note:__
 
 1. The vector space $B$ over a field $F$ is denoted as $B(F)$
-2. Also known as _Linear Space_
+2. Also known as *Linear Space*
 3. The elements of the field are scalar the elements of vector space $V$ are vectors.
-
 
 #### Examples
 
@@ -438,11 +439,10 @@ x + 0 = (x_{1}+0, x_{2}+0, x_{3}+0, \dots, x_{n} + 0) \\
 = \alpha x + \alpha y\\
 \therefore \textrm{Distributive property satisfied}\\~\\
 
-
 4. \textrm{ Associative property}\\
 \textrm{Let }\alpha, \beta ~\&~ x \in R^{n}\\
 
-(\alpha \beta)x = (\alpha \beta)[x_{1},x_{2}, \dots x_{n}]\\
+(\alpha \beta)x = [\alpha \beta](x_{1},x_{2}, \dots x_{n})\\
 = [\alpha \beta (x_{1}), \alpha \beta (x_{2}), \dots, \alpha \beta (x_{n})]\\
 = [\alpha (\beta x_{1}), \alpha (\beta x_{2}), \dots, \alpha (\beta x_{n})]\\
 = \alpha (\beta x_{1}, \beta x_{2}, \dots, \beta x_{n})\\
@@ -463,15 +463,15 @@ Since all the properties of vector spaces are satisfied, $R^{n}$ (or) $V_{n}(F)$
 
 ### Subspace
 
-**Definition:**
+__Definition:__
 A subset $W$ of a vector space $V$ over a field $F$ is called a subspace of $V$ if $W$ is a vector space over $F$ with the operations of vector addition and scalar multiplication defined on $V$.
 
-**Note:**
+__Note:__
 
 1. $V$ and $V\{0\}$ are called improper or trivial subspaces.
 2. $W$ subset of $V$ is called proper subspace of $V$.
 
-**Examples:**
+__Examples:__
 
 1. $R^{2}$
     1. It is a vector space
@@ -479,8 +479,7 @@ A subset $W$ of a vector space $V$ over a field $F$ is called a subspace of $V$ 
 
 > As $W$ is a subspace of $V$, commutative and associative properties under addition hold good. Also the properties of scalar multiplication $V$ satisfies on $W$. Therefore, to prove $W$ is a subspace of $V$, it is enough to verify closure property, identity property and inverse property (optional).
 
-
-**Theorem:**
+__Theorem:__
 
 A non empty subset $W$ of a vector space $V$ is a subspace of $V$ only if $W$ is closed under addition and scalar multiplication.
 
@@ -523,9 +522,9 @@ Let $V$ be a vector space, then $W$ is a subspace of $V$ only if the following 3
 
 #### Single point criterion
 
-A non empty subset, $W \subset V$ is a subspace of $V(F)$ if and only if $\alpha, \beta \in F ~\&~ x,y \in W$, implies $\alpha x + \beta y \in W$ 
+A non empty subset, $W \subset V$ is a subspace of $V(F)$ if and only if $\alpha, \beta \in F ~\&~ x,y \in W$, implies $\alpha x + \beta y \in W$
 
-* $W \subset V \iff \alpha, \beta \in F ~\&~ x,y \in W \implies \alpha x + \beta y \in W$
+- $W \subset V \iff \alpha, \beta \in F ~\&~ x,y \in W \implies \alpha x + \beta y \in W$
 
 ##### Proof
 
