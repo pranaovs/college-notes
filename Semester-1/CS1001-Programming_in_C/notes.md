@@ -35,6 +35,14 @@ Subject Code: CS1001
       - [Syntax](#syntax)
   - [Pointers](#pointers)
     - [Syntax](#syntax)
+  - [Escape Sequence](#escape-sequence)
+  - [Operators](#operators)
+    - [Expression](#expression)
+    - [Operators Precedence](#operators-precedence)
+    - [Relational Operators](#relational-operators)
+    - [Operators Precedence and Associativity](#operators-precedence-and-associativity)
+      - [Left to right](#left-to-right)
+      - [Right to left](#right-to-left)
 <!--toc:end-->
 
 ## Introduction to C
@@ -266,3 +274,68 @@ int main() {
   return 0;
 }
 ```
+
+## Escape Sequence
+
+| Escape Sequence   | Description    |
+|--------------- | --------------- |
+| `\n`   | Newline character   |
+| `\t`   | Horizontal Tab   |
+| `\a`   | Produces a sound or visible alert   |
+| `\\`   | Literal backslash (\\)  |
+| `\"` | Literal double quote (") |
+
+## Operators
+
+Symbols that implement mathematical operations.
+
+### Expression
+
+Combination of operands and operators.
+
+- Unary, Binary, Ternary Operators
+
+Types of operators
+
+| Operator | Example |
+| -------- | ------- |
+| Unary | `++`, `--` |
+| Arithmetic | `+`,`-`,`*` |
+| Relational | `<`, `>`, `==`, `<=`, `!=` |
+| Logical | `&&`, `\|\|`, `!` |
+| Assignment | `=`,`+=`,`-=`, `%=` |
+| Ternary/Conditional | `?:` |
+| Bitwise | `&`,`\|`, `<<`, `^`, `~` |
+
+### Operators Precedence
+
+| Priority | Operator | Operation |
+| --------------- | --------------- | --------------- |
+| 1 | `()` | Parenthesis |
+| 2 | `*` | Multiplication |
+| 3 | `/` | Division |
+| 4 | `%` | Remainder |
+| 5 | `+` | Addition |
+| 6 | `-` | Subtraction |
+| 7 | `=` | Assignment |
+
+### Relational Operators
+
+| Operator   | Returns `true` if    |
+|--------------- | --------------- |
+| `==`   | equal   |
+| `!=`   | not equal   |
+| `<`   | lesser than   |
+| `>`   | greater than   |
+| `>=`   | lesser than or equal to   |
+| `>`   | greater than or equal to  |
+
+### Operators Precedence and Associativity
+
+#### Left to right
+
+- `()`, `*`, `/`, `%`, `+`, `-`, `<`, `<=`, `>`, `>=`, `==`, `!=`
+
+#### Right to left
+
+- `=` (Assignment operator)
