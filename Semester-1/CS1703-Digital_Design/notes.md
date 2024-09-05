@@ -82,14 +82,14 @@ Analog (continuous) $\rightarrow$ Discrete time signals $\rightarrow$ Digital si
 | 05 | 0101 | 05 | 5 |
 | 06 | 0110 | 06 | 6 |
 | 07 | 0111 | 07 | 7 |
-| 08 | 1000 | 08 | 8 |
-| 09 | 1001 | 09 | 9 |
-| 10 | 1010 | 10 | A |
-| 11 | 1011 | 11 | B |
-| 12 | 1100 | 12 | C |
-| 13 | 1101 | 13 | D |
-| 14 | 1110 | 14 | E |
-| 15 | 1111 | 15 | F |
+| 08 | 1000 | 10 | 8 |
+| 09 | 1001 | 11 | 9 |
+| 10 | 1010 | 12 | A |
+| 11 | 1011 | 13 | B |
+| 12 | 1100 | 14 | C |
+| 13 | 1101 | 15 | D |
+| 14 | 1110 | 16 | E |
+| 15 | 1111 | 17 | F |
 
 The number of digits required to store a decimal number in binary form is $2^{n}$ (n = number of digits in the binary form)
 
