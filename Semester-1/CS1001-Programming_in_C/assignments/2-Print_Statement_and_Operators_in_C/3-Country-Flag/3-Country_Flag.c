@@ -1,3 +1,9 @@
+/*
+This code is licensed under the MIT License
+Copyright 2024 Pranaov S
+https://opensource.org/license/MIT
+*/
+
 #include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
