@@ -1,0 +1,47 @@
+touch linuxpractice.txt
+nvim linuxpractice.txt
+pwd
+mkdir LinuxPractice
+cd LinuxPractice
+mkdir {DOC,TXT,PPT}
+ls -l
+for folder in *; do touch $folder/{1,2,3}.$(echo $folder | sed 's/.*/
+\L&/'); done
+tree
+cp */* .
+ls -l
+cd ..
+mkdir LinuxPracticeCopy
+mv LinuxPractice/3.* LinuxPracticeCopy
+ls -l LinuxPracticeCopy
+cd LinuxPractice
+ls -l
+rm *.ppt
+ls -l
+cd ../LinuxPracticeCopy
+rm *
+ls -l
+cd ..
+trash-put LinuxPracticeCopy
+trash-restore LinuxPracticeCopy
+cd LinuxPractice
+ls -l 2*
+find -name 3.txt
+find -name 3.ppt
+nvim $(find -name 3.txt)
+/shivnadar
+:q
+find -name 3.txt | xargs nvim
+nvim $(find -name 3.txt)
+history | tail -n 2 >> ../linuxpractice.txt
+gedit TXT/3.txt &
+cd ..
+cp LinuxPractice ~/Documents/
+cd ~/Documents/
+tar -czvf LinuxPractice.tar.gz LinuxPractice
+cd /tmp/LinuxPractice
+cd TXT
+cat *.txt > SingleTextFile.txt
+cd ../DOC
+shred -u 1.doc 2.doc
+ls -l
