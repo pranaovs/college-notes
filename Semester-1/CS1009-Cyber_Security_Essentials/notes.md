@@ -196,3 +196,11 @@ Containers use a container engine to run the containers. It unpacks the file and
 #### Disadvantages
 
 1. It requires the same host as it was packed in to run
+
+---
+
+> **Important questions**\
+Monolith vs Microservice architecture\
+Virtualization vs Containerization\
+Server vs Serverless\
+High level diagram of a product
