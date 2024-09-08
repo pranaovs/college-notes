@@ -101,6 +101,8 @@ int main() {
   }
 
   // Define Denmark flag
+
+  // clang-format off
   char flag[255] = "RRRRRRRRWWRRRRRRRRRRRRRR\n"
                    "RRRRRRRRWWRRRRRRRRRRRRRR\n"
                    "RRRRRRRRWWRRRRRRRRRRRRRR\n"
@@ -110,6 +112,8 @@ int main() {
                    "RRRRRRRRWWRRRRRRRRRRRRRR\n"
                    "RRRRRRRRWWRRRRRRRRRRRRRR\n"
                    "RRRRRRRRWWRRRRRRRRRRRRRR\n";
+
+  // clang-format on
 
   // Only try colorizing the flag if user claims terminal supports 4-bit colors
   if (colorTerm) {
