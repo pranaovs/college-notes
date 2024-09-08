@@ -21,7 +21,7 @@ bool colorTerm;
 char coloredString[32768];
 
 // Function from:
-// https://github.com/pranaovs/college-notes/tree/main/Semester-1/CS1001-Programming_in_C/assignments/2-Print_Statement_and_Operators_in_C/3-Country-Flag/3-Country_Flag.c
+// https://github.com/pranaovs/college-notes/tree/main/Semester-1/CS1001-Programming_in_C/assignments/2-Print_Statement_and_Operators_in_C/3-Country_Flag/3-Country_Flag.c
 // Follows MIT License
 char *colorize(char *inp) {
 
@@ -59,7 +59,7 @@ char *colorize(char *inp) {
 int main() {
 
   // Logic from:
-  // https://github.com/pranaovs/college-notes/tree/main/Semester-1/CS1001-Programming_in_C/assignments/2-Print_Statement_and_Operators_in_C/3-Country-Flag/3-Country_Flag.c
+  // https://github.com/pranaovs/college-notes/tree/main/Semester-1/CS1001-Programming_in_C/assignments/2-Print_Statement_and_Operators_in_C/3-Country_Flag/3-Country_Flag.c
   // Follows MIT License
   printf("Make sure your terminal (emulator) supports atleast 4-bit colors\n");
   printf("If you don't know what that means, just use one of these:\n");
