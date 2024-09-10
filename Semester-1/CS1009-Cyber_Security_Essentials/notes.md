@@ -34,6 +34,11 @@ Subject Code: CS1009
     - [Containers](#containers)
       - [Advantages](#advantages)
       - [Disadvantages](#disadvantages)
+  - [Cyber attacks](#cyber-attacks)
+    - [Rouge Antivirus](#rouge-antivirus)
+    - [Social Engineering attacks](#social-engineering-attacks)
+    - [Search engine poisoning](#search-engine-poisoning)
+    - [Click fraud](#click-fraud)
 <!--toc:end-->
 
 ## DNS Records
@@ -197,10 +202,49 @@ Containers use a container engine to run the containers. It unpacks the file and
 
 1. It requires the same host as it was packed in to run
 
----
-
 > **Important questions**\
 Monolith vs Microservice architecture\
 Virtualization vs Containerization\
 Server vs Serverless\
 High level diagram of a product
+
+---
+
+## Cyber attacks
+
+### Rouge Antivirus
+
+A software disguised as an anti-virus program but is designed to perform rouge activities, like stealing data, asking for purchases, ransomware, etc.
+
+### Social Engineering attacks
+
+It is an attack that works by tricking people into giving up their information, bank details, etc,
+by pretending to be legitimate people whom are to be trusted.
+
+Bad actors usually use threatening, trying to panic users, creating duplicate websites to mimic actual websites, etc for social engineering.
+
+### Search engine poisoning
+
+It is an attack that works by manipulating search engine results by adverts or by SEO poisoning.
+
+A popular example is obs-studio sponsored link on the Google search engine.
+<https://x.com/OBSProject/status/1533960714628497408>
+
+The goal is to exploit the trust people have in popular search engines by making fake webpages appear high in the search ranking list.
+
+### Click fraud
+
+Click fraud is when someone (mostly programs or click farms) intentionally on online ads of a particular ad campaign,
+mostly with pay-per-click (PPC) advertising, with the aim of generating fake revenue and waste the advertiser's budget.
+
+It is done mainly by companies to ruin the ad campaign of their competitors.
+
+Can be prevented using strategies like performance marketing, or tools like ClickCease.
+
+> Black box software: A black box software is a type of software in which the tester or the developer may not know/need to know how the software works.
+They only test/use the functionality of the software, without caring how it works.
+Example: transmission of packets through wire(less) protocols, storing of data in the RAM.
+
+> White box software: Refers to a type of software where the tester/developer knows how the software works,
+and is actively changing the functionality or working on it.
+Example: End user software (for developers), Linux kernel for Linux Torvalds, C compiler (for C beginners), etc.
