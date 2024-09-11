@@ -43,6 +43,17 @@ Subject Code: CS1001
     - [Operators Precedence and Associativity](#operators-precedence-and-associativity)
       - [Left to right](#left-to-right)
       - [Right to left](#right-to-left)
+  - [Control Flow](#control-flow)
+    - [Simple if](#simple-if)
+      - [Syntax](#syntax)
+    - [if-else](#if-else)
+      - [Syntax](#syntax)
+    - [if-else-if ladder](#if-else-if-ladder)
+      - [Syntax](#syntax)
+    - [Nested if](#nested-if)
+      - [Syntax](#syntax)
+    - [switch](#switch)
+      - [Syntax](#syntax)
 <!--toc:end-->
 
 ## Introduction to C
@@ -339,3 +350,105 @@ Types of operators
 #### Right to left
 
 - `=` (Assignment operator)
+
+## Control Flow
+
+Order in which a program's instructions/statements are executed.
+
+Some statements can decide the control flow, they are called control statements
+
+1. Conditional/Selection
+    - `if`,`if-else`,`nested-if`, `switch`
+2. Iterative/Looping
+    - `do-while`, `while`, `for`
+3. Jump
+    - `break`, `continue`, `goto`
+
+> & - Reference operator
+
+### Simple if
+
+#### Syntax
+
+```c
+if (expression) {
+  // Block of statements to execute if expression is true
+}
+```
+
+**Note:**
+
+- If there is only one statement, `{}` can be ignored
+
+- There is no semicolon in `if` statement. Using a semi-colon, the `if` statement will be terminated.
+
+### if-else
+
+#### Syntax
+
+```c
+if (expression) {
+  // Block of statements to execute if expression is true
+} else {
+  // Block of statements to execute if expression if false
+}
+```
+
+### if-else-if ladder
+
+#### Syntax
+
+```c
+if (expression) {
+  // Block of statements to execute if expression1 is true
+} else if (expression2) {
+  // Block of statements to execute if expression2 is true
+} else if (expression3) {
+  // Block of statements to execute if expression3 is true
+} else {
+  // Block of statements to execute if all expressions are false
+}
+```
+
+### Nested if
+
+#### Syntax
+
+```c
+if (expression1) {
+  // Code to execute if expression1 is true
+  if (expression12) {
+    // Code to execute if expression12 is also true
+    if (expression123) {
+      // Code to execute if expression123 is also true
+    }
+  }
+}
+```
+
+### switch
+
+#### Syntax
+
+```c
+switch (expression) {
+  case value1:
+    // Code to execute if expression equals value1
+    break;
+
+  case value2:
+    // Code to execute if expression equals value2
+    break;
+
+  case value3:
+    // Code to execute if expression equals value3
+    break;
+
+  default:
+    // Code to execute if non of the cases match
+}
+```
+
+**Note:**
+
+- Without using a `break`, the switch case checking does not exit. The `default` code block is always executed in this case.
