@@ -247,4 +247,4 @@ Example: transmission of packets through wire(less) protocols, storing of data i
 
 > White box software: Refers to a type of software where the tester/developer knows how the software works,
 and is actively changing the functionality or working on it.
-Example: End user software (for developers), Linux kernel for Linux Torvalds, C compiler (for C beginners), etc.
+Example: End user software (for developers), Linux kernel for Linux Torvalds, C compiler (for C compiler devs), etc.
