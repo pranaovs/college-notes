@@ -394,6 +394,31 @@ if (expression) {
 }
 ```
 
+#### Example
+
+Program to check if given number is odd or even.
+
+```c
+#include <stdio.h>
+
+int inp;
+
+int main() {
+
+  printf("Enter the number to check for odd or even: ");
+  scanf("%d", &inp);
+
+  printf("\n");
+
+  if (inp % 2 == 0)
+    printf("%d is an even number\n", inp);
+  else
+    printf("%d is an odd number\n", inp);
+
+  return 0;
+}
+```
+
 ### if-else-if ladder
 
 #### Syntax
@@ -446,6 +471,40 @@ switch (expression) {
 
   default:
     // Code to execute if non of the cases match
+}
+```
+
+#### Example
+
+Write a program to print textual alternatives to 1, 2 and 3 if entered
+
+```c
+#include <stdio.h>
+
+int num;
+
+int main() {
+  printf("Program to return the textual numbers for 1,2 and 3\n");
+  printf("Enter a number: ");
+  scanf("%d", &num);
+
+  printf("\n");
+
+  switch (num) {
+  case 1:
+    printf("One\n");
+    break;
+  case 2:
+    printf("Two\n");
+    break;
+  case 3:
+    printf("Three\n");
+    break;
+  default:
+    printf("Input is not 1, 2 or 3\n");
+  }
+
+  return 0;
 }
 ```
 
