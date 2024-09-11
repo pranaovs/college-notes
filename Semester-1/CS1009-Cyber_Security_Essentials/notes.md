@@ -39,6 +39,10 @@ Subject Code: CS1009
     - [Social Engineering attacks](#social-engineering-attacks)
     - [Search engine poisoning](#search-engine-poisoning)
     - [Click fraud](#click-fraud)
+  - [Proxy](#proxy)
+    - [Forward Proxy](#forward-proxy)
+    - [Reverse proxy](#reverse-proxy)
+  - [VPN](#vpn)
 <!--toc:end-->
 
 ## DNS Records
@@ -248,3 +252,38 @@ Example: transmission of packets through wire(less) protocols, storing of data i
 > White box software: Refers to a type of software where the tester/developer knows how the software works,
 and is actively changing the functionality or working on it.
 Example: End user software (for developers), Linux kernel for Linux Torvalds, C compiler (for C compiler devs), etc.
+
+## Proxy
+
+A proxy is a server which acts on behalf of clients.
+It is a middle man between private and public network.
+
+### Forward Proxy
+
+A forward proxy can regulate proxy and acts on behalf of a client.
+
+- It masks client's IP address
+- Can be used to log user activity
+- Bypass restrictions
+- Can increase speed be caching websites and data.
+
+### Reverse proxy
+
+Regulates traffic coming into a network.
+
+Creates a single point of entry. Fetches data from actual server and servers it to requesting clients.
+
+- Increases security by hiding IP addresses of actual server.
+- Blocks malicious traffic such as DDoS attack.
+- Load balancing
+
+## VPN
+
+Virtual Private Network
+
+Established a secure and reliable network connection over an (possible) insecure network.
+
+- Routes internet traffic by routing the packets through the VPN server and masks IP address.
+- Encrypts the data to prevent data collection and interception. Called tunneling.
+- Allows accessing geo-blocked content.
+- Provides secure connections for remote work.
