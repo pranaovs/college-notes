@@ -48,12 +48,14 @@ Subject Code: CS1001
       - [Syntax](#syntax)
     - [if-else](#if-else)
       - [Syntax](#syntax)
+      - [Example](#example)
     - [if-else-if ladder](#if-else-if-ladder)
       - [Syntax](#syntax)
     - [Nested if](#nested-if)
       - [Syntax](#syntax)
     - [switch](#switch)
       - [Syntax](#syntax)
+      - [Example](#example)
 <!--toc:end-->
 
 ## Introduction to C
