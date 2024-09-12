@@ -56,6 +56,11 @@ Subject Code: CS1001
     - [switch](#switch)
       - [Syntax](#syntax)
       - [Example](#example)
+  - [Looping](#looping)
+    - [Increment/Decrement operator](#incrementdecrement-operator)
+      - [Example](#example)
+        - [Output](#output)
+        - [Output](#output)
 <!--toc:end-->
 
 ## Introduction to C
@@ -345,12 +350,27 @@ Types of operators
 
 ### Operators Precedence and Associativity
 
+| Operators | Associativity | Type |
+| --------------- | --------------- | --------------- |
+| `++` (postfix), `--` (postfix) | right to left | postfix |
+| `+` (type), `-` (type), `++` (prefix), `--` (prefix) | right to left | unary |
+| `*`, `/`, `%` | left to right | multiplicative |
+| `+`, `-` | left to right | additive |
+| `<`, `<=`, `>`, `>=` | left to right | relational |
+| `==`, `!=` | left to right | equality |
+| `?:` | right to left | conditional |
+| `=`, `+=`, `-=`, `*=`, `%=` | right to left | assignment |
+
+Refer [Increment/Decrement operator](#incrementdecrement-operator)
+
 #### Left to right
 
 - `()`, `*`, `/`, `%`, `+`, `-`, `<`, `<=`, `>`, `>=`, `==`, `!=`
 
 #### Right to left
 
+- `++`, `--`, `+`, `-`
+- `+=`, `-=`, `*=`, `%=`
 - `=` (Assignment operator)
 
 ## Control Flow
@@ -513,3 +533,82 @@ int main() {
 **Note:**
 
 - Without using a `break`, the switch case checking does not exit. The `default` code block is always executed in this case.
+
+## Looping
+
+### Increment/Decrement operator
+
+| Operator | Sample Expression | Explanation |
+| --------------- | --------------- | --------------- |
+| `++` | `++a` | Increment a by 1, and use the new value of a in the expression |
+| `++` | `a++` | Use the current value of a for the expression, then increment it by 1 |
+| `--` | `--b` | Decrement b by 1, and use the new value of b in the expression |
+| `--` | `b--` | Use the current value of b in the operation, then decrement it by 1 |
+
+#### Example
+
+1.
+
+```c
+#include <stdio.h>
+
+int num = 3;
+
+int main() {
+  printf("Init value of num is: %d\n", num);
+  printf("num++ is: %d\n", num++);
+  printf("Value of num after num++ is: %d\n", num);
+  printf("++num is: %d\n", ++num);
+  printf("Value of num after ++num is: %d\n", num);
+
+  return 0;
+}
+```
+
+##### Output
+
+```txt
+Init value of num is: 3
+num++ is: 3
+Value of num after num++ is: 4
+++num is: 5
+Value of num after ++num is: 5
+```
+
+2.
+
+```c
+#include <stdio.h>
+
+int num = 3;
+int num2 = 3;
+int num3 = 3;
+int num4 = 3;
+int num5 = 3;
+
+int main() {
+
+  printf("%d\n", num);
+  printf("%d\n", num2++);
+  printf("%d\n", ++num3);
+  printf("%d\n", num4++ + ++num4);
+  printf("%d\n", num4);
+
+  int i = num++ + ++num + num++;
+  printf("\n%d\n", i);
+
+  return 0;
+}
+```
+
+##### Output
+
+```txt
+3
+3
+4
+8
+5
+
+13
+```
