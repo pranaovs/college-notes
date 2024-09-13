@@ -156,7 +156,28 @@ There are two types of encryption.
 
 ### Symmetric encryption
 
-Symmetric encryption is a method to encrypt a message using a common password/passphrase. It is a common shared key used for encryption and decryption.
+Symmetric encryption is a method to encrypt a message using a common password/passphrase.
+It is a common shared key used for encryption and decryption.
+
+#### Caesar Cipher
+
+It is a method of encrypting a message by shifting each letter in the sentence by a fixed shift length down the alphabet.
+
+**Example**
+
+Plain text:
+
+This is not a secure method of encrypting messages, as it can be bruteforced in maximum 26 tries.
+
+**Shift** = 7 (a $\rightarrow$ h)
+
+**Ciphertext**
+
+Aopz pz uva h zljbyl tlaovk vm lujyfwapun tlzzhnlz, hz pa jhu il iybalmvyjlk pu theptbt 26 ayplz.
+
+#### Vigenere Cipher
+
+<https://www.geeksforgeeks.org/vigenere-cipher/>
 
 ### Asymmetric encryption
 
@@ -276,6 +297,12 @@ Creates a single point of entry. Fetches data from actual server and servers it 
 - Increases security by hiding IP addresses of actual server.
 - Blocks malicious traffic such as DDoS attack.
 - Load balancing
+
+> Questions:
+>
+> Proxy vs Reverse Proxy
+>
+> Proxy vs VPN
 
 ## VPN
 
