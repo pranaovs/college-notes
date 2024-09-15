@@ -217,7 +217,7 @@ Information available in A-scan is one-dimensional.
 
 B-scan display gives cross-sectional view of the test specimen and shows position, orientation and depth of the defects.
 Y-axis represents elapsed time,
-and x-axis represents position of transducer along a line on the surface of the test object,
+and x-axis represents position of transducer along a line on the surface of the test specimen,
 relative to the starting position of the transducer.
 This, the probe movement is displayed in x-direction while distance of defect is shown in y-axis.
 Echo amplitude is represented by relative brightness of echo indications.
@@ -225,3 +225,13 @@ If a storage oscilloscope is used, the whole picture can be displayed,
 revealing depth of defect behind surface and its size in lateral direction.
 
 ![B scan representation](./assets/b-scan-representation.png)
+
+### C scan display
+
+In C-scan, the transducer is moved over the surface of the test specimen and the echo intensity is recorded as a variation in line shading.
+The image shows the plan of the specimen as viewed from the top,
+and is a true-to-scale reproduction of the defect in the specimen.
+This is used in cases where the depth of defects is not relevant,
+but information about their distribution parallel to the test surface is required.
+
+![C scan representation](./assets/c-scan-representation.png)
