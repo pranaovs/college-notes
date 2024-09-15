@@ -31,6 +31,9 @@ marks: 5
     - [Non-destructive Testing](#non-destructive-testing)
       - [Normal Beam Pulse-Echo Testing](#normal-beam-pulse-echo-testing)
       - [Normal beam pulse through-transmission testing](#normal-beam-pulse-through-transmission-testing)
+  - [Modes of Display](#modes-of-display)
+    - [A scan display](#a-scan-display)
+    - [B scan display](#b-scan-display)
 <!--toc:end-->
 
 ## Syllabus
@@ -197,4 +200,28 @@ The pulse travels through the specimen to the other side, which is amplified and
 If the ultrasonic pulse travels without encountering any defect, the signal received will be relatively large.
 If there is a defect, some energy is reflected and the signal received on the other end will be reduced.
 
-![Normal beam pulse through-transmission scan representation](./assets/normal-beam-pulse-through-transmission-scan-representation.png)
+## Modes of Display
+
+### A scan display
+
+A scan display is the most used mode of display.
+The x-axis represents time taken by the pulse to the reflecting surface and return back to the transducer.
+The y-axis represents the amplitude of the echos.
+The location of the defect is estimated by the position of the echo given by it on the horizontal axis.
+The size of the defect can be inferred from the relative amplitude of the echo.
+Information available in A-scan is one-dimensional.
+
+![A scan representation](./assets/a-scan-representation.png)
+
+### B scan display
+
+B-scan display gives cross-sectional view of the test specimen and shows position, orientation and depth of the defects.
+Y-axis represents elapsed time,
+and x-axis represents position of transducer along a line on the surface of the test object,
+relative to the starting position of the transducer.
+This, the probe movement is displayed in x-direction while distance of defect is shown in y-axis.
+Echo amplitude is represented by relative brightness of echo indications.
+If a storage oscilloscope is used, the whole picture can be displayed,
+revealing depth of defect behind surface and its size in lateral direction.
+
+![B scan representation](./assets/b-scan-representation.png)
