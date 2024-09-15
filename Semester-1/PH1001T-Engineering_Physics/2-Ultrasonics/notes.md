@@ -47,7 +47,8 @@ Sounds above 20 kHz are called ultrasonic sounds.
 
 ### Magnetostriction generator
 
-> **Magnetostriction effect:** When a rod of ferromagnetic material (such as iron or nickel) is placed in a magnetic field parallel to its length,
+> **Magnetostriction effect:**
+> When a rod of ferromagnetic material (such as iron or nickel) is placed in a magnetic field parallel to its length,
 > the rod experiences a change in length.
 > This change is independent of the direction of the magnetic field and is only dependent on the magnitude of the field and the nature of the material.
 > This phenomenon is known as Magnetostriction effect.
@@ -70,3 +71,21 @@ As the rod vibrates longitudinally, the following relation governs the frequency
 $$
 f = \frac{m}{2L}\sqrt{\frac{Y}{\rho}}
 $$
+
+If it is desired that the frequency of the vibration be same as that of the AC current, a steady ***polarizing magnetic field*** must be applied to the bar.
+
+> A polarizing magnetic field can be produced by passing dc current through a second coil
+
+If the magnitude of the polarizing magnetic field is **greater** than that of the AC field,
+frequency of vibration of the bat will be equal to that of the AC magnetic field.
+
+#### Advantages
+
+- Magnetostrictive materials are inexpensive
+- Large output power can be produced
+
+#### Disadvantages
+
+- Frequencies higher that 300 kHz cannot be produced
+- Single frequency oscillations cannot be generated
+
