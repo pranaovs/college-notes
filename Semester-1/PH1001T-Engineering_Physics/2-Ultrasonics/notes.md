@@ -27,6 +27,10 @@ marks: 5
       - [Advantages](#advantages)
   - [Detection](#detection)
     - [Piezoelectric Detection](#piezoelectric-detection)
+  - [Ultrasonic Testing](#ultrasonic-testing)
+    - [Non-destructive Testing](#non-destructive-testing)
+      - [Normal Beam Pulse-Echo Testing](#normal-beam-pulse-echo-testing)
+      - [Normal beam pulse through-transmission testing](#normal-beam-pulse-through-transmission-testing)
 <!--toc:end-->
 
 ## Syllabus
@@ -140,3 +144,57 @@ $$f = \frac{m}{2l}\sqrt{\frac{Y}{\rho}}$$
 Ultrasonic waves are applied to one pair of faces of a quartz crystal.
 As a result, varying electric charges are produced on the other pair of faces of the crystal.
 These charges, being small, are amplified and detected.
+
+## Ultrasonic Testing
+
+Ultrasonic testing is widely used non-destructive testing (NDT) method.
+
+### Non-destructive Testing
+
+In NDT, frequencies from 100 kHz to 25 kHz.
+The ultrasonic waves are generated with piezoelectric devices.
+
+When bursts of alternating voltage are applied to the transducer, the transducer emits ultrasonic beams.
+The ultrasonic beams are then transmitted from the transmitter into the specimen under testing.
+If there is even a slight discontinuity in the specimen, the ultrasonic waves are reflected back to the transducer.
+The transducer then converts the reflected waves back to electrical signals, which are displayed on a screen (CRT).
+The characteristics of the pulses produced by the transducer are used for interpretation of the nature and defect in the specimen.
+
+#### Normal Beam Pulse-Echo Testing
+
+An ultrasonic pulse propagating perpendicular to the surface of the test object is reflected at the boundaries of the object
+and at the surfaces of defects.
+The reflected pulses are known as echoes.
+
+From the transmitter, the electric pulse is fed to the transducer probe.
+The piezoelectric transducer is excited by the electric pulse and vibrates at its resonance frequency.
+It produces a short ultrasonic pulse, which is propagated into the test object through the couplant layer.
+The electric pulse also triggers the time-base generator,
+so the pulse of the ultrasound starts to move through the object at the same time as the luminous spot moves across the screen.
+If the ultrasonic pulse encounters a defect, part of the energy reflects back to the transducer,
+which vibrates and produces a small voltage pulse, which is shown on the screen.
+The ultrasonic energy in the transmitted pulse travels further to the bottom and gets reflected back to the transducer,
+which is much smaller than transmitted pulse or the pulse reflected from defect.
+
+As the Y-axis of the screen represents time, one can determine the location of the defect in the object.
+
+$$d = \frac{vt}{2}$$
+
+#### Normal beam pulse through-transmission testing
+
+It is used whenever a defect does not provide the required information due to a non-suitable reflection surface,
+or if  the orientation is not favourable for detection.
+
+This method uses tow ultrasonic transducers on each side of the specimen.
+An ultrasonic pulse, from the transducer is held at the front surface, propagates perpendicularly to the surface.
+The transmitted pulses are detected by the second method held at the opposite end of the specimen.
+
+![Normal beam pulse through-transmission testing diagram](./assets/normal-beam-pulse-through-transmission-testing.png)
+
+The transmitter and receiver probes are coupled to the specimen using couplant oil.
+The pulse generator excites the transmitting transducer, and an ultrasonic pulse is propagated across the specimen.
+The pulse travels through the specimen to the other side, which is amplified and displayed on an oscilloscope.
+If the ultrasonic pulse travels without encountering any defect, the signal received will be relatively large.
+If there is a defect, some energy is reflected and the signal received on the other end will be reduced.
+
+![Normal beam pulse through-transmission scan representation](./assets/normal-beam-pulse-through-transmission-scan-representation.png)
