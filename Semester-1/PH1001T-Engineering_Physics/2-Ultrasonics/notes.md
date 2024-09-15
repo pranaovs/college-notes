@@ -1,22 +1,11 @@
 # Ultrasonics
 
----
-
-title: Ultrasonics Notes - Engineering Physics Semester 1
-
-author: Pranaov S
-
-lecturer: N P Rajesh
-
-code: PH1001T
-
----
-
 <!--toc:start-->
 - [Ultrasonics](#ultrasonics)
   - [Syllabus](#syllabus)
   - [Introduction](#introduction)
     - [Properties of Ultrasonic Waves](#properties-of-ultrasonic-waves)
+      - [Reflection and Transmission](#reflection-and-transmission)
   - [Production of Ultrasonic Waves](#production-of-ultrasonic-waves)
     - [Magnetostriction generator](#magnetostriction-generator)
       - [Advantages](#advantages)
@@ -37,6 +26,17 @@ code: PH1001T
   - [Sonogram](#sonogram)
     - [Principle](#principle)
 <!--toc:end-->
+---
+
+title: Ultrasonics Notes - Engineering Physics Semester 1
+
+author: Pranaov S
+
+lecturer: N P Rajesh
+
+code: PH1001T
+
+---
 
 ## Syllabus
 
