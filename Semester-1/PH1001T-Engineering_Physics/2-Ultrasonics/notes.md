@@ -18,8 +18,15 @@ marks: 5
 - [Ultrasonics](#ultrasonics)
   - [Syllabus](#syllabus)
   - [Introduction](#introduction)
+    - [Properties of Ultrasonic Waves](#properties-of-ultrasonic-waves)
   - [Production of Ultrasonic Waves](#production-of-ultrasonic-waves)
     - [Magnetostriction generator](#magnetostriction-generator)
+      - [Advantages](#advantages)
+      - [Disadvantages](#disadvantages)
+    - [Piezoelectric generator](#piezoelectric-generator)
+      - [Advantages](#advantages)
+  - [Detection](#detection)
+    - [Piezoelectric Detection](#piezoelectric-detection)
 <!--toc:end-->
 
 ## Syllabus
@@ -42,6 +49,14 @@ Sonogram
 
 Human ears can hear sound waves ranging from 20 Hz to 20 kHz.
 Sounds above 20 kHz are called ultrasonic sounds.
+
+### Properties of Ultrasonic Waves
+
+1. The speed of propagation of ultrasonic waves depend upon their frequency. It increases with increase in frequency.
+2. The wavelength of the waves are very small and the waves exhibit negligible diffraction effects.
+3. The can travel over long distances as a highly direction beam and without much loss of energy.
+4. The are highly energetic. Intensities are up to $10~kW/m^{2}$. Normally, 1 to 2 $kW/m^{2}$ intensities are used.
+5. They produce cavitation effects in liquids.
 
 ## Production of Ultrasonic Waves
 
@@ -89,3 +104,39 @@ frequency of vibration of the bat will be equal to that of the AC magnetic field
 - Frequencies higher that 300 kHz cannot be produced
 - Single frequency oscillations cannot be generated
 
+### Piezoelectric generator
+
+> **Piezoelectric Effect:**
+> When one pair of opposite opposite faces of certain asymmetric crystals such as quartz is compressed,
+> opposite electric charges appear on the other pair of opposite faces of the crystals.
+> If the crystals are subject to tension (elongation),
+> the polarities of the charges are reversed.
+> This development of charges as a result of mechanical deformation is known as **direct piezoelectric effect**.
+>
+> Crystals that exhibit piezoelectric effect are called piezoelectric crystals.
+> Examples: Ammonium Phosphate, quartz, PZT (Lead Zirconate Titanate)
+
+> **Inverse Piezoelectric Effect:**
+> If an electric field is applied across one pair of faces of a piezoelectric crystal,
+> it gets deformed along the direction of the other opposite pair of faces.
+> The mechanical deformation of piezoelectric materials caused by external electric field is called **inverse piezoelectric effect**.
+
+Quartz crystal is the most popular choice in making piezoelectric vibrators (transducers).
+
+The frequency of the length vibration of x-cut crystal is:
+
+$$f = \frac{m}{2l}\sqrt{\frac{Y}{\rho}}$$
+
+#### Advantages
+
+- High frequency waves of frequency up to 500 MHz can be generated
+- Single frequency output can be obtained
+- A range of frequencies can be covered using different transducers
+
+## Detection
+
+### Piezoelectric Detection
+
+Ultrasonic waves are applied to one pair of faces of a quartz crystal.
+As a result, varying electric charges are produced on the other pair of faces of the crystal.
+These charges, being small, are amplified and detected.
