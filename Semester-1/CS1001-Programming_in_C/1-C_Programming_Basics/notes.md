@@ -63,6 +63,10 @@ Subject Code: CS1001
         - [Output](#output)
     - [for loop](#for-loop)
       - [Syntax](#syntax)
+      - [Example](#example)
+        - [Algorithm](#algorithm)
+        - [Implementation](#implementation)
+          - [Implementation preventing boundary condition](#implementation-preventing-boundary-condition)
     - [while loop](#while-loop)
       - [Syntax](#syntax)
     - [do-while loop](#do-while-loop)
@@ -638,6 +642,73 @@ for (expression1; expression2; expression3) {
 2. `expression2`: Condition to check termination of control variable
 3. `expression3`: Increment/Decrement the control variable
 
+#### Example
+
+##### Algorithm
+
+Algorithm: Print first n numbers
+Input: 'n'
+Output: Print first n numbers
+
+1. i = 0
+2. Repeat until i < n
+3. Print i
+4. i = i + 1
+
+##### Implementation
+
+```c
+#include <stdio.h>
+
+int num;
+
+int main() {
+
+  printf("Enter the number to print numbers until: ");
+  scanf("%d", &num);
+
+  for (int i = 0; i <= num; i++) {
+    printf("%d\n", i);
+  }
+
+  return 0;
+}
+```
+
+> **Boundary Condition**:
+> A condition where the program cannot handle a particular value.
+> It is an edge condition.
+>
+> Example: Out of bounds error, null pointer exception, memory allocation error, etc.
+
+###### Implementation preventing boundary condition
+
+This code checks for a condition where the input is lesser than 0
+and terminates execution if true.
+
+```c
+#include <stdio.h>
+
+int num;
+
+int main() {
+
+  printf("Enter the number to print numbers until: ");
+  scanf("%d", &num);
+
+  if (num <= 0) {
+    printf("Enter positive numbers only");
+    return 0;
+  }
+
+  for (int i = 0; i <= num; i++) {
+    printf("%d\n", i);
+  }
+
+  return 0;
+}
+```
+
 ### while loop
 
 #### Syntax
@@ -674,4 +745,4 @@ do {
 > Exit the loop immediately and proceed to the next code block
 
 > `continue` statement:
-> Skip the code block after the statement and proceed with the next iteration
+> Skip the code block after the statement and proceed with the next iteration of the loop
