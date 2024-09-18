@@ -536,6 +536,8 @@ int main() {
 
 ## Looping
 
+Looping is used to execute a block of statements for some fixed repetitions.
+
 ### Increment/Decrement operator
 
 | Operator | Sample Expression | Explanation |
@@ -544,6 +546,9 @@ int main() {
 | `++` | `a++` | Use the current value of a for the expression, then increment it by 1 |
 | `--` | `--b` | Decrement b by 1, and use the new value of b in the expression |
 | `--` | `b--` | Use the current value of b in the operation, then decrement it by 1 |
+
+> When using an increment/decrement operator, it is recommended to use it standalone,
+> and not chained with other expressions.
 
 #### Example
 
@@ -612,3 +617,55 @@ int main() {
 
 13
 ```
+
+### for loop
+
+#### Syntax
+
+```c
+for (expression1; expression2; expression3) {
+  // statements
+}
+```
+
+1. `expression1`: Declaration and Initialization of the control variable
+2. `expression2`: Condition to check termination of control variable
+3. `expression3`: Increment/Decrement the control variable
+
+### while loop
+
+#### Syntax
+
+```c
+expression1;
+while (expression2) {
+  // statements
+  expression3;
+}
+```
+
+1. `expression1`: Declaration and Initialization of the control variable
+2. `expression2`: Condition to check termination of control variable
+3. `expression3`: Increment/Decrement the control variable
+
+### do-while loop
+
+#### Syntax
+
+```c
+expression1;
+do {
+  // statements
+  expression3;
+} while (expression1);
+```
+
+1. `expression1`: Declaration and Initialization of the control variable
+2. `expression2`: Condition to check termination of control variable
+3. `expression3`: Increment/Decrement the control variable
+
+> `break` statement:
+> Exit the loop immediately and proceed to the next code block
+
+> `continue` statement:
+> Skip the code block after the statement and proceed with the next iteration
