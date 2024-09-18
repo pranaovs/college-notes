@@ -61,6 +61,12 @@ Subject Code: CS1001
       - [Example](#example)
         - [Output](#output)
         - [Output](#output)
+    - [for loop](#for-loop)
+      - [Syntax](#syntax)
+    - [while loop](#while-loop)
+      - [Syntax](#syntax)
+    - [do-while loop](#do-while-loop)
+      - [Syntax](#syntax)
 <!--toc:end-->
 
 ## Introduction to C
