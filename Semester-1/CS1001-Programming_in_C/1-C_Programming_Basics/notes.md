@@ -35,6 +35,8 @@ Subject Code: CS1001
       - [Syntax](#syntax)
   - [Pointers](#pointers)
     - [Syntax](#syntax)
+  - [Scan Formatted (`scanf`)](#scan-formatted-scanf)
+    - [Syntax](#syntax)
   - [Escape Sequence](#escape-sequence)
   - [Operators](#operators)
     - [Expression](#expression)
@@ -302,6 +304,23 @@ int main() {
   return 0;
 }
 ```
+
+## Scan Formatted (`scanf`)
+
+`scanf` requires an identifier.
+
+It is used to read values from a terminal and store it into variables.
+
+Expects address of a variables.
+
+### Syntax
+
+`scanf("format_strings", &args_list);`
+
+- Return type is `int`
+    1. Returns number of successful variables read
+    2. Returns '0' if no variables are read
+    3. Returns negative number if EOF (End-Of-File) error
 
 ## Escape Sequence
 
