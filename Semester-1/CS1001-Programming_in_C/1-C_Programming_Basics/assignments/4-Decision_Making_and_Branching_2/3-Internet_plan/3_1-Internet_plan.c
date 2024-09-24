@@ -15,7 +15,7 @@ int main() {
 
   if ((unit != 'K' && unit != 'k' && unit != 'G' && unit != 'g' &&
        unit != 'M' && unit != 'm')) {
-    printf("Invalid input");
+    printf("Invalid input\n");
     return 22; // Exit code for invalid argument
   }
 
