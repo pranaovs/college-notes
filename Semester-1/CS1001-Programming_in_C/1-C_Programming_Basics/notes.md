@@ -73,6 +73,13 @@ Subject Code: CS1001
       - [Syntax](#syntax)
     - [do-while loop](#do-while-loop)
       - [Syntax](#syntax)
+  - [Pointers](#pointers)
+    - [Syntax](#syntax)
+      - [Declaration](#declaration)
+        - [Example](#example)
+      - [Accessing](#accessing)
+        - [Example](#example)
+    - [Example](#example)
 <!--toc:end-->
 
 ## Introduction to C
@@ -765,3 +772,61 @@ do {
 
 > `continue` statement:
 > Skip the code block after the statement and proceed with the next iteration of the loop
+
+## Pointers
+
+Pointers are special variables to store memory addresses.
+
+A pointer occupies 8 bytes of memory (in a 64-bit system).
+In case of a 32-bit system, a pointer requires 4 bytes.
+
+- Format specifier for a pointer is `%p`
+
+### Syntax
+
+#### Declaration
+
+`datatype *identifier`
+
+##### Example
+
+`int *ptr`
+
+#### Accessing
+
+`*ptr`
+
+##### Example
+
+```c
+int a = 5;
+int *ptr;
+
+ptr = &a;
+// ptr stores memory address of a
+
+int b;
+b = *ptr;
+
+// b stores the value of a
+```
+
+- Empty addresses are initialized with "Null"
+
+### Example
+
+```c
+#include <stdio.h>
+
+int main() {
+
+  int num = 5;
+  int *ptr;
+
+  ptr = &num;
+  printf("Memory address of num (stored in variable ptr): %p\n", ptr);
+  printf("Data stored in memory address stored in variable ptr: %d\n", *ptr);
+
+  return 0;
+}
+```
