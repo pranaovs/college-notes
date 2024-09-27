@@ -1,0 +1,278 @@
+\documentclass[english,course,fleqn]{lecture}
+%
+% Packages
+\usepackage{geometry}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{microtype}
+
+% Page Setting
+\geometry{a4paper}
+
+% Custom Settings
+\newenvironment{qanda}{\setlength{\parindent}{0pt}}{\bigskip}
+\newcommand{\Q}{\bigskip\bfseries Q:\ }
+\newcommand{\A}{\par\textbf{A:} \normalfont}
+
+% Headers
+\title{Linear Transformations}
+\subtitle{Unit 2}
+\shorttitle{Linear Transformations}
+% \subject{Subject of the Talk}
+\author{Pranaov\ S}
+% \email{Author's email}
+\speaker{Dr.\ Venugopal}
+% \spemail{Speaker's email}
+\ccode{MA1001}
+\date{DD}{MM}{YYYY}
+% \dateend{}{}{}
+% \flag{An extra line if you need it}
+% \attn{Something to get reader's attention}
+\morelink{https://github.com/pranaovs/college-notes}
+
+
+\begin{document}
+
+\newpage
+
+\section{Introduction}
+
+A Transformation/Mapping/function defines a relationship between one or more variables.
+It is written as $T:X\rightarrow Y$.
+
+$X$ is said to be domain and $Y$ is said to be co-domain.
+If $x \in X$ then the image is $T(x)\in Y$.
+
+\subsection{Linear Transformation/Map/Operator}
+
+\begin{definition}[Transformation]
+	Let $V$ and $W$ be vector spaces over $F$.
+	A function $T:V \rightarrow W$ is called a linear transformation from $V \rightarrow W$, if:
+
+	\begin{enumerate}
+		\item $T(x+y) = T(x) + T(y)$
+		\item $T(\alpha x) = \alpha T(x)$
+
+		      (for all $x,y \in V$ and $\alpha \in F$)
+	\end{enumerate}
+\end{definition}
+
+\textbf{Note:}
+\begin{enumerate}
+	\item These two conditions imply that $T$ preserves addition and scalar multiplication.
+	\item These two conditions can be combined into a single condition to give an alternate definition:
+
+	      Let $V$ and $W$ be vector spaces over $F$.
+	      A function $T:V \rightarrow W$ is said to be linear transformation (from $v \rightarrow W$), if:
+
+	      $T(\alpha x + \beta y) = \alpha T(x) + \beta T(y)$
+
+	      (for all $x,y \in W$ and $\alpha,\beta \in F$)
+
+	      \textit{The above condition is said to be linearity property of transformation}
+
+\end{enumerate}
+
+\textbf{Note:} Geometrically, $T$ is a projection map and projecting point in $R^{3}$ to a point on $x$ axis.
+
+\subsubsection{Examples}
+
+\begin{qanda}
+
+	\Q Show that the transformation $T:R^{3} \rightarrow R^{2}$ defined by $T(x,y,z) = (z,x+y)$ is linear.
+
+	\A
+
+	\begin{gather*}
+		\text{Let }u,v \in R^{3}\\
+		\implies u = (a_{1}, a_{2}, a_{3})\\
+		\text{Let }\alpha,\beta \in F\\
+		\text{To prove: T is linear, i.e. }T(\alpha u + \beta v)\\\\
+		\textrm{\textbf{LHS:}}\\
+		= T(\alpha u + \beta v)\\
+		= T(\alpha(a_{1}, a_{2}, a_{3}) + \beta(b_{1}, b_{2}, b_{3}))\\
+		= T(\alpha a_{1} + \beta b_{1}, \alpha a_{2} + \beta b_{2}, \alpha a_{3} + \beta b_{3})\\
+		= [(\alpha a_{3} + \beta b_{3}), (\alpha a_{1} + \beta b_{1}) + (\alpha a_{2} + \beta b_{3})]\\
+		\\
+		\therefore T(x,y,z) = (z, x + y)\\
+		\\
+		((\alpha a_{3} + \beta b_{3}), \alpha (a_{1} + a_{2}) + \beta(b_{1} + b_{2})) \rightarrow 1\\
+		\\
+		\text{\textbf{RHS:}}\\
+		= \alpha T(u) + \beta T (v)\\
+		= \alpha T(a_{1}, a_{2}, a_{3}) + \beta T(b_{1}, b_{2}, b_{3})\\
+		= \alpha(a_{3}, a_{1} + a_{2}) + \beta (b_{3}, b_{1} + b_{2})\\
+		= (\alpha a_{3}, \alpha (a_{1}, a_{2})) + (\beta b_{3}, \beta (b_{1} + b_{2}))\\
+		= ((\alpha a_{3} + \beta b_{3}), \alpha (a_{1} + a_{2}) + \beta (b_{1} + b_{2})) \rightarrow 2\\
+		\\
+		\text{From 1 \& 2}\\
+		\therefore T \text{ is linear}
+	\end{gather*}
+
+	\Q Test the map $T:R\rightarrow R$ defined by $T(x) = x + 3 ~\forall~ x \in R$ is a linear transformation
+
+	\A
+
+	\begin{gather*}
+		\text{Let }x,y \in R\\
+		\text{To prove: $T$ is linear, i.e. to prove: $T(\alpha x + \beta y) = \alpha T(x) + \beta T(y)$}\\
+		\\
+		\text{\textbf{LHS:}}\\
+		T(\alpha x + \beta y )\\
+		= (\alpha x + \beta y) + 3 \rightarrow 1\\
+		\\
+		\text{\textbf{RHS:}}\\
+		\alpha (T(x)) + \beta (T(y))\\
+		= \alpha (x + 3) + \beta ( y + 3) \rightarrow 2\\
+		\\
+		\text{From $1$ and $2$: LHS $\ne$ RHS}\\
+		\therefore \text{$T$ is not linear}
+	\end{gather*}
+
+	\Q Check whether the transformation $T:R^{2} \rightarrow R^{2}$ defined by $T(x,y) = (\sin x, y)$ is linear or not
+
+	\A
+
+	\begin{gather*}
+		\text{Let $x,y \in R^{2}$}\\
+		\text{Let $x = (a_{1}, a_{2})$ \& $y = (b_{1}, b_{2})$}\\
+		\text{Let $\alpha, \beta \in F$}\\
+		\text{To prove: T is linear, i.e. $T(\alpha x + \beta y) = \alpha T(x) + \beta T(y)$}\\
+		\\
+		\text{\textbf{LHS:}}\\
+		T(\alpha x + \beta y)\\
+		= T(\alpha (a_{1}, a_{2}) + \beta(b_{1} + b_{2}))\\
+		= T(\alpha a_{1} + \beta b_{1}, \alpha a_{2} + \beta b_{2})\\
+		= (\sin (\alpha a_{1} + \beta b_{1}), \alpha a_{2} \beta b_{2}) \rightarrow 1\\
+		\\
+		\text{\textbf{RHS:}}\\
+		\alpha T(x) + \beta T(y)\\
+		= \alpha T(a_{1}, a_{2}) + \beta T(b_{1} b_{2})\\
+		= \alpha (\sin a_{1}, a_{2}) + \beta (\sin b_{1}, b_{2})\\
+		= (\alpha \sin a_{1} + \beta \sin b_{1}, \alpha a_{2} + \beta b_{2})\\
+	\end{gather*}
+
+	\Q Show that $T:R^{2} \rightarrow R^{2}$ defined by $T(a_{1}, a_{2}) = (2 a_{1} + a_{2}, a_{1})$ is linear
+
+	\A
+
+	\begin{gather*}
+		\text{Let }x,y \in R^{2}\\
+		x = (u_{1}, u_{2})\\
+		y = (v_{1}, v_{2})
+		\\
+		\text{To check whether $T$ is linear or not:}\\
+		T(\alpha x + \beta y) = \alpha T(x) + \beta T(y)\\
+		\\
+		\text{\textbf{LHS:}}\\
+		T(\alpha x, \beta y ) = T(\alpha(u_{1}, u_{2}) + \beta (v_{1}, v_{2}))\\
+		= T(\alpha u_{1} + \beta v_{1}, \alpha u_{2} + \beta u_{2})\\
+		= (2 \alpha u_{1} + 2 \beta v_{1}, 2 \alpha u_{2} + 2 \beta v_{2}, \alpha u_{1} + \beta v_{1} )\\
+		\\
+		\text{\textbf{RHS:}}\\
+		\alpha T(x) + \beta T (y) = \alpha T(u_{1}, u_{2}) = \alpha T(u_{1}, u_{2}) + \beta T(v_{1}, v_{2})\\
+		\alpha (2u_{1} + 2u_{2}, u_{1}) + \beta (2v_{1} + 2v_{2}, v_{1})\\
+		(\alpha 2 u_{1} + \alpha 2 u_{2}, \beta 2 v_{1} + \beta 2 v_{2}, \alpha u_{1} + \beta v_{1})\\
+		\\
+		\therefore \text{It is linear}
+	\end{gather*}
+
+	\Q Show that $T:R^{2} \rightarrow R^{2}$ defined by $T(x,y) = (x, -y) ~\forall~ x,y \in R^{2}$ is linear
+
+	\A
+	\begin{gather*}
+		\text{Given:} \\
+		T:R^{2} \rightarrow R^{2} \text{ defined by } T(x,y) = (x,-y)\\
+		\text{To prove: $T$ is linear ($T(\alpha x + \beta y) = \alpha T(x) + \beta T (y)$)}\\
+		x,y \in R^{2}~\&~\alpha, \beta \in F\\
+		\implies x = (a_{1}, a_{2}) ~\&~ y = (b_{1}, b_{2})\\
+		\\
+		\text{\textbf{LHS:}}\\
+		T(\alpha x + \beta y) = T(\alpha(a_{1}, a_{2}) + \beta(b_{1}, b_{2}))\\
+		= T(\alpha a_{1} + \beta b_{1}, \alpha a_{2} + \beta b_{2})\\
+		= (\alpha a_{1} + \beta b_{1}, -\alpha a_{2} - \beta b_{2})\\
+		\\
+		\text{\textbf{RHS:}}\\
+		\alpha T(x) + \beta T(y) = \alpha T(a_{1}, a_{2}) + \beta T( b_{1}, b_{2})\\
+		= \alpha(a_{1}, -a_{1}) + \beta (b_{1}, -b_{2})\\
+		= (\alpha a_{1} + \beta b_{1}, -\alpha a_{2} - \beta b_{2}) \\
+		\\
+		\text{LHS $=$ RHS}\\
+		\text{Equation is linear}
+	\end{gather*}
+
+
+	\Q Show that $T: R^{3} \rightarrow R^{3}$ defined by $T(x,y,z) = (x,0,0) ~\forall~ x,y,z \in R^{3}$ is linear
+
+	\A
+	\begin{gather*}
+		\text{Given } T = R^{3} \rightarrow R^{3}\\
+		T(x,y,z) = (x,0,0) \rightarrow 1\\
+		\text{To prove, $T$ is linear. $T(\alpha x + \beta y = \alpha T(u) + \beta T(y))$}\\
+		\\
+		\textrm{Now: } u,v \in R^{3} ~\&~ \alpha, \beta \in F\\
+		\implies u = (a_{1}, a_{2}, a_{3}) ~\&~ v = (b_{1}, b_{2}, b_{3})\\
+		\\
+		\text{\textbf{LHS:}}\\
+		T(\alpha u + \beta v) = T(\alpha (a_{1}, a_{2}, a_{3}) + \beta(b_{1}, b_{2}, b_{3}))\\
+		= T(\alpha a_{1} + \beta b_{1}, \alpha a_{2} + \beta b_{2}, \alpha a_{3} + \beta b_{3})\\
+		= \alpha a_{1} + \beta b_{1} \text{ (from 1)}\\
+		\\
+		\text{\textbf{RHS:}}\\
+		\alpha T(u) + \beta T(v) = \alpha T(a_{1}, a_{2}, a_{3}) + \beta T(b_{1}, b_{2}, b_{3})\\
+		= \alpha (a_{1}) + \beta (b_{1}) \text{ (from 1)}\\
+		\\
+		\text{LHS $=$ RHS}\\
+		\text{Equation is linear}
+	\end{gather*}
+\end{qanda}
+
+\newpage
+
+\subsection{Special Linear Transformations}
+
+\begin{definition}[Zero Transformation/Zero Operator/Trivial Linear Transformation]
+	Let $V$ and $W$ be two vector spaces over $F$.
+	A map $T:V\rightarrow W$ defined by $T(v) = 0 ~\forall~ v \in V$ is called zero transformation.
+
+	\textbf{Note: } $0(x) = 0 ~\forall~ x \in V$
+\end{definition}
+
+\begin{definition}[Identity Transformation/Operator]
+	Let $V(F)$ be a vector space over a field $F$.
+	A map $T:V\rightarrow V$ defined by $T(v) = v ~\forall~ v \in V$ is called identity transformation.
+
+	\textbf{Note: }$I(x) = x ~\forall~ x \in V$
+\end{definition}
+
+\begin{theorem}
+	Let $V$ and $W$ be vector spaces over $F$ and $T:V\rightarrow W$ will be a linear transformation
+	$\implies T(\alpha u + \beta v) = \alpha T(u) + \beta T(v)$
+
+	\\
+	Prove that:
+
+	\begin{enumerate}
+		\item $T(0) = 0$
+		      \begin{gather*}
+			      \text{Put } \alpha = \beta = 0\\
+			      T(0\times u + 0\times v) = 0\times T(u) + 0\times T(v)\\
+			      = 0
+		      \end{gather*}
+		\item $T(-u) = - T(u)$
+		      \begin{gather*}
+			      \text{Put } \alpha = -1, \beta = 0\\
+			      T(-1\times u + 0\times v) = -1 T(u) + 0\times T(v)\\
+			      = -T(u)
+		      \end{gather*}
+		\item $T(u-v) = T(u) - T(v)$
+		      \begin{gather*}
+			      \text{Put } \alpha = 1, \beta = -1\\
+			      T(1\times u - 1\times v) = 1\times T(u) - 1\times T(v)\\
+			      = T(u) - T(v)
+		      \end{gather*}
+	\end{enumerate}
+\end{theorem}
+
+\end{document}
