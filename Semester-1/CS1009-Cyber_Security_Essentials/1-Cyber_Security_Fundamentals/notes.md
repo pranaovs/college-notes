@@ -26,6 +26,8 @@ Subject Code: CS1009
     - [Firewall](#firewall)
   - [Encryption](#encryption)
     - [Symmetric encryption](#symmetric-encryption)
+      - [Caesar Cipher](#caesar-cipher)
+      - [Vigenere Cipher](#vigenere-cipher)
     - [Asymmetric encryption](#asymmetric-encryption)
   - [Virtualization](#virtualization)
     - [Hypervisor](#hypervisor)
