@@ -5,6 +5,7 @@
   - [Processes involved in recording and playing back sound](#processes-involved-in-recording-and-playing-back-sound)
   - [Sampling](#sampling)
   - [Digital and Analog quantities](#digital-and-analog-quantities)
+  - [Binary system](#binary-system)
     - [Conversion](#conversion)
   - [Binary Arithmetic](#binary-arithmetic)
     - [Addition](#addition)
@@ -30,6 +31,9 @@
     - [Simplification Theorem](#simplification-theorem)
     - [De Morgan's Law](#de-morgans-law)
       - [Examples](#examples)
+  - [Minterms and Materms](#minterms-and-materms)
+    - [Minterms](#minterms)
+  - [Maxterms](#maxterms)
 <!--toc:end-->
 
 ---
@@ -69,6 +73,30 @@ Analog signals continues with respect to time and amplitude.
 These naturally occurring signals are captured and are converted to electric signals using a device called the **Transducer**.
 
 Analog (continuous) $\rightarrow$ Discrete time signals $\rightarrow$ Digital signals (discrete time and amplitude)
+
+**Digital Advantage:**
+
+Digital data is better than analog data when for processing and transmission.
+Moreover, it is efficient to store discrete points from a digital signal that to store infinite points from an analog data,
+which makes data storage cheaper.
+
+Digital signals can be stored more compactly and reproduced more reliably than in analog form.
+Noise noes not affect digital data as much as it does analog signals.
+
+**Use of Analog:**
+An analog system is used in cases like a sound amplifier.
+
+## Binary system
+
+Each of the two digits in a binary system is called a _bit_.
+
+Generally, 1 represents higher voltage, denoted by **HIGH**
+and 0 represents lower voltage level, denoted by **LOW**
+
+> Negative Logic: Another system in which 1 is represented by **LOW** and 0 is represented by **HIGH** is called a _Negative Logic_
+
+In a practical digital circuit, HIGH can be any voltage levels between specified minimum value and maximum.
+Likewise, LOW can be any voltage from specified maximum and specified minimum (normally 0).
 
 ### Conversion
 
@@ -445,3 +473,43 @@ $$
 \bar A B + \bar D(\bar A \bar B \bar C + ABC) \\
 TODO: Solve \\
 $$
+
+## Minterms and Materms
+
+### Minterms
+
+The terms that are going to make a function $1$ are called **Minterms**.
+
+Example: XOR gate
+
+| A | B | $A \bigodot B$ |
+| --------------- | --------------- | --------------- |
+| 0 | 0 | 0 |
+| 0 ($\bar A$) | 1 ($B$) | **1** |
+| 1 ($A$) | 0 ($\bar B$) | **1** |
+| 1 | 1 | 0 |
+
+$F(A,B) = \sum m(1,2)$
+
+Canonical terms of boolean expression: SOP (Sum of Product)
+
+$Z = (\bar A B) + (A \bar B)$
+
+## Maxterms
+
+The terms that are going to make a function $0$ are called **Maxterms**.
+
+Example: XOR gate
+
+| A | B | $A \bigodot B$ |
+| --------------- | --------------- | --------------- |
+| 0 | 0 | **0** |
+| 0 | 1 | 1 |
+| 1 | 0 | 1 |
+| 1 | 1 | **0** |
+
+$F(A,B) = \Pi~M(0,3)$
+
+Canonical terms of boolean expression: POS (Product of Sum)
+
+<!--$Z = (\bar A B) + (A \bar B)$-->
