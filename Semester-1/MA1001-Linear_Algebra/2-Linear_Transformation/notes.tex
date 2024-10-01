@@ -36,17 +36,17 @@
 
 \newpage
 
-\section{Introduction}
-
 A Transformation/Mapping/function defines a relationship between one or more variables.
 It is written as $T:X\rightarrow Y$.
 
 $X$ is said to be domain and $Y$ is said to be co-domain.
 If $x \in X$ then the image is $T(x)\in Y$.
 
-\subsection{Linear Transformation/Map/Operator}
+\section{Linear Transformation/Map/Operator}
 
-\begin{definition}[Transformation]
+\subsection{Linear Transformation}
+
+\begin{definition}[Linear Transformation]
 	Let $V$ and $W$ be vector spaces over $F$.
 	A function $T:V \rightarrow W$ is called a linear transformation from $V \rightarrow W$, if:
 
@@ -89,7 +89,7 @@ If $x \in X$ then the image is $T(x)\in Y$.
 		\implies u = (a_{1}, a_{2}, a_{3})\\
 		\text{Let }\alpha,\beta \in F\\
 		\text{To prove: T is linear, i.e. }T(\alpha u + \beta v)\\\\
-		\textrm{\textbf{LHS:}}\\
+		\text{\textbf{LHS:}}\\
 		= T(\alpha u + \beta v)\\
 		= T(\alpha(a_{1}, a_{2}, a_{3}) + \beta(b_{1}, b_{2}, b_{3}))\\
 		= T(\alpha a_{1} + \beta b_{1}, \alpha a_{2} + \beta b_{2}, \alpha a_{3} + \beta b_{3})\\
@@ -116,7 +116,7 @@ If $x \in X$ then the image is $T(x)\in Y$.
 
 	\begin{gather*}
 		\text{Let }x,y \in R\\
-		\text{To prove: $T$ is linear, i.e. to prove: $T(\alpha x + \beta y) = \alpha T(x) + \beta T(y)$}\\
+		\text{To prove: $T$ is linear, i.e.\ to prove: $T(\alpha x + \beta y) = \alpha T(x) + \beta T(y)$}\\
 		\\
 		\text{\textbf{LHS:}}\\
 		T(\alpha x + \beta y )\\
@@ -211,7 +211,7 @@ If $x \in X$ then the image is $T(x)\in Y$.
 		T(x,y,z) = (x,0,0) \rightarrow 1\\
 		\text{To prove, $T$ is linear. $T(\alpha x + \beta y = \alpha T(u) + \beta T(y))$}\\
 		\\
-		\textrm{Now: } u,v \in R^{3} ~\&~ \alpha, \beta \in F\\
+		\text{Now: } u,v \in R^{3} ~\&~ \alpha, \beta \in F\\
 		\implies u = (a_{1}, a_{2}, a_{3}) ~\&~ v = (b_{1}, b_{2}, b_{3})\\
 		\\
 		\text{\textbf{LHS:}}\\
@@ -274,5 +274,359 @@ If $x \in X$ then the image is $T(x)\in Y$.
 		      \end{gather*}
 	\end{enumerate}
 \end{theorem}
+
+
+\subsubsection{Examples}
+
+
+\begin{qanda}
+	\Q Show that $T:R^{3} \rightarrow R_{2}$ defined by $T(x,y,z) = (|x|,y+z)$ is not linear.
+
+
+  \A 
+
+  \begin{gather*}
+    \text{Given: }\\
+    T: R^{3} \rightarrow R^{2}\\
+    T(x,y,z) = (|x|, y + z)\\
+    \\
+    \text{Prove: $T(\alpha x + \beta y \ne \alpha T(x) + \beta T(y))$}\\
+    \text{Let } u,v \in R^{3} ~\&~ \alpha, \beta \in F\\
+    \implies u = (a_{1}, a_{2}, a_{3}), v = (b_{1}, b_{2}, b_{3})\\
+    \\
+    \text{\textbf{LHS:}}\\
+    T(\alpha u + \beta v) = T(\alpha(a_{2}, b_{2}, c_{2}) + \beta (b_{1}, b_{2}, b_{3}))\\
+    =T(\alpha a_{1} + \beta b_{1}, \alpha a_{2} + \beta b_{2}, \alpha a_{3} + \beta b_{3})\\
+    = T(|\alpha a_{1} + \beta b_{1}|, (\alpha a_{2} + \beta b_{2}) + (\alpha a_{3} + \beta b_{3}))\\
+    \\
+    \text{\textbf{RHS}}\\
+    \alpha T(x) + \beta T(y) = \alpha T(a_{1}, a_{2}, a_{3}) + \beta T(b_{1}, b_{2}, b_{3})\\
+  = \alpha(|a_{1}| , a_{2} + a_{3}) + \beta (|b_{1}|, b_{2} + b_{3})\\
+  = (\alpha | a_{1}| + \beta |b_{1}|, \alpha a_{2} + \beta b_{3} + \alpha a_{3} + \beta b_{3})\\
+  \\
+  \text{LHS $\ne$ RHS}\\
+  \therefore \text{$T$ is not linear } ( \because |x + y| \ne |x| + |y| )
+  \end{gather*}
+
+  \Q Define $T:P_{n}(R) \rightarrow P_{n-1}(R)$ by $T(f(x)) = \frac{d}{dx}{f(x)} = f'(x)$
+  Prove that $T$ is linear.
+
+  \A
+
+  \begin{gather*}
+    \text{Given:}\\
+    T:P_{n}(R) \rightarrow P_{n-1}(R)\\
+    T(f{x}) = \frac{d}{dx}{f(x)} = f'(x)\\
+    \text{Let } f(x), g(x) \in P_{n}(R) ~\&~ \alpha, \beta \in F\\
+    \text{To Prove: } T(\alpha f(x) + \beta g(x)) = \alpha T(f(x)) + \beta T(g(x))\\
+    \\
+    \text{\textbf{LHS:}}\\
+    T(\alpha(f(x)) + \beta (g(x))) = \alpha f'(x) + \beta g'(x)\\
+    = \alpha T(f(x)) + \beta T(g(x))\\
+    = \text{\textbf{RHS}}\\
+    \\
+    \therefore \text{$T$ is linear}
+  \end{gather*}
+\end{qanda}
+
+\newpage
+
+\section{Null Spaces and Ranges}
+
+\subsection{Null Space}
+
+\begin{definition}[Null Space]
+  Let $V$ and $W$ be vector spaces over $F$ and $T:V\rightarrow W$ be a linear transformation.
+  The null space (kernel) of $T$ denoted be $N(T)$ or Ker$(T)$ is a set of all vectors $x$ is $V$
+  such that $T(x) = 0$, i.e. $N(T) = \{x \in C:T(x) = 0 \}$.
+\end{definition}
+
+\subsection{Range}
+
+\begin{definition}[Range/Image]
+  Let $V$ and $W$ be vector spaces over $F$ and $T:V\rightarrow W$ be a linear transformation.
+  The range (image) of $T$ denoted by $R(T)$ or $im(T)$ is a subset of $W$ consisting of the images
+  of all vectors $x$ in $V$.
+  \[
+    R(T) = \{ T(x): x \in V\}
+  \]
+\end{definition}
+
+\subsection*{Examples}
+
+\begin{qanda}
+  
+  \Q Let $T: R^{3} \rightarrow R^{2}$ be a linear transformation defined by $T(a_{1}, a_{2}, a_{3}) = (a_{1} - a_{2}, a_{3})$.
+  Find $N(T)$ and $R(T)$
+
+  \A
+
+  \begin{gather*}
+    \text{To find: } N(T)\\
+    N(T) = \{x \in V: T(x) = 0 \}\\
+    \text{Let $x \in N(T)$. Here $x = (a_{1}, a_{2}, a_{3}) \in R^{3}$}\\
+    \implies T(x) - 0\\
+    \implies T(a_{1}, a_{2}, a_{3}) = 0\\
+    \implies (a_{1} - a_{2}, a_{3}) = (0,0)\\
+    \implies a_{1} = a_{2}, a_{3} = 0\\
+    \therefore x = (a_{1}, a_{1}, 0)\\
+    N(T) = \{(a_{1}, a_{1}, 0) \in R^{3}: T(a_{1}, a_{1}, 0) = 0 \}\\
+    \\
+    \text{To find $R(T)$}\\
+    R(T) = \{T(x): x \in V \} \subseteq W\\
+    = \{T(a_{1}, a_{2}, a_{3}) (a_{1}, a_{2}, a_{3}) \in R^{3}\}\\
+    = \{(a_{1} - a_{2}, a_{3}) (a_{1}, a_{2}, a_{3}) \in R^{3}\}
+    \in R^{2}\\
+    \text{This is the range $R(T)$}
+  \end{gather*}
+
+
+  \Q Let $V$ and $W$ be vector spaces over $F$ and $T:V\rightarrow W$ be a linear transformation.
+  Prove that $N(T)$ and $R(T)$ are subspaces of $V$ and $W$ respectively.
+
+  \A
+
+  \begin{gather*}
+    \text{Given: } T:V\rightarrow W \text{ is a linear transformation}\\
+    \text{To prove $N(T)$ is a subspace of $V$}\\
+    N(T) = \{x \in V:T(x) = 0\} \subseteq V\\
+    \\
+    T(0) = 0\\
+    0 \in V ~\&~ T(0) = 0\\
+    0 \in N(T)\\
+    \implies N(T) \text{ is non empty}\\
+    \\
+    \text{Let }x,y \in N(T) ~\&~ \alpha, \beta \in F\\
+    \implies T(x) = 0 ~\&~ T(y) = 0\\
+    \\
+    T(\alpha x + \beta y) = \alpha T(x) + \beta T(y)\\
+    = \alpha T(0) + \beta T(0)\\
+    = 0\\
+    \implies \alpha x + \beta y \in N(T)\\
+    \therefore N(T) \text{ is a subspace of $V$}\\
+  \end{gather*}
+
+  \begin{gather*}
+    \text{To prove: $R(T)$ is a subspace of $W$}\\
+    R(T) = \{T(x) = x \in V\} \subseteq W\\
+    \text{As $T$ is linear}\\
+    T(0v) = 0w\\
+    x \in V\\
+    T(x) \in W ~\&~ T(0) = 0\\
+  \therefore R(T) \text{ is non-empty}\\
+    \text{Let }x,y \in R(T) ~\&~ \alpha, \beta \in F \\
+    \\
+    \alpha x + \beta y \in R(T)\\
+    x,y \in R(T)\\
+    \implies \text{There exists $u,v \in V$ such that $T(u) = x ~\&~ T(u) = y$}\\
+    \text{$T$ is a linear and $u,v \in V$}\\
+    \\
+    \therefore T(\alpha u + \beta v) = \alpha T(u) + \beta T(v) = \alpha x + \beta y\\ 
+    \\
+    \implies \alpha x + \beta y \text{ is the image of $\alpha u + \beta y$}\\
+    \implies \alpha x + \beta y \in R(T)\\
+    \implies R(T) \text{ is a subspace of $W$}
+  \end{gather*}
+
+\end{qanda}
+
+
+\subsection{Rank and Nullity of Linear Transformation}
+
+
+\begin{definition}[Rank of $T$]
+  
+Let $V$ and $W$ be vector spaces over $F$ and $T:V\rightarrow V$ be a linear Transformation.
+If $V$ is finite dimensional, the dimension of range of $T$ is called \textit{Rank of $T$} denoted by rank$(T)$
+  \[
+  \text{rank$(T)$ = dim$(R(T))$} = n(R(T)) = n(\text{Basis of $R(T)$})
+\]
+\end{definition}
+
+
+\begin{definition}[Nullity of $T$]
+  
+  Let $V$ and $W$ be vector spaces over $F$ and $T:V\rightarrow V$ be a linear Transformation.
+  If $V$ is finite dimensional, the dimension of  null space of $T$ is called \textit{nullity of $T$} denoted by nullity$(T)$.
+  \[
+    \text{nullity$(T)$ = dim$(N(T))$ = $n$ (Basis of $N(T)$)}
+  \]
+\end{definition}
+
+
+\begin{definition}[Span$(T)$]
+  Let $V$ and $W$ be vector spaces over $F$ and $T:V \rightarrow W$ be a linear transformaion.
+  If $B = \{e_{1}, e_{2}, \ldots, e_{n}\}$ are basis of $V$, then $R(T)$ = Span$(T)$.
+  \[
+    \text{Span$T(B)$ = Span}(T(v_{1}), T(v_{2}), \ldots, T(v_{n}))
+  \]
+\end{definition}
+
+
+\textbf{Note:} Images of basis of vector space $V$ generates $R(T)$
+
+\begin{theorem}[Dimension Theorem]
+  Let $V$ and $W$ be a vector space of $F$ and let $T:v\rightarrow W$ be a linear transformation.
+  $V$ is a finite dimensional then:
+  \[
+    \text{rank}(T) + \text{nullity}(T) = \text{dim}(V)
+  \]
+\end{theorem}
+
+\newpage
+
+\section{Injective and Surjective Linear Transformation}
+
+\begin{definition}[Injective Linear Transformation]
+  A linear transformation $T:V \rightarrow W$ is said to be injective or one-to-one lineat transformation
+  if $T(x) = T(y)$, then $x = y$.
+\end{definition}
+
+
+\begin{definition}[Surjective Linear Transformation]
+  A linear transformation $T:V\rightarrow W$ is said to be surjective or onto if every element $v in W$,
+  there exists $V \in V$ such that $T(u) = v$
+\end{definition}
+
+\textbf{Note:}
+
+\begin{enumerate}
+  \item If $T$ is injective, then every element in $V$ has a unique image in $W$,
+    or every element in the range of $T$ corresponds to exactly one element of its domain.
+  \item If $T$ is surjective, then every element in $W$ has a pre-image in $V$.
+\end{enumerate}
+
+\begin{definition}[Bijective linear transformation]
+  A linear transformation $T:V \rightarrow W$ is said to be bijective if its both one-to-one and onto.
+\end{definition}
+
+\subsection{Examples}
+
+\begin{qanda}
+  
+  \Q If $T:V\rightarrow W$ is a linear transformation, then prove that $T$ is one-to-one $\iff N(T) = \{0\}$
+
+  \A
+
+  \begin{gather*}
+    \text{Given: } T:V\rightarrow W \text{ is a lienar transformation}\\
+    \text{Assume $T$ is one-to-one}\\
+    \text{To prove: $N(T)$ = \{0\}}\\
+    \text{Let $X\in N(T)$}\\
+    \implies T(x) = 0\\
+    \text{As $T$ is linear, $T(\alpha x + \beta y) = \alpha T(x) + \beta T(y)$ and $T(0) = 0$}\\
+    \text{Put }\alpha = \beta = 0\\
+    \implies \alpha T(x) + \beta T(y) = 0 \times 0 = 0\\
+    T(x) = T(y)\\
+    \implies x = y\\
+    \implies x = 0 \text{ as $T$ is one-to-one}\\
+    \implies N(T) = \{0\}
+  \end{gather*}
+
+  \begin{gather*}
+    \text{\textbf{Part 2 (converse):}}\\
+    \text{Assume: $N(T) = \{0\}$}\\
+    \text{To prove: $T$ is one to one}\\
+    \text{Assume: $T(x) = T(y)$}\\
+    \text{Claim: $x = y$}\\
+    T(x) - T(y) = 0\\
+    \implies T(x-y) = 0\\
+    (\because T \text{ is linear: } T(x-y) = T(x) - T(y))\\
+    \implies x-y \in N(T)\\
+    \implies x-y = 0\\
+    \implies x = y\\
+    \therefore \text{$T$ is one-to-one}
+  \end{gather*}
+
+
+  \Q Consider $T:R^{3} \rightarrow R^{2}$ defined by $T(a_{1}, a_{2}, a_{3}) = (a_{1} - a_{2}, 2 a_{3})$.
+  Verify whether $T$ is one-to-one.
+
+  \A 
+
+
+  \begin{gather*}
+    \text{Given: } T:R^{3} \rightarrow R^{2}\\
+    T(a_{1}, a_{2}, a_{3}) = (a_{1} - a_{2}, 2 a_{3})\\
+    % \text{\textit{To check $T$ is one-to-one, it is enough to verify if $N(T) = \{0\}$ or $N(T) = \{x \in V: T(x) = 0\}$}}\\
+    \text{Let: $x \in N(T)$ where $x = (a_{1}, a_{2}, a_{3}) \in R^{3}$}\\
+    \implies T(x) = 0\\
+    \implies T(a_{1}, a_{2}, a_{3}) = 0\\
+    \implies (a_{1} - a_{2}, 2 a_{3}) = (0,0)\\
+    \implies a_{1} - a_{2} = 0, 2 a_{3} = 0\\
+    \implies a_{1} = a_{2}, a_{3} = 0\\
+    \therefore x = (a_{1}, a_{1}, 0)\\
+    N(T) = \{(a_{1}, a_{1},0) \in R^{3}: T(a_{1}, a_{1}, 0) = 0 \}\\
+    \implies N(T) \ne \{0\}\\
+    \implies T \text{ is not one-to-one}
+  \end{gather*}
+
+  \Q Let $T:R^{2} \rightarrow R^{2}$ be a linear transformation defined by $T(a_{1}, a_{2}) = (a_{1} + a_{2}, a_{1})$.
+  Check whether $T$ is one-to-one.
+
+  \A 
+
+  \begin{gather*}
+    T(x) = 0\\
+    \implies T(a_{1}, a_{2}) 0\\
+    \implies (a_{1} + a_{2}, a_{1}) = (0,0)\\
+    \implies a_{1} + a_{2} = 0, a_{1} = 0\\
+    \implies a_{1} = -a_{2}, a_{2} = 0\\
+    \implies a_{2} = 0\\
+    \therefore x = (0,0)\\
+    N(T) = \{(0,0) \in R^{2}:T(0,0) = 0\}\\
+    \implies N(T) = \{0\}\\
+    \therefore \text{$T$ is one-to-one}
+  \end{gather*}
+
+  \Q $T:P_{n}(R) \rightarrow P_{n+1}(R)$ defined by $T(f(x)) = \int_{0}^{x}f(x)dx$.
+  Verify if $T$ is linear. Is $T$ one-to-one and onto?
+
+  \A
+
+  \begin{gather*}
+    \text{\textbf{Part 1: Verify if $T$ is linear or not}}\\
+    \\
+    \text{To verify $T(\alpha f(x) + \beta f(y)) = \alpha T(x) + \beta T(y)$}\\
+    ~\forall~ f(x), g(x) \in P_{n} ~\&~ \alpha, \beta \in F\\
+    T(\alpha f(x) + \beta g(x)) = \int_{0}^{x} (\alpha f(x) + \beta g(x)) dx\\
+    = \alpha \int_{0}^{x}f(x)dx + \beta \int_{0}^{x}g(x) dx\\
+    = \alpha T(f(x)) + \beta T(g(x))\\
+    \therefore \text{$T$ is linear}
+  \end{gather*}
+
+  \begin{gather*}
+    \text{\textbf{Part 2: Verify whether $T$ is one-to-one or not}}\\
+  \text{\textit{Dimension theorem: } dim( $N(T)$ ) + dim( $R(T)$ ) = dim $V$ }\\
+  \text{Basis of $P_{n}(R)$ is: }\{1, x, x^{2}, \ldots, x^{n}\}\\
+  \text{The images of these vectors generate $P(T)$}\\
+  T(f(x)) = \int_{0}^{x}f(x)dx\\
+  \implies T(1) =  \int_{0}^{x} 1.dx = {(x)}_{0}^{x} = x\\
+  T(x) = \int_{0}^{x}x.dx  = {(\frac{x^{2}}{2})}^{x}_{0} = \frac{x^{2}}{2}\\
+  T(x^{2}) = \int_{0}^{x} x^{2} dx = {(\frac{x^{3}}{3})}^{3}_{0} = \frac{x^{3}}{3}\\
+  \text{In general:}\\
+  T(x^{n}) - \frac{x^{n + 1}}{n + 1}~(n \ne -1)\\
+  \\
+  \therefore R(T) = \text{Span}(x, \frac{x^{2}}{2} \frac{x^{3}}{3}, \ldots, \frac{x^{n+1}}{n+1})\\
+  \text{Consider: }\alpha_{1}(x) + \alpha _{2}(\frac{x^{2}}{2}) + \cdots + \alpha_{n+1}(\frac{x^{n+}}{n+1}) = 0\\ 
+  \implies \alpha_{1} = \alpha_{2} = \cdots = \alpha_{n+1} = 0\\
+  \implies \text{Vectors are linearly independent}\\
+  \text{These vectors form basis of $R(T)$}\\
+  \therefore \text{Basis of $R(T)$} = \{x, \frac{x^{2}}{2}, \frac{x^{3}}{3}, \ldots, \frac{x^{n+1}}{n+1}\}\\
+  \end{gather*}
+
+  \begin{gather*}
+    \text{\textbf{To verify whether $T$ is onto or not}}\\
+    \text{Basis of $P_{n}(R)$ is } \{1, x, x^{2}, x^{3}, \ldots, x^{n}\}\\
+   \text{Basis of $R(T)$} = \{x, \frac{x^{2}}{2}, \frac{x^{3}}{3}, \ldots, \frac{x^{n+1}}{n+1}\}\\
+    \text{Basis of $P_{n+1}(R)$ is } \{1, x, x^{2}, x^{3}, \ldots, x^{n}, x^{n+1}\}\\
+    \text{There is no pre-image for 1}\\
+    \therefore \text{$T$ is not onto}
+  \end{gather*}
+
+\end{qanda}
+
+
+
 
 \end{document}
