@@ -1,0 +1,252 @@
+\documentclass[english,course,fleqn]{lecture}
+
+% Packages
+\usepackage{geometry}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+% Page Setting
+\geometry{a4paper}
+
+% Custom environments
+\newenvironment{qanda}{\begin{enumerate}\setlength{\parindent}{0pt}}{\medskip\end{enumerate}}
+\newcommand{\Q}{\bigskip\bfseries \item}
+\newcommand{\A}{\par\textbf{A:} \normalfont}
+
+% Headers
+\title{Eigen Values and Eigen Vectors}
+\subtitle{Unit 3}
+\shorttitle{Eigen Values and Eigen Vectors}
+% \subject{Subject of the Talk}
+\author{Pranaov S}
+% \email{Author's email}
+\speaker{Dr.\ Venugopal}
+% \spemail{Speaker's email}
+\ccode{MA1001}
+\date{19}{10}{2024}
+% \dateend{}{}{}
+% \flag{An extra line if you need it}
+% \attn{Something to get reader's attention}
+\morelink{https://github.com/pranaovs/college-notes}
+
+\begin{document}
+
+\newpage
+
+Introduction (Pending)
+
+\lecture[]{23}{10}{2024}
+
+\section{Eigen Values and Vectors}
+
+\begin{definition}[Eigen Values]
+  Let $T$ be a linear operator on a vector space $V$.
+  A non-zero vector $V \in V$ is called an eigen vector of $T$ is there exists a scalar $\lambda$ such that $T \times v = \lambda v$.
+
+  This scalar $\lambda$ is called eigen value corresponding to eigen vector $v$.
+\end{definition}
+
+\begin{theorem}[]
+  Let $T$ be the lienat operator on a finite dimensional vector space $B$ and $\beta$ is an ordered basis for $B$.
+  Then, $\lambda$ is called an eign value of $T \iff \lambda$ is called eigen valie of its matrix $T (A = [T]_{\beta})$.
+\end{theorem}
+
+\subsection{Method to find eigen values andeigen vectors}
+
+\begin{enumerate}
+  \item \textbf{Form characteristic equation for the given matrix}
+
+    i.e. $|A-\lambda I| = 0$ \margintext{\begin{gather*}
+        A \times v = \lambda v\\
+        \implies A\times v - \lambda v = 0\\
+        \implies (A - \lambda I) v = 0\\
+        \implies |A - \lambda I| = 0
+    \end{gather*}}
+
+
+  \item \textbf{Solve the characteristic equation}
+
+    The solution of the equation are known as \textbf{eigen values of the matrix}.
+
+    \begin{gather*}
+      A = \begin{bmatrix}
+        a_{11} & a_{12} \\
+        a_{21} & a_{22} \\
+      \end{bmatrix}\\
+      A - \lambda I =  \begin{bmatrix}
+        a_{11} & a_{12} \\
+        a_{21} & a_{22} \\
+        \end{bmatrix} - \lambda \begin{bmatrix}
+        1 & 0 \\
+        0 & 1 \\
+      \end{bmatrix}\\
+      \implies \begin{bmatrix}
+        a_{11} - \lambda & a_{12} \\
+        a_{21} & a_{22} - \lambda \\
+      \end{bmatrix}
+    \end{gather*}
+
+    Characteristic equation is
+
+    \begin{gather*}
+      |A - \lambda I| = 0\\
+      \begin{vmatrix}
+        a_{11} - \lambda & a_{12} \\
+        a_{21} & a_{22} - \lambda \\
+      \end{vmatrix} = 0\\
+      \lambda^{2} - (a_{11} + a_{12})\lambda + (a_{11}a_{12} - a_{21} a _{22}) = 0
+    \end{gather*}
+
+  \item \textbf{Corresponding to each eigen value $\lambda_{i}$ an eigen vector $v_{i}$ is obtained by solving the matrix equation $(A - \lambda_{i}I) v_{i} = 0$}
+\end{enumerate}
+
+\subsection{Method to form characteristic equation}
+
+
+Let $A$ be a square matrix of order $n$.
+\[
+  A = \begin{vmatrix}
+    a_{11} & a_{12} & a_{13} & \cdots & a_{1n} \\
+    a_{21} & a_{22} & a_{23} & \cdots & a_{2n} \\
+    a_{31} & a_{32} & a_{33} & \cdots & a_{3n} \\
+    \vdots & \vdots & \vdots & \ddots & \vdots \\
+    a_{m1} & a_{m2} & a_{m3} & \cdots & a_{mn} \\
+  \end{vmatrix}
+\]
+
+Characteristic equation is $A - \lambda I = 0$
+\[
+  A = \begin{vmatrix}
+    a_{11} - \lambda & a_{12} & a_{13} & \cdots & a_{1n} \\
+    a_{21} & a_{22} - \lambda & a_{23} & \cdots & a_{2n} \\
+    a_{31} & a_{32} & a_{33} - \lambda & \cdots & a_{3n} \\
+    \vdots & \vdots & \vdots & \ddots & \vdots \\
+    a_{m1} & a_{m2} & a_{m3} & \cdots & a_{mn} - \lambda \\
+  \end{vmatrix} = 0
+\]
+
+Expanding: \[
+  (-1)^{n} \lambda^{n} + K_{1}\lambda^{n-1} + K_{2}\lambda^{n-2} + \cdots + K_{n} = 0
+\]
+where $K_{i}$'s are expressible in terms of elements of $a_{ij}$.
+
+\subsubsection*{Shortcuts}
+
+\begin{enumerate}
+  \item Let $A$ be a $2 \times 2$ matrix.
+    \[
+      A = \begin{bmatrix}
+        a_{11} & a_{12} \\
+        a_{21} & a_{22} \\
+      \end{bmatrix}
+    \]
+    \[
+      | A - \lambda I| = \lambda^{2} - S_{1}\lambda + S_{2} = 0
+    \]
+    \begin{gather*}
+      S_{1} =  \text{Trace of matrix } A = a_{11} + a_{22}\\
+      S_{2} = |A|
+    \end{gather*}
+
+  \item Let $A$ be a $3 \times 3$ matrix
+    \[
+      A = \begin{bmatrix}
+        a_{11} & a_{12} & a_{13} \\
+        a_{21} & a_{22} & a_{23} \\
+        a_{31} & a_{32} & a_{33} \\
+      \end{bmatrix}
+    \]
+    \[
+      |A - \lambda I| = \lambda^{3} - S_{1}\lambda^{2} + S_{2} \lambda - S_{3}
+    \]
+
+    \begin{gather*}
+      S_{1} = tr(A)\\
+      S_{2} = \text{Sum of minors of leading diagonal elements}\\
+      = \begin{vmatrix}
+        a_{22} & a_{23} \\
+        a_{32} & a_{33} \\
+        \end{vmatrix} + \begin{vmatrix}
+        a_{11} & a_{13} \\
+        a_{31} & a_{33} \\
+        \end{vmatrix} + \begin{vmatrix}
+        a_{11} & a_{12} \\
+        a_{21} & a_{22} \\
+      \end{vmatrix}\\
+      S_{3} = |A|
+    \end{gather*}
+\end{enumerate}
+
+\subsubsection{Questions}
+
+\begin{qanda}
+  \Q Find eigen value and eigen vectors of $A = \begin{bsmallmatrix}
+    5 & 4 \\
+    1 & 2 \\
+  \end{bsmallmatrix}$
+
+  \A The chatacteristic equation of $A$ is:
+  \begin{gather*}
+    |A = \lambda I| = 0\\
+    \implies \lambda^{2} + S_{1} \lambda + S_{2} = 0\\
+    S_{1} = tr(A) = 7\\
+    S_{2} = |A| = 6
+    \\
+    \therefore |A - \lambda I| = \lambda^{2} - 7 \lambda + 6 = 0\\
+    \lambda_{1} = 6;\lambda_{2} = 1
+  \end{gather*}
+
+  To find eigen vectors:
+  \begin{gather*}
+    (A - \lambda_{i}I)v_{i} = 0\\
+    \begin{bmatrix}
+      5 - \lambda & 4 \\
+      4 & 2 - \lambda \\
+    \end{bmatrix} \begin{bmatrix}
+      x_{1} \\
+      x_{2} \\
+    \end{bmatrix} = \begin{bmatrix}
+      0 \\
+      0 \\
+    \end{bmatrix}\\
+    \text{Case 1: } \lambda_{1} = 6\\
+    \begin{bmatrix}
+      5 - 6 & 4 \\
+      4 & 2 - 6 \\
+    \end{bmatrix} \begin{bmatrix}
+      x_{1} \\
+      x_{2} \\
+    \end{bmatrix} = \begin{bmatrix}
+      0 \\
+      0 \\
+    \end{bmatrix}\\
+    = \begin{bmatrix}
+      -1 & 4 \\
+      4 & -4 \\
+    \end{bmatrix} \begin{bmatrix}
+      x_{1} \\
+      x_{2} \\
+    \end{bmatrix} = \begin{bmatrix}
+      0 \\
+      0 \\
+    \end{bmatrix}\\
+    \\
+    -x_{1} + 4 x_{2} = 0\\
+    x_{1} - 4 x_{2} = 0\\
+    \implies x_{1} = 4 x_{2}\\
+    \text{Let } x_{2} = 1; x_{1} = 4
+  \end{gather*}
+
+  Eigen vector is $v_{1} = \begin{bsmallmatrix}
+    4 \\
+    1 \\
+  \end{bsmallmatrix}$
+
+  $||| ~ v_{2} = \begin{bmatrix}
+    -1 \\
+    1 \\
+  \end{bmatrix}$
+\end{qanda}
+
+\end{document}
