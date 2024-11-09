@@ -41,7 +41,9 @@ struct Employee get_details() {
 
 /* Function to print details of the all the members
 of an array of struct Employee
-Expects an array of struct Employee */
+Expects an array of struct Employee and
+count (number of elements in the array of struct Employee) */
+// TODO: calculate count inside function
 void print_details(struct Employee employee_list[], int count) {
   for (int i = 0; i < count; i++) {
     // Create an local instance of the struct Student
