@@ -2450,4 +2450,1731 @@ Enter the number to find the sum of its digits: -213
 Input must be greater than 0. Recieved: -213
 ```
 
-#
+# 1D Array and Strings
+
+## String reversal
+
+### Algorithm
+
+1. START
+2. Initialize:
+    * size = 0
+    * i (integer)
+    * strarray (character array of size MAX_SIZE)
+    * temp (character)
+3. Input strarray (string) from the user.
+4. Calculate the length of the string:
+    * While strarray[size] != '\0':
+        * Increment size by 1.
+5. Reverse the string:
+    * For i from 0 to size/2:
+        * Set temp = strarray[i].
+        * Set strarray[i] = strarray[size - (i + 1)].
+        * Set strarray[size - (i + 1)] = temp.
+6. Output the reversed string.
+7. END
+
+### Code
+
+```c
+// Program to reverse a string
+#include <stdio.h>
+
+// Program assumes maxiumu size of the string is MAX_SIZE
+#define MAX_SIZE 2048
+
+int main() {
+  int size = 0, i;
+  char strarray[MAX_SIZE], temp;
+
+  printf("Enter a string: ");
+
+  // BUG: Do not use spaces in string input
+  // TODO: Use fgets to get spaces into variable
+  scanf("%s", strarray);
+
+  while (strarray[size] != '\0') {
+    size = size + 1;
+  }
+
+  for (i = 0; i < (size / 2); i++) {
+    temp = strarray[i];
+    strarray[i] = strarray[size - (i + 1)];
+    strarray[size - (i + 1)] = temp;
+  }
+
+  printf("%s\n", strarray);
+}
+```
+
+### Output
+
+```sh
+$ gcc -o output 6_1-String_reversal.c && ./output
+Enter a string: palindrome?
+?emordnilap
+```
+
+## Palindrome checker
+
+### Algorithm
+
+1. START
+2. Initialize:
+    * size = 0
+    * i (integer)
+    * flag = 0 (integer)
+    * strarray (character array of size MAX_SIZE)
+3. Input strarray (string) from the user.
+4. Calculate the length of the string:
+    * While strarray[size] != '\0':
+        * Increment size by 1.
+5. Check if the string is a palindrome:
+    * For i from 0 to size/2:
+        * If strarray[i] != strarray[size - (i + 1)]:
+            * Set flag = 1.
+6. If flag == 0:
+    * Print that strarray is a palindrome.
+7. Else:
+    * Print that strarray is not a palindrome.
+8. END
+
+### Code
+
+```c
+// Program to check if given string is a palindrome
+
+#include <stdio.h>
+
+// Program assumes maxiumu size of the string is MAX_SIZE
+#define MAX_SIZE 8192
+
+int main() {
+
+  int size = 0, i, flag = 0;
+  char strarray[MAX_SIZE], temp;
+
+  printf("Enter a string: ");
+
+  // BUG: Do not use spaces in string input
+  // TODO: Use fgets to get spaces into variable
+  scanf("%s", strarray);
+
+  while (strarray[size] != '\0') {
+    size = size + 1;
+  }
+
+  for (i = 0; i < (size / 2); i++) {
+    if (strarray[i] != strarray[size - (i + 1)]) {
+      flag = 1;
+    }
+  }
+
+  if (flag == 0) {
+    printf("%s is a palindrome\n", strarray);
+  } else {
+    printf("%s is not a palindrome\n", strarray);
+  }
+}
+```
+
+### Output
+
+```sh
+$ gcc -o output 6_2-Palindrome_check.c && ./output
+Enter a string: palindrome
+palindrome is not a palindrome
+$ gcc -o output 6_2-Palindrome_check.c && ./output
+Enter a string: panap
+panap is a palindrome
+```
+
+## Array Equality checker
+
+### Algorithm
+
+1. START
+2. Initialize:
+    * size (integer)
+    * i (integer)
+    * flag = 0 (integer)
+3. Input size (integer) from the user.
+4. Declare two character arrays: array1 and array2 of size `size`.
+5. Input elements for array1:
+    * For i from 0 to size - 1:
+        * Input array1[i].
+6. Input elements for array2:
+    * For i from 0 to size - 1:
+        * Input array2[i].
+7. Compare the arrays:
+    * For i from 0 to size - 1:
+        * If array1[i] != array2[i]:
+            * Set flag = 1.
+            * Break the loop.
+8. If flag == 0:
+    * Print "Both arrays are equal".
+9. Else:
+    * Print "Both arrays are not equal".
+10. END
+
+### Code
+
+```c
+// Program to check if two arrays are identical
+
+#include <stdio.h>
+
+int main() {
+
+  int size, i, flag = 0;
+
+  printf("Enter size of arrays: ");
+  scanf("%d", &size);
+
+  char array1[size], array2[size];
+
+  printf("Enter characters for array 1:");
+  for (i = 0; i < size; i++) {
+    scanf(" %c", &array1[i]);
+  }
+
+  printf("Enter characters for array 2:");
+  for (i = 0; i < size; i++) {
+    scanf(" %c", &array2[i]);
+  }
+
+  for (i = 0; i < size; i++) {
+    if (array1[i] != array2[i]) {
+      flag = 1;
+      // Break out of the loop if any one element is different
+      break;
+    }
+  }
+
+  if (flag == 0) {
+    printf("Both arrays are equal\n");
+  } else {
+    printf("Both arrays are not equal\n");
+  }
+}
+```
+
+### Output
+
+```sh
+$ gcc -o output 6_3-Array_equality.c && ./output
+Enter size of arrays: 4
+Enter characters for array 1:2 3 1 33
+Enter characters for array 2:2 3 53 1
+Both arrays are not equal
+$ gcc -o output 6_3-Array_equality.c && ./output
+Enter size of arrays: 4
+Enter characters for array 1:2 4 1 2
+Enter characters for array 2:2 4 1 2
+Both arrays are equal
+```
+
+## Array Sorting and inversion
+
+### Algorithm
+
+1. START
+2. Initialize:
+    * size (integer)
+    * i, j, k (integers)
+    * temp (integer)
+3. Input size (integer) from the user.
+4. Declare an integer array numarray of size `size`.
+5. Input elements for numarray:
+    * For i from 0 to size - 1:
+        * Input numarray[i].
+6. Sort the array in ascending order:
+    * For i from 0 to size - 1:
+        * For j from i + 1 to size - 1:
+            * If numarray[i] > numarray[j]:
+                * Swap numarray[i] and numarray[j].
+7. Output the sorted array in ascending order.
+8. Sort the array in descending order:
+    * For i from 0 to size - 1:
+        * For j from i + 1 to size - 1:
+            * If numarray[i] < numarray[j]:
+                * Swap numarray[i] and numarray[j].
+9. Output the sorted array in descending order.
+10. END
+
+### Code
+
+```c
+// Program to sort and invert sort an array
+
+#include <stdio.h>
+
+int main() {
+
+  int size, i, j, k, temp;
+  printf("Enter size of array: ");
+  scanf("%d", &size);
+
+  int numarray[size];
+  printf("Enter numbers for array:");
+  for (i = 0; i < size; i++) {
+    scanf("%d",
+          &numarray[i]); // doing "%d\n" here will cause the scanf to get one
+                         // extra input from user, though it won't include it
+  }
+
+  for (i = 0; i < size; i++) {
+    for (j = i + 1; j < size; j++) { // j=i+1 so that it always compares with
+                                     // the NEXT element in the array
+      if (numarray[i] > numarray[j]) {
+        temp = numarray[i];
+        numarray[i] = numarray[j];
+        numarray[j] = temp;
+      }
+    }
+  }
+
+  printf("Ascending order: ");
+  for (i = 0; i < size; i++) {
+    printf("%d ", numarray[i]);
+  }
+
+  printf("\n");
+
+  for (i = 0; i < size; i++) {
+    for (j = i + 1; j < size; j++) {
+      if (numarray[i] < numarray[j]) {
+        temp = numarray[i];
+        numarray[i] = numarray[j];
+        numarray[j] = temp;
+      }
+    }
+  }
+
+  printf("Descending order: ");
+  for (i = 0; i < size; i++) {
+    printf("%d ", numarray[i]);
+  }
+
+  printf("\n");
+}
+```
+
+### Output
+
+```sh
+$ gcc -o output 6_4-Array_sort.c && ./output
+Enter size of array: 4
+Enter numbers for array:2 4 9 1
+Ascending order: 1 2 4 9 
+Descending order: 9 4 2 1 
+```
+
+## Array Merging
+
+### Algorithm
+
+1. START
+2. Initialize:
+    * i = 0, j = 0, n = 0, m = 0 (integers)
+3. Input size (integer) from the user.
+4. Declare three integer arrays: array1, array2 of size `size`, and merged of size `size * 2`.
+5. Input elements for array1:
+    * For i from 0 to size - 1:
+        * Input array1[i].
+6. Input elements for array2:
+    * For i from 0 to size - 1:
+        * Input array2[i].
+7. Merge array1 and array2 into merged in ascending order:
+    * While n < size and m < size:
+        * If array1[n] <= array2[m]:
+            * Set merged[j] = array1[n].
+            * Increment j and n.
+        * Else:
+            * Set merged[j] = array2[m].
+            * Increment j and m.
+8. If n < size:
+    * While n < size:
+        * Set merged[j] = array1[n].
+        * Increment j and n.
+9. Else if m < size:
+    * While m < size:
+        * Set merged[j] = array2[m].
+        * Increment j and m.
+10. Output the merged array.
+11. END
+
+### Code
+
+```c
+// Program to merge two arrays in ascending order into a single array in
+// ascending order
+#include <stdio.h>
+
+int main() {
+
+  int i = 0, j = 0, n = 0, m = 0, size;
+
+  printf("Enter array size: ");
+  scanf("%d", &size);
+
+  int array1[size], array2[size], merged[size * 2];
+
+  printf("Enter numbers for array 1 (separated by newline): ");
+  for (i = 0; i < size; i++) {
+    scanf("%d", &array1[i]);
+  }
+
+  printf("Enter numbers for array 2 (separated by newline): ");
+  for (i = 0; i < size; i++) {
+    scanf("%d", &array2[i]);
+  }
+
+  while (n < size && m < size) {
+    if (array1[n] <=
+        array2[m]) { // if elements being compared are equal, still the element
+                     // will be taken from array1 to put in merged array (you
+                     // can take it from array2 also, it makes no difference.
+                     // We're just making sure sorting continues even if
+                     // elements being compared are equal)
+      merged[j] = array1[n];
+      j++;
+      n++;
+    }
+
+    if (array2[m] < array1[n]) {
+      merged[j] = array2[m];
+      j++;
+      m++;
+    }
+  }
+
+  if (n < size) { // if some elements still remaining in array1 after array2
+                  // elements have all been put into merged array,they are put
+                  // into merged array directly
+    while (n < size) {
+      merged[j] = array1[n];
+      j++;
+      n++;
+    }
+
+  } else if (m < size) { // if some elements still remaining in array2 after
+                         // array1 elements have all been put into merged
+                         // array,they are put into merged array directly
+    while (m < size) {
+      merged[j] = array2[m];
+      j++;
+      m++;
+    }
+  }
+
+  printf("Merged array: ");
+  for (j = 0; j < (size * 2); j++) {
+    printf("%d ", merged[j]);
+  }
+  printf("\n");
+}
+```
+
+### Output
+
+```sh
+$ gcc -o output 6_5-Array_merge.c && ./output
+Enter array size: 4
+Enter numbers for array 1 (separated by newline): 2
+4
+2
+4
+Enter numbers for array 2 (separated by newline): 1
+0
+4
+9
+Merged array: 1 0 2 4 2 4 4 9 
+```
+
+# Functions - Call by Value, Call by Reference, Recursion and Matrices
+
+## Armstrong's Number
+
+### Algorithm
+
+1. START
+2. Define a function `checkIfArmstrong` that takes a long integer `num` and returns a boolean:
+    1. Initialize:
+        * tmpnum = num (long)
+        * sum = 0 (long)
+        * r (integer)
+    2. While tmpnum > 0:
+        * Set r = tmpnum % 10.
+        * Add r^3 to sum.
+        * Update tmpnum = tmpnum / 10.
+    3. If sum == num:
+        * Return true.
+    4. Else:
+        * Return false.
+3. In the main function:
+    1. Initialize:
+        * userinp (long)
+        * num = 1 (long)
+    2. Input userinp from the user.
+    3. Print a message indicating the range for finding Armstrong numbers.
+    4. While num < userinp:
+        * If `checkIfArmstrong(num)` returns true:
+            * Print num.
+        * Increment num.
+    5. Print a newline character.
+4. END
+
+### Code
+
+```c
+// Program to check if a number is armstrong number
+
+#include <stdbool.h>
+#include <stdio.h>
+
+bool checkIfArmstrong(long num) {
+  long tmpnum = num;
+  long sum = 0;
+  int r;
+  while (tmpnum > 0) {
+
+    r = tmpnum % 10;         // Get the units place
+    sum = sum + (r * r * r); // Add the units place cube to a variable
+    tmpnum = tmpnum / 10;    // Remove units place and save the number
+  }
+  // printf("%ld -> %ld\n", num, sum);
+  if (sum == num) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+int main() {
+  long userinp, num;
+  printf("Enter a number to find armstrong numbers until it: ");
+  scanf("%ld", &userinp);
+  num = 1;
+
+  printf("Trying to find armstrong numbers till %ld\n", userinp);
+
+  // Use a while loop to check if armstrong from 1 to userinp
+  while (num < userinp) {
+    if (checkIfArmstrong(num)) {
+      printf("%ld ", num);
+    }
+    num++;
+  }
+  printf("\n");
+  return 0;
+}
+```
+
+### Output
+
+```sh
+$ gcc -o output 7_01-Armstrong_number.c && ./output
+Enter a number to find armstrong numbers until it: 1038
+Trying to find armstrong numbers till 1038
+1 153 370 371 407 
+```
+
+## Palindrome number check
+
+### Algorithm
+
+1. START
+2. Define a function `checkPalindrome` that takes a character pointer `inp` and returns a boolean:
+    1. Initialize:
+        * size = 0 (integer)
+        * i (integer)
+    2. Calculate the length of the string:
+        * While inp[size] != '\0':
+            * Increment size by 1.
+    3. Check if the string is a palindrome:
+        * For i from 0 to size/2:
+            * If inp[i] != inp[size - (i + 1)]:
+                * Return false.
+    4. Return true.
+3. In the main function:
+    1. Initialize:
+        * strarray (character array of size MAX_SIZE)
+    2. Input strarray (string) from the user.
+    3. If `checkPalindrome(strarray)` returns true:
+        * Print that strarray is a palindrome.
+    4. Else:
+        * Print that strarray is not a palindrome.
+4. END
+
+### Code
+
+```c
+// Program to check if given string is a palindrome
+
+#include <stdbool.h>
+#include <stdio.h>
+
+// Program assumes maxiumum size of the string is MAX_SIZE
+#define MAX_SIZE 8192
+
+bool checkPalindrome(char *inp) {
+
+  int size = 0, i;
+  while (inp[size] != '\0') {
+    size = size + 1;
+  }
+
+  for (i = 0; i < (size / 2); i++) {
+    if (inp[i] != inp[size - (i + 1)]) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+int main() {
+
+  char strarray[MAX_SIZE], temp;
+
+  printf("Enter a number: ");
+
+  scanf("%s", strarray);
+
+  if (checkPalindrome(strarray)) {
+    printf("%s is a palindrome\n", strarray);
+  } else {
+    printf("%s is not a palindrome\n", strarray);
+  }
+}
+```
+
+### Output
+
+```sh
+$ gcc -o output 7_02-Palindrome_number.c && ./output
+Enter a number: 12321
+12321 is a palindrome
+$ gcc -o output 7_02-Palindrome_number.c && ./output
+Enter a number: 4353
+4353 is not a palindrome
+```
+
+## Sum of digits
+
+### Using Call by Value
+
+#### Algorithm
+
+1. START
+2. Define a function `sumOfDigits` that takes a long integer `num` and returns an integer:
+    1. Initialize:
+        * tmpnum = num (long)
+        * sum = 0 (integer)
+        * r (integer)
+    2. While tmpnum > 0:
+        * Set r = tmpnum % 10.
+        * Add r to sum.
+        * Update tmpnum = tmpnum / 10.
+    3. Return sum.
+3. In the main function:
+    1. Initialize:
+        * userinp (long)
+    2. Input userinp from the user.
+    3. Print the sum of digits of userinp using the `sumOfDigits` function.
+4. END
+
+#### Code
+
+```c
+#include <stdbool.h>
+#include <stdio.h>
+
+int sumOfDigits(long num) {
+  long tmpnum = num;
+  int sum = 0;
+  int r;
+  while (tmpnum > 0) {
+
+    r = tmpnum % 10;
+    sum = sum + (r);
+    tmpnum = tmpnum / 10;
+  }
+  // printf("%ld -> %d\n", num, sum);
+
+  return sum;
+}
+
+int main() {
+
+  long userinp;
+  printf("Enter a number to find its sum: ");
+  scanf("%ld", &userinp);
+
+  printf("Sum of digits of %ld is %d\n", userinp, sumOfDigits(userinp));
+}
+```
+
+#### Output
+
+```sh
+$ gcc -o output 7_03_1-Sum_of_digits-Value.c && ./output
+Enter a number to find its sum: 2453
+Sum of digits of 2453 is 14
+```
+
+### Using Call by Reference
+
+#### Algorithm
+
+1. START
+2. Define a function `sumOfDigits` that takes a pointer to a long integer `num` and returns an integer:
+    1. Initialize:
+        * tmpnum = *num (long)
+        * sum = 0 (integer)
+        * r (integer)
+    2. While tmpnum > 0:
+        * Set r = tmpnum % 10.
+        * Add r to sum.
+        * Update tmpnum = tmpnum / 10.
+    3. Return sum.
+3. In the main function:
+    1. Initialize:
+        * userinp (long)
+    2. Input userinp from the user.
+    3. Print the sum of digits of userinp using the `sumOfDigits` function, passing the address of userinp.
+4. END
+
+#### Code
+
+```c
+// Program to fund sum of numbers using a function and pass by reference
+#include <stdio.h>
+
+int sumOfDigits(long *num) {
+  long tmpnum = *num;
+  int sum = 0;
+  int r;
+  while (tmpnum > 0) {
+
+    r = tmpnum % 10;
+    sum = sum + (r);
+    tmpnum = tmpnum / 10;
+  }
+  // printf("%ld -> %d\n", num, sum);
+
+  return sum;
+}
+
+int main() {
+
+  long userinp;
+  printf("Enter a number to find its sum: ");
+  scanf("%ld", &userinp);
+
+  printf("Sum of digits of %ld is %d\n", userinp, sumOfDigits(&userinp));
+}
+```
+
+#### Output
+
+```sh
+$ gcc -o output 7_03_2-Sum_of_digits-Reference.c && ./output
+Enter a number to find its sum: 1342
+Sum of digits of 1342 is 10
+```
+
+## Characters in a string
+
+### Algorithm
+
+1. START
+2. Define a function `char_count_val` that takes a character array `str` and returns an integer:
+    1. Initialize:
+        * count = 0 (integer)
+    2. For each character in `str` until the null terminator:
+        * Increment count.
+    3. Return count.
+3. Define a function `char_count_ref` that takes a character pointer `str` and returns an integer:
+    1. Initialize:
+        * count = 0 (integer)
+    2. For each character in `str` until the null terminator:
+        * Increment count.
+    3. Return count.
+4. In the main function:
+    1. Initialize:
+        * str (character array of size 100)
+    2. Input str from the user.
+    3. Print the number of characters in str using the `char_count_val` function.
+    4. Print the number of characters in str using the `char_count_ref` function.
+5. END
+
+### Code
+
+```c
+// Count the number of characters using call by value and call by reference
+
+#include <stdio.h>
+
+int char_count_val(char str[]) {
+  int count = 0;
+  for (int i = 0; str[i] != '\0'; i++) {
+    count++;
+  }
+  return count;
+}
+
+int char_count_ref(char *str) {
+  int count = 0;
+  for (int i = 0; str[i] != '\0'; i++) {
+    (count)++;
+  }
+  return count;
+}
+
+int main() {
+  char str[100];
+  printf("Enter a string: ");
+  scanf("%s", str);
+
+  printf("Number of characters in the string using call by value: %d\n",
+         char_count_val(str));
+
+  printf("Number of characters in the string using call be reference: %d\n",
+         char_count_ref(str));
+
+  return 0;
+}
+```
+
+### Output
+
+```sh
+$ gcc -o output 7_04-Character_count.c && ./output
+Enter a string: palindrome
+Number of characters in the string using call by value: 10
+Number of characters in the string using call be reference: 10
+```
+
+## Searching an Array
+
+### Algorithm
+
+1. START
+2. Declare variables:
+    * `n` (number of elements in the array)
+    * `key` (element to search)
+    * `found` (flag for search result)
+3. Input `n` (number of elements in the array).
+4. Declare an array `arr` of size `n`.
+5. Input the elements of the array into `arr`.
+6. Input `key` (element to search).
+7. Call `search_array(arr, n, key)`:
+    * Iterate through the array:
+        * If `arr[i]` equals `key`, return 1.
+    * If the loop completes without finding `key`, return 0.
+8. If the result of `search_array` is 1, print "Element found in the array."
+9. Otherwise, print "Element not found in the array."
+10. Call `search_array_ref(arr, n, key, &found)`:
+    * Initialize `found` to 0.
+    * Iterate through the array:
+        * If `arr[i]` equals `key`, set `found` to 1 and return.
+11. If `found` is 1, print "Element found in the array."
+12. Otherwise, print "Element not found in the array."
+13. END
+
+### Code
+
+```c
+// Search an element in an array using call by value and call by reference
+
+#include <stdio.h>
+
+int search_array(int arr[], int n, int key) {
+  for (int i = 0; i < n; i++) {
+    if (arr[i] == key) {
+      return 1;
+    }
+  }
+  return 0;
+}
+
+void search_array_ref(int arr[], int n, int key, int *found) {
+  *found = 0;
+  for (int i = 0; i < n; i++) {
+    if (arr[i] == key) {
+      *found = 1;
+      return;
+    }
+  }
+}
+
+int main() {
+  int n, key;
+  printf("Enter the number of elements in the array: ");
+  scanf("%d", &n);
+
+  int arr[n];
+  printf("Enter the elements of the array: ");
+  for (int i = 0; i < n; i++) {
+    scanf("%d", &arr[i]);
+  }
+
+  printf("Enter the element to search: ");
+  scanf("%d", &key);
+
+  if (search_array(arr, n, key)) {
+    printf("Element found in the array.\n");
+  } else {
+    printf("Element not found in the array.\n");
+  }
+
+  int found;
+  search_array_ref(arr, n, key, &found);
+  if (found) {
+    printf("Element found in the array.\n");
+  } else {
+    printf("Element not found in the array.\n");
+  }
+
+  return 0;
+}
+```
+
+### Output
+
+```sh
+$ gcc -o output 7_05-Array_search.c && ./output
+Enter the number of elements in the array: 4
+Enter the elements of the array: 1 9 2 29
+Enter the element to search: 43
+Element not found in the array.
+Element not found in the array.
+
+$ gcc -o output 7_05-Array_search.c && ./output
+Enter the number of elements in the array: 4
+Enter the elements of the array: 1 3 9 23
+Enter the element to search: 23
+Element found in the array.
+Element found in the array.
+```
+
+## Decimal to Binary Conversion
+
+### Algorithm
+
+1. START
+2. Declare variables:
+    * `num` (decimal number to convert)
+    * `count` (number of binary digits)
+    * `quo` (global variable to store the quotient)
+3. Input `num` (decimal number to convert).
+4. Initialize `quo` to `num`.
+5. Call `Digits(num)` to calculate the number of binary digits:
+    * Initialize `count` to 1.
+    * While `num` is not 1:
+        * Divide `num` by 2.
+        * Increment `count`.
+    * Return `count`.
+6. Declare an array `arr` of size `count` to store binary digits.
+7. Initialize a pointer `ptr` to point to `arr`.
+8. Call `Convert(quo, ptr)` to convert decimal to binary:
+    * If `quo` is 1:
+        * Set `rem` to 1.
+        * Set `choice` to 0 (base case: stop recursion).
+    * Otherwise:
+        * Set `rem` to `quo % 2`.
+        * Update `quo` to `quo / 2`.
+        * Set `choice` to 1 (continue recursion).
+    * Store `rem` in the array at the position pointed to by `ptr`.
+    * If `choice` is 1:
+        * Increment `ptr` to the next position.
+        * Recursively call `Convert(quo, ptr)`.
+9. Print the binary number in reverse order by iterating through `arr` from the last element to the first.
+10. END
+
+### Code
+
+```c
+// Convert a decimal number to binary number using recursion
+
+#include <stdio.h>
+
+// Global variable to store the quotient
+int quo;
+
+// Function to calculate the number of binary digits needed for a given decimal
+// number
+int Digits(int num) {
+  int count = 1;
+  while (num != 1) {
+    num = num / 2;
+    count += 1;
+  }
+  return count;
+}
+
+// Recursive function to convert decimal to binary
+int Convert(int quo, int *ptr) {
+  int rem;    // Remainder when dividing by 2
+  int choice; // Choice to continue recursion or not
+
+  if (quo == 1) {
+    rem = 1;
+    choice = 0; // Base case: stop recursion
+  } else {
+    rem = quo % 2; // Get remainder
+    quo = quo / 2; // Update quotient
+    choice = 1;    // Continue recursion
+  }
+
+  *ptr = rem; // Store remainder in the array
+
+  if (choice) {
+    ptr += 1;          // Move pointer to next position
+    Convert(quo, ptr); // Recursive call
+  }
+
+  return 0;
+}
+
+int main() {
+  int num, count;
+
+  // Prompt user for input
+  printf("Enter the number:");
+  scanf("%d", &num);
+
+  // Initialize global quotient variable
+  quo = num;
+
+  // Calculate the number of binary digits
+  count = Digits(num);
+
+  // Create an array to store binary digits
+  int arr[count];
+  int *ptr = arr;
+
+  // Convert decimal to binary
+  Convert(quo, ptr);
+
+  // Print the binary number in reverse order
+  for (int i = 0; i < count; i++) {
+    printf("%d", arr[count - i - 1]);
+  }
+
+  printf("\n");
+
+  return 0;
+}
+```
+
+### Output
+
+```sh
+$ gcc -o output 7_06-Binary_to_decimal.c && ./output;
+Enter the number:3819
+111011101011
+```
+
+## Palindrome check using recursion
+
+### Algorithm
+
+1. START
+2. Declare variables:
+    * `str1` (input string)
+    * `len` (length of the input string)
+3. Input `str1` (string to check for palindrome).
+4. Calculate the length of `str1` using `strlen`.
+5. If the last character of `str1` is a newline, remove it and decrement `len`.
+6. Declare `str2` (reversed string) with length `len + 1`.
+7. Call `reverse(str1, str2, 0, len)` to reverse the string:
+    * If `i` is less than `len`:
+        * Set `str2[i]` to `str1[len - 1 - i]`.
+        * Recursively call `reverse(str1, str2, i + 1, len)`.
+8. Null-terminate `str2`.
+9. Compare `str1` and `str2` using `strcmp`:
+    * If they are equal, print that `str1` is a palindrome.
+    * Otherwise, print that `str1` is not a palindrome.
+10. END
+
+### Code
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+// Function to reverse the string using recursion
+void reverse(const char str1[], char str2[], int i, int len);
+
+int main() {
+  char str1[100];
+  int len;
+
+  // Prompt user for input
+  printf("Enter the string: ");
+  fgets(str1, sizeof(str1), stdin);
+
+  // Calculate the length of the input string
+  len = strlen(str1);
+
+  // Remove the newline character if present
+  if (str1[len - 1] == '\n') {
+    str1[len - 1] = '\0';
+    len--;
+  }
+
+  // Declare the reversed string with the same length as the input string
+  char str2[len + 1];
+
+  // Initialize the reversed string
+  reverse(str1, str2, 0, len);
+  str2[len] = '\0'; // Null-terminate the reversed string
+
+  // Check if the original string and the reversed string are the same
+  if (strcmp(str1, str2) == 0) {
+    printf("%s is a palindrome\n", str1);
+
+  } else {
+    printf("%s is not a palindrome\n", str1);
+  }
+
+  return 0;
+}
+
+// Function to reverse the string using recursion
+void reverse(const char str1[], char str2[], int i, int len) {
+  if (i < len) {
+    str2[i] = str1[len - 1 - i];
+    reverse(str1, str2, i + 1, len);
+  }
+}
+```
+
+### Output
+
+```sh
+$ gcc -o output 7_07-Palindrome_check_recursion.c && ./output
+Enter the string: hello
+hello is not a palindrome
+$ gcc -o output 7_07-Palindrome_check_recursion.c && ./output
+Enter the string: wevew
+wevew is a palindrome
+```
+
+## String reversal using recursion
+
+### Algorithm
+
+1. START
+2. Declare variables:
+    * `str1` (input string)
+    * `len` (length of the input string)
+    * `index` (index for recursion)
+3. Input `str1` (string to reverse).
+4. Calculate the length of `str1` using `strlen`.
+5. If the last character of `str1` is a newline, remove it and decrement `len`.
+6. Declare `str2` (reversed string) with length `len + 1`.
+7. Initialize `index` to 0.
+8. Call `reverse(str1, str2, index, len)` to reverse the string:
+    * If `index` is less than `len`:
+        * Set `str2[index]` to `str1[len - 1 - index]`.
+        * Recursively call `reverse(str1, str2, index + 1, len)`.
+9. Null-terminate `str2`.
+10. Print the reversed string `str2`.
+11. END
+
+### Code
+
+```c
+// Program to reverse a string using recursion
+
+#include <stdio.h>
+#include <string.h>
+
+// Function to reverse a string using recursion
+void reverse(const char str1[], char str2[], int index, int len);
+
+int main() {
+  char str1[100];
+  int len;
+
+  // Prompt user for input
+  printf("Enter the string you wish to reverse: ");
+  fgets(str1, sizeof(str1), stdin);
+
+  // Remove the newline character from the input string if present
+  len = strlen(str1);
+  if (str1[len - 1] == '\n') {
+    str1[len - 1] = '\0';
+    len--;
+  }
+
+  // Create an array to hold the reversed string
+  char str2[len + 1]; // +1 for the null terminator
+
+  // Initialize the index for recursion
+  int index = 0;
+
+  // Call the recursive function to reverse the string
+  reverse(str1, str2, index, len);
+
+  // Null-terminate the reversed string
+  str2[len] = '\0';
+
+  // Print the reversed string
+  printf("The reversed string is: %s\n", str2);
+
+  return 0;
+}
+
+// Recursive function to reverse a string
+void reverse(const char str1[], char str2[], int index, int len) {
+  if (index < len) {
+    // Copy character from the end of str1 to the beginning of str2
+    str2[index] = str1[len - 1 - index];
+    // Recur for the next character
+    reverse(str1, str2, index + 1, len);
+  }
+}
+```
+
+### Output
+
+```sh
+$ gcc -o output 7_08-String_reversal_recursion.c && ./output
+Enter the string you wish to reverse: reverse
+The reversed string is: esrever
+
+$ gcc -o output 7_08-String_reversal_recursion.c && ./output
+Enter the string you wish to reverse: wasitacaroracatisaw
+The reversed string is: wasitacaroracatisaw
+```
+
+## Matrix operations calculator
+
+### Algorithm
+
+1. START
+2. Declare variables:
+    * `row` (number of rows in the matrices)
+    * `col` (number of columns in the matrices)
+    * `matr1` (first matrix)
+    * `matr2` (second matrix)
+    * `ans` (result matrix)
+    * `mode` (operation mode: addition or subtraction)
+3. Input `row` and `col` (dimensions of the matrices).
+4. Input elements for `matr1` (Matrix 1):
+    * For each element in `matr1`:
+        * Input the element at position `(i, j)`.
+5. Input elements for `matr2` (Matrix 2):
+    * For each element in `matr2`:
+        * Input the element at position `(i, j)`.
+6. Clear the input buffer.
+7. Input `mode` (operation mode: '+' for addition or '-' for subtraction).
+8. If `mode` is '+':
+    * For each element in `ans`:
+        * Set `ans[i][j]` to `matr1[i][j] + matr2[i][j]`.
+9. Else if `mode` is '-':
+    * For each element in `ans`:
+        * Set `ans[i][j]` to `matr1[i][j] - matr2[i][j]`.
+10. Else:
+    * Print "Invalid Input".
+    * Return 1.
+11. Print the result matrix `ans`:
+    * For each element in `ans`:
+        * Print the element at position `(i, j)`.
+12. END
+
+### Code
+
+```c
+// Program to perform matrix addition or subtraction based on user input
+
+#include <stdio.h>
+
+// Main function
+int main() {
+  int row, col;
+
+  // Prompt user for matrix dimensions
+  printf("Enter the dimensions of the matrix: ");
+  scanf("%d %d", &row, &col);
+
+  // Declare matrices and result matrix
+  int matr1[row][col];
+  int matr2[row][col];
+  int ans[row][col];
+  char mode;
+
+  // Input elements for Matrix 1
+  printf("For Matrix 1:\n");
+  for (int i = 0; i < row; i++) {
+    for (int j = 0; j < col; j++) {
+      printf("Enter the element at (%d,%d): ", i, j);
+      scanf("%d", &matr1[i][j]);
+    }
+  }
+
+  // Input elements for Matrix 2
+  printf("For Matrix 2:\n");
+  for (int i = 0; i < row; i++) {
+    for (int j = 0; j < col; j++) {
+      printf("Enter the element at (%d,%d): ", i, j);
+      scanf("%d", &matr2[i][j]);
+    }
+  }
+
+  // Clear input buffer
+  while (getchar() != '\n')
+    ;
+
+  // Prompt user for operation mode
+  printf("Enter '+' for addition or '-' for subtraction: ");
+  scanf("%c", &mode);
+
+  // Perform matrix addition or subtraction based on user input
+  if (mode == '+') {
+    for (int i = 0; i < row; i++) {
+      for (int j = 0; j < col; j++) {
+        ans[i][j] = matr1[i][j] + matr2[i][j];
+      }
+    }
+  } else if (mode == '-') {
+    for (int i = 0; i < row; i++) {
+      for (int j = 0; j < col; j++) {
+        ans[i][j] = matr1[i][j] - matr2[i][j];
+      }
+    }
+  } else {
+    // Handle invalid input
+    printf("Invalid Input\n");
+    return 1;
+  }
+
+  // Print the result matrix
+  for (int i = 0; i < row; i++) {
+    for (int j = 0; j < col; j++) {
+      printf("The element at (%d,%d) is %d\n", i, j, ans[i][j]);
+    }
+  }
+
+  return 0;
+}
+```
+
+### Output
+
+```sh
+$ gcc -o output 7_09-Matrix_operations.c && ./output
+Enter the dimensions of the matrix: 2 2
+For Matrix 1:
+Enter the element at (0,0): 5
+Enter the element at (0,1): 2
+Enter the element at (1,0): 1
+Enter the element at (1,1): 3
+For Matrix 2:
+Enter the element at (0,0): 5
+Enter the element at (0,1): 2
+Enter the element at (1,0): 1
+Enter the element at (1,1): 3
+Enter '+' for addition or '-' for subtraction: +
+The element at (0,0) is 10
+The element at (0,1) is 4
+The element at (1,0) is 2
+The element at (1,1) is 6
+
+
+$ gcc -o output 7_09-Matrix_operations.c && ./output
+Enter the dimensions of the matrix: 3 2
+For Matrix 1:
+Enter the element at (0,0): 4
+Enter the element at (0,1): 2
+Enter the element at (1,0): 1
+Enter the element at (1,1): 4
+Enter the element at (2,0): 6
+Enter the element at (2,1): 3
+For Matrix 2:
+Enter the element at (0,0): 1
+Enter the element at (0,1): 3
+Enter the element at (1,0): 6
+Enter the element at (1,1): 7
+Enter the element at (2,0): 5
+Enter the element at (2,1): 3
+Enter '+' for addition or '-' for subtraction: -
+The element at (0,0) is 3
+The element at (0,1) is -1
+The element at (1,0) is -5
+The element at (1,1) is -3
+The element at (2,0) is 1
+The element at (2,1) is 0
+```
+
+## Matrix Multiplication Calculator
+
+### Algorithm
+
+1. START
+2. Input dimensions of the first matrix:
+    * row1
+    * col1
+3. Input dimensions of the second matrix:
+    * row2
+    * col2
+4. Check if matrix multiplication is possible:
+    * If col1 != row2, print "Multiplication cannot be performed" and return 1.
+5. Declare matrices with a maximum size of 10x10:
+    * matr1[10][10]
+    * matr2[10][10]
+    * ans[10][10]
+6. Input elements of the first matrix:
+    * For i from 0 to row1 - 1:
+        * For j from 0 to col1 - 1:
+            * Input matr1[i][j]
+7. Input elements of the second matrix:
+    * For i from 0 to row2 - 1:
+        * For j from 0 to col2 - 1:
+            * Input matr2[i][j]
+8. Call the function to multiply the matrices:
+    * For i from 0 to row1 - 1:
+        * For j from 0 to col2 - 1:
+            * Initialize sum to 0
+            * For k from 0 to col1 - 1:
+                * sum += matr1[i][k] * matr2[k][j]
+            * ans[i][j] = sum
+9. Output the resulting matrix:
+    * For i from 0 to row1 - 1:
+        * For j from 0 to col2 - 1:
+            * Print ans[i][j]
+10. END
+
+### Code
+
+```c
+// Program to multiply two matrices
+
+#include <stdio.h>
+
+// Function to multiply two matrices
+void Multiply(int matr1[][10], int matr2[][10], int row1, int col1, int row2,
+              int col2, int ans[][10]) {
+  // Iterate over each row of the first matrix
+  for (int i = 0; i < row1; i++) {
+    // Iterate over each column of the second matrix
+    for (int j = 0; j < col2; j++) {
+      int sum = 0; // Initialize sum for the current element
+      // Perform the dot product of the row and column
+      for (int k = 0; k < col1; k++) {
+        sum += matr1[i][k] * matr2[k][j];
+      }
+      ans[i][j] = sum; // Store the result in the answer matrix
+    }
+  }
+}
+
+int main() {
+  int row1, col1, row2, col2;
+
+  // Input dimensions of the first matrix
+  printf("Enter the dimensions of the matrix 1 (rows and columns): ");
+  scanf("%d %d", &row1, &col1);
+
+  // Input dimensions of the second matrix
+  printf("Enter the dimensions of the matrix 2 (rows and columns): ");
+  scanf("%d %d", &row2, &col2);
+
+  // Check if matrix multiplication is possible
+  if (col1 != row2) {
+    printf("Multiplication cannot be performed\n");
+    return 1;
+  }
+
+  // Declare matrices with a maximum size of 10x10
+  int matr1[10][10], matr2[10][10], ans[10][10];
+
+  // Input elements of the first matrix
+  printf("For Matrix 1:\n");
+  for (int i = 0; i < row1; i++) {
+    for (int j = 0; j < col1; j++) {
+      printf("Enter the element at (%d,%d): ", i, j);
+      scanf("%d", &matr1[i][j]);
+    }
+  }
+
+  // Input elements of the second matrix
+  printf("For Matrix 2:\n");
+  for (int i = 0; i < row2; i++) {
+    for (int j = 0; j < col2; j++) {
+      printf("Enter the element at (%d,%d): ", i, j);
+      scanf("%d", &matr2[i][j]);
+    }
+  }
+
+  // Call the function to multiply the matrices
+  Multiply(matr1, matr2, row1, col1, row2, col2, ans);
+
+  // Output the resulting matrix
+  printf("The answer matrix is:\n");
+  for (int i = 0; i < row1; i++) {
+    for (int j = 0; j < col2; j++) {
+      printf("%d ", ans[i][j]);
+    }
+    printf("\n");
+  }
+
+  return 0;
+}
+```
+
+### Output
+
+```sh
+$ gcc -o output 7_10-Matrix_multiplication.c && ./output
+Enter the dimensions of the matrix 1 (rows and columns): 2 3
+Enter the dimensions of the matrix 2 (rows and columns): 4 5
+Multiplication cannot be performed
+
+$ gcc -o output 7_10-Matrix_multiplication.c && ./output
+Enter the dimensions of the matrix 1 (rows and columns): 2 2
+Enter the dimensions of the matrix 2 (rows and columns): 2 2
+For Matrix 1:
+Enter the element at (0,0): 2
+Enter the element at (0,1): 5
+Enter the element at (1,0): 6
+Enter the element at (1,1): 3
+For Matrix 2:
+Enter the element at (0,0): 1
+Enter the element at (0,1): 4 
+Enter the element at (1,0): 6
+Enter the element at (1,1): 9
+The answer matrix is:
+32 53
+24 51
+```
+
+## Tic Tac Toe Game
+
+### Algorithm
+
+1. START
+2. Initialize:
+    * board[3][3] with empty spaces
+    * currentPlayer = 'X'
+    * row, col (integers for move coordinates)
+3. Loop until a player wins or the board is full:
+    1. Print the current state of the board.
+    2. Prompt the current player to enter their move (row and column).
+    3. Input row and col.
+    4. If the move is valid (within bounds and cell is empty):
+        1. Place the player's mark on the board.
+        2. Check if the current player has won:
+            * If true, print the board and declare the current player as the winner. Break the loop.
+        3. Check if the board is full:
+            * If true, print the board and declare a draw. Break the loop.
+        4. Switch to the other player.
+    5. Else, prompt the player to try again.
+4. END
+
+### Code
+
+```c
+// Program to implement a simple 2-player Tic-Tac-Toe game
+#include <stdio.h>
+
+// Function prototypes
+void initializeBoard(char board[3][3]);
+void printBoard(char board[3][3]);
+int makeMove(char board[3][3], int row, int col, char player);
+int checkWin(char board[3][3], char player);
+int isBoardFull(char board[3][3]);
+
+int main() {
+  char board[3][3];         // 3x3 Tic-Tac-Toe board
+  char currentPlayer = 'X'; // Player 'X' starts the game
+  int row, col;             // Variables to store the row and column of the move
+
+  // Initialize the board with empty spaces
+  initializeBoard(board);
+
+  // Main game loop
+  while (1) {
+    // Print the current state of the board
+    printBoard(board);
+
+    // Prompt the current player to enter their move
+    printf("Player %c's turn. Enter row (0-2) and column (0-2): ",
+           currentPlayer);
+    scanf("%d %d", &row, &col);
+
+    // Attempt to make the move
+    if (makeMove(board, row, col, currentPlayer)) {
+      // Check if the current player has won
+      if (checkWin(board, currentPlayer)) {
+        printBoard(board);
+        printf("Player %c wins!\n", currentPlayer);
+        break;
+      }
+      // Check if the board is full (draw)
+      if (isBoardFull(board)) {
+        printBoard(board);
+        printf("It's a draw!\n");
+        break;
+      }
+      // Switch to the other player
+      currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
+    } else {
+      // Invalid move, prompt the player to try again
+      printf("Invalid move. Try again.\n");
+    }
+  }
+
+  return 0;
+}
+
+// Function to initialize the board with empty spaces
+void initializeBoard(char board[3][3]) {
+  for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 3; j++) {
+      board[i][j] = ' ';
+    }
+  }
+}
+
+// Function to print the current state of the board
+void printBoard(char board[3][3]) {
+  printf("\n");
+  for (int i = 0; i < 3; i++) {
+    printf(" %c | %c | %c \n", board[i][0], board[i][1], board[i][2]);
+    if (i < 2) {
+      printf("---+---+---\n");
+    }
+  }
+  printf("\n");
+}
+
+// Function to make a move on the board
+int makeMove(char board[3][3], int row, int col, char player) {
+  // Check if the move is within bounds and the cell is empty
+  if (row < 0 || row > 2 || col < 0 || col > 2 || board[row][col] != ' ') {
+    return 0; // Invalid move
+  }
+  board[row][col] = player; // Place the player's mark on the board
+  return 1;                 // Valid move
+}
+
+// Function to check if the current player has won
+int checkWin(char board[3][3], char player) {
+  // Check rows and columns for a win
+  for (int i = 0; i < 3; i++) {
+    if ((board[i][0] == player && board[i][1] == player &&
+         board[i][2] == player) ||
+        (board[0][i] == player && board[1][i] == player &&
+         board[2][i] == player)) {
+      return 1; // Player wins
+    }
+  }
+  // Check diagonals for a win
+  if ((board[0][0] == player && board[1][1] == player &&
+       board[2][2] == player) ||
+      (board[0][2] == player && board[1][1] == player &&
+       board[2][0] == player)) {
+    return 1; // Player wins
+  }
+  return 0; // No win
+}
+
+// Function to check if the board is full (draw)
+int isBoardFull(char board[3][3]) {
+  for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 3; j++) {
+      if (board[i][j] == ' ') {
+        return 0; // Board is not full
+      }
+    }
+  }
+  return 1; // Board is full
+}
+```
+
+### Output
+
+```sh
+$ gcc -o output 7_11-Tic_Tac_Toe.c && ./output
+
+   |   |   
+---+---+---
+   |   |   
+---+---+---
+   |   |   
+
+Player X's turn. Enter row (0-2) and column (0-2): 1 1
+
+   |   |   
+---+---+---
+   | X |   
+---+---+---
+   |   |   
+
+Player O's turn. Enter row (0-2) and column (0-2): 0 0
+
+ O |   |   
+---+---+---
+   | X |   
+---+---+---
+   |   |   
+
+Player X's turn. Enter row (0-2) and column (0-2): 1 0
+
+ O |   |   
+---+---+---
+ X | X |   
+---+---+---
+   |   |   
+
+Player O's turn. Enter row (0-2) and column (0-2): 3 0
+Invalid move. Try again.
+
+ O |   |   
+---+---+---
+ X | X |   
+---+---+---
+   |   |   
+
+Player O's turn. Enter row (0-2) and column (0-2): 2 0
+
+ O |   |   
+---+---+---
+ X | X |   
+---+---+---
+ O |   |   
+
+Player X's turn. Enter row (0-2) and column (0-2): 2 0
+Invalid move. Try again.
+
+ O |   |   
+---+---+---
+ X | X |   
+---+---+---
+ O |   |   
+
+Player X's turn. Enter row (0-2) and column (0-2): 1 1
+Invalid move. Try again.
+
+ O |   |   
+---+---+---
+ X | X |   
+---+---+---
+ O |   |   
+
+Player X's turn. Enter row (0-2) and column (0-2): 1 2
+
+ O |   |   
+---+---+---
+ X | X | X 
+---+---+---
+ O |   |   
+
+Player X wins!
+```
