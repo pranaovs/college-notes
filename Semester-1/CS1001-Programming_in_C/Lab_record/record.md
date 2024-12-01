@@ -259,7 +259,7 @@ Are you using a terminal (emulator) that supports atleast 4-bit colors? [y/N]:
 
 ```
 
-<!--TODO: attach image of output-->
+![Make in India Code Output](./assets/make-in-india.png)
 
 ## Country Flag
 
@@ -446,6 +446,8 @@ RRRRRRRRWWRRRRRRRRRRRRRR
 RRRRRRRRWWRRRRRRRRRRRRRR
 RRRRRRRRWWRRRRRRRRRRRRRR
 ```
+
+![Denmark Flag Code Output](./assets/denmark-flag.png)
 
 # Selection - Decision Making and Branching (Part 1)
 
