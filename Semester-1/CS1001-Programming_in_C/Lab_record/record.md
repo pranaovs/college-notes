@@ -2,6 +2,7 @@
 title: "CS1801 - Programming in C Lab Record"
 author: "Pranaov (24110409)"
 toc: true
+toc-depth: 4
 numbersections: true
 ---
 
