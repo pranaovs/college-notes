@@ -5178,3 +5178,341 @@ Item name: item2
 Item type: DVD
 Duration: 42.00 minutes
 ```
+
+# Dynamic Memory Allocation, Pointers, and Call by Reference
+
+## Largest Number
+
+### Algorithm
+
+1. START
+2. Define a function prototype `int largestnum(int *ptr, int *size)`.
+3. In `main` function:
+    1. Declare pointers `size`, `ptr`, `largest`, and `i`.
+    2. Allocate memory for `i`, `size`, and `largest`.
+    3. Input the size of the list and store it in `size`.
+    4. Allocate memory for `ptr` to store the list of numbers.
+    5. Loop through the list to input numbers:
+        1. Input each number and store it in `ptr`.
+    6. Call `largestnum` function to find the largest number and store the result in `largest`.
+    7. Print the largest number.
+    8. Free the allocated memory for `size`, `i`, `largest`, and `ptr`.
+4. Implement the function `largestnum`:
+    1. Declare pointers `i` and `largest`.
+    2. Allocate memory for `i` and `largest`.
+    3. Initialize `largest` to 0.
+    4. Loop through the list to find the largest number:
+        1. If the current number is greater than `largest`, update `largest`.
+    5. Return the value of `largest`.
+    6. Free the allocated memory for `i` and `largest`.
+5. END
+
+### Code
+
+```c
+// C program to find the largest among ‘n’ numbers using DMA, pointers, and call-by-reference only
+#include <stdio.h>
+#include <stdlib.h>
+
+// Function prototype
+int largestnum(int *ptr, int *size);
+
+// Main block
+int main()
+{
+    int *size, *ptr, *largest, *i;
+
+    i = (int *)malloc(sizeof(int));
+    size = (int *)malloc(sizeof(int));
+    largest = (int *)malloc(sizeof(int));
+
+    printf("Enter size of list: ");
+    scanf("%d", size);
+
+    ptr = (int *)malloc((*size) * sizeof(int));
+
+    for (*i = 0; *i < *size; (*i)++) // Entering numbers in list
+    {
+        printf("Enter number: ");
+        scanf("%d", ptr + (*i));
+    }
+
+    *largest = largestnum(ptr, size);
+    printf("The largest number is %d\n", *largest);
+
+    free(size); // Freeing memory locations
+    free(i);
+    free(largest);
+    free(ptr);
+
+    return 0;
+    
+}
+
+// Function declaration
+int largestnum(int *ptr, int *size)
+{
+    int *i, *largest;
+    i = (int *)malloc(sizeof(int));
+    largest = (int *)malloc(sizeof(int));
+    *largest = 0;
+    for (*i = 0; *i < *size; (*i)++) // Finding largest number
+    {
+        if (*(ptr + (*i)) > *largest)
+        {
+            *largest = *(ptr + (*i));
+        }
+    }
+    return *largest;
+    free(i);
+    free(largest);
+}
+```
+
+### Output
+
+```sh
+$ gcc -o output Lab10q1.c && ./output
+Enter size of list: 4
+Enter number: 2
+Enter number: 3
+Enter number: 5
+Enter number: 2
+The largest number is 5
+```
+
+## Searching an Element
+
+### Algorithm
+
+1. START
+2. Define a function prototype `void search(int *ptr, int *size, int *num)`.
+3. In `main` function:
+    1. Declare pointers `size`, `ptr`, `i`, and `num`.
+    2. Allocate memory for `i`, `size`, and `num`.
+    3. Input the size of the list and store it in `size`.
+    4. Allocate memory for `ptr` to store the list of numbers.
+    5. Loop through the list to input numbers:
+        1. Input each number and store it in `ptr`.
+    6. Input the number to search for and store it in `num`.
+    7. Call `search` function to search for the number in the list.
+    8. Free the allocated memory for `size`, `i`, `num`, and `ptr`.
+4. Implement the function `search`:
+    1. Declare pointers `i` and `flag`.
+    2. Allocate memory for `i` and `flag`.
+    3. Initialize `flag` to 0.
+    4. Loop through the list to search for the number:
+        1. If the current number is equal to `num`, set `flag` to 1.
+    5. If `flag` is 1, print "Number found".
+    6. Otherwise, print "Number not found".
+    7. Free the allocated memory for `i` and `flag`.
+5. END
+
+### Code
+
+```c
+// C program to search for a given element in a set of ‘n’ elements using DMA, pointers, and call-by-reference only
+#include <stdio.h>
+#include <stdlib.h>
+
+// Function prototype
+void search(int *ptr, int *size, int *num);
+
+// Main block
+int main()
+{
+    int *size, *ptr, *i, *num;
+
+    i = (int *)malloc(sizeof(int));
+    size = (int *)malloc(sizeof(int));
+    num = (int *)malloc(sizeof(int));
+
+    printf("Enter size of list: ");
+    scanf("%d", size);
+
+    ptr = (int *)malloc((*size) * sizeof(int));
+
+    for (*i = 0; *i < *size; (*i)++) // Entering numbers in list
+    {
+        printf("Enter number: ");
+        scanf("%d", ptr + (*i));
+    }
+
+    printf("Enter number to search for: ");
+    scanf("%d", num);
+
+    search(ptr, size, num);
+
+    free(size); // Freeing memory locations
+    free(i);
+    free(num);
+    free(ptr);
+    
+    return 0;
+}
+
+// Function declaration
+void search(int *ptr, int *size, int *num)
+{
+
+    int *i, *flag;
+    i = (int *)malloc(sizeof(int));
+    flag = (int *)malloc(sizeof(int));
+    *flag = 0;
+
+    for (*i = 0; *i < *size; (*i)++) // Searching if number present
+    {
+        if (*(ptr + (*i)) == *num)
+        {
+            *flag = 1;
+        }
+    }
+
+    if (*flag == 1)
+    {
+        printf("Number found\n");
+    }
+    else
+    {
+        printf("Number not found\n");
+    }
+
+    free(flag);
+    free(i);
+}
+```
+
+### Output
+
+```sh
+$ gcc -o output Lab10q2.c && ./output
+Enter size of list: 4
+Enter number: 1
+Enter number: 3
+Enter number: 5
+Enter number: 2
+Enter number to search for: 4
+Number not found
+
+$ gcc -o output Lab10q2.c && ./output
+Enter size of list: 4
+Enter number: 2
+Enter number: 4
+Enter number: 1
+Enter number: 6
+Enter number to search for: 6
+Number found
+```
+
+## Sorting Elements
+
+### Algorithm
+
+1. START
+2. Define a function prototype `void ascendingsort(int *ptr, int *size)`.
+3. In `main` function:
+    1. Declare pointers `size`, `ptr`, and `i`.
+    2. Allocate memory for `i` and `size`.
+    3. Input the size of the list and store it in `size`.
+    4. Allocate memory for `ptr` to store the list of numbers.
+    5. Loop through the list to input numbers:
+        1. Input each number and store it in `ptr`.
+    6. Call `ascendingsort` function to sort the list in ascending order.
+    7. Free the allocated memory for `size`, `i`, and `ptr`.
+4. Implement the function `ascendingsort`:
+    1. Declare pointers `i`, `j`, and `temp`.
+    2. Allocate memory for `i`, `j`, and `temp`.
+    3. Loop through the list to sort the numbers using bubble sort:
+        1. Compare each pair of adjacent elements.
+        2. If the first element is greater than the second, swap them.
+    4. Print the sorted list.
+    5. Free the allocated memory for `i`, `j`, and `temp`.
+5. END
+
+### Code
+
+```c
+// C program to arrange a given set of ‘n’ elements in ascending order using DMA, pointers, and call-by-reference only
+#include <stdio.h>
+#include <stdlib.h>
+
+// Function prototype
+void ascendingsort(int *ptr, int *size);
+
+// Main block         
+int main()
+{
+    int *size, *ptr, *i;
+
+    i = (int *)malloc(sizeof(int));
+    size = (int *)malloc(sizeof(int));
+
+    printf("Enter size of list: ");
+    scanf("%d", size);
+    ptr = (int *)malloc((*size) * sizeof(int));
+
+    for (*i = 0; *i < *size; (*i)++) // Entering numbers in list
+    {
+        printf("Enter number: ");
+        scanf("%d", ptr + (*i));
+    }
+    
+    ascendingsort(ptr, size);
+
+    
+    free(size); // Freeing memory locations
+    free(i);
+    free(ptr);
+
+    return 0;
+}
+
+// Function declaration
+void ascendingsort(int *ptr, int *size)
+{
+    int *i, *temp, *j;
+
+    i = (int *)malloc(sizeof(int));
+    j = (int *)malloc(sizeof(int));
+    temp = (int *)malloc(sizeof(int));
+
+    for (*j = 0; *j < (*size) - 1; (*j)++)
+    {
+        for (*i = 0; *i < (*size) - *j - 1; (*i)++)
+        {
+
+            if (*(ptr + (*i)) > *(ptr + ((*i) + 1)))
+            {
+                *temp = *(ptr + (*i));
+                *(ptr + (*i)) = *(ptr + ((*i) + 1));
+                *(ptr + ((*i) + 1)) = *temp;
+            }
+        }
+    }
+
+    printf("Sorted list is:\n");
+    for (*i = 0; *i < *size; (*i)++)
+    {
+        printf("%d\n", *(ptr + (*i)));
+    }
+    free(temp);
+    free(i);
+    free(j);
+}
+```
+
+### Output
+
+```sh
+$ gcc -o output Lab10q3.c && ./output
+Enter size of list: 4
+Enter number: 4
+Enter number: 1
+Enter number: 6
+Enter number: 3
+Sorted list is:
+1
+3
+4
+6
+```
