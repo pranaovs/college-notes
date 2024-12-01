@@ -4178,3 +4178,1003 @@ Player X's turn. Enter row (0-2) and column (0-2): 1 2
 
 Player X wins!
 ```
+
+# Structures and Union
+
+## Student Details
+
+1. START
+2. Define a struct `Student` with fields `name`, `rollno`, and `marks`.
+3. Define a constant `STUDENT_COUNT` as 3.
+4. Implement a function `get_details` to input and return a `Student` struct:
+    1. Declare a local `Student` variable `new_student`.
+    2. Input the student's name, roll number, and marks.
+    3. Return the populated `Student` struct.
+5. Implement a function `print_student` to print details of a `Student` struct:
+    1. Print the student's name, roll number, and marks.
+6. Implement a function `print_all_students` to print details of all students in an array:
+    1. Loop through each student in the array.
+    2. Call `print_student` for each student.
+7. In `main` function:
+    1. Declare an array `student_list` of `Student` structs.
+    2. Declare variables `choice` and `details_exist`.
+    3. Loop until `choice` is 4:
+        1. Display menu and input `choice`.
+        2. If `choice` is 1:
+            1. Input details for each student and store in `student_list`.
+            2. Set `details_exist` to true.
+        3. If `choice` is 2 and `details_exist` is true:
+            1. Input index of student to edit.
+            2. Edit details of the selected student.
+        4. If `choice` is 3 and `details_exist` is true:
+            1. Input index of student to view.
+            2. Display details of the selected student or all students.
+        5. If `choice` is 4:
+            1. Print "Exiting program".
+        6. If `choice` is invalid, print "Invalid choice".
+8. END
+
+### Code
+
+```c
+/*
+This code is licensed under the MIT License
+Copyright 2024 Pranaov S
+https://opensource.org/license/MIT
+*/
+
+/* C program to collect details of students and save it in an array, and display
+using a menu-driven interface */
+
+#include <stdbool.h>
+#include <stdio.h>
+#include <string.h>
+
+// Number of student's details to collect
+#define STUDENT_COUNT 3
+
+// Define a new struct called Student
+struct Student {
+  char name[100];
+  int rollno;
+  int marks;
+};
+
+// Unused code
+void strip0(char *ptr) {
+  // Remove the newline character from the input string if present
+
+  int len = strlen(ptr);
+  if (ptr[len - 1] == '\n') {
+    ptr[len - 1] = '\0';
+    len--;
+  }
+}
+
+// Function to return an object of student struct after taking inputs
+struct Student get_details() {
+  // Create a local instance/object of the struct Student
+  struct Student new_student;
+  printf("Enter student name: ");
+  // TODO: Clear old buffer before accepting new value using fgets
+  // fgets(new_student.name, sizeof(new_student.name), stdin);
+  // strip0(new_student.name);
+  // TODO: Accept spaces in student name. Currently, spaces break code
+  scanf("%s", new_student.name);
+  printf("Enter student %s's roll number: ", new_student.name);
+  scanf("%d", &new_student.rollno);
+  printf("Enter student %s's marks: ", new_student.name);
+  scanf("%d", &new_student.marks);
+
+  // Return the populated Student struct
+  return new_student;
+}
+
+/* Function to print details of an object os struct Student
+Expects a struct Student*/
+void print_student(struct Student stu) {
+  printf("Student name: %s\n", stu.name);
+  printf("Student %s's roll number: %d\n", stu.name, stu.rollno);
+  printf("Student %s's marks: %d\n", stu.name, stu.marks);
+  printf("\n");
+}
+
+/* Function to print details of the all the elements
+of an array of struct Student
+Expects an array of struct Student */
+void print_all_students(struct Student student_list[]) {
+  for (int i = 0; i < STUDENT_COUNT; i++) {
+    // Create an local instance of the struct Student
+    // with each element of the array
+    struct Student stu = student_list[i];
+    print_student(stu);
+  }
+}
+
+int main() {
+
+  struct Student student_list[STUDENT_COUNT];
+  int choice;
+  bool details_exist = false; // Initially student_list array is not populated
+
+  while (choice != 4) {
+
+    printf("Enter the action to perform:\n"
+           "1. Enter student details (overwrites all existing details)\n"
+           "2. Edit student details\n"
+           "3. View student details\n"
+           "4. Quit\n"
+           "\n"
+           "Choice: ");
+
+    scanf("%d", &choice);
+    printf("\n");
+
+    // Menu-driven entry
+    switch (choice) {
+    case 1:
+      // Case: Input student details
+
+      printf("Enter the details\n");
+      // Loop through STUDENT_COUNT times to get the student details, and add it
+      // in an array of struct Student
+      for (int i = 0; i < STUDENT_COUNT; i++) {
+        printf("Enter the details of student %d\n", i + 1);
+        student_list[i] =
+            get_details(); // get_details() function returns struct Student
+        printf("\n");
+      }
+      details_exist = true; // Set details_exist to true to allow editing
+      break;
+
+    case 2:
+      // Case: Edit student details
+
+      if (details_exist) {
+        printf("Enter the student's index number to edit details:\n");
+
+        // Print students names along with an index
+        for (int i = 0; i < STUDENT_COUNT; i++) {
+          // Create an instance of the struct Student
+          // with each element of the array
+          struct Student stu = student_list[i];
+          printf("%d: %s\n", (i + 1), stu.name);
+        }
+
+        printf("\nChoice: ");
+        int edit_choice;
+        scanf("%d", &edit_choice);
+        printf("\n");
+
+        // If given choice lies withing STUDENT_COUNT range, edit the student
+        // entry
+        if (edit_choice <= STUDENT_COUNT && edit_choice > 0) {
+          student_list[edit_choice - 1] = get_details();
+        } else {
+          printf("Invalid choice\n");
+        }
+
+      } else {
+        printf("Student's details do not exist. Use option 1 to populate\n");
+      }
+      break;
+
+    case 3:
+      // Case: View student details
+      if (details_exist) {
+        printf("Enter index of student to view details\n");
+
+        // Print students names along with an index
+        for (int i = 0; i < STUDENT_COUNT; i++) {
+          // Create an local instance of the struct Student
+          // with each element of the array
+          struct Student stu = student_list[i];
+          printf("%d: %s\n", (i + 1), stu.name);
+        }
+        printf("%d: All details\n", STUDENT_COUNT + 1);
+
+        printf("\nChoice: ");
+        int view_choice;
+        scanf("%d", &view_choice);
+        printf("\n");
+
+        // If given choice lies withing STUDENT_COUNT range, view the student
+        // entry
+        if (view_choice <= STUDENT_COUNT && view_choice > 0) {
+          print_student(student_list[view_choice - 1]);
+          // If given choise is 1 more than STUDENT_COUNT, show all students
+          // details
+        } else if (view_choice == (STUDENT_COUNT + 1)) {
+          print_all_students(student_list);
+        } else {
+          printf("Invalid choice\n");
+        }
+
+      } else {
+        printf("Student's details do not exist. Use option 1 to populate\n\n");
+      }
+      break;
+
+    case 4:
+      // Just output. Initial while loop will not re-iterate
+      printf("Exiting program\n");
+      break;
+
+    default:
+      printf("Invalid choice\n\n");
+    }
+  }
+
+  return 0;
+}
+
+```
+
+### Output
+
+```sh
+$ gcc -o output 9_1-Student_details.c && ./output
+Enter the action to perform:
+1. Enter student details (overwrites all existing details)
+2. Edit student details
+3. View student details
+4. Quit
+
+Choice: 1
+
+Enter the details
+Enter the details of student 1
+Enter student name: stu1
+Enter student stu1's roll number: 1231
+Enter student stu1's marks: 90
+
+Enter the details of student 2
+Enter student name: stu2
+Enter student stu2's roll number: 1232
+Enter student stu2's marks: 48
+
+Enter the details of student 3
+Enter student name: stu3
+Enter student stu3's roll number: 1233
+Enter student stu3's marks: 29
+
+Enter the action to perform:
+1. Enter student details (overwrites all existing details)
+2. Edit student details
+3. View student details
+4. Quit
+
+Choice: 3
+
+Enter index of student to view details
+1: stu1
+2: stu2
+3: stu3
+4: All details
+
+Choice: 4
+
+Student name: stu1
+Student stu1's roll number: 1231
+Student stu1's marks: 90
+
+Student name: stu2
+Student stu2's roll number: 1232
+Student stu2's marks: 48
+
+Student name: stu3
+Student stu3's roll number: 1233
+Student stu3's marks: 29
+
+Enter the action to perform:
+1. Enter student details (overwrites all existing details)
+2. Edit student details
+3. View student details
+4. Quit
+
+Choice: 4
+
+Exiting program
+```
+
+## Book details and checkout
+
+### Algorithm
+
+1. START
+2. Define a struct `Book` with fields `name`, `author`, and `cost`.
+3. Implement a function `get_details` to input and return a `Book` struct:
+    1. Declare a local `Book` variable `new_book`.
+    2. Input the book's name, author, and cost.
+    3. Return the populated `Book` struct.
+4. Implement a function `print_book` to print details of a `Book` struct:
+    1. Print the book's name, author, and cost.
+5. Implement a function `print_all_books` to print details of all books in an array:
+    1. Loop through each book in the array.
+    2. Call `print_book` for each book.
+6. In `main` function:
+    1. Declare variables `choice`, `details_exist`, `max_books`, and `book_count`.
+    2. Input the maximum number of books.
+    3. Declare an array `book_array` of `Book` structs with size `max_books`.
+    4. Loop until `choice` is 5:
+        1. Display menu and input `choice`.
+        2. If `choice` is 1:
+            1. Input details for a new book and store in `book_array`.
+            2. Increment `book_count`.
+            3. Set `details_exist` to true.
+        3. If `choice` is 2 and `details_exist` is true:
+            1. Input index of book to delete.
+            2. Delete the selected book and shift remaining books.
+            3. Decrement `book_count`.
+        4. If `choice` is 3 and `details_exist` is true:
+            1. Input index of book to view.
+            2. Display details of the selected book or all books.
+        5. If `choice` is 4 and `details_exist` is true:
+            1. Implement a checkout system to add books to a cart and calculate total cost.
+        6. If `choice` is 5:
+            1. Print "Exiting program".
+        7. If `choice` is invalid, print "Invalid choice".
+7. END
+
+### Code
+
+```c
+/*
+This code is licensed under the MIT License
+Copyright 2024 Pranaov S
+https://opensource.org/license/MIT
+*/
+
+/* C program to save book details, display and handle book billing
+using a menu-driven interface */
+
+#include <stdbool.h>
+#include <stdio.h>
+
+// Define a new struct called Book
+struct Book {
+  char name[100];
+  char author[100];
+  int cost;
+};
+
+// Function to return an object of struct Book after taking inputs
+struct Book get_details() {
+  // Create a local instance/object of the struct Book
+  struct Book new_book;
+  // BUG: Doesn't accept spaces
+  printf("Enter book name (avoid spaces): ");
+  scanf("%s", new_book.name);
+  // BUG: Doesn't accept spaces
+  printf("Enter book: %s's author (avoid spaces): ", new_book.name);
+  scanf("%s", new_book.author);
+  printf("Enter book %s's cost: ", new_book.name);
+  scanf("%d", &new_book.cost);
+
+  // Return the populated Book struct
+  return new_book;
+}
+
+/* Function to print details of an object of struct Book
+Expects a struct Book*/
+void print_book(struct Book stu) {
+  printf("Book name: %s\n", stu.name);
+  printf("Book %s's author: %s\n", stu.name, stu.author);
+  printf("Book %s's cost: %d\n", stu.name, stu.cost);
+  printf("\n");
+}
+
+/* Function to print details of the all the elements
+of an array of struct Book
+Expects an array of struct Book */
+void print_all_books(struct Book book_array[], int count) {
+  for (int i = 0; i < count; i++) {
+    // Create an local instance of the struct Book
+    // with each element of the array
+    struct Book stu = book_array[i];
+    print_book(stu); // use the print_book function to print details of the book
+  }
+}
+
+int main() {
+
+  int choice;
+  bool details_exist = false; // Initially book_array array is not populated
+
+  printf("Enter the maximum number of books: ");
+  int max_books;
+  scanf("%d", &max_books);
+  struct Book book_array[max_books];
+
+  // Variable to keep track of the number of books
+  int book_count = 0;
+
+  while (choice != 5) {
+
+    printf("Enter the action to perform:\n"
+           "1. Add a new book\n"
+           "2. Delete an existing book\n"
+           "3. View book details\n"
+           "4. Checkout books\n"
+           "5. Quit\n"
+           "\n"
+           "Choice: ");
+
+    scanf("%d", &choice);
+    printf("\n");
+
+    // Menu-driven entry
+    switch (choice) {
+    case 1:
+      // Case: Input book details
+
+      // Don't allow to add more books than the maximum size of the array
+      if (book_count >= max_books) {
+        printf("Maximum books reached\n");
+      } else {
+        printf("Enter book details\n");
+        book_array[book_count] = get_details();
+        details_exist = true; // Set details_exist to true to allow editing
+        book_count++;
+      }
+
+      break;
+
+    case 2:
+      // Case: Delete book
+
+      if (details_exist) {
+
+        printf("Enter the book's index number to delete:\n");
+        for (int i = 0; i < book_count; i++) {
+          printf("%d: %s\n", (i + 1), book_array[i].name);
+        }
+        printf("%d: Back to main menu\n", book_count + 1);
+
+        printf("\nChoice: ");
+        int delete_choice;
+        scanf("%d", &delete_choice);
+        printf("\n");
+
+        if (delete_choice == book_count + 1) {
+          printf("Exiting to main menu\n");
+        } else if (delete_choice <= book_count && delete_choice > 0) {
+          // Shift all elements to the left after the deleted element
+          for (int i = delete_choice - 1; i < book_count - 1; i++) {
+            book_array[i] = book_array[i + 1];
+          }
+          book_count--; // Decrement book_count
+        } else {
+          printf("Invalid choice\n");
+        }
+      } else {
+        printf("Book's details do not exist. Use option 1 to populate\n");
+      }
+
+      break;
+
+    case 3:
+      // Case: View book details
+
+      if (details_exist) {
+        printf("Enter the book's index number to edit details:\n");
+
+        // Print book's names along with an index
+        for (int i = 0; i < book_count; i++) {
+          printf("%d: %s\n", (i + 1), book_array[i].name);
+        }
+        printf("%d: All details\n", book_count + 1);
+        printf("%d: Back to main menu\n", book_count + 2);
+
+        printf("\nChoice: ");
+        int view_choice;
+        scanf("%d", &view_choice);
+        printf("\n");
+
+        // Print all books
+        if (view_choice == book_count + 1) {
+          print_all_books(book_array, book_count);
+        }
+        // Return to main menu
+        else if (view_choice == book_count + 2) {
+        }
+        // If given choice lies withing book_count range, view the book
+        // details
+        else if (view_choice <= book_count && view_choice > 0) {
+          print_book(book_array[view_choice - 1]);
+        } else {
+          printf("Invalid choice\n");
+        }
+
+      } else {
+        printf("Book's details do not exist. Use option 1 to populate\n");
+      }
+      break;
+
+    case 4:
+      // Case: Checkout books
+      if (details_exist) {
+        int checkout_choice = 0;
+
+        // Create a new array of struct Book to store the cart
+        // TODO: Make it dynamic. Current implementation uses max_books
+        struct Book cart[max_books];
+        int cart_count = 0;
+
+        // Print book's names along with an index
+        for (int i = 0; i < book_count; i++) {
+          printf("%d: %s\n", (i + 1), book_array[i].name);
+        }
+        printf("%d: View cart\n", book_count + 1);
+        printf("%d: Checkout\n", book_count + 2);
+        printf("%d: View all books\n", book_count + 3);
+
+        printf("%d: Back to main menu\n", book_count + 4);
+
+        // Loop until the user chooses to exit
+        while (checkout_choice != book_count + 2) {
+
+          printf("Enter the book's index number to add to cart:\n");
+          printf("\nChoice: ");
+          scanf("%d", &checkout_choice);
+          printf("\n");
+
+          // Case -4: Exit to main menu
+          if (checkout_choice == book_count + 4) {
+            printf("Exiting checkout\n");
+          } // Case -3: Reprint menu
+          else if (checkout_choice == book_count + 3) {
+
+            // Print book's names along with an index
+            for (int i = 0; i < book_count; i++) {
+              printf("%d: %s\n", (i + 1), book_array[i].name);
+            }
+            printf("%d: View cart\n", book_count + 1);
+            printf("%d: Checkout\n", book_count + 2);
+            printf("%d: View all books\n", book_count + 3);
+
+            printf("%d: Back to main menu\n", book_count + 4);
+          }
+
+          // Case 1 to 0: Add book to cart
+          else if (checkout_choice <= book_count && checkout_choice > 0) {
+            printf("Book %s added to cart\n",
+                   book_array[checkout_choice - 1].name);
+            cart[cart_count] = book_array[checkout_choice - 1];
+            cart_count++;
+          } // Case -1: Print all books in the cart
+          else if (checkout_choice == book_count + 1) {
+            int total_cost;
+            for (int i = 0; i < cart_count; i++) {
+              printf("Book %d: %s\n", (i + 1), cart[i].name);
+              total_cost = total_cost + cart[i].cost;
+            }
+            printf("\nTotal cost: %d\n", total_cost);
+
+          } // Case -2: Checkout
+          else if (checkout_choice == book_count + 2) {
+            int total_cost;
+            for (int i = 0; i < cart_count; i++) {
+              printf("Book %d: %s\n", (i + 1), cart[i].name);
+              total_cost = total_cost + cart[i].cost;
+            }
+            printf("\nTotal cost: %d\n", total_cost);
+            printf("Books checked out\n");
+            cart_count = 0;
+
+            // Return to main menu
+            break;
+
+          } else {
+            printf("Invalid choice\n");
+          }
+        }
+      } else {
+        printf("Book's details do not exist. Use option 1 to populate\n");
+      }
+      break;
+
+    case 5:
+      // Just output. Initial while loop will not re-iterate
+      printf("Exiting program\n");
+      break;
+
+    default:
+      printf("Invalid choice\n\n");
+    }
+  }
+
+  return 0;
+}
+```
+
+### Output
+
+```sh
+$ gcc -o output 9_2-Book_details.c && ./output
+Enter the maximum number of books: 3
+Enter the action to perform:
+1. Add a new book
+2. Delete an existing book
+3. View book details
+4. Checkout books
+5. Quit
+
+Choice: 1
+
+Enter book details
+Enter book name (avoid spaces): Book1
+Enter book: Book1's author (avoid spaces): Auth1
+Enter book Book1's cost: 324
+Enter the action to perform:
+1. Add a new book
+2. Delete an existing book
+3. View book details
+4. Checkout books
+5. Quit
+
+Choice: 1
+
+Enter book details
+Enter book name (avoid spaces): Book2
+Enter book: Book2's author (avoid spaces): Auth2
+Enter book Book2's cost: 243
+Enter the action to perform:
+1. Add a new book
+2. Delete an existing book
+3. View book details
+4. Checkout books
+5. Quit
+
+Choice: 1
+
+Enter book details
+Enter book name (avoid spaces): Book3
+Enter book: Book3's author (avoid spaces): Auth1
+Enter book Book3's cost: 534
+Enter the action to perform:
+1. Add a new book
+2. Delete an existing book
+3. View book details
+4. Checkout books
+5. Quit
+
+Choice: 3
+
+Enter the book's index number to edit details:
+1: Book1
+2: Book2
+3: Book3
+4: All details
+5: Back to main menu
+
+Choice: 4
+
+Book name: Book1
+Book Book1's author: Auth1
+Book Book1's cost: 324
+
+Book name: Book2
+Book Book2's author: Auth2
+Book Book2's cost: 243
+
+Book name: Book3
+Book Book3's author: Auth1
+Book Book3's cost: 534
+
+Enter the action to perform:
+1. Add a new book
+2. Delete an existing book
+3. View book details
+4. Checkout books
+5. Quit
+
+Choice: 4
+
+1: Book1
+2: Book2
+3: Book3
+4: View cart
+5: Checkout
+6: View all books
+7: Back to main menu
+Enter the book's index number to add to cart:
+
+Choice: 1
+
+Book Book1 added to cart
+Enter the book's index number to add to cart:
+
+Choice: 2
+
+Book Book2 added to cart
+Enter the book's index number to add to cart:
+
+Choice: 1
+
+Book Book1 added to cart
+Enter the book's index number to add to cart:
+
+Choice: 1
+
+Book Book1 added to cart
+Enter the book's index number to add to cart:
+
+Choice: 5
+
+Book 1: Book1
+Book 2: Book2
+Book 3: Book1
+Book 4: Book1
+
+Total cost: 1215
+Books checked out
+Enter the action to perform:
+1. Add a new book
+2. Delete an existing book
+3. View book details
+4. Checkout books
+5. Quit
+
+Choice: 5
+
+Exiting program
+```
+
+## Employee Details
+
+### Algorithm
+
+1. START
+2. Define a struct `Employee` with fields `name`, `empid`, `age`, `sex`, `position`, and `salary`.
+3. Implement a function `get_details` to input and return an `Employee` struct:
+    1. Declare a local `Employee` variable `new_employee`.
+    2. Input the employee's name, employee id, age, sex, position, and salary.
+    3. Return the populated `Employee` struct.
+4. Implement a function `print_details` to print details of all employees in an array:
+    1. Loop through each employee in the array.
+    2. Print the employee's name, employee id, age, sex, position, and salary.
+5. In `main` function:
+    1. Input the number of employees `empcount`.
+    2. Declare an array `employee_list` of `Employee` structs with size `empcount`.
+    3. Loop through `empcount` times to input details for each employee and store in `employee_list`.
+    4. Call `print_details` to display details of all employees.
+6. END
+
+### Code
+
+```c
+/*
+This code is licensed under the MIT License
+Copyright 2024 Pranaov S
+https://opensource.org/license/MIT
+*/
+
+// C program to collect details of employees and save it in an array, and
+// display the details
+#include <stdio.h>
+
+// Define a new struct called Employee
+struct Employee {
+  char name[100];
+  int empid;
+  int age;
+  char sex[10];
+  char position[100];
+  int salary;
+};
+
+// Function to return an object of employee struct after taking inputs
+struct Employee get_details() {
+  // Create a local instance/object of the struct Employee
+  struct Employee new_employee;
+  printf("Enter employee name: ");
+  scanf("%s", new_employee.name);
+  printf("Enter employee %s's employee id: ", new_employee.name);
+  scanf("%d", &new_employee.empid);
+  printf("Enter employee %s's age: ", new_employee.name);
+  scanf("%d", &new_employee.age);
+  printf("Enter employee %s's sex: ", new_employee.name);
+  scanf("%s", new_employee.sex);
+  printf("Enter employee %s's position: ", new_employee.name);
+  scanf("%s", new_employee.position);
+  printf("Enter employee %s's salary: ", new_employee.name);
+  scanf("%d", &new_employee.salary);
+
+  // Return the populated Employee struct
+  return new_employee;
+}
+
+/* Function to print details of the all the members
+of an array of struct Employee
+Expects an array of struct Employee and
+count (number of elements in the array of struct Employee) */
+// TODO: calculate count inside function
+void print_details(struct Employee employee_list[], int count) {
+  for (int i = 0; i < count; i++) {
+    // Create an local instance of the struct Student
+    // with each element of the array
+    struct Employee emp = employee_list[i];
+    printf("Employee name: %s\n", emp.name);
+    printf("Employee %s's employee id: %d\n", emp.name, emp.empid);
+    printf("Employee %s's age: %d\n", emp.name, emp.age);
+    printf("Employee %s's sex: %s\n", emp.name, emp.sex);
+    printf("Employee %s's position: %s\n", emp.name, emp.position);
+    printf("Employee %s's salary: %d\n", emp.name, emp.salary);
+    printf("\n");
+  }
+}
+
+int main() {
+
+  printf("Enter number of employees: ");
+  int empcount;
+  scanf("%d", &empcount);
+  struct Employee employee_list[empcount];
+
+  printf("Enter the details\n");
+  // Loop through empcount times to get the employee details, and add it in
+  // an array of struct Employee
+  for (int i = 0; i < empcount; i++) {
+    printf("Enter the details of employee %d\n", i + 1);
+    employee_list[i] = get_details();
+  }
+
+  printf("\n========== Recalling Details ==========\n");
+  print_details(employee_list, sizeof(employee_list) / sizeof(*employee_list));
+
+  return 0;
+}
+```
+
+### Output
+
+```sh
+$ gcc -o output 9_3-Employee_details.c && ./output
+Enter number of employees: 3
+Enter the details
+Enter the details of employee 1
+Enter employee name: emp1
+Enter employee emp1's employee id: 1241
+Enter employee emp1's age: 30
+Enter employee emp1's sex: m
+Enter employee emp1's position: manager
+Enter employee emp1's salary: 90200
+Enter the details of employee 2
+Enter employee name: emp2
+Enter employee emp2's employee id: 1342
+Enter employee emp2's age: 40
+Enter employee emp2's sex: f
+Enter employee emp2's position: scrum
+Enter employee emp2's salary: 39482
+Enter the details of employee 3
+Enter employee name: emp3
+Enter employee emp3's employee id: 2832
+Enter employee emp3's age: 23
+Enter employee emp3's sex: f
+Enter employee emp3's position: developer
+Enter employee emp3's salary: 100290
+
+========== Recalling Details ==========
+Employee name: emp1
+Employee emp1's employee id: 1241
+Employee emp1's age: 30
+Employee emp1's sex: m
+Employee emp1's position: manager
+Employee emp1's salary: 90200
+
+Employee name: emp2
+Employee emp2's employee id: 1342
+Employee emp2's age: 40
+Employee emp2's sex: f
+Employee emp2's position: scrum
+Employee emp2's salary: 39482
+
+Employee name: emp3
+Employee emp3's employee id: 2832
+Employee emp3's age: 23
+Employee emp3's sex: f
+Employee emp3's position: developer
+Employee emp3's salary: 100290
+```
+
+## Library Item (Book/CD) Details
+
+### Algorithm
+
+1. START
+2. Define a union `item_length` with fields `pages` and `duration`.
+3. Define a struct `Item` with fields `name`, `is_book`, and `length`.
+4. Implement a function `input_item` to input and populate an `Item` struct:
+    1. Input the item's name.
+    2. Input whether the item is a book.
+    3. If the item is a book, input the number of pages.
+    4. If the item is a DVD, input the duration in minutes.
+5. Implement a function `print_item` to display details of an `Item` struct:
+    1. Print the item's name.
+    2. Print the item type (Book or DVD).
+    3. If the item is a book, print the number of pages.
+    4. If the item is a DVD, print the duration in minutes.
+6. In `main` function:
+    1. Declare a variable `item` of type `Item`.
+    2. Call `input_item` to input details for `item`.
+    3. Call `print_item` to display details of `item`.
+7. END
+
+### Code
+
+```c
+#include <stdbool.h>
+#include <stdio.h>
+
+// Define a union for item length
+union item_length {
+  int pages;
+  float duration;
+};
+
+// Define a structure for a library item
+struct Item {
+  char name[100];
+  bool is_book; // true if book, false if DVD
+  union item_length length;
+};
+
+// Function to input item details
+void input_item(struct Item *item) {
+  printf("Enter item name: ");
+  scanf("%s", (*item).name);
+
+  printf("Is the item a book? (1 for Yes, 0 for No): ");
+  scanf("%d", (int *)&(*item).is_book);
+
+  if ((*item).is_book) {
+    printf("Enter number of pages: ");
+    scanf("%d", &(*item).length.pages);
+  } else {
+    printf("Enter duration in minutes: ");
+    scanf("%f", &(*item).length.duration);
+  }
+}
+
+// Function to display item details
+void print_item(struct Item item) {
+  printf("Item name: %s\n", item.name);
+  if (item.is_book) {
+    printf("Item type: Book\n");
+    printf("Number of pages: %d\n", item.length.pages);
+  } else {
+    printf("Item type: DVD\n");
+    printf("Duration: %.2f minutes\n", item.length.duration);
+  }
+}
+
+int main() {
+  struct Item item;
+
+  input_item(&item);
+  print_item(item);
+
+  return 0;
+}
+```
+
+### Output
+
+```sh
+$ gcc -o output 9_4-Library_item.c && ./output
+Enter item name: item1
+Is the item a book? (1 for Yes, 0 for No): 1
+Enter number of pages: 60
+Item name: item1
+Item type: Book
+Number of pages: 60
+
+$ gcc -o output 9_4-Library_item.c && ./output
+Enter item name: item2
+Is the item a book? (1 for Yes, 0 for No): 0
+Enter duration in minutes: 42
+Item name: item2
+Item type: DVD
+Duration: 42.00 minutes
+```
