@@ -1497,7 +1497,7 @@ Seat number 81 is invalid. Train has only 80 seats
     * input (float)
     * unit (character)
     * KBps, Kbps, GBps, Gbps, MBps, Mbps, Bps, bps (floats)
-3. Print "Enter your data plan in the format <number><multiplier>Bps\nExample: If your plan is 50MBps, enter 50M. Note: Omit Bps in your input)"
+3. Print "Enter your data plan in the format number x multiplierBps Example: If your plan is 50MBps, enter 50M. Note: Omit Bps in your input)"
 4. Input input and unit
 5. Check if unit is valid:
     * If unit is not 'K', 'k', 'G', 'g', 'M', or 'm', print "Invalid input" and return 22 (Invalid argument error code)
@@ -1554,7 +1554,7 @@ int main() {
   char unit;
   float KBps, Kbps, GBps, Gbps, MBps, Mbps, Bps, bps;
 
-  printf("Enter your data plan in the format <number><multiplier>Bps\nExample: "
+  printf("Enter your data plan in the format number multiplier Bps\nExample: "
          "If your plan is 50MBps, enter 50M. Note: Omit Bps in your input)\n");
 
   scanf("%f%c", &input, &unit);
@@ -1612,7 +1612,7 @@ int main() {
 
 ```sh
 $ gcc -o output 3_1-Internet_plan.c && ./output
-Enter your data plan in the format <number><multiplier>Bps
+Enter your data plan in the format number multiplier Bps
 Example: If your plan is 50MBps, enter 50M. Note: Omit Bps in your input)
 23G
 Gigabytes per second (GBps):23
@@ -1634,7 +1634,7 @@ Bits per second (bps):197568495616
     * input (float)
     * unit (character)
     * KBps, Kbps, GBps, Gbps, MBps, Mbps, Bps, bps (floats)
-3. Print "Enter your data plan in the format <number><multiplier>Bps\nExample: If your plan is 50MBps, enter 50M. Note: Omit Bps in your input)"
+3. Print "Enter your data plan in the format number multiplier Bps Example: If your plan is 50MBps, enter 50M. Note: Omit Bps in your input)"
 4. Input input and unit
 5. Check the value of unit and perform the corresponding conversions:
     * If unit is 'K' or 'k':
@@ -1690,7 +1690,7 @@ int main() {
   char unit;
   float KBps, Kbps, GBps, Gbps, MBps, Mbps, Bps, bps;
 
-  printf("Enter your data plan in the format <number><multiplier>Bps\nExample: "
+  printf("Enter your data plan in the format number multiplier Bps\nExample: "
          "If your plan is 50MBps, enter 50M. Note: Omit Bps in your input)\n");
 
   scanf("%f%c", &input, &unit);
@@ -1744,7 +1744,7 @@ int main() {
 
 ```sh
 $ gcc -o output 3_2-Internet_plan.c && ./output
-Enter your data plan in the format <number><multiplier>Bps
+Enter your data plan in the format number multiplier Bps
 Example: If your plan is 50MBps, enter 50M. Note: Omit Bps in your input)
 38273K
 Gigabytes per second (GBps):0
@@ -2101,7 +2101,7 @@ Hexadecimal: 8
 ### Algorithm
 
 1. START
-2. Print "Enter the number to want the multiplication table for in the format <number>x<until>. Example: 5x4 -> "
+2. Print "Enter the number to want the multiplication table for in the format number x<until>. Example: 5x4 -> "
 3. Input `input` and `tableUntil`
 4. If `input` <= 0 or `tableUntil` <= 0, print "Inputs must be positive integers. Given: [input] and [tableUntil]" and return 22
 5. For `i` from 1 to `tableUntil`:
@@ -2120,7 +2120,7 @@ int main() {
   int tableUntil;
 
   printf("Enter the number to want the multiplication table for in the format "
-         "<number>x<until>\nExample: 5x4\n-> ");
+         "number x<until>\nExample: 5x4\n-> ");
 
   scanf("%dx%d", &input, &tableUntil);
   printf("\n");
@@ -2143,7 +2143,7 @@ int main() {
 
 ```sh
 $ gcc -o output 1-Multiplication_table.c && ./output
-Enter the number to want the multiplication table for in the format <number>x<until>
+Enter the number to want the multiplication table for in the format number x<until>
 Example: 5x4
 -> 4x19
 
