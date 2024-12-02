@@ -12,6 +12,14 @@ numbersections: true
 
 ### Algorithm
 
+#### Input
+
+* `quantity` (integer) - Number of items sold by the employee.
+
+#### Output
+
+* `salary` (integer) - Gross salary of the employee.
+
 1. START
 2. Initialize:
     * base = 15000
@@ -75,6 +83,14 @@ Gross salary is 53700
 ## Make in India Logo
 
 ### Algorithm
+
+#### Input
+
+* `colorTerm` (bool) - Flag to check if the terminal supports 4-bit colors.
+
+#### Output
+
+* Make in India logo with black and white backgrounds, or without colorization based on terminal support.
 
 1. START
 2. Initialize:
@@ -266,6 +282,14 @@ Are you using a terminal (emulator) that supports atleast 4-bit colors? [y/N]:
 
 ### Algorithm
 
+#### Input
+
+* `colorTerm` (bool) - Flag to check if the terminal supports 4-bit colors.
+
+#### Output
+
+* Denmark flag with red and white backgrounds, or without colorization based on terminal support.
+
 1. START
 2. Initialize:
     * ANSI color codes for red, green, yellow, blue, magenta, cyan, white backgrounds, and reset codes
@@ -456,6 +480,14 @@ RRRRRRRRWWRRRRRRRRRRRRRR
 
 ### Algorithm
 
+#### Input
+
+* `mark` (integer) - Marks obtained by the student.
+
+#### Output
+
+* `grade` (string) - Grade of the student based on the marks.
+
 1. START
 2. Initialize:
     * mark (integer)
@@ -538,6 +570,14 @@ Grade for 89 marks is: A+
 ### Using `if` statement only
 
 #### Algorithm
+
+##### Input
+
+* `inp` (integer) - Number to check for divisibility.
+
+##### Output
+
+* Divisibility if `inp` by 2, 3, or both.
 
 1. START
 2. Initialize:
@@ -636,6 +676,14 @@ This program checks if the given number is divisible by 2 or 3 or both
 ### Using `if-else` statements
 
 #### Algorithm
+
+##### Input
+
+* `inp` (integer) - Number to check for divisibility.
+
+##### Output
+
+* Divisibility if `inp` by 2, 3, or both.
 
 1. START
 2. Initialize:
@@ -743,6 +791,14 @@ This program checks if the given number is divisible by 2 or 3 or both
 ### Using nested `if` statements
 
 #### Algorithm
+
+##### Input
+
+* `inp` (integer) - Number to check for divisibility.
+
+##### Output
+
+* Divisibility if `inp` by 2, 3, or both.
 
 1. START
 2. Initialize:
@@ -860,6 +916,14 @@ This program checks if the given number is divisible by 2 or 3 or both
 ### Using `if` only statements
 
 #### Algorithm
+
+##### Input
+
+* `num1`, `num2`, `num3`, `num4` (integers) - Four numbers to compare.
+
+##### Output
+
+* The greatest number among `num1`, `num2`, `num3`, and `num4`.
 
 1. START
 2. Initialize:
@@ -979,6 +1043,14 @@ The greatest number among 2, 4, 1, 3, is: 4
 
 #### Algorithm
 
+##### Input
+
+* `num1`, `num2`, `num3`, `num4` (integers) - Four numbers to compare.
+
+##### Output
+
+* The greatest number among `num1`, `num2`, `num3`, and `num4`.
+
 1. START
 2. Initialize:
     * num1, num2, num3, num4 (integers)
@@ -1093,6 +1165,14 @@ The greatest number among 4, 9, 1, 0, is: 9
 
 #### Algorithm
 
+##### Input
+
+* `num1`, `num2`, `num3`, `num4` (integers) - Four numbers to compare.
+
+##### Output
+
+* The greatest number among `num1`, `num2`, `num3`, and `num4`.
+
 1. START
 2. Initialize:
     * num1, num2, num3, num4 (integers)
@@ -1186,6 +1266,15 @@ The greatest number among 2, 4, 1, 39, is: 39
 
 #### Algorithm
 
+##### Input
+
+* `operation` (character) - Operation to perform.
+* `num1`, `num2` (integers) - Two numbers to perform the operation on.
+
+##### Output
+
+* Result of the `operation` on `num1` and `num2`.
+
 1. START
 2. Initialize:
     * operation (character)
@@ -1269,6 +1358,15 @@ Enter two numbers separated by a space: 3 8
 
 #### Algorithm
 
+##### Input
+
+* `operation` (character) - Operation to perform.
+* `num1`, `num2` (integers) - Two numbers to perform the operation on.
+
+##### Output
+
+* Result of the `operation` on `num1` and `num2`.
+
 1. START
 2. Initialize:
     * operation (character)
@@ -1346,6 +1444,14 @@ The product of 4 and 26 is 104
 
 #### Algorithm
 
+##### Input
+
+* `seat` (integer) - Seat number.
+
+##### Output
+
+* Berth type based on the seat number.
+
 1. START
 2. Initialize:
     * seat (integer)
@@ -1421,6 +1527,14 @@ The seat assigned to 35 is: UPPER BERTH
 
 #### Algorithm
 
+##### Input
+
+* `seat` (integer) - Seat number.
+
+##### Output
+
+* Berth type based on the seat number.
+
 1. START
 2. Initialize:
     * seat (integer)
@@ -1494,6 +1608,15 @@ Seat number 81 is invalid. Train has only 80 seats
 ### Using `if` statements only
 
 #### Algorithm
+
+##### Input
+
+* `input` (float) - Data plan value.
+* `unit` (character) - Data plan unit.
+
+##### Output
+
+* Data plan value in different units.
 
 1. START
 2. Initialize:
@@ -1632,6 +1755,15 @@ Bits per second (bps):197568495616
 
 #### Algorithm
 
+##### Input
+
+* `input` (float) - Data plan value.
+* `unit` (character) - Data plan unit.
+
+##### Output
+
+* Data plan value in different units.
+
 1. START
 2. Initialize:
     * input (float)
@@ -1765,6 +1897,14 @@ Bits per second (bps):313532416
 ### Using `if` statements only
 
 #### Algorithm
+
+##### Input
+
+* `num` (integer) - Decimal number to convert.
+
+##### Output
+
+* Binary, octal, and hexadecimal values of the decimal number.
 
 1. START
 2. Initialize:
@@ -1939,6 +2079,14 @@ Hexadecimal: C
 
 #### Algorithm
 
+##### Input
+
+* `num` (integer) - Decimal number to convert.
+
+##### Output
+
+* Binary, octal, and hexadecimal values of the decimal number.
+
 1. START
 2. Initialize:
     * num (integer)
@@ -2103,6 +2251,15 @@ Hexadecimal: 8
 
 ### Algorithm
 
+#### Input
+
+* `input` (integer) - Number to find the multiplication table for.
+* `tableUntil` (integer) - Number of multiples to find.
+
+#### Output
+
+* Multiplication table of `input` until `tableUntil`.
+
 1. START
 2. Print "Enter the number to want the multiplication table for in the format number x<until>. Example: 5x4 -> "
 3. Input `input` and `tableUntil`
@@ -2175,6 +2332,14 @@ Example: 5x4
 
 ### Algorithm
 
+#### Input
+
+* `inp` (integer) - Number to find the factorial of.
+
+#### Output
+
+* Factorial of `inp`.
+
 1. START
 2. Initialize:
     * ans = 1 (unsigned long)
@@ -2246,6 +2411,14 @@ Input must be a positive integer. Provided: -1
 
 ### Algorithm
 
+#### Input
+
+* `inp` (integer) - Number of Fibonacci numbers to find.
+
+#### Output
+
+* `inp` fibonacci numbers.
+
 1. START
 2. Initialize:
     * num1 = 1 (unsigned long)
@@ -2311,6 +2484,14 @@ Enter the index to find Fibonacci sequence until: 34
 ## Fibonacci Series identifier
 
 ### Algorithm
+
+#### Input
+
+* `inp` (integer) - Number to check if it is a member of the Fibonacci series.
+
+#### Output
+
+* Whether `inp` is a member of the Fibonacci series or not.
 
 1. START
 2. Initialize:
@@ -2390,6 +2571,14 @@ Enter the number to check if it is member of the Fibonacci sequence: 89
 
 ### Algorithm
 
+#### Input
+
+* `inp` (integer) - Number to find the sum of digits of.
+
+#### Output
+
+* Sum of digits of `inp`.
+
 1. START
 2. Initialize:
     * sum = 0
@@ -2459,6 +2648,14 @@ Input must be greater than 0. Recieved: -213
 
 ### Algorithm
 
+#### Input
+
+* `strarray` (string) - String to reverse.
+
+#### Output
+
+* Reversed string.
+
 1. START
 2. Initialize:
     * size = 0
@@ -2521,6 +2718,14 @@ Enter a string: palindrome?
 ## Palindrome checker
 
 ### Algorithm
+
+#### Input
+
+* `strarray` (string) - String to check if it is a palindrome.
+
+#### Output
+
+* Whether `strarray` is a palindrome or not.
 
 1. START
 2. Initialize:
@@ -2595,6 +2800,16 @@ panap is a palindrome
 ## Array Equality checker
 
 ### Algorithm
+
+#### Input
+
+* `size` (integer) - Size of the arrays.
+* `array1` (character array) - First array to compare.
+* `array2` (character array) - Second array to compare.
+
+#### Output
+
+* Whether two arrays are equal or not.
 
 1. START
 2. Initialize:
@@ -2680,6 +2895,15 @@ Both arrays are equal
 ## Array Sorting and inversion
 
 ### Algorithm
+
+#### Input
+
+* `size` (integer) - Size of the array.
+* `numarray` (integer array) - Array to sort.
+
+#### Output
+
+* Sorted array in ascending and descending order.
 
 1. START
 2. Initialize:
@@ -2776,6 +3000,16 @@ Descending order: 9 4 2 1
 ## Array Merging
 
 ### Algorithm
+
+#### Input
+
+* `size` (integer) - Size of the arrays.
+* `array1` (integer array) - First array to merge.
+* `array2` (integer array) - Second array to merge.
+
+#### Output
+
+* Merged array in ascending order.
 
 1. START
 2. Initialize:
@@ -2901,6 +3135,14 @@ Merged array: 1 0 2 4 2 4 4 9
 
 ### Algorithm
 
+#### Input
+
+* `num` (long integer) - Number to check if it is an Armstrong number.
+
+#### Output
+
+* Whether `num` is an Armstrong number or not.
+
 1. START
 2. Define a function `checkIfArmstrong` that takes a long integer `num` and returns a boolean:
     1. Initialize:
@@ -2987,6 +3229,14 @@ Trying to find armstrong numbers till 1038
 
 ### Algorithm
 
+#### Input
+
+* `inp` (long integer) - Number to check if it is a palindrome.
+
+#### Output
+
+* Whether `inp` is a palindrome or not.
+
 1. START
 2. Define a function `checkPalindrome` that takes a character pointer `inp` and returns a boolean:
     1. Initialize:
@@ -3070,6 +3320,14 @@ Enter a number: 4353
 
 #### Algorithm
 
+##### Input
+
+* `num` (long integer) - Number to find the sum of digits of.
+
+##### Output
+
+* Sum of digits of `num`.
+
 1. START
 2. Define a function `sumOfDigits` that takes a long integer `num` and returns an integer:
     1. Initialize:
@@ -3131,6 +3389,14 @@ Sum of digits of 2453 is 14
 
 #### Algorithm
 
+##### Input
+
+* `num` (long integer) - Number to find the sum of digits of.
+
+##### Output
+
+* Sum of digits of `num`.
+
 1. START
 2. Define a function `sumOfDigits` that takes a pointer to a long integer `num` and returns an integer:
     1. Initialize:
@@ -3191,6 +3457,14 @@ Sum of digits of 1342 is 10
 ## Characters in a string
 
 ### Algorithm
+
+#### Input
+
+* `str` (character array) - String to find the number of characters in.
+
+#### Output
+
+* Number of characters in `str`.
 
 1. START
 2. Define a function `char_count_val` that takes a character array `str` and returns an integer:
@@ -3263,6 +3537,16 @@ Number of characters in the string using call be reference: 10
 ## Searching an Array
 
 ### Algorithm
+
+#### Input
+
+* `n` (integer) - Number of elements in the array.
+* `arr` (integer array) - Array to search in.
+* `key` (integer) - Element to search.
+
+#### Output
+
+* Whether `key` is found in `arr` or not.
 
 1. START
 2. Declare variables:
@@ -3366,6 +3650,14 @@ Element found in the array.
 ## Decimal to Binary Conversion
 
 ### Algorithm
+
+#### Input
+
+* `num` (decimal number to convert).
+
+#### Output
+
+* Binary representation of `num`.
 
 1. START
 2. Declare variables:
@@ -3485,6 +3777,14 @@ Enter the number:3819
 
 ### Algorithm
 
+#### Input
+
+* `str1` (input string).
+
+#### Output
+
+* Whether `str1` is a palindrome or not.
+
 1. START
 2. Declare variables:
     * `str1` (input string)
@@ -3570,6 +3870,14 @@ wevew is a palindrome
 ## String reversal using recursion
 
 ### Algorithm
+
+#### Input
+
+* `str1` (input string).
+
+#### Output
+
+* Reversed string.
 
 1. START
 2. Declare variables:
@@ -3659,6 +3967,18 @@ The reversed string is: wasitacaroracatisaw
 ## Matrix operations calculator
 
 ### Algorithm
+
+#### Input
+
+* `row` (number of rows in the matrices).
+* `col` (number of columns in the matrices).
+* `matr1` (first matrix).
+* `matr2` (second matrix).
+* `ans` (result matrix).
+
+#### Output
+
+* Result of matrix addition or subtraction.
 
 1. START
 2. Declare variables:
@@ -3819,6 +4139,19 @@ The element at (2,1) is 0
 
 ### Algorithm
 
+#### Input
+
+* `row1` (number of rows in the first matrix).
+* `col1` (number of columns in the first matrix).
+* `row2` (number of rows in the second matrix).
+* `col2` (number of columns in the second matrix).
+* `matr1` (first matrix).
+* `matr2` (second matrix).
+
+#### Output
+
+* Result of matrix multiplication.
+
 1. START
 2. Input dimensions of the first matrix:
     * row1
@@ -3960,6 +4293,15 @@ The answer matrix is:
 ## Tic Tac Toe Game
 
 ### Algorithm
+
+#### Input
+
+* `row` (row number for the move).
+* `col` (column number for the move).
+
+#### Output
+
+* Winner of the game or a draw.
 
 1. START
 2. Initialize:
@@ -4484,6 +4826,19 @@ Exiting program
 
 ### Algorithm
 
+#### Input
+
+* `max_books` (maximum number of books that can be stored).
+* `name` (name of the book).
+* `author` (author of the book).
+* `cost` (cost of the book).
+* `choice` (user choice for menu).
+
+#### Output
+
+* Book details.
+* Total cost of books in the cart.
+
 1. START
 2. Define a struct `Book` with fields `name`, `author`, and `cost`.
 3. Implement a function `get_details` to input and return a `Book` struct:
@@ -4928,6 +5283,15 @@ Exiting program
 
 ### Algorithm
 
+#### Input
+
+* `empcount` (number of employees).
+* `name`, `empid`, `age`, `sex`, `position`, `salary` (employee details).
+
+#### Output
+
+* Employee details.
+
 1. START
 2. Define a struct `Employee` with fields `name`, `empid`, `age`, `sex`, `position`, and `salary`.
 3. Implement a function `get_details` to input and return an `Employee` struct:
@@ -5085,6 +5449,17 @@ Employee emp3's salary: 100290
 
 ### Algorithm
 
+#### Input
+
+* `name` (name of the item).
+* `is_book` (true if the item is a book, false if it is a DVD).
+* `pages` (number of pages if the item is a book).
+* `duration` (duration in minutes if the item is a DVD).
+
+#### Output
+
+* Item details.
+
 1. START
 2. Define a union `item_length` with fields `pages` and `duration`.
 3. Define a struct `Item` with fields `name`, `is_book`, and `length`.
@@ -5188,6 +5563,15 @@ Duration: 42.00 minutes
 
 ### Algorithm
 
+#### Input
+
+* `size` (size of the list).
+* numbers in the list.
+
+#### Output
+
+* Largest number in the list.
+
 1. START
 2. Define a function prototype `int largestnum(int *ptr, int *size)`.
 3. In `main` function:
@@ -5287,6 +5671,15 @@ The largest number is 5
 ## Searching an Element
 
 ### Algorithm
+
+#### Input
+
+* `size` (size of the list).
+* numbers in the list.
+
+#### Output
+
+* Whether the number is found in the list or not.
 
 1. START
 2. Define a function prototype `void search(int *ptr, int *size, int *num)`.
@@ -5410,6 +5803,15 @@ Number found
 ## Sorting Elements
 
 ### Algorithm
+
+#### Input
+
+* `size` (size of the list).
+* numbers in the list.
+
+#### Output
+
+* Sorted list in ascending order.
 
 1. START
 2. Define a function prototype `void ascendingsort(int *ptr, int *size)`.
