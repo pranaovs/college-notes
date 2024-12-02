@@ -6370,3 +6370,85 @@ Employee Emp2's sex: f
 Employee Emp2's position: CEO
 Employee Emp2's salary: 400190
 ```
+
+# Command line argument
+
+## File copy tool
+
+### Algorithm
+
+* `string` - source filename (from command line argument)
+* `string` - destination filename (from command line argument)
+
+#### Output
+
+* None
+
+1. START
+2. Check if the number of arguments (`argc`) is less than 3:
+    1. If true, print usage message and exit.
+3. Initialize:
+    * `FILE *source`
+    * `FILE *target`
+4. Open the source file in read mode using `argv[1]`:
+    1. If the source file does not exist, print an error message and exit.
+5. Open the destination file in write mode using `argv[2]`.
+6. Initialize `int c`.
+7. While the end of the source file is not reached:
+    1. Read a character from the source file.
+    2. Write the character to the destination file.
+8. Close the source file.
+9. Close the destination file.
+10. END
+
+### Code
+
+```c
+// This code was forked from:
+// https://github.com/pranaovs/college-notes/tree/main/Semester-1/CS1001-Programming_in_C/2-Arrays/assignments/12-File_handling/12_3-Copy_file.c
+
+// C program to copy a file's content into another (write or append) using
+// arguments
+
+#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+
+  if (argc == 1 || argc == 2) {
+    printf("Usage: %s <source> <destination>\n", argv[0]);
+    return 1;
+  }
+
+  FILE *source, *target;
+
+  if ((source = fopen(argv[1], "r"))) {
+    ;
+  } else {
+    printf("File %s does not exist\n", argv[1]);
+    return 1;
+  }
+
+  target = fopen(argv[2], "w");
+
+  int c;
+
+  while ((c = fgetc(source)) != EOF) {
+    fputc(c, target);
+  }
+
+  fclose(source);
+  fclose(target);
+}
+```
+
+### Output
+
+```sh
+$ gcc -o output/copy 13_1-Copy_file.c && ./output/copy
+Usage: ./output/copy <source> <destination>
+
+$ gcc -o output/copy 13_1-Copy_file.c && ./output/copy 13_1-Copy_file.c 13_1-Copy_file-backup.c
+
+$ diff -s 13_1-Copy_file.c 13_1-Copy_file-backup.c
+Files 13_1-Copy_file.c and 13_1-Copy_file-backup.c are identical
+```
