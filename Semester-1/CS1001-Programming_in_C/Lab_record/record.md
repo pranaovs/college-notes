@@ -5921,3 +5921,452 @@ Sorted list is:
 4
 6
 ```
+
+# File handling
+
+## Count lines in a file
+
+### Algorithm
+
+#### Input
+
+* `string` - filename
+
+#### Output
+
+* Number of lines in the file
+
+1. START
+2. Initialize:
+    * `FILE *f`
+    * `char filename[100]`
+    * `int lines = 0`
+3. Print message: "This program counts the number of lines in a file."
+4. Input filename.
+5. Open the file in read mode.
+6. If the file does not exist, print an error message and exit.
+7. While not end of file:
+    * If the character read is a newline (`'\n'`), increment `lines`.
+8. Print the number of lines in the file.
+9. Close the file.
+10. END
+
+### Code
+
+```c
+// C program to count the lines of a file
+
+#include <stdio.h>
+
+int main(void) {
+  FILE *f;
+  char filename[100];
+
+  printf("This program counts the number of lines in a file.\nEnter the "
+         "filename: ");
+  scanf("%s", filename);
+
+  if ((f = fopen(filename, "r"))) {
+    ;
+  } else {
+    printf("File %s does not exist\n", filename);
+    return 1;
+  }
+
+  int lines = 0;
+
+  while (!feof(f)) {
+    if (fgetc(f) == '\n') {
+      lines++;
+    }
+  }
+
+  printf("The file %s has %d lines\n", filename, lines);
+
+  fclose(f);
+  return 0;
+}
+```
+
+### Output
+
+```sh
+$ gcc -o output/lines 12_1-Line_count.c && ./output/lines
+This program counts the number of lines in a file.
+Enter the filename: 12_1-Line_count.c
+The file 12_1-Line_count.c has 32 lines
+```
+
+## File size
+
+### Algorithm
+
+#### Input
+
+* `string` - filename
+
+#### Output
+
+* Size of the file in bytes
+
+1. START
+2. Initialize:
+    * `FILE *f`
+    * `char filename[100]`
+3. Print message: "This program counts the number of lines in a file."
+4. Input filename.
+5. Open the file in read mode.
+6. If the file does not exist, print an error message and exit.
+7. Move the file pointer to the end of the file using `fseek(f, 0, SEEK_END)`.
+8. Print the file size in bytes using `ftell(f)`.
+9. Close the file.
+10. END
+
+### Code
+
+```c
+// C program to print the size of a file
+
+#include <stdio.h>
+
+int main(void) {
+  FILE *f;
+  char filename[100];
+
+  printf("This program counts the number of lines in a file.\nEnter the "
+         "filename: ");
+  scanf("%s", filename);
+
+  if ((f = fopen(filename, "r"))) {
+    ;
+  } else {
+    printf("File %s does not exist\n", filename);
+    return 1;
+  }
+
+  fseek(f, 0, SEEK_END);
+
+  printf("File size on bytes: %ld\n", ftell(f));
+
+  fclose(f);
+  return 0;
+}
+```
+
+### Output
+
+```sh
+$ gcc -o output/size 12_2-File_size.c && ./output/size
+This program counts the number of lines in a file.
+Enter the filename: 12_2-File_size.c
+File size on bytes: 462
+```
+
+## File copying
+
+### Algorithm
+
+#### Input
+
+* `string` - source filename
+* `string` - destination filename
+
+#### Output
+
+* None
+
+1. START
+2. Initialize:
+    * `FILE *source`
+    * `FILE *target`
+    * `char filename[100]`
+3. Print message: "This program counts the number of lines in a file."
+4. Input source filename.
+5. Open the source file in read mode.
+6. If the source file does not exist, print an error message and exit.
+7. Input destination filename.
+8. Open the destination file in write mode.
+9. Initialize `int c`.
+10. While the end of the source file is not reached:
+    * Read a character from the source file.
+    * Write the character to the destination file.
+11. Close the source file.
+12. Close the destination file.
+13. END
+
+### Code
+
+```c
+// C program to copy a file's content into another (write or append)
+
+#include <stdio.h>
+
+int main(void) {
+  FILE *source, *target;
+
+  char filename[100];
+
+  printf("This program counts the number of lines in a file.\nEnter the "
+         "filename: ");
+  scanf("%s", filename);
+
+  if ((source = fopen(filename, "r"))) {
+    ;
+  } else {
+    printf("File %s does not exist\n", filename);
+    return 1;
+  }
+
+  printf("Enter the destination filename: ");
+  scanf("%s", filename);
+
+  target = fopen(filename, "w");
+
+  int c;
+
+  while ((c = fgetc(source)) != EOF) {
+    fputc(c, target);
+  }
+
+  fclose(source);
+  fclose(target);
+}
+```
+
+### Output
+
+```sh
+$ gcc -o output/copy 12_3-Copy_file.c && ./output/copy
+This program counts the number of lines in a file.
+Enter the filename: 12_3-Copy_file.c
+Enter the destination filename: 12_3-Copy_file-backup.c
+
+$ diff -s 12_3-Copy_file.c 12_3-Copy_file-backup.c
+Files 12_3-Copy_file.c and 12_3-Copy_file-backup.c are identical
+```
+
+## Employee Details dump
+
+### Algorithm
+
+#### Input
+
+* `int` - number of employees
+* `string` - employee details (name, empid, age, sex, position, salary)
+* `string` - filename
+
+#### Output
+
+* None
+
+1. START
+2. Define a struct `Employee` with fields: `name`, `empid`, `age`, `sex`, `position`, `salary`.
+3. Define a function `get_details` to input and return an `Employee` struct:
+    1. Create a local instance `new_employee` of the struct `Employee`.
+    2. Input employee name and store in `new_employee.name`.
+    3. Input employee ID and store in `new_employee.empid`.
+    4. Input employee age and store in `new_employee.age`.
+    5. Input employee sex and store in `new_employee.sex`.
+    6. Input employee position and store in `new_employee.position`.
+    7. Input employee salary and store in `new_employee.salary`.
+    8. Return `new_employee`.
+4. Define a function `print_details` to print details of all employees in an array:
+    1. Loop through each employee in the array `employee_list`:
+        1. Create a local instance `emp` of the struct `Employee` with the current element.
+        2. Print employee name.
+        3. Print employee ID.
+        4. Print employee age.
+        5. Print employee sex.
+        6. Print employee position.
+        7. Print employee salary.
+5. Define a function `dump_details` to write details of all employees to a file:
+    1. Loop through each employee in the array `employee_list`:
+        1. Create a local instance `emp` of the struct `Employee` with the current element.
+        2. Write employee name to the file.
+        3. Write employee ID to the file.
+        4. Write employee age to the file.
+        5. Write employee sex to the file.
+        6. Write employee position to the file.
+        7. Write employee salary to the file.
+6. Input the number of employees.
+7. Initialize an array `employee_list` of `Employee` structs with size `empcount`.
+8. Loop through `empcount` times to get details of each employee using `get_details` and store in `employee_list`.
+9. Call `print_details` to print details of all employees.
+10. Input the filename to save the employee details.
+11. Open the file in write mode.
+12. Call `dump_details` to write details of all employees to the file.
+13. Close the file.
+14. END
+
+### Code
+
+```c
+/*
+This code is licensed under the MIT License
+Copyright 2024 Pranaov S
+https://opensource.org/license/MIT
+*/
+
+// This code was forked from:
+// https://github.com/pranaovs/college-notes/tree/main/Semester-1/CS1001-Programming_in_C/2-Arrays/assignments/9-Structures/9_3-Employee_details/9_3-Employee_details.c
+
+// C program to collect details of employees display the details and save it in
+// a file
+
+#include <stdio.h>
+
+// Define a new struct called Employee
+struct Employee {
+  char name[100];
+  int empid;
+  int age;
+  char sex[10];
+  char position[100];
+  int salary;
+};
+
+// Function to return an object of employee struct after taking inputs
+struct Employee get_details() {
+  // Create a local instance/object of the struct Employee
+  struct Employee new_employee;
+  printf("Enter employee name: ");
+  scanf("%s", new_employee.name);
+  printf("Enter employee %s's employee id: ", new_employee.name);
+  scanf("%d", &new_employee.empid);
+  printf("Enter employee %s's age: ", new_employee.name);
+  scanf("%d", &new_employee.age);
+  printf("Enter employee %s's sex: ", new_employee.name);
+  scanf("%s", new_employee.sex);
+  printf("Enter employee %s's position: ", new_employee.name);
+  scanf("%s", new_employee.position);
+  printf("Enter employee %s's salary: ", new_employee.name);
+  scanf("%d", &new_employee.salary);
+
+  // Return the populated Employee struct
+  return new_employee;
+}
+
+/* Function to print details of the all the members
+of an array of struct Employee
+Expects an array of struct Employee and
+count (number of elements in the array of struct Employee) */
+// TODO: calculate count inside function
+void print_details(struct Employee employee_list[], int count) {
+  for (int i = 0; i < count; i++) {
+    // Create an local instance of the struct Student
+    // with each element of the array
+    struct Employee emp = employee_list[i];
+    printf("Employee name: %s\n", emp.name);
+    printf("Employee %s's employee id: %d\n", emp.name, emp.empid);
+    printf("Employee %s's age: %d\n", emp.name, emp.age);
+    printf("Employee %s's sex: %s\n", emp.name, emp.sex);
+    printf("Employee %s's position: %s\n", emp.name, emp.position);
+    printf("Employee %s's salary: %d\n", emp.name, emp.salary);
+    printf("\n");
+  }
+}
+
+// Function to print the details of all the employees to a file
+void dump_details(FILE *f, struct Employee employee_list[], int count) {
+
+  for (int i = 0; i < count; i++) {
+    // Create an local instance of the struct Student
+    // with each element of the array
+    struct Employee emp = employee_list[i];
+    fprintf(f, "Employee name: %s\n", emp.name);
+    fprintf(f, "Employee %s's employee id: %d\n", emp.name, emp.empid);
+    fprintf(f, "Employee %s's age: %d\n", emp.name, emp.age);
+    fprintf(f, "Employee %s's sex: %s\n", emp.name, emp.sex);
+    fprintf(f, "Employee %s's position: %s\n", emp.name, emp.position);
+    fprintf(f, "Employee %s's salary: %d\n", emp.name, emp.salary);
+    fprintf(f, "\n");
+  }
+}
+
+int main() {
+
+  printf("Enter number of employees: ");
+  int empcount;
+  scanf("%d", &empcount);
+  struct Employee employee_list[empcount];
+
+  printf("Enter the details\n");
+  // Loop through empcount times to get the employee details, and add it in
+  // an array of struct Employee
+  for (int i = 0; i < empcount; i++) {
+    printf("Enter the details of employee %d\n", i + 1);
+    employee_list[i] = get_details();
+  }
+
+  printf("\n========== Recalling Details ==========\n");
+  print_details(employee_list, sizeof(employee_list) / sizeof(*employee_list));
+
+  char filename[100];
+  printf("Enter filename to save the employee details to: ");
+  scanf("%s", filename);
+
+  FILE *f = fopen(filename, "w+");
+
+  dump_details(f, employee_list,
+               sizeof(employee_list) / sizeof(*employee_list));
+
+  fclose(f);
+
+  return 0;
+}
+```
+
+### Output
+
+```sh
+$ gcc -o output/employee 12_4-Employee-details.c && ./output/employee
+Enter number of employees: 2
+Enter the details
+Enter the details of employee 1
+Enter employee name: Emp1
+Enter employee Emp1's employee id: 29138810
+Enter employee Emp1's age: 48
+Enter employee Emp1's sex: m
+Enter employee Emp1's position: Manager
+Enter employee Emp1's salary: 199280 
+Enter the details of employee 2
+Enter employee name: Emp2
+Enter employee Emp2's employee id: 1884813
+Enter employee Emp2's age: 23
+Enter employee Emp2's sex: f
+Enter employee Emp2's position: CEO
+Enter employee Emp2's salary: 400190 
+
+========== Recalling Details ==========
+Employee name: Emp1
+Employee Emp1's employee id: 29138810
+Employee Emp1's age: 48
+Employee Emp1's sex: m
+Employee Emp1's position: Manager
+Employee Emp1's salary: 199280
+
+Employee name: Emp2
+Employee Emp2's employee id: 1884813
+Employee Emp2's age: 23
+Employee Emp2's sex: f
+Employee Emp2's position: CEO
+Employee Emp2's salary: 400190
+
+Enter filename to save the employee details to: emp_details.txt
+
+
+$ cat emp_details.txt
+Employee name: Emp1
+Employee Emp1's employee id: 29138810
+Employee Emp1's age: 48
+Employee Emp1's sex: m
+Employee Emp1's position: Manager
+Employee Emp1's salary: 199280
+
+Employee name: Emp2
+Employee Emp2's employee id: 1884813
+Employee Emp2's age: 23
+Employee Emp2's sex: f
+Employee Emp2's position: CEO
+Employee Emp2's salary: 400190
+```
