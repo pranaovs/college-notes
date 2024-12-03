@@ -5922,6 +5922,1104 @@ Sorted list is:
 6
 ```
 
+# Linked List
+
+## Singly Linked List
+
+### Algorithm
+
+#### Input
+
+* `int` - Menu options
+* List items
+
+#### Output
+
+* Singly Linked List
+
+1. START
+2. Initialize `head` to NULL.
+3. Define the structure for a node in the linked list.
+4. Define function `insert_beginning(int num)`:
+    1. Allocate memory for a new node.
+    2. If memory allocation fails, print "Memory allocation failed!" and return.
+    3. Set the `data` field of the new node to `num`.
+    4. Set the `next` field of the new node to `head`.
+    5. Set `head` to the new node.
+5. Define function `insert_end(int num)`:
+    1. Allocate memory for a new node.
+    2. If memory allocation fails, print "Memory allocation failed!" and return.
+    3. Set the `data` field of the new node to `num`.
+    4. Set the `next` field of the new node to NULL.
+    5. If `head` is NULL, set `head` to the new node.
+    6. Else, traverse to the end of the list and set the `next` field of the last node to the new node.
+6. Define function `insert_position(int pos, int num)`:
+    1. If `pos` is less than 1, print "Invalid position! Position must be greater than or equal to 1." and return.
+    2. Allocate memory for a new node.
+    3. If memory allocation fails, print "Memory allocation failed!" and return.
+    4. Set the `data` field of the new node to `num`.
+    5. If `pos` is 1, set the `next` field of the new node to `head` and set `head` to the new node.
+    6. Else, traverse to the position `pos-1` and insert the new node by setting the `next` field of the new node to the `next` field of the node at position `pos-1`, and then setting the `next` field of the node at position `pos-1` to the new node.
+7. Define function `delete_beginning()`:
+    1. If `head` is NULL, print "List is empty! Cannot delete." and return.
+    2. Set `temp` to `head`.
+    3. Set `head` to the `next` field of `head`.
+    4. Free `temp`.
+8. Define function `delete_end()`:
+    1. If `head` is NULL, print "List is empty! Cannot delete." and return.
+    2. If the `next` field of `head` is NULL, free `head` and set `head` to NULL.
+    3. Else, traverse to the second last node and set its `next` field to NULL, then free the last node.
+9. Define function `delete_position(int pos)`:
+    1. If `head` is NULL, print "List is empty! Cannot delete." and return.
+    2. If `pos` is less than 1, print "Invalid position! Position must be greater than or equal to 1." and return.
+    3. If `pos` is 1, set `temp` to `head`, set `head` to the `next` field of `head`, and free `temp`.
+    4. Else, traverse to the position `pos-1` and delete the node at position `pos` by setting the `next` field of the node at position `pos-1` to the `next` field of the node at position `pos`, and then freeing the node at position `pos`.
+10. Define function `search(int num)`:
+    1. If `head` is NULL, print "List is empty! Cannot search." and return.
+    2. Traverse the list and check if `num` is present.
+    3. If found, print the position.
+    4. If not found, print "Number not found!".
+11. Define function `display()`:
+    1. If `head` is NULL, print "List is empty!" and return.
+    2. Traverse the list and print each node's data.
+12. Define function `display_reverse(struct node *head)`:
+    1. If `head` is NULL, return.
+    2. Recursively call `display_reverse` with the `next` field of `head`.
+    3. Print the `data` field of `head`.
+13. Define function `reverse_link()`:
+    1. If `head` is NULL, print "List is empty! Nothing to reverse." and return.
+    2. Initialize `prev` to NULL, `curr` to `head`, and `next` to NULL.
+    3. Traverse the list and reverse the links by setting the `next` field of `curr` to `prev`, then updating `prev` to `curr`, `curr` to `next`, and `next` to the `next` field of `curr`.
+    4. Set `head` to `prev`.
+14. END
+
+### Code
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define the structure for a node in the linked list
+struct node {
+  int data;
+  struct node *next;
+} *head = NULL;
+
+// Function prototypes
+void insert_beginning(int);
+void insert_end(int);
+void insert_position(int, int);
+void delete_beginning();
+void delete_end();
+void delete_position(int);
+void search(int);
+void display();
+void display_reverse(struct node *);
+void reverse_link();
+
+int main() {
+  while (1) {
+    int choice;
+    printf("1. Insert Beginning\n2. Insert End\n3. Insert Position\n");
+    printf("4. Delete Beginning\n5. Delete End\n6. Delete Position\n");
+    printf("7. Search\n8. Display\n9. Display Reverse\n10. Reverse Link\n11. "
+           "Exit\n\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+
+    switch (choice) {
+    case 1: {
+      int num;
+      printf("Enter the number: ");
+      scanf("%d", &num);
+      insert_beginning(num);
+      break;
+    }
+    case 2: {
+      int num2;
+      printf("Enter the number: ");
+      scanf("%d", &num2);
+      insert_end(num2);
+      break;
+    }
+    case 3: {
+      int pos, num3;
+      printf("Enter position and number: ");
+      scanf("%d %d", &pos, &num3);
+      insert_position(pos, num3);
+      break;
+    }
+    case 4:
+      delete_beginning();
+      break;
+    case 5:
+      delete_end();
+      break;
+    case 6: {
+      int pos_del;
+      printf("Enter position to delete: ");
+      scanf("%d", &pos_del);
+      delete_position(pos_del);
+      break;
+    }
+    case 7: {
+      int num_search;
+      printf("Enter number to search: ");
+      scanf("%d", &num_search);
+      search(num_search);
+      break;
+    }
+    case 8:
+      display();
+      break;
+    case 9:
+      display_reverse(head);
+      printf("\n");
+      break;
+    case 10:
+      reverse_link();
+      break;
+    case 11:
+      exit(0);
+    default:
+      printf("Invalid choice!\n");
+    }
+  }
+  return 0;
+}
+
+// Function to insert a node at the beginning of the list
+void insert_beginning(int num) {
+  struct node *new_node = (struct node *)malloc(sizeof(struct node));
+  if (!new_node) {
+    printf("Memory allocation failed!\n");
+    return;
+  }
+  new_node->data = num;
+  new_node->next = head;
+  head = new_node;
+}
+
+// Function to insert a node at the end of the list
+void insert_end(int num) {
+  struct node *new_node = (struct node *)malloc(sizeof(struct node));
+  if (!new_node) {
+    printf("Memory allocation failed!\n");
+    return;
+  }
+  new_node->data = num;
+  new_node->next = NULL;
+
+  if (head == NULL) {
+    head = new_node;
+  } else {
+    struct node *temp = head;
+    while (temp->next != NULL) {
+      temp = temp->next;
+    }
+    temp->next = new_node;
+  }
+}
+
+// Function to insert a node at a specific position in the list
+void insert_position(int pos, int num) {
+  if (pos < 1) {
+    printf("Invalid position! Position must be greater than or equal to 1.\n");
+    return;
+  }
+
+  struct node *new_node = (struct node *)malloc(sizeof(struct node));
+  if (!new_node) {
+    printf("Memory allocation failed!\n");
+    return;
+  }
+  new_node->data = num;
+
+  if (pos == 1) {
+    new_node->next = head;
+    head = new_node;
+  } else {
+    struct node *temp = head;
+    for (int i = 1; temp != NULL && i < pos - 1; i++) {
+      temp = temp->next;
+    }
+    if (temp == NULL) {
+      printf("Position out of range!\n");
+      free(new_node);
+      return;
+    }
+    new_node->next = temp->next;
+    temp->next = new_node;
+  }
+}
+
+// Function to delete a node from the beginning of the list
+void delete_beginning() {
+  if (head == NULL) {
+    printf("List is empty! Cannot delete.\n");
+    return;
+  }
+  struct node *temp = head;
+  head = head->next;
+  free(temp);
+}
+
+// Function to delete a node from the end of the list
+void delete_end() {
+  if (head == NULL) {
+    printf("List is empty! Cannot delete.\n");
+    return;
+  }
+  if (head->next == NULL) {
+    free(head);
+    head = NULL;
+    return;
+  }
+  struct node *temp = head;
+  while (temp->next->next != NULL) {
+    temp = temp->next;
+  }
+  free(temp->next);
+  temp->next = NULL;
+}
+
+// Function to delete a node from a specific position in the list
+void delete_position(int pos) {
+  if (head == NULL) {
+    printf("List is empty! Cannot delete.\n");
+    return;
+  }
+  if (pos < 1) {
+    printf("Invalid position! Position must be greater than or equal to 1.\n");
+    return;
+  }
+  if (pos == 1) {
+    struct node *temp = head;
+    head = head->next;
+    free(temp);
+    return;
+  }
+  struct node *temp = head;
+  for (int i = 1; temp != NULL && i < pos - 1; i++) {
+    temp = temp->next;
+  }
+  if (temp == NULL || temp->next == NULL) {
+    printf("Position out of range!\n");
+    return;
+  }
+  struct node *to_delete = temp->next;
+  temp->next = to_delete->next;
+  free(to_delete);
+}
+
+// Function to search for a node in the list
+void search(int num) {
+  if (head == NULL) {
+    printf("List is empty! Cannot search.\n");
+    return;
+  }
+  struct node *temp = head;
+  int pos = 1;
+  while (temp != NULL) {
+    if (temp->data == num) {
+      printf("Number found at position %d\n", pos);
+      return;
+    }
+    temp = temp->next;
+    pos++;
+  }
+  printf("Number not found!\n");
+}
+
+// Function to display the list
+void display() {
+  if (head == NULL) {
+    printf("List is empty!\n");
+    return;
+  }
+  struct node *temp = head;
+  printf("List: ");
+  while (temp != NULL) {
+    printf("%d ", temp->data);
+    temp = temp->next;
+  }
+  printf("\n");
+}
+
+// Function to display the list in reverse order
+void display_reverse(struct node *head) {
+  if (head == NULL) {
+    return;
+  }
+  display_reverse(head->next);
+  printf("%d ", head->data);
+}
+
+// Function to reverse the linked list
+void reverse_link() {
+  if (head == NULL) {
+    printf("List is empty! Nothing to reverse.\n");
+    return;
+  }
+  struct node *prev = NULL, *curr = head, *next;
+  while (curr != NULL) {
+    next = curr->next;
+    curr->next = prev;
+    prev = curr;
+    curr = next;
+  }
+  head = prev;
+}
+```
+
+### Output
+
+```sh
+$ gcc -o output/single_llist singly_linked_list.c && ./output/single_llist
+1. Insert Beginning
+2. Insert End
+3. Insert Position
+4. Delete Beginning
+5. Delete End
+6. Delete Position
+7. Search
+8. Display
+9. Display Reverse
+10. Reverse Link
+11. Exit
+
+Enter your choice: 1
+Enter the number: 2
+1. Insert Beginning
+2. Insert End
+3. Insert Position
+4. Delete Beginning
+5. Delete End
+6. Delete Position
+7. Search
+8. Display
+9. Display Reverse
+10. Reverse Link
+11. Exit
+
+Enter your choice: 1
+Enter the number: 3
+1. Insert Beginning
+2. Insert End
+3. Insert Position
+4. Delete Beginning
+5. Delete End
+6. Delete Position
+7. Search
+8. Display
+9. Display Reverse
+10. Reverse Link
+11. Exit
+
+Enter your choice: 2
+Enter the number: 4
+1. Insert Beginning
+2. Insert End
+3. Insert Position
+4. Delete Beginning
+5. Delete End
+6. Delete Position
+7. Search
+8. Display
+9. Display Reverse
+10. Reverse Link
+11. Exit
+
+Enter your choice: 3
+Enter position and number: 1
+4
+1. Insert Beginning
+2. Insert End
+3. Insert Position
+4. Delete Beginning
+5. Delete End
+6. Delete Position
+7. Search
+8. Display
+9. Display Reverse
+10. Reverse Link
+11. Exit
+
+Enter your choice: 8
+List: 4 3 2 4 
+1. Insert Beginning
+2. Insert End
+3. Insert Position
+4. Delete Beginning
+5. Delete End
+6. Delete Position
+7. Search
+8. Display
+9. Display Reverse
+10. Reverse Link
+11. Exit
+
+Enter your choice: 5
+1. Insert Beginning
+2. Insert End
+3. Insert Position
+4. Delete Beginning
+5. Delete End
+6. Delete Position
+7. Search
+8. Display
+9. Display Reverse
+10. Reverse Link
+11. Exit
+
+Enter your choice: 8
+List: 4 3 2 
+1. Insert Beginning
+2. Insert End
+3. Insert Position
+4. Delete Beginning
+5. Delete End
+6. Delete Position
+7. Search
+8. Display
+9. Display Reverse
+10. Reverse Link
+11. Exit
+
+Enter your choice: 9
+2 3 4 
+1. Insert Beginning
+2. Insert End
+3. Insert Position
+4. Delete Beginning
+5. Delete End
+6. Delete Position
+7. Search
+8. Display
+9. Display Reverse
+10. Reverse Link
+11. Exit
+
+Enter your choice: 20
+Invalid choice!
+1. Insert Beginning
+2. Insert End
+3. Insert Position
+4. Delete Beginning
+5. Delete End
+6. Delete Position
+7. Search
+8. Display
+9. Display Reverse
+10. Reverse Link
+11. Exit
+
+Enter your choice: 10
+1. Insert Beginning
+2. Insert End
+3. Insert Position
+4. Delete Beginning
+5. Delete End
+6. Delete Position
+7. Search
+8. Display
+9. Display Reverse
+10. Reverse Link
+11. Exit
+
+Enter your choice: 8
+List: 2 3 4 
+1. Insert Beginning
+2. Insert End
+3. Insert Position
+4. Delete Beginning
+5. Delete End
+6. Delete Position
+7. Search
+8. Display
+9. Display Reverse
+10. Reverse Link
+11. Exit
+
+Enter your choice: 11
+```
+
+## Doubly Linked List
+
+### Algorithm
+
+#### Input
+
+* `int` - Menu option
+* List items
+
+#### Output
+
+* Doubly Linked List
+
+1. START
+2. Initialize `head` to NULL.
+3. Define the structure for a node in the doubly linked list.
+4. Define function `insert_beginning(int num)`:
+    1. Allocate memory for a new node.
+    2. If memory allocation fails, print "Memory allocation failed!" and return.
+    3. set the `data` field of the new node to `num`.
+    4. set the `next` field of the new node to `head`.
+    5. set the `prev` field of the new node to null.
+    6. if `head` is not null, set the `prev` field of `head` to the new node.
+    7. set `head` to the new node.
+5. define function `insert_end(int num)`:
+    1. allocate memory for a new node.
+    2. if memory allocation fails, print "memory allocation failed!" and return.
+    3. set the `data` field of the new node to `num`.
+    4. set the `next` field of the new node to null.
+    5. if `head` is null, set the `prev` field of the new node to null and set `head` to the new node.
+    6. else, traverse to the end of the list and set the `next` field of the last node to the new node, and set the `prev` field of the new node to the last node.
+6. define function `insert_position(int pos, int num)`:
+    1. if `pos` is less than 1, print "invalid position! position must be greater than or equal to 1." and return.
+    2. allocate memory for a new node.
+    3. if memory allocation fails, print "memory allocation failed!" and return.
+    4. set the `data` field of the new node to `num`.
+    5. if `pos` is 1, set the `next` field of the new node to `head`, set the `prev` field of the new node to null, and if `head` is not null, set the `prev` field of `head` to the new node, then set `head` to the new node.
+    6. else, traverse to the position `pos-1` and insert the new node by setting the `next` field of the new node to the `next` field of the node at position `pos-1`, setting the `prev` field of the new node to the node at position `pos-1`, and if the `next` field of the node at position `pos-1` is not null, set the `prev` field of the node at position `pos` to the new node, then set the `next` field of the node at position `pos-1` to the new node.
+7. define function `delete_beginning()`:
+    1. if `head` is null, print "list is empty! cannot delete." and return.
+    2. set `temp` to `head`.
+    3. set `head` to the `next` field of `head`.
+    4. if `head` is not null, set the `prev` field of `head` to null.
+    5. free `temp`.
+8. define function `delete_end()`:
+    1. if `head` is null, print "list is empty! cannot delete." and return.
+    2. if the `next` field of `head` is null, free `head` and set `head` to null.
+    3. else, traverse to the last node and set the `next` field of the second last node to null, then free the last node.
+9. define function `delete_position(int pos)`:
+    1. if `head` is null, print "list is empty! cannot delete." and return.
+    2. if `pos` is less than 1, print "invalid position! position must be greater than or equal to 1." and return.
+    3. if `pos` is 1, set `temp` to `head`, set `head` to the `next` field of `head`, and if `head` is not null, set the `prev` field of `head` to null, then free `temp`.
+    4. else, traverse to the position `pos-1` and delete the node at position `pos` by setting the `next` field of the node at position `pos-1` to the `next` field of the node at position `pos`, and if the `next` field of the node at position `pos` is not null, set the `prev` field of the node at position `pos+1` to the node at position `pos-1`, then free the node at position `pos`.
+10. define function `search(int num)`:
+    1. if `head` is null, print "list is empty! cannot search." and return.
+    2. traverse the list and check if `num` is present.
+    3. if found, print the position.
+    4. if not found, print "number not found!".
+11. define function `display()`:
+    1. if `head` is null, print "list is empty!" and return.
+    2. traverse the list and print each node's data.
+12. define function `display_reverse(struct node *head)`:
+    1. if `head` is null, return.
+    2. recursively call `display_reverse` with the `next` field of `head`.
+    3. print the `data` field of `head`.
+13. define function `reverse_link()`:
+    1. if `head` is null, print "list is empty! nothing to reverse." and return.
+    2. initialize `temp` to null and `current` to `head`.
+    3. traverse the list and reverse the links by setting the `prev` field of `current` to the `next` field of `current`, setting the `next` field of `current` to `temp`, updating `temp` to `current`, and updating `current` to the `prev` field of `current`.
+    4. if `temp` is not null, set `head` to the `prev` field of `temp`.
+14. end
+
+### Code
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define the structure for a node in the doubly linked list
+struct node {
+  int data;
+  struct node *next;
+  struct node *prev;
+} *head = NULL;
+
+// Function prototypes
+void insert_beginning(int);
+void insert_end(int);
+void insert_position(int, int);
+void delete_beginning();
+void delete_end();
+void delete_position(int);
+void search(int);
+void display();
+void display_reverse(struct node *);
+void reverse_link();
+
+int main() {
+  while (1) {
+    int choice;
+    printf("1. Insert Beginning\n2. Insert End\n3. Insert Position\n");
+    printf("4. Delete Beginning\n5. Delete End\n6. Delete Position\n");
+    printf("7. Search\n8. Display\n9. Display Reverse\n10. Reverse Link\n11. "
+           "Exit\n\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+
+    switch (choice) {
+    case 1: {
+      int num;
+      printf("Enter the number: ");
+      scanf("%d", &num);
+      insert_beginning(num);
+      break;
+    }
+    case 2: {
+      int num2;
+      printf("Enter the number: ");
+      scanf("%d", &num2);
+      insert_end(num2);
+      break;
+    }
+    case 3: {
+      int pos, num3;
+      printf("Enter position and number: ");
+      scanf("%d %d", &pos, &num3);
+      insert_position(pos, num3);
+      break;
+    }
+    case 4:
+      delete_beginning();
+      break;
+    case 5:
+      delete_end();
+      break;
+    case 6: {
+      int pos_del;
+      printf("Enter position to delete: ");
+      scanf("%d", &pos_del);
+      delete_position(pos_del);
+      break;
+    }
+    case 7: {
+      int num_search;
+      printf("Enter number to search: ");
+      scanf("%d", &num_search);
+      search(num_search);
+      break;
+    }
+    case 8:
+      display();
+      break;
+    case 9:
+      display_reverse(head);
+      printf("\n");
+      break;
+    case 10:
+      reverse_link();
+      break;
+    case 11:
+      exit(0);
+    default:
+      printf("Invalid choice!\n");
+    }
+  }
+  return 0;
+}
+
+// Function to insert a node at the beginning of the list
+void insert_beginning(int num) {
+  struct node *new_node = (struct node *)malloc(sizeof(struct node));
+  if (!new_node) {
+    printf("Memory allocation failed!\n");
+    return;
+  }
+  new_node->data = num;
+  new_node->next = head;
+  new_node->prev = NULL;
+  if (head != NULL) {
+    head->prev = new_node;
+  }
+  head = new_node;
+}
+
+// Function to insert a node at the end of the list
+void insert_end(int num) {
+  struct node *new_node = (struct node *)malloc(sizeof(struct node));
+  if (!new_node) {
+    printf("Memory allocation failed!\n");
+    return;
+  }
+  new_node->data = num;
+  new_node->next = NULL;
+  if (head == NULL) {
+    new_node->prev = NULL;
+    head = new_node;
+    return;
+  }
+  struct node *temp = head;
+  while (temp->next != NULL) {
+    temp = temp->next;
+  }
+  temp->next = new_node;
+  new_node->prev = temp;
+}
+
+// Function to insert a node at a specific position in the list
+void insert_position(int pos, int num) {
+  if (pos < 1) {
+    printf("Invalid position! Position must be greater than or equal to 1.\n");
+    return;
+  }
+
+  struct node *new_node = (struct node *)malloc(sizeof(struct node));
+  if (!new_node) {
+    printf("Memory allocation failed!\n");
+    return;
+  }
+  new_node->data = num;
+
+  if (pos == 1) {
+    new_node->next = head;
+    new_node->prev = NULL;
+    if (head != NULL) {
+      head->prev = new_node;
+    }
+    head = new_node;
+  } else {
+    struct node *temp = head;
+    for (int i = 1; temp != NULL && i < pos - 1; i++) {
+      temp = temp->next;
+    }
+    if (temp == NULL) {
+      printf("Position out of range!\n");
+      free(new_node);
+      return;
+    }
+    new_node->next = temp->next;
+    new_node->prev = temp;
+    if (temp->next != NULL) {
+      temp->next->prev = new_node;
+    }
+    temp->next = new_node;
+  }
+}
+
+// Function to delete a node from the beginning of the list
+void delete_beginning() {
+  if (head == NULL) {
+    printf("List is empty! Cannot delete.\n");
+    return;
+  }
+  struct node *temp = head;
+  head = head->next;
+  if (head != NULL) {
+    head->prev = NULL;
+  }
+  free(temp);
+}
+
+// Function to delete a node from the end of the list
+void delete_end() {
+  if (head == NULL) {
+    printf("List is empty! Cannot delete.\n");
+    return;
+  }
+  if (head->next == NULL) {
+    free(head);
+    head = NULL;
+    return;
+  }
+  struct node *temp = head;
+  while (temp->next != NULL) {
+    temp = temp->next;
+  }
+  temp->prev->next = NULL;
+  free(temp);
+}
+
+// Function to delete a node from a specific position in the list
+void delete_position(int pos) {
+  if (head == NULL) {
+    printf("List is empty! Cannot delete.\n");
+    return;
+  }
+  if (pos < 1) {
+    printf("Invalid position! Position must be greater than or equal to 1.\n");
+    return;
+  }
+  if (pos == 1) {
+    struct node *temp = head;
+    head = head->next;
+    if (head != NULL) {
+      head->prev = NULL;
+    }
+    free(temp);
+    return;
+  }
+  struct node *temp = head;
+  for (int i = 1; temp != NULL && i < pos - 1; i++) {
+    temp = temp->next;
+  }
+  if (temp == NULL || temp->next == NULL) {
+    printf("Position out of range!\n");
+    return;
+  }
+  struct node *to_delete = temp->next;
+  temp->next = to_delete->next;
+  if (to_delete->next != NULL) {
+    to_delete->next->prev = temp;
+  }
+  free(to_delete);
+}
+
+// Function to search for a node in the list
+void search(int num) {
+  if (head == NULL) {
+    printf("List is empty! Cannot search.\n");
+    return;
+  }
+  struct node *temp = head;
+  int pos = 1;
+  while (temp != NULL) {
+    if (temp->data == num) {
+      printf("Number found at position %d\n", pos);
+      return;
+    }
+    temp = temp->next;
+    pos++;
+  }
+  printf("Number not found!\n");
+}
+
+// Function to display the list
+void display() {
+  if (head == NULL) {
+    printf("List is empty!\n");
+    return;
+  }
+  struct node *temp = head;
+  printf("List: ");
+  while (temp != NULL) {
+    printf("%d ", temp->data);
+    temp = temp->next;
+  }
+  printf("\n");
+}
+
+// Function to display the list in reverse order
+void display_reverse(struct node *head) {
+  if (head == NULL) {
+    return;
+  }
+  display_reverse(head->next);
+  printf("%d ", head->data);
+}
+
+// Function to reverse the linked list
+void reverse_link() {
+  if (head == NULL) {
+    printf("List is empty! Nothing to reverse.\n");
+    return;
+  }
+  struct node *temp = NULL;
+  struct node *current = head;
+  while (current != NULL) {
+    temp = current->prev;
+    current->prev = current->next;
+    current->next = temp;
+    current = current->prev;
+  }
+  if (temp != NULL) {
+    head = temp->prev;
+  }
+}
+```
+
+### Output
+
+```sh
+$ gcc -o output/double_llist doubly_linked_list.c && ./output/double_llist
+1. Insert Beginning
+2. Insert End
+3. Insert Position
+4. Delete Beginning
+5. Delete End
+6. Delete Position
+7. Search
+8. Display
+9. Display Reverse
+10. Reverse Link
+11. Exit
+
+Enter your choice: 1
+Enter the number: 2
+1. Insert Beginning
+2. Insert End
+3. Insert Position
+4. Delete Beginning
+5. Delete End
+6. Delete Position
+7. Search
+8. Display
+9. Display Reverse
+10. Reverse Link
+11. Exit
+
+Enter your choice: 1
+Enter the number: 4
+1. Insert Beginning
+2. Insert End
+3. Insert Position
+4. Delete Beginning
+5. Delete End
+6. Delete Position
+7. Search
+8. Display
+9. Display Reverse
+10. Reverse Link
+11. Exit
+
+Enter your choice: 2
+Enter the number: 6
+1. Insert Beginning
+2. Insert End
+3. Insert Position
+4. Delete Beginning
+5. Delete End
+6. Delete Position
+7. Search
+8. Display
+9. Display Reverse
+10. Reverse Link
+11. Exit
+
+Enter your choice: 3
+Enter position and number: 2 9
+1. Insert Beginning
+2. Insert End
+3. Insert Position
+4. Delete Beginning
+5. Delete End
+6. Delete Position
+7. Search
+8. Display
+9. Display Reverse
+10. Reverse Link
+11. Exit
+
+Enter your choice: 8
+List: 4 9 2 6 
+1. Insert Beginning
+2. Insert End
+3. Insert Position
+4. Delete Beginning
+5. Delete End
+6. Delete Position
+7. Search
+8. Display
+9. Display Reverse
+10. Reverse Link
+11. Exit
+
+Enter your choice: 5
+1. Insert Beginning
+2. Insert End
+3. Insert Position
+4. Delete Beginning
+5. Delete End
+6. Delete Position
+7. Search
+8. Display
+9. Display Reverse
+10. Reverse Link
+11. Exit
+
+Enter your choice: 8
+List: 4 9 2 
+1. Insert Beginning
+2. Insert End
+3. Insert Position
+4. Delete Beginning
+5. Delete End
+6. Delete Position
+7. Search
+8. Display
+9. Display Reverse
+10. Reverse Link
+11. Exit
+
+Enter your choice: 7
+Enter number to search: 10
+Number not found!
+1. Insert Beginning
+2. Insert End
+3. Insert Position
+4. Delete Beginning
+5. Delete End
+6. Delete Position
+7. Search
+8. Display
+9. Display Reverse
+10. Reverse Link
+11. Exit
+
+Enter your choice: 9
+2 9 4 
+1. Insert Beginning
+2. Insert End
+3. Insert Position
+4. Delete Beginning
+5. Delete End
+6. Delete Position
+7. Search
+8. Display
+9. Display Reverse
+10. Reverse Link
+11. Exit
+
+Enter your choice: 10
+1. Insert Beginning
+2. Insert End
+3. Insert Position
+4. Delete Beginning
+5. Delete End
+6. Delete Position
+7. Search
+8. Display
+9. Display Reverse
+10. Reverse Link
+11. Exit
+
+Enter your choice: 8
+List: 2 9 4 
+1. Insert Beginning
+2. Insert End
+3. Insert Position
+4. Delete Beginning
+5. Delete End
+6. Delete Position
+7. Search
+8. Display
+9. Display Reverse
+10. Reverse Link
+11. Exit
+
+Enter your choice: 4
+1. Insert Beginning
+2. Insert End
+3. Insert Position
+4. Delete Beginning
+5. Delete End
+6. Delete Position
+7. Search
+8. Display
+9. Display Reverse
+10. Reverse Link
+11. Exit
+
+Enter your choice: 8
+List: 9 4 
+1. Insert Beginning
+2. Insert End
+3. Insert Position
+4. Delete Beginning
+5. Delete End
+6. Delete Position
+7. Search
+8. Display
+9. Display Reverse
+10. Reverse Link
+11. Exit
+
+Enter your choice: 11
+```
+
 # File handling
 
 ## Count lines in a file
