@@ -3336,6 +3336,8 @@ Number of characters in the string using call be reference: 10
 
 ### Algorithm
 
+__LinearSearch__
+
 #### Input
 
 - `arr` (array) - Array to search in.
@@ -3434,6 +3436,8 @@ Element found in the array.
 ## Decimal to Binary Conversion
 
 ### Algorithm
+
+__ConvertToBinary__
 
 #### Input
 
@@ -4024,6 +4028,8 @@ The answer matrix is:
 
 ### Algorithm
 
+__Tic Tac Toe Game__
+
 #### Input
 
 - `row` (row number for the move).
@@ -4258,7 +4264,38 @@ Player X wins!
 
 ## Student Details
 
-<!--TODO: Algorithm-->
+### Algorithm
+
+__Student Details Menu__
+
+#### Input
+
+- Choice - Menu choice
+- Student Count - Number of students
+- Roll Number - Roll number of the student
+- Name - Name of the student
+- Marks - Marks of the student
+
+#### Output
+
+- Display student name, roll number, and marks
+
+#### Steps
+
+1. Print menu options: 1. Input student details, 2. Edit student details, 3. Display student details, 4 .Exit
+2. Input choice
+3. If choice = 1:
+    - For i from 1 to n:
+      - input name, rollnum and marks of student i
+4. If choice = 2:
+    - Input student roll number
+        - Edit student details
+5. If choice = 3:
+    - For i from 1 to n:
+      - print name, rollnum and marks of student i
+6. If choice = 6:
+    - exit menu
+7. Else: print Invalid choice
 
 ### Code
 
@@ -4527,53 +4564,40 @@ Exiting program
 
 ### Algorithm
 
+__Library Management System__
+
 #### Input
 
-- `max_books` (maximum number of books that can be stored).
-- `name` (name of the book).
-- `author` (author of the book).
-- `cost` (cost of the book).
-- `choice` (user choice for menu).
+- Input: title – book title
+- author – book author
+- price – book price
+- n – number of books whose details you want to input
+- choice – menu option chosen
 
 #### Output
 
-- Book details.
-- Total cost of books in the cart.
+- Display the book details
+- Total price of the books in cart
 
-1. START
-2. Define a struct `Book` with fields `name`, `author`, and `cost`.
-3. Implement a function `get_details` to input and return a `Book` struct:
-    1. Declare a local `Book` variable `new_book`.
-    2. Input the book's name, author, and cost.
-    3. Return the populated `Book` struct.
-4. Implement a function `print_book` to print details of a `Book` struct:
-    1. Print the book's name, author, and cost.
-5. Implement a function `print_all_books` to print details of all books in an array:
-    1. Loop through each book in the array.
-    2. Call `print_book` for each book.
-6. In `main` function:
-    1. Declare variables `choice`, `details_exist`, `max_books`, and `book_count`.
-    2. Input the maximum number of books.
-    3. Declare an array `book_array` of `Book` structs with size `max_books`.
-    4. Loop until `choice` is 5:
-        1. Display menu and input `choice`.
-        2. If `choice` is 1:
-            1. Input details for a new book and store in `book_array`.
-            2. Increment `book_count`.
-            3. Set `details_exist` to true.
-        3. If `choice` is 2 and `details_exist` is true:
-            1. Input index of book to delete.
-            2. Delete the selected book and shift remaining books.
-            3. Decrement `book_count`.
-        4. If `choice` is 3 and `details_exist` is true:
-            1. Input index of book to view.
-            2. Display details of the selected book or all books.
-        5. If `choice` is 4 and `details_exist` is true:
-            1. Implement a checkout system to add books to a cart and calculate total cost.
-        6. If `choice` is 5:
-            1. Print "Exiting program".
-        7. If `choice` is invalid, print "Invalid choice".
-7. END
+#### Steps
+
+1.Print menu options: 1. Input book details, 2. Display book details, 3.
+Calculate total price, 4. Exit
+2. Input choice
+3. If choice = 1:
+    - For i from 1 to n:
+    - input title, author and price of book i
+4. If choice = 2:
+    - For i from 1 to n:
+    - print title, author and price of book i
+5. If choice = 3:
+    - totalprice $\leftarrow$ 0
+    - For i from 1 to n:
+      - totalprice = totalprice + price of book i
+    - return totalprice
+6. If choice = 4:
+    - exit menu
+7. Else: print Invalid choice
 
 ### Code
 
@@ -4984,30 +5008,23 @@ Exiting program
 
 ### Algorithm
 
+__Employee Management System__
+
 #### Input
 
-- `empcount` (number of employees).
+- `n` (number of employees).
 - `name`, `empid`, `age`, `sex`, `position`, `salary` (employee details).
 
 #### Output
 
 - Employee details.
 
-1. START
-2. Define a struct `Employee` with fields `name`, `empid`, `age`, `sex`, `position`, and `salary`.
-3. Implement a function `get_details` to input and return an `Employee` struct:
-    1. Declare a local `Employee` variable `new_employee`.
-    2. Input the employee's name, employee id, age, sex, position, and salary.
-    3. Return the populated `Employee` struct.
-4. Implement a function `print_details` to print details of all employees in an array:
-    1. Loop through each employee in the array.
-    2. Print the employee's name, employee id, age, sex, position, and salary.
-5. In `main` function:
-    1. Input the number of employees `empcount`.
-    2. Declare an array `employee_list` of `Employee` structs with size `empcount`.
-    3. Loop through `empcount` times to input details for each employee and store in `employee_list`.
-    4. Call `print_details` to display details of all employees.
-6. END
+#### Steps
+
+1. For i from 1 to n:
+    - input name, id, age, sex, position, salary of employee i
+2. For i from 1 to n:
+    - print name, id, age, sex, position, salary of employee i
 
 ### Code
 
@@ -5150,6 +5167,8 @@ Employee emp3's salary: 100290
 
 ### Algorithm
 
+__Library Item Details__
+
 #### Input
 
 - `name` (name of the item).
@@ -5161,24 +5180,15 @@ Employee emp3's salary: 100290
 
 - Item details.
 
-1. START
-2. Define a union `item_length` with fields `pages` and `duration`.
-3. Define a struct `Item` with fields `name`, `is_book`, and `length`.
-4. Implement a function `input_item` to input and populate an `Item` struct:
-    1. Input the item's name.
-    2. Input whether the item is a book.
-    3. If the item is a book, input the number of pages.
-    4. If the item is a DVD, input the duration in minutes.
-5. Implement a function `print_item` to display details of an `Item` struct:
-    1. Print the item's name.
-    2. Print the item type (Book or DVD).
-    3. If the item is a book, print the number of pages.
-    4. If the item is a DVD, print the duration in minutes.
-6. In `main` function:
-    1. Declare a variable `item` of type `Item`.
-    2. Call `input_item` to input details for `item`.
-    3. Call `print_item` to display details of `item`.
-7. END
+#### Steps
+
+1. Input item name
+2. Input if the item is a book or DVD
+3. If the item is a book:
+    - Input number of pages
+4. Else if the item is a DVD:
+    - Input duration in minutes
+5. Display item details
 
 ### Code
 
@@ -5264,6 +5274,8 @@ Duration: 42.00 minutes
 
 ### Algorithm
 
+__Largest Number Finder__
+
 #### Input
 
 - `size` (size of the list).
@@ -5273,27 +5285,13 @@ Duration: 42.00 minutes
 
 - Largest number in the list.
 
-1. START
-2. Define a function prototype `int largestnum(int *ptr, int *size)`.
-3. In `main` function:
-    1. Declare pointers `size`, `ptr`, `largest`, and `i`.
-    2. Allocate memory for `i`, `size`, and `largest`.
-    3. Input the size of the list and store it in `size`.
-    4. Allocate memory for `ptr` to store the list of numbers.
-    5. Loop through the list to input numbers:
-        1. Input each number and store it in `ptr`.
-    6. Call `largestnum` function to find the largest number and store the result in `largest`.
-    7. Print the largest number.
-    8. Free the allocated memory for `size`, `i`, `largest`, and `ptr`.
-4. Implement the function `largestnum`:
-    1. Declare pointers `i` and `largest`.
-    2. Allocate memory for `i` and `largest`.
-    3. Initialize `largest` to 0.
-    4. Loop through the list to find the largest number:
-        1. If the current number is greater than `largest`, update `largest`.
-    5. Return the value of `largest`.
-    6. Free the allocated memory for `i` and `largest`.
-5. END
+#### Steps
+
+1. largest $\leftarrow$ list[1]
+2. For i from 2 to n:
+    - If list[i] > largest:
+        - largest = list[i]
+3. Return largest
 
 ### Code
 
@@ -5373,6 +5371,8 @@ The largest number is 5
 
 ### Algorithm
 
+__Linear Search__
+
 #### Input
 
 - `size` (size of the list).
@@ -5382,28 +5382,13 @@ The largest number is 5
 
 - Whether the number is found in the list or not.
 
-1. START
-2. Define a function prototype `void search(int *ptr, int *size, int *num)`.
-3. In `main` function:
-    1. Declare pointers `size`, `ptr`, `i`, and `num`.
-    2. Allocate memory for `i`, `size`, and `num`.
-    3. Input the size of the list and store it in `size`.
-    4. Allocate memory for `ptr` to store the list of numbers.
-    5. Loop through the list to input numbers:
-        1. Input each number and store it in `ptr`.
-    6. Input the number to search for and store it in `num`.
-    7. Call `search` function to search for the number in the list.
-    8. Free the allocated memory for `size`, `i`, `num`, and `ptr`.
-4. Implement the function `search`:
-    1. Declare pointers `i` and `flag`.
-    2. Allocate memory for `i` and `flag`.
-    3. Initialize `flag` to 0.
-    4. Loop through the list to search for the number:
-        1. If the current number is equal to `num`, set `flag` to 1.
-    5. If `flag` is 1, print "Number found".
-    6. Otherwise, print "Number not found".
-    7. Free the allocated memory for `i` and `flag`.
-5. END
+#### Steps
+
+1. index $\leftarrow$ 0
+2. While index < len:
+    - If arr[index] = ele:
+        - Return True
+3. index $\leftarrow$ index + 1
 
 ### Code
 
@@ -5505,6 +5490,8 @@ Number found
 
 ### Algorithm
 
+__Bubble Sort__
+
 #### Input
 
 - `size` (size of the list).
@@ -5514,26 +5501,15 @@ Number found
 
 - Sorted list in ascending order.
 
-1. START
-2. Define a function prototype `void ascendingsort(int *ptr, int *size)`.
-3. In `main` function:
-    1. Declare pointers `size`, `ptr`, and `i`.
-    2. Allocate memory for `i` and `size`.
-    3. Input the size of the list and store it in `size`.
-    4. Allocate memory for `ptr` to store the list of numbers.
-    5. Loop through the list to input numbers:
-        1. Input each number and store it in `ptr`.
-    6. Call `ascendingsort` function to sort the list in ascending order.
-    7. Free the allocated memory for `size`, `i`, and `ptr`.
-4. Implement the function `ascendingsort`:
-    1. Declare pointers `i`, `j`, and `temp`.
-    2. Allocate memory for `i`, `j`, and `temp`.
-    3. Loop through the list to sort the numbers using bubble sort:
-        1. Compare each pair of adjacent elements.
-        2. If the first element is greater than the second, swap them.
-    4. Print the sorted list.
-    5. Free the allocated memory for `i`, `j`, and `temp`.
-5. END
+#### Steps
+
+1. For i from 0 to n-2:
+    - For j from 0 to n-i-2:
+        – If arr[j] > arr[j+1]:
+            *temp $\leftarrow$ arr[j]
+            *arr[j] $\leftarrow$ arr[j+1]
+            *arr[j+1] $\leftarrow$ temp
+2. Print the array
 
 ### Code
 
@@ -5627,72 +5603,7 @@ Sorted list is:
 
 ## Singly Linked List
 
-### Algorithm
-
-#### Input
-
-- `int` - Menu options
-- List items
-
-#### Output
-
-- Singly Linked List
-
-1. START
-2. Initialize `head` to NULL.
-3. Define the structure for a node in the linked list.
-4. Define function `insert_beginning(int num)`:
-    1. Allocate memory for a new node.
-    2. If memory allocation fails, print "Memory allocation failed!" and return.
-    3. Set the `data` field of the new node to `num`.
-    4. Set the `next` field of the new node to `head`.
-    5. Set `head` to the new node.
-5. Define function `insert_end(int num)`:
-    1. Allocate memory for a new node.
-    2. If memory allocation fails, print "Memory allocation failed!" and return.
-    3. Set the `data` field of the new node to `num`.
-    4. Set the `next` field of the new node to NULL.
-    5. If `head` is NULL, set `head` to the new node.
-    6. Else, traverse to the end of the list and set the `next` field of the last node to the new node.
-6. Define function `insert_position(int pos, int num)`:
-    1. If `pos` is less than 1, print "Invalid position! Position must be greater than or equal to 1." and return.
-    2. Allocate memory for a new node.
-    3. If memory allocation fails, print "Memory allocation failed!" and return.
-    4. Set the `data` field of the new node to `num`.
-    5. If `pos` is 1, set the `next` field of the new node to `head` and set `head` to the new node.
-    6. Else, traverse to the position `pos-1` and insert the new node by setting the `next` field of the new node to the `next` field of the node at position `pos-1`, and then setting the `next` field of the node at position `pos-1` to the new node.
-7. Define function `delete_beginning()`:
-    1. If `head` is NULL, print "List is empty! Cannot delete." and return.
-    2. Set `temp` to `head`.
-    3. Set `head` to the `next` field of `head`.
-    4. Free `temp`.
-8. Define function `delete_end()`:
-    1. If `head` is NULL, print "List is empty! Cannot delete." and return.
-    2. If the `next` field of `head` is NULL, free `head` and set `head` to NULL.
-    3. Else, traverse to the second last node and set its `next` field to NULL, then free the last node.
-9. Define function `delete_position(int pos)`:
-    1. If `head` is NULL, print "List is empty! Cannot delete." and return.
-    2. If `pos` is less than 1, print "Invalid position! Position must be greater than or equal to 1." and return.
-    3. If `pos` is 1, set `temp` to `head`, set `head` to the `next` field of `head`, and free `temp`.
-    4. Else, traverse to the position `pos-1` and delete the node at position `pos` by setting the `next` field of the node at position `pos-1` to the `next` field of the node at position `pos`, and then freeing the node at position `pos`.
-10. Define function `search(int num)`:
-    1. If `head` is NULL, print "List is empty! Cannot search." and return.
-    2. Traverse the list and check if `num` is present.
-    3. If found, print the position.
-    4. If not found, print "Number not found!".
-11. Define function `display()`:
-    1. If `head` is NULL, print "List is empty!" and return.
-    2. Traverse the list and print each node's data.
-12. Define function `display_reverse(struct node *head)`:
-    1. If `head` is NULL, return.
-    2. Recursively call `display_reverse` with the `next` field of `head`.
-    3. Print the `data` field of `head`.
-13. Define function `reverse_link()`:
-    1. If `head` is NULL, print "List is empty! Nothing to reverse." and return.
-    2. Initialize `prev` to NULL, `curr` to `head`, and `next` to NULL.
-    3. Traverse the list and reverse the links by setting the `next` field of `curr` to `prev`, then updating `prev` to `curr`, `curr` to `next`, and `next` to the `next` field of `curr`.
-    4. Set `head` to `prev`.
-14. END
+<!--TODO: Algorithm-->
 
 ### Code
 
@@ -6147,75 +6058,7 @@ Enter your choice: 11
 
 ## Doubly Linked List
 
-### Algorithm
-
-#### Input
-
-- `int` - Menu option
-- List items
-
-#### Output
-
-- Doubly Linked List
-
-1. START
-2. Initialize `head` to NULL.
-3. Define the structure for a node in the doubly linked list.
-4. Define function `insert_beginning(int num)`:
-    1. Allocate memory for a new node.
-    2. If memory allocation fails, print "Memory allocation failed!" and return.
-    3. set the `data` field of the new node to `num`.
-    4. set the `next` field of the new node to `head`.
-    5. set the `prev` field of the new node to null.
-    6. if `head` is not null, set the `prev` field of `head` to the new node.
-    7. set `head` to the new node.
-5. define function `insert_end(int num)`:
-    1. allocate memory for a new node.
-    2. if memory allocation fails, print "memory allocation failed!" and return.
-    3. set the `data` field of the new node to `num`.
-    4. set the `next` field of the new node to null.
-    5. if `head` is null, set the `prev` field of the new node to null and set `head` to the new node.
-    6. else, traverse to the end of the list and set the `next` field of the last node to the new node, and set the `prev` field of the new node to the last node.
-6. define function `insert_position(int pos, int num)`:
-    1. if `pos` is less than 1, print "invalid position! position must be greater than or equal to 1." and return.
-    2. allocate memory for a new node.
-    3. if memory allocation fails, print "memory allocation failed!" and return.
-    4. set the `data` field of the new node to `num`.
-    5. if `pos` is 1, set the `next` field of the new node to `head`, set the `prev` field of the new node to null, and if `head` is not null, set the `prev` field of `head` to the new node, then set `head` to the new node.
-    6. else, traverse to the position `pos-1` and insert the new node by setting the `next` field of the new node to the `next` field of the node at position `pos-1`, setting the `prev` field of the new node to the node at position `pos-1`, and if the `next` field of the node at position `pos-1` is not null, set the `prev` field of the node at position `pos` to the new node, then set the `next` field of the node at position `pos-1` to the new node.
-7. define function `delete_beginning()`:
-    1. if `head` is null, print "list is empty! cannot delete." and return.
-    2. set `temp` to `head`.
-    3. set `head` to the `next` field of `head`.
-    4. if `head` is not null, set the `prev` field of `head` to null.
-    5. free `temp`.
-8. define function `delete_end()`:
-    1. if `head` is null, print "list is empty! cannot delete." and return.
-    2. if the `next` field of `head` is null, free `head` and set `head` to null.
-    3. else, traverse to the last node and set the `next` field of the second last node to null, then free the last node.
-9. define function `delete_position(int pos)`:
-    1. if `head` is null, print "list is empty! cannot delete." and return.
-    2. if `pos` is less than 1, print "invalid position! position must be greater than or equal to 1." and return.
-    3. if `pos` is 1, set `temp` to `head`, set `head` to the `next` field of `head`, and if `head` is not null, set the `prev` field of `head` to null, then free `temp`.
-    4. else, traverse to the position `pos-1` and delete the node at position `pos` by setting the `next` field of the node at position `pos-1` to the `next` field of the node at position `pos`, and if the `next` field of the node at position `pos` is not null, set the `prev` field of the node at position `pos+1` to the node at position `pos-1`, then free the node at position `pos`.
-10. define function `search(int num)`:
-    1. if `head` is null, print "list is empty! cannot search." and return.
-    2. traverse the list and check if `num` is present.
-    3. if found, print the position.
-    4. if not found, print "number not found!".
-11. define function `display()`:
-    1. if `head` is null, print "list is empty!" and return.
-    2. traverse the list and print each node's data.
-12. define function `display_reverse(struct node *head)`:
-    1. if `head` is null, return.
-    2. recursively call `display_reverse` with the `next` field of `head`.
-    3. print the `data` field of `head`.
-13. define function `reverse_link()`:
-    1. if `head` is null, print "list is empty! nothing to reverse." and return.
-    2. initialize `temp` to null and `current` to `head`.
-    3. traverse the list and reverse the links by setting the `prev` field of `current` to the `next` field of `current`, setting the `next` field of `current` to `temp`, updating `temp` to `current`, and updating `current` to the `prev` field of `current`.
-    4. if `temp` is not null, set `head` to the `prev` field of `temp`.
-14. end
+<!--TODO: Algorithm-->
 
 ### Code
 
@@ -6727,28 +6570,23 @@ Enter your choice: 11
 
 ### Algorithm
 
+__Line counter__
+
 #### Input
 
-- `string` - filename
+- Filename to find the number of lines
 
 #### Output
 
 - Number of lines in the file
 
-1. START
-2. Initialize:
-    - `FILE *f`
-    - `char filename[100]`
-    - `int lines = 0`
-3. Print message: "This program counts the number of lines in a file."
-4. Input filename.
-5. Open the file in read mode.
-6. If the file does not exist, print an error message and exit.
-7. While not end of file:
-    - If the character read is a newline (`'\n'`), increment `lines`.
-8. Print the number of lines in the file.
-9. Close the file.
-10. END
+#### Steps
+
+1. Open the file for reading
+2. While not end of file:
+    - Read a character
+    - If the character is a newline, increment the line count
+3. Return the line count
 
 ### Code
 
@@ -6800,26 +6638,22 @@ The file 12_1-Line_count.c has 32 lines
 
 ### Algorithm
 
+__File size calculator__
+
 #### Input
 
-- `string` - filename
+- Filename to find the size of
 
 #### Output
 
 - Size of the file in bytes
 
-1. START
-2. Initialize:
-    - `FILE *f`
-    - `char filename[100]`
-3. Print message: "This program counts the number of lines in a file."
-4. Input filename.
-5. Open the file in read mode.
-6. If the file does not exist, print an error message and exit.
-7. Move the file pointer to the end of the file using `fseek(f, 0, SEEK_END)`.
-8. Print the file size in bytes using `ftell(f)`.
-9. Close the file.
-10. END
+#### Steps
+
+1. Open the file for reading
+2. Seek to the end of the file
+3. Get the current position in the file (which is the size)
+4. Return the size
 
 ### Code
 
@@ -6865,33 +6699,26 @@ File size on bytes: 462
 
 ### Algorithm
 
+__Copy file__
+
 #### Input
 
-- `string` - source filename
-- `string` - destination filename
+- Source filename to copy from
+- Source filename to copy to
 
 #### Output
 
 - None
 
-1. START
-2. Initialize:
-    - `FILE *source`
-    - `FILE *target`
-    - `char filename[100]`
-3. Print message: "This program counts the number of lines in a file."
-4. Input source filename.
-5. Open the source file in read mode.
-6. If the source file does not exist, print an error message and exit.
-7. Input destination filename.
-8. Open the destination file in write mode.
-9. Initialize `int c`.
-10. While the end of the source file is not reached:
-    - Read a character from the source file.
-    - Write the character to the destination file.
-11. Close the source file.
-12. Close the destination file.
-13. END
+#### Steps
+
+1. Open the source file for reading
+    - If the file does not exist, print an error and exit
+2. Open the target file for writing
+3. While not end of file:
+    1. Read a character from the source file
+    2. Write the character to the target file
+4. Close both files
 
 ### Code
 
@@ -6948,54 +6775,25 @@ Files 12_3-Copy_file.c and 12_3-Copy_file-backup.c are identical
 
 ### Algorithm
 
+__Employee Management System__
+
 #### Input
 
-- `int` - number of employees
-- `string` - employee details (name, empid, age, sex, position, salary)
-- `string` - filename
+- `n` (number of employees).
+- `name`, `empid`, `age`, `sex`, `position`, `salary` (employee details).
+- File name to save the employee details.
 
 #### Output
 
-- None
+- Employee details.
 
-1. START
-2. Define a struct `Employee` with fields: `name`, `empid`, `age`, `sex`, `position`, `salary`.
-3. Define a function `get_details` to input and return an `Employee` struct:
-    1. Create a local instance `new_employee` of the struct `Employee`.
-    2. Input employee name and store in `new_employee.name`.
-    3. Input employee ID and store in `new_employee.empid`.
-    4. Input employee age and store in `new_employee.age`.
-    5. Input employee sex and store in `new_employee.sex`.
-    6. Input employee position and store in `new_employee.position`.
-    7. Input employee salary and store in `new_employee.salary`.
-    8. Return `new_employee`.
-4. Define a function `print_details` to print details of all employees in an array:
-    1. Loop through each employee in the array `employee_list`:
-        1. Create a local instance `emp` of the struct `Employee` with the current element.
-        2. Print employee name.
-        3. Print employee ID.
-        4. Print employee age.
-        5. Print employee sex.
-        6. Print employee position.
-        7. Print employee salary.
-5. Define a function `dump_details` to write details of all employees to a file:
-    1. Loop through each employee in the array `employee_list`:
-        1. Create a local instance `emp` of the struct `Employee` with the current element.
-        2. Write employee name to the file.
-        3. Write employee ID to the file.
-        4. Write employee age to the file.
-        5. Write employee sex to the file.
-        6. Write employee position to the file.
-        7. Write employee salary to the file.
-6. Input the number of employees.
-7. Initialize an array `employee_list` of `Employee` structs with size `empcount`.
-8. Loop through `empcount` times to get details of each employee using `get_details` and store in `employee_list`.
-9. Call `print_details` to print details of all employees.
-10. Input the filename to save the employee details.
-11. Open the file in write mode.
-12. Call `dump_details` to write details of all employees to the file.
-13. Close the file.
-14. END
+#### Steps
+
+1. For i from 1 to n:
+    - input name, id, age, sex, position, salary of employee i
+2. For i from 1 to n:
+    - print name, id, age, sex, position, salary of employee i
+3. Save the employee details to a file.
 
 ### Code
 
@@ -7176,29 +6974,27 @@ Employee Emp2's salary: 400190
 
 ### Algorithm
 
-- `string` - source filename (from command line argument)
-- `string` - destination filename (from command line argument)
+__File Copy Tool__
+
+#### Input
+
+- Source filename (from command line argument)
+- Destination filename (from command line argument)
 
 #### Output
 
 - None
 
-1. START
-2. Check if the number of arguments (`argc`) is less than 3:
-    1. If true, print usage message and exit.
-3. Initialize:
-    - `FILE *source`
-    - `FILE *target`
-4. Open the source file in read mode using `argv[1]`:
-    1. If the source file does not exist, print an error message and exit.
-5. Open the destination file in write mode using `argv[2]`.
-6. Initialize `int c`.
-7. While the end of the source file is not reached:
-    1. Read a character from the source file.
-    2. Write the character to the destination file.
-8. Close the source file.
-9. Close the destination file.
-10. END
+#### Steps
+
+1. Check if the number of arguments is less than 3.
+    - If true, print usage message and exit.
+2. Open the source file in read mode.
+    - If the file does not exist, print an error message and exit.
+3. Open the destination file in write mode.
+4. For each character in the source file:
+    - Write the character to the destination file.
+5. Close the source and destination files.
 
 ### Code
 
