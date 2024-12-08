@@ -5603,7 +5603,208 @@ Sorted list is:
 
 ## Singly Linked List
 
-<!--TODO: Algorithm-->
+### Algorithm
+
+#### InsertBeginning
+
+##### Input
+
+- Number to insert
+
+##### Output
+
+- Updated linked list
+
+##### Steps
+
+1. If the list is empty:
+   - Create a new node.
+   - Set the data of the new node to the input number.
+   - Set the new node as the head of the list.
+2. Otherwise:
+   - Create a new node.
+   - Set the data of the new node to the input number.
+   - Link the new node before the current head of the list.
+   - Update the head of the list to the new node.
+
+#### InsertEnd
+
+##### Input
+
+- Number to insert
+
+##### Output
+
+- Updated linked list
+
+##### Steps
+
+1. If the list is empty:
+   - Create a new node.
+   - Set the data of the new node to the input number.
+   - Set the new node as the head of the list.
+2. Otherwise:
+   - Create a new node.
+   - Set the data of the new node to the input number.
+   - Traverse to the last node in the list.
+   - Link the new node after the last node.
+
+#### InsertPosition
+
+##### Input
+
+- Data to insert
+- Position to insert
+
+##### Output
+
+- Updated linked list
+
+##### Steps
+
+1. Count the number of nodes in the list.
+2. If the position is 0, use the already defined set of instructions for InsertBeginning.
+3. If the position equals the number of nodes, use the already defined set of instructions for InsertEnd.
+4. If the position is valid:
+   - Traverse to the node at position - 1.
+   - Create a new node.
+   - Set the data of the new node to the input number.
+   - Link the new node at the specified position, updating neighboring nodes.
+5. If the position is out of bounds, display an error.
+
+#### DeleteBeginning
+
+##### Input
+
+None
+
+##### Output
+
+None
+
+##### Steps
+
+1. If the list is empty, return -1.
+2. Otherwise:
+   - Store the data of the first node in a temporary variable.
+   - Update the head of the list to the next node.
+
+#### DeleteEnd
+
+##### Input
+
+None
+
+##### Output
+
+None
+
+##### Steps
+
+1. If the list is empty, return -1.
+2. If the list contains one node:
+   - Store the data of the node in a temporary variable.
+   - Clear the list.
+3. Otherwise:
+   - Traverse to the second-to-last node in the list.
+   - Store the data of the last node in a temporary variable.
+   - Remove the last node by updating the links.
+
+#### DeletePosition
+
+##### Input
+
+- Position to delete
+
+##### Output
+
+None
+
+##### Steps
+
+1. Count the number of nodes in the list.
+2. If the position is 0, use the already defined set of instructions for DeleteBeginning.
+3. If the position equals the number of nodes - 1, use the already defined set of instructions for DeleteEnd.
+4. If the position is valid:
+   - Traverse to the node at position - 1.
+   - Store the data of the node at position in a temporary variable.
+   - Update the links of the neighboring nodes to exclude the node at position.
+5. If the position is out of bounds, return error.
+
+#### Search
+
+##### Input
+
+- Number to search
+
+##### Output
+
+- Position of the number in the list, -1 if not found
+
+##### Steps
+
+1. If the list is empty, return error.
+2. Traverse the list, comparing the data of each node with the input number.
+3. If a match is found, return its position.
+4. If no match is found, return -1.
+
+#### Display
+
+##### Input
+
+None
+
+##### Output
+
+- List of elements
+
+##### Steps
+
+1. Traverse the list from the first node to the last.
+2. For each node:
+   - Read the data of the current, previous, and next nodes.
+   - Append the values to the output format.
+3. Indicate the start and end of the list using "NULL".
+
+#### DisplayReverse
+
+##### Input
+
+None
+
+##### Output
+
+- List of elements in reverse order
+
+##### Steps
+
+1. Count the number of elements in the list.  
+2. For each index from the last element to the first:  
+    1. Traverse to the element at the current index.  
+    2. Print its data variable.  
+
+#### ReverseLink
+
+##### Input
+
+None
+
+##### Output
+
+- Reversed linked list
+
+##### Steps
+
+1. If the list is empty, return -1.  
+2. Otherwise:  
+   1. Initialize three variables: prev <- NULL, current <- head, and next <- NULL.  
+   2. While current is not NULL:  
+      1. Update next to the next link of current.  
+      2. Update the next link of current to prev.  
+      3. Update prev to current.  
+      4. Update current to next.  
+   3. Update the head to prev.  
+   4. Return success status.  
 
 ### Code
 
@@ -6058,7 +6259,168 @@ Enter your choice: 11
 
 ## Doubly Linked List
 
-<!--TODO: Algorithm-->
+### Algorithm
+
+#### InsertBeginning
+
+##### Input
+
+- Number to insert
+
+##### Output
+
+- Updated linked list
+
+##### Steps
+
+1. If the list is empty:
+   - Create a new element.
+   - Edit the data variable of the new element to store Data.
+   - Set the new element as the start of the list.
+2. Otherwise:
+   - Create a new element.
+   - Edit the data variable of the new element to store Data.
+   - Link the new element before the current first element in the list.
+   - Update the start of the list to the new element.
+
+#### InsertEnd
+
+##### Input
+
+- Number to insert
+
+##### Output
+
+- Updated linked list
+
+##### Steps
+
+1. If the list is empty:
+   - Create a new element.
+   - Edit the data variable of the new element to store Data.
+   - Set the new element as the start of the list.
+2. Otherwise:
+   - Create a new element.
+   - Edit the data variable of the new element to store Data.
+   - Traverse to the last element in the list.
+   - Link the new element after the last element.
+
+#### InsertPosition
+
+##### Input
+
+- Data to insert
+- Position to insert
+
+##### Output
+
+- Updated linked list
+
+##### Steps
+
+1. Count the number of elements in the list.
+2. If the Position is 0, use the already defined set of instructions for insert_beg.
+3. If the Position equals the number of elements, use the already defined set of instructions for insert_end.
+4. If the Position is valid:
+   - Traverse to the element at Position - 1.
+   - Create a new element.
+   - Edit the data variable of the new element to store Data.
+   - Link the new element at the specified position, updating neighboring elements.
+5. If the Position is out of bounds, display an error.
+
+#### DeleteBeginning
+
+##### Input
+
+None
+
+##### Output
+
+None
+
+##### Steps
+
+1. If the list is empty, return -1.
+2. Otherwise:
+   - Store the data variable of the first element in a temporary variable.
+   - Update the start of the list to the next element.
+
+#### DeleteEnd
+
+##### Input
+
+None
+
+##### Output
+
+None
+
+##### Steps
+
+1. If the list is empty, return -1.
+2. If the list contains one element:
+   - Store the data variable of the element in a temporary variable.
+   - Clear the list.
+3. Otherwise:
+   - Traverse to the second-to-last element in the list.
+   - Store the data variable of the last element in a temporary variable.
+   - Remove the last element by updating the links.
+
+#### DeletePosition
+
+##### Input
+
+- Position to delete
+
+##### Output
+
+None
+
+##### Steps
+
+1. Count the number of elements in the list.
+2. If the Position is 0, use the already defined set of instructions for delete_beg.
+3. If the Position equals the number of elements - 1, use the already defined set of instructions for delete_end.
+4. If the Position is valid:
+   - Traverse to the element at Position - 1.
+   - Store the data variable of the element at Position in a temporary variable.
+   - Update the links of the neighboring elements to exclude the element at Position.
+5. If the Position is out of bounds, return error
+
+#### Search
+
+##### Input
+
+- Number to search
+
+##### Output
+
+- Position of the number in the list, -1 if not found
+
+##### Steps
+
+1. If the list is empty, return error.
+2. Traverse the list, comparing the data variable of each element with Data.
+3. If a match is found, return its position.
+4. If no match is found, return -1.
+
+#### Display
+
+##### Input
+
+None
+
+##### Output
+
+- List of elements
+
+##### Steps
+
+1. Traverse the list from the first element to the last.
+2. For each element:
+   - Read the data variable of the current, previous, and next elements.
+   - Append the values to the output format.
+3. Indicate the start and end of the list using "NULL".
 
 ### Code
 
