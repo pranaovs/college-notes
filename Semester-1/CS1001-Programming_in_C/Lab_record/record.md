@@ -155,26 +155,27 @@ ls -l
 
 ### Algorithm
 
+__DetermineGrossSalary__
+
 #### Input
 
-* `quantity` (integer) - Number of items sold by the employee.
+- Base salary: 15000
+- Bonus rate: 0.02 (2%)
+- Commission rate: 0.02 (2%)
+- Price per laptop: 45000
+- Quantity of laptops sold
 
 #### Output
 
-* `salary` (integer) - Gross salary of the employee.
+- Gross salary
 
-1. START
-2. Initialize:
-    * base = 15000
-    * bonus_rate = 0.02
-    * commission_rate = 0.02
-    * cost = 45000
-3. Input quantity (number of items sold).
-4. Calculate bonus = quantity * bonus_rate.
-5. Calculate commission = quantity *cost* commission_rate.
-6. Compute salary = base + bonus + commission.
-7. Output salary.
-8. END
+#### Steps
+
+1. Get the quantity of laptops sold from the user
+2. Bonus = Quantity * Bonus rate
+3. Commission = (Quantity *Price per laptop)* Commission rate
+4. Gross salary = Base salary + Bonus + Commission
+5. Return the gross salary
 
 ### Code
 
@@ -229,33 +230,31 @@ Gross salary is 53700
 
 #### Input
 
-* `colorTerm` (bool) - Flag to check if the terminal supports 4-bit colors.
+- If terminal supports 4-bit colors
 
 #### Output
 
-* Make in India logo with black and white backgrounds, or without colorization based on terminal support.
+- Make in India logo with black and white backgrounds, or without colorization based on terminal support.
 
-1. START
-2. Initialize:
-    * ANSI color codes for black and white backgrounds and reset codes
-    * termChoice (char)
-    * colorTerm (bool)
-    * coloredString (char array)
-3. Define the `colorize` function to add ANSI color codes to the input string:
+1. Initialize:
+    - ANSI color codes for black and white backgrounds and reset codes
+    - termChoice (char)
+    - colorTerm (bool)
+    - coloredString (char array)
+2. Define the `colorize` function to add ANSI color codes to the input string:
     1. Initialize an empty string `coloredString`.
     2. Iterate through each character in the input string `inp`.
     3. For each character, use a switch case to determine the corresponding ANSI color code:
-        * If the character is 'B', append the ANSI Black background code and a space, then reset the background.
-        * If the character is 'W', append the ANSI white background code and a space, then reset the background.
-        * If the character does not match any of the above, append the ANSI black background and a space, then reset the background.
+        - If the character is 'B', append the ANSI Black background code and a space, then reset the background.
+        - If the character is 'W', append the ANSI white background code and a space, then reset the background.
+        - If the character does not match any of the above, append the ANSI black background and a space, then reset the background.
     4. Return the `coloredString` with the injected ANSI codes.
-4. Prompt the user to ensure their terminal supports at least 4-bit colors.
-5. Input the user's response for terminal support.
-6. Set `colorTerm` to true if the user confirms terminal support, otherwise set it to false.
-7. Define the "Make in India" logo as a string.
-8. If `colorTerm` is true, call the `colorize` function and print the colorized logo.
-9. If `colorTerm` is false, print the logo without colorization.
-10. END
+3. Prompt the user to ensure their terminal supports at least 4-bit colors.
+4. Input the user's response for terminal support.
+5. Set `colorTerm` to true if the user confirms terminal support, otherwise set it to false.
+6. Define the "Make in India" logo as a string.
+7. If `colorTerm` is true, call the `colorize` function and print the colorized logo.
+8. If `colorTerm` is false, print the logo without colorization.
 
 ### Code
 
@@ -427,38 +426,38 @@ Are you using a terminal (emulator) that supports atleast 4-bit colors? [y/N]:
 
 #### Input
 
-* `colorTerm` (bool) - Flag to check if the terminal supports 4-bit colors.
+- If terminal supports 4-bit colors
 
 #### Output
 
-* Denmark flag with red and white backgrounds, or without colorization based on terminal support.
+- Denmark flag with red and white backgrounds, or without colorization based on terminal support.
 
-1. START
-2. Initialize:
-    * ANSI color codes for red, green, yellow, blue, magenta, cyan, white backgrounds, and reset codes
-    * termChoice (char)
-    * colorTerm (bool)
-    * coloredString (char array)
-3. Define the `colorize` function to add ANSI color codes to the input string:
+#### Steps
+
+1. Initialize:
+    - ANSI color codes for red, green, yellow, blue, magenta, cyan, white backgrounds, and reset codes
+    - termChoice (char)
+    - colorTerm (bool)
+    - coloredString (char array)
+2. Define the `colorize` function to add ANSI color codes to the input string:
     1. Initialize an empty string `coloredString`.
     2. Iterate through each character in the input string `inp`.
     3. For each character, use a switch case to determine the corresponding ANSI color code:
-        * If the character is 'R', append the ANSI red background code and a space, then reset the background.
-        * If the character is 'G', append the ANSI green background code and a space, then reset the background.
-        * If the character is 'Y', append the ANSI yellow background code and a space, then reset the background.
-        * If the character is 'B', append the ANSI blue background code and a space, then reset the background.
-        * If the character is 'M', append the ANSI magenta background code and a space, then reset the background.
-        * If the character is 'C', append the ANSI cyan background code and a space, then reset the background.
-        * If the character is 'W', append the ANSI white background code and a space, then reset the background.
-        * If the character does not match any of the above, append the character itself to `coloredString`.
+        - If the character is 'R', append the ANSI red background code and a space, then reset the background.
+        - If the character is 'G', append the ANSI green background code and a space, then reset the background.
+        - If the character is 'Y', append the ANSI yellow background code and a space, then reset the background.
+        - If the character is 'B', append the ANSI blue background code and a space, then reset the background.
+        - If the character is 'M', append the ANSI magenta background code and a space, then reset the background.
+        - If the character is 'C', append the ANSI cyan background code and a space, then reset the background.
+        - If the character is 'W', append the ANSI white background code and a space, then reset the background.
+        - If the character does not match any of the above, append the character itself to `coloredString`.
     4. Return the `coloredString` with the injected ANSI codes.
-4. Prompt the user to ensure their terminal supports at least 4-bit colors.
-5. Input the user's response for terminal support.
-6. Set `colorTerm` to true if the user confirms terminal support, otherwise set it to false.
-7. Define the Denmark flag as a string.
-8. If `colorTerm` is true, call the `colorize` function and print the colorized flag.
-9. If `colorTerm` is false, print the flag without colorization.
-10. END
+3. Prompt the user to ensure their terminal supports at least 4-bit colors.
+4. Input the user's response for terminal support.
+5. Set `colorTerm` to true if the user confirms terminal support, otherwise set it to false.
+6. Define the Denmark flag as a string.
+7. If `colorTerm` is true, call the `colorize` function and print the colorized flag.
+8. If `colorTerm` is false, print the flag without colorization.
 
 ### Code
 
@@ -623,32 +622,35 @@ RRRRRRRRWWRRRRRRRRRRRRRR
 
 ### Algorithm
 
+__PrintGrade__
+
 #### Input
 
-* `mark` (integer) - Marks obtained by the student.
+- Marks obtained - mark
 
 #### Output
 
-* `grade` (string) - Grade of the student based on the marks.
+- Prints the grade equivalent of the mark
 
-1. START
-2. Initialize:
-    * mark (integer)
-3. Print "SNU Chennai grade calculator"
-4. Print "Enter the student mark and the grade will be calculated according to SNU Chennai B.Tech regulations (2021)"
-5. Print "Enter the student's mark (out of 100): "
-6. Input mark
-7. Print "Grade for [mark] marks is: "
-8. Check the value of mark and determine the grade:
-    * If mark is between 91 and 100, print "O"
-    * If mark is between 81 and 90, print "A+"
-    * If mark is between 71 and 80, print "A"
-    * If mark is between 61 and 70, print "B+"
-    * If mark is between 51 and 60, print "B"
-    * If mark is between 41 and 50, print "P"
-    * If mark is between 0 and 40, print "RA"
-9. Print a newline
-10. END
+#### Steps
+
+1. Get the mark value from the user and store it in the variable 'mark'
+2. If mark >= 91 and mark <= 100
+Print 'O'
+3. Else if mark >= 81 and mark <= 90
+Print 'A+'
+4. Else if mark >= 71 and mark <= 80
+Print 'A'
+5. Else if mark >= 61 and mark <= 70
+Print 'B+'
+6. Else if mark >= 51 and mark <= 60
+Print 'B'
+7. Else if mark >= 41 and mark <= 50
+Print 'P'
+8. Else if mark >= 0 and mark <= 40
+Print 'RA'
+9. Else
+Print 'invalid input'
 
 ### Code
 
@@ -714,37 +716,21 @@ Grade for 89 marks is: A+
 
 #### Algorithm
 
+__DivisibilityCheck__
+
 ##### Input
 
-* `inp` (integer) - Number to check for divisibility.
+A number N
 
 ##### Output
 
-* Divisibility if `inp` by 2, 3, or both.
+Message telling the number's divisibility by 2, 3, or both
 
-1. START
-2. Initialize:
-    * num1 = 2
-    * num2 = 3
-    * inp (integer)
-    * result (integer)
-3. Define function `checkDiv(int inp)`:
-    * If inp is 0, return 0
-    * If inp is divisible by both num1 and num2, return (num1 * num2)
-    * If inp is divisible by num1, return num1
-    * If inp is divisible by num2, return num2
-    * Otherwise, return 1
-4. Print "This program checks if the given number is divisible by 2 or 3 or both, using if statements"
-5. Print "Enter the number to check for divisibility: "
-6. Input inp
-7. Call `checkDiv(inp)` and store the result in result
-8. Check the value of result and print the appropriate message:
-    * If result is 0, print "0 is not an option"
-    * If result is 1, print "[inp] is not divisible by neither 2, 3 nor both"
-    * If result is 6 (num1 * num2), print "[inp] is divisible by both 2 and 3 (6)"
-    * If result is 2 or 3, print "[inp] is divisible by [result]"
-9. Print a newline
-10. END
+##### Steps
+
+1. If N % 2 = 0, print "Divisible by 2".
+2. If N % 3 = 0, print "Divisible by 3".
+3. If N % 2 = 0 and N % 3 = 0, print "Divisible by both 2 and 3".
 
 #### Code
 
@@ -820,37 +806,21 @@ This program checks if the given number is divisible by 2 or 3 or both
 
 #### Algorithm
 
+__DivisibilityCheck__
+
 ##### Input
 
-* `inp` (integer) - Number to check for divisibility.
+A number N
 
 ##### Output
 
-* Divisibility if `inp` by 2, 3, or both.
+Message telling the number's divisibility by 2, 3, or both
 
-1. START
-2. Initialize:
-    * num1 = 2
-    * num2 = 3
-    * inp (integer)
-    * result (integer)
-3. Define function `checkDiv(int inp)`:
-    * If inp is 0, return 0
-    * Else if inp is divisible by both num1 and num2, return (num1 * num2)
-    * Else if inp is divisible by num1, return num1
-    * Else if inp is divisible by num2, return num2
-    * Else, return 1
-4. Print "This program checks if the given number is divisible by 2 or 3 or both, using if-else statements"
-5. Print "Enter the number to check for divisibility: "
-6. Input inp
-7. Call `checkDiv(inp)` and store the result in result
-8. Check the value of result and print the appropriate message:
-    * If result is 0, print "0 is not an option"
-    * Else if result is 1, print "[inp] is not divisible by neither 2, 3 nor both"
-    * Else if result is 6 (num1 * num2), print "[inp] is divisible by both 2 and 3 (6)"
-    * Else, print "[inp] is divisible by [result]"
-9. Print a newline
-10. END
+##### Steps
+
+1. If N % 2 = 0, print "Divisible by 2".
+2. Else If N % 3 = 0, print "Divisible by 3".
+3. Else print "Not divisible by 2 or 3".
 
 #### Code
 
@@ -935,41 +905,23 @@ This program checks if the given number is divisible by 2 or 3 or both
 
 #### Algorithm
 
+__DivisibilityCheck__
+
 ##### Input
 
-* `inp` (integer) - Number to check for divisibility.
+A number N
 
 ##### Output
 
-* Divisibility if `inp` by 2, 3, or both.
+Message telling the number's divisibility by 2, 3, or both
 
-1. START
-2. Initialize:
-    * num1 = 2
-    * num2 = 3
-    * inp (integer)
-    * result (integer)
-3. Define function `checkDiv(int inp)`:
-    * If inp is 0, return 0
-    * If inp is divisible by both num1 and num2, return (num1 * num2)
-    * If inp is divisible by num1:
-        * If inp is also divisible by both num1 and num2, return (num1 * num2)
-        * Else, return num1
-    * If inp is divisible by num2:
-        * If inp is also divisible by both num1 and num2, return (num1 * num2)
-        * Else, return num2
-    * Otherwise, return 1
-4. Print "This program checks if the given number is divisible by 2 or 3 or both, using nested if and else statements"
-5. Print "Enter the number to check for divisibility: "
-6. Input inp
-7. Call `checkDiv(inp)` and store the result in result
-8. Check the value of result and print the appropriate message:
-    * If result is 0, print "0 is not an option"
-    * If result is 1, print "[inp] is not divisible by neither 2, 3 nor both"
-    * If result is 6 (num1 * num2), print "[inp] is divisible by both 2 and 3 (6)"
-    * If result is 2 or 3, print "[inp] is divisible by [result]"
-9. Print a newline
-10. END
+##### Steps
+
+1. If N % 2 = 0, then:
+    1. If N % 3 = 0, print "Divisible by both 2 and 3".
+    2. Else print "Divisible by 2".
+2. Else if N % 3 = 0, print "Divisible by 3".
+3. Else print "Not divisible by 2 or 3".
 
 #### Code
 
@@ -1060,42 +1012,24 @@ This program checks if the given number is divisible by 2 or 3 or both
 
 #### Algorithm
 
+__GreatestNumber__
+
 ##### Input
 
-* `num1`, `num2`, `num3`, `num4` (integers) - Four numbers to compare.
+ 4 numbers – a, b, c and d
 
 ##### Output
 
-* The greatest number among `num1`, `num2`, `num3`, and `num4`.
+The greatest number among the 4
 
-1. START
-2. Initialize:
-    * num1, num2, num3, num4 (integers)
-    * tmpResult1, tmpResult2, tmpResult3, result (integers)
-    * tmpResult12, tmpResult23 (integers)
-3. Print "This program returns the greatest among 4 numbers using if statements"
-4. Print "Enter 4 numbers separated by spaces: "
-5. Input num1, num2, num3, num4
-6. Compare num1 and num2 to find the greater number:
-    * If num1 >= num2, set tmpResult1 = num1
-    * Else, set tmpResult1 = num2
-7. Compare num2 and num3 to find the greater number:
-    * If num2 >= num3, set tmpResult2 = num2
-    * Else, set tmpResult2 = num3
-8. Compare num3 and num4 to find the greater number:
-    * If num3 >= num4, set tmpResult3 = num3
-    * Else, set tmpResult3 = num4
-9. Compare tmpResult1 and tmpResult2 to find the greater number:
-    * If tmpResult1 >= tmpResult2, set tmpResult12 = tmpResult1
-    * Else, set tmpResult12 = tmpResult2
-10. Compare tmpResult2 and tmpResult3 to find the greater number:
-    * If tmpResult2 >= tmpResult3, set tmpResult23 = tmpResult2
-    * Else, set tmpResult23 = tmpResult3
-11. Compare tmpResult12 and tmpResult23 to find the greatest number:
-    * If tmpResult12 >= tmpResult23, set result = tmpResult12
-    * Else, set result = tmpResult23
-12. Print "The greatest number among [num1], [num2], [num3], [num4], is: [result]"
-13. END
+##### Steps
+
+1. Input the four numbers a, b, c, d
+2. Set greatest = a
+3. If b > greatest, then set greatest = b
+4. If c > greatest, then set greatest = c
+5. If d > greatest, then set greatest = d
+6. Print the value of greatest
 
 #### Code
 
@@ -1186,42 +1120,23 @@ The greatest number among 2, 4, 1, 3, is: 4
 
 #### Algorithm
 
+__GreatestNumber__
+
 ##### Input
 
-* `num1`, `num2`, `num3`, `num4` (integers) - Four numbers to compare.
+ 4 numbers – a, b, c and d
 
 ##### Output
 
-* The greatest number among `num1`, `num2`, `num3`, and `num4`.
+The greatest number among the 4
 
-1. START
-2. Initialize:
-    * num1, num2, num3, num4 (integers)
-    * tmpResult1, tmpResult2, tmpResult3, result (integers)
-    * tmpResult12, tmpResult23 (integers)
-3. Print "This program returns the greatest among 4 numbers using if-else statements"
-4. Print "Enter 4 numbers separated by spaces: "
-5. Input num1, num2, num3, num4
-6. Compare num1 and num2 to find the greater number:
-    * If num1 >= num2, set tmpResult1 = num1
-    * Else, set tmpResult1 = num2
-7. Compare num2 and num3 to find the greater number:
-    * If num2 >= num3, set tmpResult2 = num2
-    * Else, set tmpResult2 = num3
-8. Compare num3 and num4 to find the greater number:
-    * If num3 >= num4, set tmpResult3 = num3
-    * Else, set tmpResult3 = num4
-9. Compare tmpResult1 and tmpResult2 to find the greater number:
-    * If tmpResult1 >= tmpResult2, set tmpResult12 = tmpResult1
-    * Else, set tmpResult12 = tmpResult2
-10. Compare tmpResult2 and tmpResult3 to find the greater number:
-    * If tmpResult2 >= tmpResult3, set tmpResult23 = tmpResult2
-    * Else, set tmpResult23 = tmpResult3
-11. Compare tmpResult12 and tmpResult23 to find the greatest number:
-    * If tmpResult12 >= tmpResult23, set result = tmpResult12
-    * Else, set result = tmpResult23
-12. Print "The greatest number among [num1], [num2], [num3], [num4], is: [result]"
-13. END
+##### Steps
+
+1. Input the four numbers a, b, c, d
+2. If a >= b, then set greatest = a, else set greatest = b
+3. If c > greatest, then set greatest = c
+4. If d > greatest, then set greatest = d
+5. Print the value of greatest
 
 #### Code
 
@@ -1308,35 +1223,32 @@ The greatest number among 4, 9, 1, 0, is: 9
 
 #### Algorithm
 
+__GreatestNumber__
+
 ##### Input
 
-* `num1`, `num2`, `num3`, `num4` (integers) - Four numbers to compare.
+ 4 numbers – a, b, c and d
 
 ##### Output
 
-* The greatest number among `num1`, `num2`, `num3`, and `num4`.
+The greatest number among the 4
 
-1. START
-2. Initialize:
-    * num1, num2, num3, num4 (integers)
-    * result (integer)
-3. Print "This program returns the greatest among 4 numbers using nested if statements"
-4. Print "Enter 4 numbers separated by spaces: "
-5. Input num1, num2, num3, num4
-6. Use nested if-else statements to find the greatest number:
-    * If num1 >= num2:
-        * If num1 >= num3:
-            * If num1 >= num4, set result = num1
-            * Else, set result = num4
-        * Else if num3 >= num4, set result = num3
-        * Else, set result = num4
-    * Else if num2 >= num3:
-        * If num2 >= num4, set result = num2
-        * Else, set result = num4
-    * Else if num3 >= num4, set result = num3
-    * Else, set result = num4
-7. Print "The greatest number among [num1], [num2], [num3], [num4], is: [result]"
-8. END
+##### Steps
+
+1. Input the four numbers a, b, c, d
+2. If a >= b:
+    1. If a >= c:
+        1. If a >= d, then set greatest = a
+        2. Else set greatest = d
+    1. Else If c >= d, then set greatest = c
+    3. Else set greatest = d
+3. Else:
+     1. If b >= c:
+         1. If b >= d, then set greatest = b
+         2. Else set greatest = d
+     2. Else If c >= d, then set greatest = c
+     3. Else set greatest = d
+4. Print the value of greatest
 
 #### Code
 
@@ -1409,33 +1321,32 @@ The greatest number among 2, 4, 1, 39, is: 39
 
 #### Algorithm
 
+__Calculator__
+
 ##### Input
 
-* `operation` (character) - Operation to perform.
-* `num1`, `num2` (integers) - Two numbers to perform the operation on.
+- Arithmetic or bitwise operator
+- Two numbers to perform the operation on
 
 ##### Output
 
-* Result of the `operation` on `num1` and `num2`.
+- Result of the operation on the two numbers
 
-1. START
-2. Initialize:
-    * operation (character)
-    * num1, num2 (integers)
-3. Print "Enter the operation to perform (+,-,*,/,%,&,^,|): "
-4. Input operation
-5. Print "Enter two numbers separated by a space: "
-6. Input num1, num2
-7. Check the value of operation and perform the corresponding calculation:
-    * If operation is '+', print "The sum of [num1] and [num2] is [num1 + num2]"
-    * If operation is '-', print "The difference between [num1] and [num2] is [num1 - num2]"
-    * If operation is '*', print "The product of [num1] and [num2] is [num1* num2]"
-    * If operation is '/', print "The division of [num1] and [num2] is [num1 / num2]"
-    * If operation is '%', print "[num1] % [num2] = [num1 % num2]"
-    * If operation is '&', print "[num1] & [num2] = [num1 & num2]"
-    * If operation is '^', print "[num1] ^ [num2] = [num1 ^ num2]"
-    * If operation is '|', print "[num1] | [num2] = [num1 | num2]"
-8. END
+##### Steps
+
+1. Input two numbers: num1, num2, and operator.
+2. If operator is +, result = num1 + num2.
+3. If operator is -, result = num1 - num2.
+4. If operator is *, result = num1* num2.
+5. If operator is / and num2 != 0, result = num1 / num2. If num2 = 0 print
+Error
+6. If operator is % and num2 != 0, result = num1 mod num2. If num2 = 0
+print Error
+7. If operator is &, result = num1 & num2.
+8. If operator is ˆ, result = num1 ˆ num2.
+9. If operator is |, result = num1 | num2.
+10. If something else is input, print Error.
+11. Return result
 
 #### Code
 
@@ -1501,33 +1412,32 @@ Enter two numbers separated by a space: 3 8
 
 #### Algorithm
 
+__Calculator__
+
 ##### Input
 
-* `operation` (character) - Operation to perform.
-* `num1`, `num2` (integers) - Two numbers to perform the operation on.
+- Arithmetic or bitwise operator
+- Two numbers to perform the operation on
 
 ##### Output
 
-* Result of the `operation` on `num1` and `num2`.
+- Result of the operation on the two numbers
 
-1. START
-2. Initialize:
-    * operation (character)
-    * num1, num2 (integers)
-3. Print "Enter the operation to perform (+,-,*,/,%,&,^,|): "
-4. Input operation
-5. Print "Enter two numbers separated by a space: "
-6. Input num1, num2
-7. Check the value of operation and perform the corresponding calculation using if-else statements:
-    * If operation is '+', print "The sum of [num1] and [num2] is [num1 + num2]"
-    * Else if operation is '-', print "The difference between [num1] and [num2] is [num1 - num2]"
-    * Else if operation is '*', print "The product of [num1] and [num2] is [num1* num2]"
-    * Else if operation is '/', print "The division of [num1] and [num2] is [num1 / num2]"
-    * Else if operation is '%', print "[num1] % [num2] = [num1 % num2]"
-    * Else if operation is '&', print "[num1] & [num2] = [num1 & num2]"
-    * Else if operation is '^', print "[num1] ^ [num2] = [num1 ^ num2]"
-    * Else if operation is '|', print "[num1] | [num2] = [num1 | num2]"
-8. END
+##### Steps
+
+1. Input two numbers: num1, num2, and operator.
+2. If operator is +, result = num1 + num2.
+3. Else if operator is -, result = num1 - num2.
+4. Else if operator is *, result = num1* num2.
+5. Else if operator is / and num2 != 0, result = num1 / num2. If num2 = 0
+print Error
+6. Else if operator is % and num2 != 0, result = num1 mod num2. If num2
+= 0 print Error
+7. Else if operator is &, result = num1 & num2.
+8. Else if operator is ˆ, result = num1 ˆ num2.
+9. Else if operator is |, result = num1 | num2.
+10. Else if something else is input, print Error.
+11. Return result
 
 #### Code
 
@@ -1587,31 +1497,25 @@ The product of 4 and 26 is 104
 
 #### Algorithm
 
+__BerthType__
+
 ##### Input
 
-* `seat` (integer) - Seat number.
+- Seat number: N
 
 ##### Output
 
-* Berth type based on the seat number.
+- Berth position
 
-1. START
-2. Initialize:
-    * seat (integer)
-3. Print "Enter the seat number: "
-4. Input seat
-5. Check if seat is valid:
-    * If seat > 80 or seat <= 0, print "Seat number [seat] is invalid. Train has only 80 seats" and return 22 (Invalid argument error code)
-6. Determine the berth type based on seat number:
-    * If seat % 8 == 0, print "The seat assigned to [seat] is: SIDE UPPER BERTH"
-    * If seat % 8 == 7, print "The seat assigned to [seat] is: SIDE LOWER BERTH"
-    * If seat % 8 == 6, print "The seat assigned to [seat] is: UPPER BERTH"
-    * If seat % 8 == 5, print "The seat assigned to [seat] is: MIDDLE BERTH"
-    * If seat % 8 == 4, print "The seat assigned to [seat] is: LOWER BERTH"
-    * If seat % 8 == 3, print "The seat assigned to [seat] is: UPPER BERTH"
-    * If seat % 8 == 2, print "The seat assigned to [seat] is: MIDDLE BERTH"
-    * If seat % 8 == 1, print "The seat assigned to [seat] is: LOWER BERTH"
-7. END
+##### Steps
+
+1. Input N, calculate position = (N - 1) mod 8 + 1.
+    1. if position == 1 or position == 4, berth $\rightarrow$ "Lower Berth"
+    2. if position == 2 or position == 5, berth $\rightarrow$ "Middle Berth"
+    3. if position == 3 or position == 6, berth $\rightarrow$ "Upper Berth"
+    4. if position == 7, berth $\rightarrow$"Side Lower Berth"
+    5. if position == 8, berth $\rightarrow$"Side Upper Berth"
+2. Return berth
 
 #### Code
 
@@ -1670,31 +1574,25 @@ The seat assigned to 35 is: UPPER BERTH
 
 #### Algorithm
 
+__BerthType__
+
 ##### Input
 
-* `seat` (integer) - Seat number.
+- Seat number: N
 
 ##### Output
 
-* Berth type based on the seat number.
+- Berth position
 
-1. START
-2. Initialize:
-    * seat (integer)
-3. Print "Enter the seat number: "
-4. Input seat
-5. Check if seat is valid:
-    * If seat > 80 or seat <= 0, print "Seat number [seat] is invalid. Train has only 80 seats" and return 22 (Invalid argument error code)
-6. Determine the berth type based on seat number using if-else statements:
-    * Else if seat % 8 == 0, print "The seat assigned to [seat] is: SIDE UPPER BERTH"
-    * Else if seat % 8 == 7, print "The seat assigned to [seat] is: SIDE LOWER BERTH"
-    * Else if seat % 8 == 6, print "The seat assigned to [seat] is: UPPER BERTH"
-    * Else if seat % 8 == 5, print "The seat assigned to [seat] is: MIDDLE BERTH"
-    * Else if seat % 8 == 4, print "The seat assigned to [seat] is: LOWER BERTH"
-    * Else if seat % 8 == 3, print "The seat assigned to [seat] is: UPPER BERTH"
-    * Else if seat % 8 == 2, print "The seat assigned to [seat] is: MIDDLE BERTH"
-    * Else if seat % 8 == 1, print "The seat assigned to [seat] is: LOWER BERTH"
-7. END
+##### Steps
+
+1. Input N, calculate position = (N - 1) mod 8 + 1.
+    1. if position == 1 or position == 4, berth $\rightarrow$"Lower Berth"
+    2. else if position == 2 or position == 5, berth $\rightarrow$"Middle Berth"
+    3. else if position == 3 or position == 6, berth $\rightarrow$"Upper Berth"
+    4. else if position == 7, berth $\rightarrow$"Side Lower Berth"
+    5. else berth $\rightarrow$"Side Upper Berth"
+2. Return berth
 
 #### Code
 
@@ -1752,62 +1650,32 @@ Seat number 81 is invalid. Train has only 80 seats
 
 #### Algorithm
 
+__Convert Internet Speed__
+
 ##### Input
 
-* `input` (float) - Data plan value.
-* `unit` (character) - Data plan unit.
+- Internet speed, speed and its unit
 
 ##### Output
 
-* Data plan value in different units.
+- Converted speed values
 
-1. START
-2. Initialize:
-    * input (float)
-    * unit (character)
-    * KBps, Kbps, GBps, Gbps, MBps, Mbps, Bps, bps (floats)
-3. Print "Enter your data plan in the format number x multiplierBps Example: If your plan is 50MBps, enter 50M. Note: Omit Bps in your input)"
-4. Input input and unit
-5. Check if unit is valid:
-    * If unit is not 'K', 'k', 'G', 'g', 'M', or 'm', print "Invalid input" and return 22 (Invalid argument error code)
-6. Convert the input based on the unit:
-    * If unit is 'K' or 'k':
-        * Calculate GBps = input / 1048576
-        * Calculate Gbps = GBps * 8
-        * Calculate MBps = input / 1024
-        * Calculate Mbps = MBps * 8
-        * Calculate KBps = input
-        * Calculate Kbps = KBps * 8
-        * Calculate Bps = input * 1024
-        * Calculate bps = Bps * 8
-    * If unit is 'M' or 'm':
-        * Calculate GBps = input / 1024
-        * Calculate Gbps = GBps * 8
-        * Calculate MBps = input
-        * Calculate Mbps = MBps * 8
-        * Calculate KBps = input * 1024
-        * Calculate Kbps = KBps * 8
-        * Calculate Bps = input *1024* 1024
-        * Calculate bps = input *1024* 1024 * 8
-    * If unit is 'G' or 'g':
-        * Calculate GBps = input
-        * Calculate Gbps = GBps * 8
-        * Calculate MBps = input * 1024
-        * Calculate Mbps = MBps * 8
-        * Calculate KBps = input * 1048576
-        * Calculate Kbps = KBps * 8
-        * Calculate Bps = input *1024* 1024 * 1024
-        * Calculate bps = Bps * 8
-7. Print the converted values:
-    * Print "Gigabytes per second (GBps): [GBps]"
-    * Print "Gigabits per second (Gbps): [Gbps]"
-    * Print "Megabytes per second (MBps): [MBps]"
-    * Print "Megabits per second (Mbps): [Mbps]"
-    * Print "Kilobytes per second (KBps): [KBps]"
-    * Print "Kilobits per second (Kbps): [Kbps]"
-    * Print "Bytes per second (Bps): [Bps]"
-    * Print "Bits per second (bps): [bps]"
-8. END
+##### Steps
+
+1. Input the internet speed value (speed) and its unit (unit: KBps, MBps,GBps).
+2. If the unit is KBps:
+    - Kbps = speed * 8.
+    - Bps = speed * 1024.
+    - bps = speed * 8192.
+3. If the unit is MBps:
+    - Mbps = speed * 8.
+    - Bps = speed *1024* 1024.
+    - bps = speed *8* 1024 * 1024.
+4. If the unit is GBps:
+    - Gbps = speed * 8.
+    - Bps = speed *1024* 1024 * 1024.
+    - bps = speed *8* 1024 *1024* 1024.
+5. Print the converted values.
 
 #### Code
 
@@ -1898,68 +1766,38 @@ Bits per second (bps):197568495616
 
 #### Algorithm
 
+__Convert Internet Speed__
+
 ##### Input
 
-* `input` (float) - Data plan value.
-* `unit` (character) - Data plan unit.
+- Internet speed, speed and its unit
 
 ##### Output
 
-* Data plan value in different units.
+- Converted speed values
 
-1. START
-2. Initialize:
-    * input (float)
-    * unit (character)
-    * KBps, Kbps, GBps, Gbps, MBps, Mbps, Bps, bps (floats)
-3. Print "Enter your data plan in the format number multiplier Bps Example: If your plan is 50MBps, enter 50M. Note: Omit Bps in your input)"
-4. Input input and unit
-5. Check the value of unit and perform the corresponding conversions:
-    * If unit is 'K' or 'k':
-        * Calculate GBps = input / 1048576
-        * Calculate Gbps = GBps * 8
-        * Calculate MBps = input / 1024
-        * Calculate Mbps = MBps * 8
-        * Calculate KBps = input
-        * Calculate Kbps = KBps * 8
-        * Calculate Bps = input * 1024
-        * Calculate bps = Bps * 8
-    * Else if unit is 'M' or 'm':
-        * Calculate GBps = input / 1024
-        * Calculate Gbps = GBps * 8
-        * Calculate MBps = input
-        * Calculate Mbps = MBps * 8
-        * Calculate KBps = input * 1024
-        * Calculate Kbps = KBps * 8
-        * Calculate Bps = input *1024* 1024
-        * Calculate bps = input *1024* 1024 * 8
-    * Else if unit is 'G' or 'g':
-        * Calculate GBps = input
-        * Calculate Gbps = GBps * 8
-        * Calculate MBps = input * 1024
-        * Calculate Mbps = MBps * 8
-        * Calculate KBps = input * 1048576
-        * Calculate Kbps = KBps * 8
-        * Calculate Bps = input *1024* 1024 * 1024
-        * Calculate bps = Bps * 8
-    * Else:
-        * Print "Invalid input" and return 22 (Invalid argument error code)
-6. Print the converted values:
-    * Print "Gigabytes per second (GBps): [GBps]"
-    * Print "Gigabits per second (Gbps): [Gbps]"
-    * Print "Megabytes per second (MBps): [MBps]"
-    * Print "Megabits per second (Mbps): [Mbps]"
-    * Print "Kilobytes per second (KBps): [KBps]"
-    * Print "Kilobits per second (Kbps): [Kbps]"
-    * Print "Bytes per second (Bps): [Bps]"
-    * Print "Bits per second (bps): [bps]"
-7. END
+##### Steps
+
+1. Input the internet speed value (speed) and its unit (unit: KBps, MBps,GBps).
+2. If the unit is KBps:
+    - Kbps = speed * 8.
+    - Bps = speed * 1024.
+    - bps = speed * 8192.
+3. Else if the unit is MBps:
+    - Mbps = speed * 8.
+    - Bps = speed *1024* 1024.
+    - bps = speed *8* 1024 * 1024.
+4. Else if the unit is GBps:
+    - Gbps = speed * 8.
+    - Bps = speed *1024* 1024 * 1024.
+    - bps = speed *8* 1024 *1024* 1024.
+5. Print the converted values.
 
 #### Code
 
 ```c
 // Simple program to convert data from one unit to another
-// Promarily to be used with ISP data calculation
+// Primarily to be used with ISP data calculation
 
 #include <stdio.h>
 
@@ -2041,75 +1879,24 @@ Bits per second (bps):313532416
 
 #### Algorithm
 
+__Convert Decimal Number__
+
 ##### Input
 
-* `num` (integer) - Decimal number to convert.
+- A positive decimal number N
 
 ##### Output
 
-* Binary, octal, and hexadecimal values of the decimal number.
+- The binary, octal, and hexadecimal values of the decimal number
 
-1. START
-2. Initialize:
-    * num (integer)
-3. Print "Enter a decimal number: "
-4. Input num
-5. Check if num can be represented in 4 binary bits:
-    * If num > 15 or num < 0, print "Exception: The number [num] cannot be represented in 4 bits" and return 22 (Invalid argument error code)
-6. Determine the binary, octal, and hexadecimal values based on num:
-    * If num == 0:
-        * Print "Binary: 00"
-        * Print "Octal: 0"
-        * Print "Hexadecimal: 0"
-    * If num == 1:
-        * Print "Binary: 01"
-        * Print "Octal: 1"
-        * Print "Hexadecimal: 1"
-    * If num == 2:
-        * Print "Binary: 10"
-        * Print "Octal: 2"
-        * Print "Hexadecimal: 2"
-    * If num == 3:
-        * Print "Binary: 11"
-        * Print "Octal: 3"
-        * Print "Hexadecimal: 3"
-    * If num == 4:
-        * Print "Octal: 4"
-        * Print "Hexadecimal: 4"
-    * If num == 5:
-        * Print "Octal: 5"
-        * Print "Hexadecimal: 5"
-    * If num == 6:
-        * Print "Octal: 6"
-        * Print "Hexadecimal: 6"
-    * If num == 7:
-        * Print "Octal: 7"
-        * Print "Hexadecimal: 7"
-    * If num == 8:
-        * Print "Octal: 10"
-        * Print "Hexadecimal: 8"
-    * If num == 9:
-        * Print "Octal: 11"
-        * Print "Hexadecimal: 9"
-    * If num == 10:
-        * Print "Octal: 12"
-        * Print "Hexadecimal: A"
-    * If num == 11:
-        * Print "Octal: 13"
-        * Print "Hexadecimal: B"
-    * If num == 12:
-        * Print "Octal: 14"
-        * Print "Hexadecimal: C"
-    * If num == 13:
-        * Print "Octal: 15"
-        * Print "Hexadecimal: D"
-    * If num == 14:
-        * Print "Octal: 16"
-        * Print "Hexadecimal: E"
-    * If num == 15:
-        * Print "Octal: 17"
-        * Print "Hexadecimal: F"
-7. END
+##### Steps
+
+1. Input a positive decimal number N.
+2. If N > 15 (exceeds 4 bits), print "Error: Exceeds 4-bit limit".
+3. If N <= 15:
+    - Print Binary (2 bits) value for N.
+    - Print Octal value for N.
+    - Print Hexadecimal value for N.
 
 #### Code
 
@@ -2222,77 +2009,23 @@ Hexadecimal: C
 
 #### Algorithm
 
+__Convert Decimal Number__
+
 ##### Input
 
-* `num` (integer) - Decimal number to convert.
+- A positive decimal number N
 
 ##### Output
 
-* Binary, octal, and hexadecimal values of the decimal number.
+- The binary, octal, and hexadecimal values of the decimal number
 
-1. START
-2. Initialize:
-    * num (integer)
-3. Print "Enter a decimal number: "
-4. Input num
-5. Check if num can be represented in 4 binary bits:
-    * If num > 15 or num < 0, print "Exception: The number [num] cannot be represented in 4 bits" and return 22 (Invalid argument error code)
-6. Determine the binary, octal, and hexadecimal values based on num using if-else statements:
-    * If num == 0:
-        * Print "Binary: 00"
-        * Print "Octal: 0"
-        * Print "Hexadecimal: 0"
-    * Else if num == 1:
-        * Print "Binary: 01"
-        * Print "Octal: 1"
-        * Print "Hexadecimal: 1"
-    * Else if num == 2:
-        * Print "Binary: 10"
-        * Print "Octal: 2"
-        * Print "Hexadecimal: 2"
-    * Else if num == 3:
-        * Print "Binary: 11"
-        * Print "Octal: 3"
-        * Print "Hexadecimal: 3"
-    * Else if num == 4:
-        * Print "Octal: 4"
-        * Print "Hexadecimal: 4"
-    * Else if num == 5:
-        * Print "Octal: 5"
-        * Print "Hexadecimal: 5"
-    * Else if num == 6:
-        * Print "Octal: 6"
-        * Print "Hexadecimal: 6"
-    * Else if num == 7:
-        * Print "Octal: 7"
-        * Print "Hexadecimal: 7"
-    * Else if num == 8:
-        * Print "Octal: 10"
-        * Print "Hexadecimal: 8"
-    * Else if num == 9:
-        * Print "Octal: 11"
-        * Print "Hexadecimal: 9"
-    * Else if num == 10:
-        * Print "Octal: 12"
-        * Print "Hexadecimal: A"
-    * Else if num == 11:
-        * Print "Octal: 13"
-        * Print "Hexadecimal: B"
-    * Else if num == 12:
-        * Print "Octal: 14"
-        * Print "Hexadecimal: C"
-    * Else if num == 13:
-        * Print "Octal: 15"
-        * Print "Hexadecimal: D"
-    * Else if num == 14:
-        * Print "Octal: 16"
-        * Print "Hexadecimal: E"
-    * Else if num == 15:
-        * Print "Octal: 17"
-        * Print "Hexadecimal: F"
-    * Else:
-        * Print "Unhandled error" and return 22
-7. END
+##### Steps
+
+1. If N > 15, print "Error: Exceeds 4-bit limit".
+2. Else:
+    - Print Binary (2 bits) value for N.
+    - Print Octal value for N.
+    - Print Hexadecimal value for N.
 
 #### Code
 
@@ -2394,22 +2127,23 @@ Hexadecimal: 8
 
 ### Algorithm
 
+__Multiplication Table__
+
 #### Input
 
-* `input` (integer) - Number to find the multiplication table for.
-* `tableUntil` (integer) - Number of multiples to find.
+- A positive integer `num`
+- Number of multiples `n`
 
 #### Output
 
-* Multiplication table of `input` until `tableUntil`.
+- The list of multiples of `num` upto `n`
 
-1. START
-2. Print "Enter the number to want the multiplication table for in the format number x<until>. Example: 5x4 -> "
-3. Input `input` and `tableUntil`
-4. If `input` <= 0 or `tableUntil` <= 0, print "Inputs must be positive integers. Given: [input] and [tableUntil]" and return 22
-5. For `i` from 1 to `tableUntil`:
-    * Print "[input] *[i] = [input* i]"
-6. END
+#### Steps
+
+1. Input a positive integer num and n (number of rows).
+2. Loop from i = 1 to n:
+    - result = num * i.
+    - Print result.
 
 ### Code
 
@@ -2477,27 +2211,18 @@ Example: 5x4
 
 #### Input
 
-* `inp` (integer) - Number to find the factorial of.
+- A positive integer `inp`.
 
 #### Output
 
-* Factorial of `inp`.
+- Factorial of `inp`.
 
-1. START
-2. Initialize:
-    * ans = 1 (unsigned long)
-3. Input inp (integer) from the user.
-4. Check if inp < 0:
-    * If true, print an error message and exit with code 22.
-5. Check if inp > 20:
-    * If true, print an error message and exit with code 1.
-6. Check if inp == 0:
-    * If true, set ans = 1 (since 0! = 1).
-7. If inp > 0:
-    * For i from inp down to 1:
-        * Multiply ans by i.
-8. Output inp! = ans.
-9. END
+#### Steps
+
+1. factorial = 1.
+2. For each i from 1 to num:
+    - factorial = factorial * i
+3. Return factorial.
 
 ### Code
 
@@ -2554,29 +2279,26 @@ Input must be a positive integer. Provided: -1
 
 ### Algorithm
 
+__Generate Fibonacci Series__
+
 #### Input
 
-* `inp` (integer) - Number of Fibonacci numbers to find.
+- Positive integer `inp`
 
 #### Output
 
-* `inp` fibonacci numbers.
+- Fibonacci series until `inp` numbers
 
-1. START
-2. Initialize:
-    * num1 = 1 (unsigned long)
-    * num2 = 1 (unsigned long)
-3. Input inp (integer) from the user.
-4. Check if inp <= 0:
-    * If true, print an error message and exit with code 22.
-5. Print num1.
-6. For i from 1 to inp - 1:
-    * Print num2.
-    * Set tmpnum = num2.
-    * Update num2 = num2 + num1.
-    * Update num1 = tmpnum.
-7. Print a newline character.
-8. END
+#### Steps
+
+1. `num1` = 0, `num2` = 1.
+2. If n = 1, return `num1`.
+3. If n = 2, return `num1`, `num2`.
+4. For i from 3 to n:
+    - print `num1`, `num2`
+    - `num3` = `num1` + `num2`
+    - `num1` = `num2`, `num2` = `num3`
+    - print `num3`
 
 ### Code
 
@@ -2628,30 +2350,25 @@ Enter the index to find Fibonacci sequence until: 34
 
 ### Algorithm
 
+__Check Fibonacci Number__
+
 #### Input
 
-* `inp` (integer) - Number to check if it is a member of the Fibonacci series.
+- Positive integer `inp`
 
 #### Output
 
-* Whether `inp` is a member of the Fibonacci series or not.
+- Whether `inp` is a Fibonacci number or not
 
-1. START
-2. Initialize:
-    * num1 = 1 (unsigned long)
-    * num2 = 1 (unsigned long)
-3. Input inp (integer) from the user.
-4. Check if inp <= 0:
-    * If true, print an error message and exit with code 22.
-5. While num2 <= inp:
-    * If num2 == inp:
-        * Print that inp is a member of the Fibonacci sequence and exit.
-    * Else:
-        * Set tmpnum = num2.
-        * Update num2 = num2 + num1.
-        * Update num1 = tmpnum.
-6. Print that inp is not a member of the Fibonacci sequence.
-7. END
+#### Steps
+
+1. `num1` = 0, `num2` = 1.
+2. If n == `num1` or n == `num2`, return True.
+3. Repeat until `num1`>= n:
+    - `num3` = `num1` + `num2`
+    - `num1` = `num2`, `num2` = `num3`.
+    - If `num1` == n, return True.
+4. If loop completes without a match, return False.
 
 ### Code
 
@@ -2714,26 +2431,24 @@ Enter the number to check if it is member of the Fibonacci sequence: 89
 
 ### Algorithm
 
+__CountDigits__
+
 #### Input
 
-* `inp` (integer) - Number to find the sum of digits of.
+- A positive integer `inp`.
 
 #### Output
 
-* Sum of digits of `inp`.
+- Sum of digits of `inp`, `digits`
 
-1. START
-2. Initialize:
-    * sum = 0
-3. Input inp (integer) from the user.
-4. Set tmpinp = inp.
-5. Check if inp <= 0:
-    * If true, print an error message and exit with code 22.
-6. While tmpinp > 0:
-    * Add tmpinp % 10 to sum.
-    * Update tmpinp = tmpinp / 10.
-7. Output the sum of digits of inp.
-8. END
+#### Steps
+
+1. Input a positive integer `num`.
+2. `count` = 0.
+3. While `num` > 0:
+    - `count` = `count` + 1
+    - `num` = `num` / 10.
+4. Return `count`
 
 ### Code
 
@@ -2791,31 +2506,23 @@ Input must be greater than 0. Recieved: -213
 
 ### Algorithm
 
+__ReverseString__
+
 #### Input
 
-* `strarray` (string) - String to reverse.
+- A string `str`
 
 #### Output
 
-* Reversed string.
+- Reversed string.
 
-1. START
-2. Initialize:
-    * size = 0
-    * i (integer)
-    * strarray (character array of size MAX_SIZE)
-    * temp (character)
-3. Input strarray (string) from the user.
-4. Calculate the length of the string:
-    * While strarray[size] != '\0':
-        * Increment size by 1.
-5. Reverse the string:
-    * For i from 0 to size/2:
-        * Set temp = strarray[i].
-        * Set strarray[i] = strarray[size - (i + 1)].
-        * Set strarray[size - (i + 1)] = temp.
-6. Output the reversed string.
-7. END
+#### Steps
+
+1. For i = 0 to len/2-1:
+    - temp = str[i]
+    - str[i] = str[len-i-1]
+     - str[len-i-1] = temp
+2. Return str
 
 ### Code
 
@@ -2862,33 +2569,26 @@ Enter a string: palindrome?
 
 ### Algorithm
 
+__IsPalindrome__
+
 #### Input
 
-* `strarray` (string) - String to check if it is a palindrome.
+- Character array `str` representing the string
 
 #### Output
 
-* Whether `strarray` is a palindrome or not.
+- True if string is a palindrome, False otherwise
 
-1. START
-2. Initialize:
-    * size = 0
-    * i (integer)
-    * flag = 0 (integer)
-    * strarray (character array of size MAX_SIZE)
-3. Input strarray (string) from the user.
-4. Calculate the length of the string:
-    * While strarray[size] != '\0':
-        * Increment size by 1.
-5. Check if the string is a palindrome:
-    * For i from 0 to size/2:
-        * If strarray[i] != strarray[size - (i + 1)]:
-            * Set flag = 1.
-6. If flag == 0:
-    * Print that strarray is a palindrome.
-7. Else:
-    * Print that strarray is not a palindrome.
-8. END
+#### Steps
+
+1. Start $\leftarrow$ 0
+2. End $\leftarrow$ len-1
+3. While Start < End:
+    1. If str[Start] not equal to str[End]:
+    2. Return false (the string is not a palindrome)
+    3. Start $\leftarrow$ Start + 1
+    4. End $\leftarrow$ End - 1
+5. Return true (the string is a palindrome)
 
 ### Code
 
@@ -2944,39 +2644,24 @@ panap is a palindrome
 
 ### Algorithm
 
+__AreArraysEqual__
+
 #### Input
 
-* `size` (integer) - Size of the arrays.
-* `array1` (character array) - First array to compare.
-* `array2` (character array) - Second array to compare.
+- `size` (integer) - Size of the arrays.
+- `array1` (character array) - First array to compare.
+- `array2` (character array) - Second array to compare.
 
 #### Output
 
-* Whether two arrays are equal or not.
+- True if both arrays are equal, False otherwise.
 
-1. START
-2. Initialize:
-    * size (integer)
-    * i (integer)
-    * flag = 0 (integer)
-3. Input size (integer) from the user.
-4. Declare two character arrays: array1 and array2 of size `size`.
-5. Input elements for array1:
-    * For i from 0 to size - 1:
-        * Input array1[i].
-6. Input elements for array2:
-    * For i from 0 to size - 1:
-        * Input array2[i].
-7. Compare the arrays:
-    * For i from 0 to size - 1:
-        * If array1[i] != array2[i]:
-            * Set flag = 1.
-            * Break the loop.
-8. If flag == 0:
-    * Print "Both arrays are equal".
-9. Else:
-    * Print "Both arrays are not equal".
-10. END
+#### Steps
+
+1. For i = 0 to n-1:
+    1. If arr1[i] not equal to arr2[i]:
+        - Return false (the arrays are not equal)
+2. Return true (the arrays are equal)
 
 ### Code
 
@@ -3039,38 +2724,34 @@ Both arrays are equal
 
 ### Algorithm
 
+__PrintArrayOrders__
+
 #### Input
 
-* `size` (integer) - Size of the array.
-* `numarray` (integer array) - Array to sort.
+- `size` (integer) - Size of the array.
+- `numarray` (integer array) - Array to sort.
 
 #### Output
 
-* Sorted array in ascending and descending order.
+- Sorted array in ascending order
+- Sorted array in descending order
 
-1. START
-2. Initialize:
-    * size (integer)
-    * i, j, k (integers)
-    * temp (integer)
-3. Input size (integer) from the user.
-4. Declare an integer array numarray of size `size`.
-5. Input elements for numarray:
-    * For i from 0 to size - 1:
-        * Input numarray[i].
-6. Sort the array in ascending order:
-    * For i from 0 to size - 1:
-        * For j from i + 1 to size - 1:
-            * If numarray[i] > numarray[j]:
-                * Swap numarray[i] and numarray[j].
-7. Output the sorted array in ascending order.
-8. Sort the array in descending order:
-    * For i from 0 to size - 1:
-        * For j from i + 1 to size - 1:
-            * If numarray[i] < numarray[j]:
-                * Swap numarray[i] and numarray[j].
-9. Output the sorted array in descending order.
-10. END
+#### Steps
+
+1. For i = 0 to n-1:
+    1. For j = i+1 to n-1:
+    2. If arr[i] > arr[j]:
+        - Temp $\leftarrow$ arr[i]
+        - arr[i] $\leftarrow$ arr[j]
+        - arr[j] $\leftarrow$ Temp
+2. Print the elements of arr in the current (ascending) order
+3. For i = 0 to n-1:
+    1. For j = i+1 to n-1:
+    2. If arr[i] < arr[j]:
+        - Temp $\leftarrow$ arr[i]
+        - arr[i] $\leftarrow$ arr[j]
+        - arr[j] $\leftarrow$ Temp
+4. Print the elements of arr in the current (descending) order
 
 ### Code
 
@@ -3144,45 +2825,40 @@ Descending order: 9 4 2 1
 
 ### Algorithm
 
+__MergeSortedArrays__
+
 #### Input
 
-* `size` (integer) - Size of the arrays.
-* `array1` (integer array) - First array to merge.
-* `array2` (integer array) - Second array to merge.
+- `size` (integer) - Size of the arrays.
+- `array1` (integer array) - First array to merge.
+- `array2` (integer array) - Second array to merge.
 
 #### Output
 
-* Merged array in ascending order.
+- Merged array in ascending order.
 
-1. START
-2. Initialize:
-    * i = 0, j = 0, n = 0, m = 0 (integers)
-3. Input size (integer) from the user.
-4. Declare three integer arrays: array1, array2 of size `size`, and merged of size `size * 2`.
-5. Input elements for array1:
-    * For i from 0 to size - 1:
-        * Input array1[i].
-6. Input elements for array2:
-    * For i from 0 to size - 1:
-        * Input array2[i].
-7. Merge array1 and array2 into merged in ascending order:
-    * While n < size and m < size:
-        * If array1[n] <= array2[m]:
-            * Set merged[j] = array1[n].
-            * Increment j and n.
-        * Else:
-            * Set merged[j] = array2[m].
-            * Increment j and m.
-8. If n < size:
-    * While n < size:
-        * Set merged[j] = array1[n].
-        * Increment j and n.
-9. Else if m < size:
-    * While m < size:
-        * Set merged[j] = array2[m].
-        * Increment j and m.
-10. Output the merged array.
-11. END
+#### Steps
+
+1. Get the sizes n1 and n2 of the input arrays arr1 and arr2.
+2. index i $\leftarrow$ 0, j $\leftarrow$ 0, and k $\leftarrow$ 0.
+3. Create a new array merged of size n1 + n2.
+4. While i < n1 and j < n2:
+    1. If arr1[i] <= arr2[j]:
+        - merged[k] $\leftarrow$ arr1[i]
+        - i $\leftarrow$ i + 1
+    2. Else:
+        - merged[k] $\leftarrow$ arr2[j]
+        - j $\leftarrow$ j + 1
+    3. k $\leftarrow$ k + 1
+5. While i < n1:
+    - merged[k] $\leftarrow$ arr1[i]
+    - i $\leftarrow$ i + 1
+    - k $\leftarrow$ k + 1
+6. While j < n2:
+    - merged[k] $\leftarrow$ arr2[j]
+    - j $\leftarrow$ j + 1
+    - k $\leftarrow$ k + 1
+7. Return merged
 
 ### Code
 
@@ -3278,40 +2954,45 @@ Merged array: 1 0 2 4 2 4 4 9
 
 ### Algorithm
 
-#### Input
+#### CheckIfArmstrong
 
-* `num` (long integer) - Number to check if it is an Armstrong number.
+##### Input
 
-#### Output
+- Integer `num`
 
-* Whether `num` is an Armstrong number or not.
+##### Output
 
-1. START
-2. Define a function `checkIfArmstrong` that takes a long integer `num` and returns a boolean:
-    1. Initialize:
-        * tmpnum = num (long)
-        * sum = 0 (long)
-        * r (integer)
-    2. While tmpnum > 0:
-        * Set r = tmpnum % 10.
-        * Add r^3 to sum.
-        * Update tmpnum = tmpnum / 10.
-    3. If sum == num:
-        * Return true.
-    4. Else:
-        * Return false.
-3. In the main function:
-    1. Initialize:
-        * userinp (long)
-        * num = 1 (long)
-    2. Input userinp from the user.
-    3. Print a message indicating the range for finding Armstrong numbers.
-    4. While num < userinp:
-        * If `checkIfArmstrong(num)` returns true:
-            * Print num.
-        * Increment num.
-    5. Print a newline character.
-4. END
+- True if `num` is an Armstrong number, False otherwise
+
+##### Steps
+
+1. digit1 $\leftarrow$ 0, sum $\leftarrow$ 0, temp $\leftarrow$ num, digits (get number of digits from GetDigits algorithm)
+2. For i from 0 to digits-1:
+    - digit1 $\leftarrow$ temp % 10
+    - temp $\leftarrow$ temp / 10
+    - sum $\leftarrow$ sum + digit1ˆdigits
+3. If sum = num:
+    - Print num
+
+#### GetDigits
+
+##### Input
+
+- Integer `num`
+
+##### Output
+
+- Number of digits in `num`
+
+##### Steps
+
+1. If num = 0:
+    - Return 1
+2. digits $\leftarrow$ 0
+3. While num > 0:
+    - num $\leftarrow$ num / 10
+    - digits $\leftarrow$ digits + 1
+4. Return digits
 
 ### Code
 
@@ -3372,36 +3053,36 @@ Trying to find armstrong numbers till 1038
 
 ### Algorithm
 
+__CheckPalindrome__
+
 #### Input
 
-* `inp` (long integer) - Number to check if it is a palindrome.
+- Integer `num`
 
 #### Output
 
-* Whether `inp` is a palindrome or not.
+- True if `num` is a palindrome, False otherwise
 
-1. START
-2. Define a function `checkPalindrome` that takes a character pointer `inp` and returns a boolean:
-    1. Initialize:
-        * size = 0 (integer)
-        * i (integer)
-    2. Calculate the length of the string:
-        * While inp[size] != '\0':
-            * Increment size by 1.
-    3. Check if the string is a palindrome:
-        * For i from 0 to size/2:
-            * If inp[i] != inp[size - (i + 1)]:
-                * Return false.
-    4. Return true.
-3. In the main function:
-    1. Initialize:
-        * strarray (character array of size MAX_SIZE)
-    2. Input strarray (string) from the user.
-    3. If `checkPalindrome(strarray)` returns true:
-        * Print that strarray is a palindrome.
-    4. Else:
-        * Print that strarray is not a palindrome.
-4. END
+#### Steps
+
+1. quotient $\leftarrow$ num, digits $\leftarrow$ 0, digit1 $\leftarrow$ 0
+2. While quotient > 0:
+a. quotient $\leftarrow$ quotient / 10
+b. digits $\leftarrow$ digits + 1
+3. Create an array numstore of size digits to store the digits of the number.
+4. temp $\leftarrow$ num
+5. For i from 0 to digits-1:
+    - digit1 $\leftarrow$ temp % 10
+    - temp $\leftarrow$ temp / 10
+    - numstore[i] $\leftarrow$ digit1
+6. flag $\leftarrow$ 0
+7. For i from 0 to digits/2-1:
+    1. If numstore[i] != numstore[digits-(i+1)]:
+    - flag $\leftarrow$ 1
+8. If flag = 0:
+    - Print num is a palindrome
+9. Else:
+    - Print num is not a palindrome
 
 ### Code
 
@@ -3463,31 +3144,24 @@ Enter a number: 4353
 
 #### Algorithm
 
+__Sum of Digits__
+
 ##### Input
 
-* `num` (long integer) - Number to find the sum of digits of.
+- Integer `num` - Number to find the sum of digits of.
 
 ##### Output
 
-* Sum of digits of `num`.
+- Sum of digits of `num`.
 
-1. START
-2. Define a function `sumOfDigits` that takes a long integer `num` and returns an integer:
-    1. Initialize:
-        * tmpnum = num (long)
-        * sum = 0 (integer)
-        * r (integer)
-    2. While tmpnum > 0:
-        * Set r = tmpnum % 10.
-        * Add r to sum.
-        * Update tmpnum = tmpnum / 10.
-    3. Return sum.
-3. In the main function:
-    1. Initialize:
-        * userinp (long)
-    2. Input userinp from the user.
-    3. Print the sum of digits of userinp using the `sumOfDigits` function.
-4. END
+##### Steps
+
+1. sum $\leftarrow$ 0
+2. While num > 0:
+    - digit $\leftarrow$ num mod 10
+    - sum $\leftarrow$ sum + digit
+    - num $\leftarrow$ num / 10
+3. Return sum
 
 #### Code
 
@@ -3532,31 +3206,24 @@ Sum of digits of 2453 is 14
 
 #### Algorithm
 
+__Sum of Digits__
+
 ##### Input
 
-* `num` (long integer) - Number to find the sum of digits of.
+- Integer `num` - Number to find the sum of digits of.
 
 ##### Output
 
-* Sum of digits of `num`.
+- Sum of digits of `num`.
 
-1. START
-2. Define a function `sumOfDigits` that takes a pointer to a long integer `num` and returns an integer:
-    1. Initialize:
-        * tmpnum = *num (long)
-        * sum = 0 (integer)
-        * r (integer)
-    2. While tmpnum > 0:
-        * Set r = tmpnum % 10.
-        * Add r to sum.
-        * Update tmpnum = tmpnum / 10.
-    3. Return sum.
-3. In the main function:
-    1. Initialize:
-        * userinp (long)
-    2. Input userinp from the user.
-    3. Print the sum of digits of userinp using the `sumOfDigits` function, passing the address of userinp.
-4. END
+##### Steps
+
+1. sum $\leftarrow$ 0
+2. While num > 0:
+    - digit $\leftarrow$ num mod 10
+    - sum $\leftarrow$ sum + digit
+    - num $\leftarrow$ num / 10
+3. Return sum
 
 #### Code
 
@@ -3601,34 +3268,22 @@ Sum of digits of 1342 is 10
 
 ### Algorithm
 
+__Character Count__
+
 #### Input
 
-* `str` (character array) - String to find the number of characters in.
+- String in an array `str`.
 
 #### Output
 
-* Number of characters in `str`.
+- Number of characters in `str`.
 
-1. START
-2. Define a function `char_count_val` that takes a character array `str` and returns an integer:
-    1. Initialize:
-        * count = 0 (integer)
-    2. For each character in `str` until the null terminator:
-        * Increment count.
-    3. Return count.
-3. Define a function `char_count_ref` that takes a character pointer `str` and returns an integer:
-    1. Initialize:
-        * count = 0 (integer)
-    2. For each character in `str` until the null terminator:
-        * Increment count.
-    3. Return count.
-4. In the main function:
-    1. Initialize:
-        * str (character array of size 100)
-    2. Input str from the user.
-    3. Print the number of characters in str using the `char_count_val` function.
-    4. Print the number of characters in str using the `char_count_ref` function.
-5. END
+#### Steps
+
+1. count $\leftarrow$ 0
+2. While str[count] not equal to '\0' (end of string indicator):
+    - count $\leftarrow$ count + 1
+3. Return count
 
 ### Code
 
@@ -3683,36 +3338,22 @@ Number of characters in the string using call be reference: 10
 
 #### Input
 
-* `n` (integer) - Number of elements in the array.
-* `arr` (integer array) - Array to search in.
-* `key` (integer) - Element to search.
+- `arr` (array) - Array to search in.
+- Size of the array `n`.
+- Element to search `ele`.
 
 #### Output
 
-* Whether `key` is found in `arr` or not.
+- True if element found, False otherwise.
 
-1. START
-2. Declare variables:
-    * `n` (number of elements in the array)
-    * `key` (element to search)
-    * `found` (flag for search result)
-3. Input `n` (number of elements in the array).
-4. Declare an array `arr` of size `n`.
-5. Input the elements of the array into `arr`.
-6. Input `key` (element to search).
-7. Call `search_array(arr, n, key)`:
-    * Iterate through the array:
-        * If `arr[i]` equals `key`, return 1.
-    * If the loop completes without finding `key`, return 0.
-8. If the result of `search_array` is 1, print "Element found in the array."
-9. Otherwise, print "Element not found in the array."
-10. Call `search_array_ref(arr, n, key, &found)`:
-    * Initialize `found` to 0.
-    * Iterate through the array:
-        * If `arr[i]` equals `key`, set `found` to 1 and return.
-11. If `found` is 1, print "Element found in the array."
-12. Otherwise, print "Element not found in the array."
-13. END
+#### Steps
+
+1. index $\leftarrow$ 0
+2. While index < len:
+    - If arr[index] = ele:
+        - Return True
+3. index $\leftarrow$ index + 1
+4. Return False
 
 ### Code
 
@@ -3796,41 +3437,24 @@ Element found in the array.
 
 #### Input
 
-* `num` (decimal number to convert).
+- A decimal number `num`.
 
 #### Output
 
-* Binary representation of `num`.
+- Binary representation of `num`.
 
-1. START
-2. Declare variables:
-    * `num` (decimal number to convert)
-    * `count` (number of binary digits)
-    * `quo` (global variable to store the quotient)
-3. Input `num` (decimal number to convert).
-4. Initialize `quo` to `num`.
-5. Call `Digits(num)` to calculate the number of binary digits:
-    * Initialize `count` to 1.
-    * While `num` is not 1:
-        * Divide `num` by 2.
-        * Increment `count`.
-    * Return `count`.
-6. Declare an array `arr` of size `count` to store binary digits.
-7. Initialize a pointer `ptr` to point to `arr`.
-8. Call `Convert(quo, ptr)` to convert decimal to binary:
-    * If `quo` is 1:
-        * Set `rem` to 1.
-        * Set `choice` to 0 (base case: stop recursion).
-    * Otherwise:
-        * Set `rem` to `quo % 2`.
-        * Update `quo` to `quo / 2`.
-        * Set `choice` to 1 (continue recursion).
-    * Store `rem` in the array at the position pointed to by `ptr`.
-    * If `choice` is 1:
-        * Increment `ptr` to the next position.
-        * Recursively call `Convert(quo, ptr)`.
-9. Print the binary number in reverse order by iterating through `arr` from the last element to the first.
-10. END
+#### Steps
+
+1. index = 0
+2. While num > 0:
+    - remainder $\leftarrow$ num% 2
+    - binary_digits[index] $\leftarrow$ remainder
+    - num $\leftarrow$ num / 2
+    - index = index + 1
+3. If binary_digits is empty:
+    - Return "0"
+4. Else:
+    - Return binary_digits
 
 ### Code
 
@@ -3920,31 +3544,27 @@ Enter the number:3819
 
 ### Algorithm
 
+__IsPalindrome__
+
 #### Input
 
-* `str1` (input string).
+- Character array `str1`.
+- Length of the string `len`.
 
 #### Output
 
-* Whether `str1` is a palindrome or not.
+- True if `str1` is a palindrome, False otherwise.
 
-1. START
-2. Declare variables:
-    * `str1` (input string)
-    * `len` (length of the input string)
-3. Input `str1` (string to check for palindrome).
-4. Calculate the length of `str1` using `strlen`.
-5. If the last character of `str1` is a newline, remove it and decrement `len`.
-6. Declare `str2` (reversed string) with length `len + 1`.
-7. Call `reverse(str1, str2, 0, len)` to reverse the string:
-    * If `i` is less than `len`:
-        * Set `str2[i]` to `str1[len - 1 - i]`.
-        * Recursively call `reverse(str1, str2, i + 1, len)`.
-8. Null-terminate `str2`.
-9. Compare `str1` and `str2` using `strcmp`:
-    * If they are equal, print that `str1` is a palindrome.
-    * Otherwise, print that `str1` is not a palindrome.
-10. END
+#### Steps
+
+1. Start $\leftarrow$ 0
+2. End $\leftarrow$ len-1
+3. While Start < End:
+    - If str[Start] not equal to str[End]:
+      - Return false (the string is not a palindrome)
+      - Start $\leftarrow$ Start + 1
+      - End $\leftarrow$ End - 1
+5. Return true (the string is a palindrome)
 
 ### Code
 
@@ -4014,31 +3634,24 @@ wevew is a palindrome
 
 ### Algorithm
 
+__ReverseString__
+
 #### Input
 
-* `str1` (input string).
+- `str1` (input string).
+- Length of the string `len`.
 
 #### Output
 
-* Reversed string.
+- Reversed string.
 
-1. START
-2. Declare variables:
-    * `str1` (input string)
-    * `len` (length of the input string)
-    * `index` (index for recursion)
-3. Input `str1` (string to reverse).
-4. Calculate the length of `str1` using `strlen`.
-5. If the last character of `str1` is a newline, remove it and decrement `len`.
-6. Declare `str2` (reversed string) with length `len + 1`.
-7. Initialize `index` to 0.
-8. Call `reverse(str1, str2, index, len)` to reverse the string:
-    * If `index` is less than `len`:
-        * Set `str2[index]` to `str1[len - 1 - index]`.
-        * Recursively call `reverse(str1, str2, index + 1, len)`.
-9. Null-terminate `str2`.
-10. Print the reversed string `str2`.
-11. END
+#### Steps
+
+1. For i = 0 to len/2-1:
+     - Temp = str[i]
+     - str[i] = str[len-i-1]
+     - str[len-i-1] = Temp
+2. Return str
 
 ### Code
 
@@ -4111,48 +3724,45 @@ The reversed string is: wasitacaroracatisaw
 
 ### Algorithm
 
-#### Input
+#### Add Matrices
 
-* `row` (number of rows in the matrices).
-* `col` (number of columns in the matrices).
-* `matr1` (first matrix).
-* `matr2` (second matrix).
-* `ans` (result matrix).
+##### Input
 
-#### Output
+- 2D arrays `arr1[i][j]` and `arr2[i][j]`
+- Number of rows `row`
+- Number of columns `col`
 
-* Result of matrix addition or subtraction.
+##### Output
 
-1. START
-2. Declare variables:
-    * `row` (number of rows in the matrices)
-    * `col` (number of columns in the matrices)
-    * `matr1` (first matrix)
-    * `matr2` (second matrix)
-    * `ans` (result matrix)
-    * `mode` (operation mode: addition or subtraction)
-3. Input `row` and `col` (dimensions of the matrices).
-4. Input elements for `matr1` (Matrix 1):
-    * For each element in `matr1`:
-        * Input the element at position `(i, j)`.
-5. Input elements for `matr2` (Matrix 2):
-    * For each element in `matr2`:
-        * Input the element at position `(i, j)`.
-6. Clear the input buffer.
-7. Input `mode` (operation mode: '+' for addition or '-' for subtraction).
-8. If `mode` is '+':
-    * For each element in `ans`:
-        * Set `ans[i][j]` to `matr1[i][j] + matr2[i][j]`.
-9. Else if `mode` is '-':
-    * For each element in `ans`:
-        * Set `ans[i][j]` to `matr1[i][j] - matr2[i][j]`.
-10. Else:
-    * Print "Invalid Input".
-    * Return 1.
-11. Print the result matrix `ans`:
-    * For each element in `ans`:
-        * Print the element at position `(i, j)`.
-12. END
+- 2D array `arr3[i][j]` which is the sum of arr1 and arr2
+
+##### Steps
+
+1. Create a 2D array arr3[][] of size row x column
+2. For i from 0 to row-1:
+    - For j from 0 to column-1:
+        - arr3[i][j] $\leftarrow$ arr1[i][j] + arr2[i][j]
+3. Return arr3
+
+#### Subtract Matrices
+
+##### Input
+
+- 2D arrays `arr1[i][j]` and `arr2[i][j]`
+- Number of rows `row`
+- Number of columns `col`
+
+##### Output
+
+- 2D array `arr3[i][j]` which is the difference of arr1 and arr2
+
+##### Steps
+
+1. Create a 2D array arr3[][] of size row x column
+2. For i from 0 to row-1:
+    - For j from 0 to column-1:
+        - arr3[i][j] $\leftarrow$ arr1[i][j] - arr2[i][j]
+3. Return arr3
 
 ### Code
 
@@ -4282,52 +3892,29 @@ The element at (2,1) is 0
 
 ### Algorithm
 
+__Multiply Matrices__
+
 #### Input
 
-* `row1` (number of rows in the first matrix).
-* `col1` (number of columns in the first matrix).
-* `row2` (number of rows in the second matrix).
-* `col2` (number of columns in the second matrix).
-* `matr1` (first matrix).
-* `matr2` (second matrix).
+- 2D arrays arr1[i][j] and arr2[i][j], where the number of columns in arr1 is equal to the number of rows in arr2
+- row1, the number of rows in arr1
+- col1, the number of columns in arr1
+- col2, the number of columns in arr2
 
 #### Output
 
-* Result of matrix multiplication.
+- 2D array ans[i][j], the result of multiplying arr1 and arr2
 
-1. START
-2. Input dimensions of the first matrix:
-    * row1
-    * col1
-3. Input dimensions of the second matrix:
-    * row2
-    * col2
-4. Check if matrix multiplication is possible:
-    * If col1 != row2, print "Multiplication cannot be performed" and return 1.
-5. Declare matrices with a maximum size of 10x10:
-    * matr1[10][10]
-    * matr2[10][10]
-    * ans[10][10]
-6. Input elements of the first matrix:
-    * For i from 0 to row1 - 1:
-        * For j from 0 to col1 - 1:
-            * Input matr1[i][j]
-7. Input elements of the second matrix:
-    * For i from 0 to row2 - 1:
-        * For j from 0 to col2 - 1:
-            * Input matr2[i][j]
-8. Call the function to multiply the matrices:
-    * For i from 0 to row1 - 1:
-        * For j from 0 to col2 - 1:
-            * Initialize sum to 0
-            * For k from 0 to col1 - 1:
-                * sum += matr1[i][k] * matr2[k][j]
-            * ans[i][j] = sum
-9. Output the resulting matrix:
-    * For i from 0 to row1 - 1:
-        * For j from 0 to col2 - 1:
-            * Print ans[i][j]
-10. END
+#### Steps
+
+1. Create a 2D array arr3[][] of size row1 x col2
+2. For i from 0 to row1-1:
+    - For j from 0 to col2-1:
+        - sum $\leftarrow$ 0
+    - For k from 0 to col1-1:
+        - sum $\leftarrow$ sum + arr1[i][k] * arr2[k][j]
+        - arr3[i][j] $\leftarrow$ sum
+3. Return arr3
 
 ### Code
 
@@ -4439,31 +4026,31 @@ The answer matrix is:
 
 #### Input
 
-* `row` (row number for the move).
-* `col` (column number for the move).
+- `row` (row number for the move).
+- `col` (column number for the move).
 
 #### Output
 
-* Winner of the game or a draw.
+- Winner of the game or a draw.
 
-1. START
-2. Initialize:
-    * board[3][3] with empty spaces
-    * currentPlayer = 'X'
-    * row, col (integers for move coordinates)
-3. Loop until a player wins or the board is full:
+#### Steps
+
+1. Initialize:
+    - board[3][3] with empty spaces
+    - currentPlayer = 'X'
+    - row, col (integers for move coordinates)
+2. Loop until a player wins or the board is full:
     1. Print the current state of the board.
     2. Prompt the current player to enter their move (row and column).
     3. Input row and col.
     4. If the move is valid (within bounds and cell is empty):
         1. Place the player's mark on the board.
         2. Check if the current player has won:
-            * If true, print the board and declare the current player as the winner. Break the loop.
+            - If true, print the board and declare the current player as the winner. Break the loop.
         3. Check if the board is full:
-            * If true, print the board and declare a draw. Break the loop.
+            - If true, print the board and declare a draw. Break the loop.
         4. Switch to the other player.
     5. Else, prompt the player to try again.
-4. END
 
 ### Code
 
@@ -4671,36 +4258,7 @@ Player X wins!
 
 ## Student Details
 
-1. START
-2. Define a struct `Student` with fields `name`, `rollno`, and `marks`.
-3. Define a constant `STUDENT_COUNT` as 3.
-4. Implement a function `get_details` to input and return a `Student` struct:
-    1. Declare a local `Student` variable `new_student`.
-    2. Input the student's name, roll number, and marks.
-    3. Return the populated `Student` struct.
-5. Implement a function `print_student` to print details of a `Student` struct:
-    1. Print the student's name, roll number, and marks.
-6. Implement a function `print_all_students` to print details of all students in an array:
-    1. Loop through each student in the array.
-    2. Call `print_student` for each student.
-7. In `main` function:
-    1. Declare an array `student_list` of `Student` structs.
-    2. Declare variables `choice` and `details_exist`.
-    3. Loop until `choice` is 4:
-        1. Display menu and input `choice`.
-        2. If `choice` is 1:
-            1. Input details for each student and store in `student_list`.
-            2. Set `details_exist` to true.
-        3. If `choice` is 2 and `details_exist` is true:
-            1. Input index of student to edit.
-            2. Edit details of the selected student.
-        4. If `choice` is 3 and `details_exist` is true:
-            1. Input index of student to view.
-            2. Display details of the selected student or all students.
-        5. If `choice` is 4:
-            1. Print "Exiting program".
-        6. If `choice` is invalid, print "Invalid choice".
-8. END
+<!--TODO: Algorithm-->
 
 ### Code
 
@@ -4971,16 +4529,16 @@ Exiting program
 
 #### Input
 
-* `max_books` (maximum number of books that can be stored).
-* `name` (name of the book).
-* `author` (author of the book).
-* `cost` (cost of the book).
-* `choice` (user choice for menu).
+- `max_books` (maximum number of books that can be stored).
+- `name` (name of the book).
+- `author` (author of the book).
+- `cost` (cost of the book).
+- `choice` (user choice for menu).
 
 #### Output
 
-* Book details.
-* Total cost of books in the cart.
+- Book details.
+- Total cost of books in the cart.
 
 1. START
 2. Define a struct `Book` with fields `name`, `author`, and `cost`.
@@ -5428,12 +4986,12 @@ Exiting program
 
 #### Input
 
-* `empcount` (number of employees).
-* `name`, `empid`, `age`, `sex`, `position`, `salary` (employee details).
+- `empcount` (number of employees).
+- `name`, `empid`, `age`, `sex`, `position`, `salary` (employee details).
 
 #### Output
 
-* Employee details.
+- Employee details.
 
 1. START
 2. Define a struct `Employee` with fields `name`, `empid`, `age`, `sex`, `position`, and `salary`.
@@ -5594,14 +5152,14 @@ Employee emp3's salary: 100290
 
 #### Input
 
-* `name` (name of the item).
-* `is_book` (true if the item is a book, false if it is a DVD).
-* `pages` (number of pages if the item is a book).
-* `duration` (duration in minutes if the item is a DVD).
+- `name` (name of the item).
+- `is_book` (true if the item is a book, false if it is a DVD).
+- `pages` (number of pages if the item is a book).
+- `duration` (duration in minutes if the item is a DVD).
 
 #### Output
 
-* Item details.
+- Item details.
 
 1. START
 2. Define a union `item_length` with fields `pages` and `duration`.
@@ -5708,12 +5266,12 @@ Duration: 42.00 minutes
 
 #### Input
 
-* `size` (size of the list).
-* numbers in the list.
+- `size` (size of the list).
+- numbers in the list.
 
 #### Output
 
-* Largest number in the list.
+- Largest number in the list.
 
 1. START
 2. Define a function prototype `int largestnum(int *ptr, int *size)`.
@@ -5817,12 +5375,12 @@ The largest number is 5
 
 #### Input
 
-* `size` (size of the list).
-* numbers in the list.
+- `size` (size of the list).
+- numbers in the list.
 
 #### Output
 
-* Whether the number is found in the list or not.
+- Whether the number is found in the list or not.
 
 1. START
 2. Define a function prototype `void search(int *ptr, int *size, int *num)`.
@@ -5949,12 +5507,12 @@ Number found
 
 #### Input
 
-* `size` (size of the list).
-* numbers in the list.
+- `size` (size of the list).
+- numbers in the list.
 
 #### Output
 
-* Sorted list in ascending order.
+- Sorted list in ascending order.
 
 1. START
 2. Define a function prototype `void ascendingsort(int *ptr, int *size)`.
@@ -6073,12 +5631,12 @@ Sorted list is:
 
 #### Input
 
-* `int` - Menu options
-* List items
+- `int` - Menu options
+- List items
 
 #### Output
 
-* Singly Linked List
+- Singly Linked List
 
 1. START
 2. Initialize `head` to NULL.
@@ -6593,12 +6151,12 @@ Enter your choice: 11
 
 #### Input
 
-* `int` - Menu option
-* List items
+- `int` - Menu option
+- List items
 
 #### Output
 
-* Doubly Linked List
+- Doubly Linked List
 
 1. START
 2. Initialize `head` to NULL.
@@ -7171,23 +6729,23 @@ Enter your choice: 11
 
 #### Input
 
-* `string` - filename
+- `string` - filename
 
 #### Output
 
-* Number of lines in the file
+- Number of lines in the file
 
 1. START
 2. Initialize:
-    * `FILE *f`
-    * `char filename[100]`
-    * `int lines = 0`
+    - `FILE *f`
+    - `char filename[100]`
+    - `int lines = 0`
 3. Print message: "This program counts the number of lines in a file."
 4. Input filename.
 5. Open the file in read mode.
 6. If the file does not exist, print an error message and exit.
 7. While not end of file:
-    * If the character read is a newline (`'\n'`), increment `lines`.
+    - If the character read is a newline (`'\n'`), increment `lines`.
 8. Print the number of lines in the file.
 9. Close the file.
 10. END
@@ -7244,16 +6802,16 @@ The file 12_1-Line_count.c has 32 lines
 
 #### Input
 
-* `string` - filename
+- `string` - filename
 
 #### Output
 
-* Size of the file in bytes
+- Size of the file in bytes
 
 1. START
 2. Initialize:
-    * `FILE *f`
-    * `char filename[100]`
+    - `FILE *f`
+    - `char filename[100]`
 3. Print message: "This program counts the number of lines in a file."
 4. Input filename.
 5. Open the file in read mode.
@@ -7309,18 +6867,18 @@ File size on bytes: 462
 
 #### Input
 
-* `string` - source filename
-* `string` - destination filename
+- `string` - source filename
+- `string` - destination filename
 
 #### Output
 
-* None
+- None
 
 1. START
 2. Initialize:
-    * `FILE *source`
-    * `FILE *target`
-    * `char filename[100]`
+    - `FILE *source`
+    - `FILE *target`
+    - `char filename[100]`
 3. Print message: "This program counts the number of lines in a file."
 4. Input source filename.
 5. Open the source file in read mode.
@@ -7329,8 +6887,8 @@ File size on bytes: 462
 8. Open the destination file in write mode.
 9. Initialize `int c`.
 10. While the end of the source file is not reached:
-    * Read a character from the source file.
-    * Write the character to the destination file.
+    - Read a character from the source file.
+    - Write the character to the destination file.
 11. Close the source file.
 12. Close the destination file.
 13. END
@@ -7392,13 +6950,13 @@ Files 12_3-Copy_file.c and 12_3-Copy_file-backup.c are identical
 
 #### Input
 
-* `int` - number of employees
-* `string` - employee details (name, empid, age, sex, position, salary)
-* `string` - filename
+- `int` - number of employees
+- `string` - employee details (name, empid, age, sex, position, salary)
+- `string` - filename
 
 #### Output
 
-* None
+- None
 
 1. START
 2. Define a struct `Employee` with fields: `name`, `empid`, `age`, `sex`, `position`, `salary`.
@@ -7618,19 +7176,19 @@ Employee Emp2's salary: 400190
 
 ### Algorithm
 
-* `string` - source filename (from command line argument)
-* `string` - destination filename (from command line argument)
+- `string` - source filename (from command line argument)
+- `string` - destination filename (from command line argument)
 
 #### Output
 
-* None
+- None
 
 1. START
 2. Check if the number of arguments (`argc`) is less than 3:
     1. If true, print usage message and exit.
 3. Initialize:
-    * `FILE *source`
-    * `FILE *target`
+    - `FILE *source`
+    - `FILE *target`
 4. Open the source file in read mode using `argv[1]`:
     1. If the source file does not exist, print an error message and exit.
 5. Open the destination file in write mode using `argv[2]`.
