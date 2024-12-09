@@ -6944,11 +6944,10 @@ __Line counter__
 
 #### Steps
 
-1. Open the file for reading
-2. While not end of file:
+1. While not end of file:
     - Read a character
     - If the character is a newline, increment the line count
-3. Return the line count
+2. Return the line count
 
 ### Code
 
@@ -7012,10 +7011,9 @@ __File size calculator__
 
 #### Steps
 
-1. Open the file for reading
-2. Seek to the end of the file
-3. Get the current position in the file (which is the size)
-4. Return the size
+1. Seek to the end of the file
+2. Get the current position in the file (which is the size)
+3. Return the size
 
 ### Code
 
@@ -7074,13 +7072,10 @@ __Copy file__
 
 #### Steps
 
-1. Open the source file for reading
-    - If the file does not exist, print an error and exit
-2. Open the target file for writing
-3. While not end of file:
+1. If the file does not exist, print an error and exit
+2. While not end of file:
     1. Read a character from the source file
     2. Write the character to the target file
-4. Close both files
 
 ### Code
 
@@ -7351,12 +7346,9 @@ __File Copy Tool__
 
 1. Check if the number of arguments is less than 3.
     - If true, print usage message and exit.
-2. Open the source file in read mode.
-    - If the file does not exist, print an error message and exit.
-3. Open the destination file in write mode.
-4. For each character in the source file:
+2. If the source file does not exist, print an error message and exit.
+3. For each character in the source file:
     - Write the character to the destination file.
-5. Close the source and destination files.
 
 ### Code
 
