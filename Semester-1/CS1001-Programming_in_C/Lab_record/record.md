@@ -6,6 +6,8 @@ numbersections: true
 
 # Linux Commands
 
+__Date: 04 September, 2024__
+
 ## Commands
 
 3. Create three subfolders (subdirectories) namely, DOC, PPT and TXT in LinuxPractice. Verify whether it is created.
@@ -148,6 +150,8 @@ ls -l
 ```
 
 # Print Statements and Operators in C
+
+__Date: 04 September, 2024__
 
 ## Employee Salary Calculation
 
@@ -615,6 +619,8 @@ RRRRRRRRWWRRRRRRRRRRRRRR
 ![Denmark Flag Code Output](./assets/denmark-flag.png)
 
 # Selection - Decision Making and Branching (Part 1)
+
+__Date: 10 September, 2024__
 
 ## Student Grade Calculation
 
@@ -1312,6 +1318,8 @@ The greatest number among 2, 4, 1, 39, is: 39
 ```
 
 # Selection - Decision Making and Branching (Part 2)
+
+__Date: 17 September, 2024__
 
 ## Calculator implementation
 
@@ -2121,6 +2129,8 @@ Hexadecimal: 8
 
 # Repetition - Looping Statements
 
+__Date: 24 September, 2024__
+
 ## Multiplication table
 
 ### Algorithm
@@ -2499,6 +2509,8 @@ Input must be greater than 0. Recieved: -213
 ```
 
 # 1D Array and Strings
+
+__Date: 01 October, 2024__
 
 ## String reversal
 
@@ -2947,6 +2959,8 @@ Merged array: 1 0 2 4 2 4 4 9
 ```
 
 # Functions - Call by Value, Call by Reference, Recursion and Matrices
+
+__Date: 22 October, 2024__
 
 ## Armstrong's Number
 
@@ -4260,6 +4274,8 @@ Player X wins!
 
 # Structures and Union
 
+__Date: 05 October, 2024__
+
 ## Student Details
 
 ### Algorithm
@@ -5268,6 +5284,8 @@ Duration: 42.00 minutes
 
 # Dynamic Memory Allocation, Pointers, and Call by Reference
 
+__Date: 12 October, 2024__
+
 ## Largest Number
 
 ### Algorithm
@@ -5598,6 +5616,8 @@ Sorted list is:
 ```
 
 # Linked List
+
+__Date: 11 November, 2024__
 
 ## Singly Linked List
 
@@ -6926,6 +6946,8 @@ Enter your choice: 11
 
 # File handling
 
+__Date: 26 November, 2024__
+
 ## Count lines in a file
 
 ### Algorithm
@@ -7324,6 +7346,8 @@ Employee Emp2's salary: 400190
 ```
 
 # Command line argument
+
+__Date: 02 December, 2024__
 
 ## File copy tool
 
