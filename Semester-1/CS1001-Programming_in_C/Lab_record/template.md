@@ -516,15 +516,15 @@ $include-before$
 
 $endfor$
 
-\section{Cover Page}
+\section*{Cover Page}
 
 \newpage
 
-\section{Bonafide Certificate}
+\section*{Bonafide Certificate}
 
 \newpage
 
-\section{Index}
+\section*{Index}
 
 \newpage
 
