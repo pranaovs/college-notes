@@ -494,6 +494,8 @@ $if(logo)$
 $endif$
 $endif$
 
+\usepackage{pdfpages}
+
 \begin{document}
 $if(has-frontmatter)$
 \frontmatter
@@ -516,22 +518,21 @@ $include-before$
 
 $endfor$
 
-% <https://stackoverflow.com/a/72727068>
+% https://stackoverflow.com/a/72727068
+% https://tex.stackexchange.com/a/163671
 
-\section*{Cover Page}
 \addcontentsline{toc}{section}{\protect\numberline{}Cover Page}
-
+\includepdf{./assets/private/cover.jpeg}
 \newpage
 
-\section*{Bonafide Certificate}
 \addcontentsline{toc}{section}{\protect\numberline{}Bonafide Certificate}
-
+\includepdf{./assets/private/bonafide.jpeg}
 \newpage
 
-\section*{Index}
 \addcontentsline{toc}{section}{\protect\numberline{}Index}
-
+\includepdf{./assets/private/index.jpeg}
 \newpage
+
 
 $if(toc)$
 $if(toc-title)$
