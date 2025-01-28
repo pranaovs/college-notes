@@ -1,4 +1,4 @@
-// Cpp program to implement sorting algorithms in a class
+// C++ header file to abstract the sorting algorithms
 
 #include <iostream>
 #include <vector>

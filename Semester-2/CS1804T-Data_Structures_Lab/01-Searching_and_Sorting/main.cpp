@@ -1,3 +1,6 @@
+// C++ program to demonstrate the use of sorting and searching algorithms using
+// classes
+
 #include "sort.h"
 #include <iostream>
 #include <vector>
