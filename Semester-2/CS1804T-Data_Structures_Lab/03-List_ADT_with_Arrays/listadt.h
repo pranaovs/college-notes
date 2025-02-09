@@ -11,10 +11,9 @@ https://opensource.org/license/MIT
 #include <stdbool.h>
 
 class AList {
-protected:
-  int *ptr;
+private:
   int count;
-
+  int *ptr;
   void resize(int value);
 
 public:
@@ -29,11 +28,19 @@ public:
   void display();
   void display(int n);
   void insertbeg(int ele);
+  void insertbeg(int *list, int count);
   void insertend(int ele);
+  void insertend(int *list, int count);
   bool insertpos(int ele, int pos);
   bool deletebeg();
-  int deleteend();
+  bool deletebeg(int count);
+  bool deleteend();
+  bool deleteend(int count);
   bool deletepos(int pos);
+  void reverse();
+  bool reverse(int start, int end);
   int search(int ele);
   int linearsearch(int ele);
+  int get(unsigned int pos);
+  bool set(int pos, int value);
 };

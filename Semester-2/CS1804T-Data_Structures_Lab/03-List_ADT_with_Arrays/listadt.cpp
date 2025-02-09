@@ -15,7 +15,7 @@ void AList::resize(int value) {
 
 /* Constructor to initialize the array */
 AList::AList() {
-  this->ptr = (int *)malloc(sizeof(int *));
+  this->ptr = new int;
   this->count = 0;
   this->size = 0;
 }
@@ -71,7 +71,7 @@ int AList::alloccopy(int **ptr) { return alloccopy(ptr, this->count); }
  * NOTE: Any value stored in * ptr will be overwritten
  */
 int AList::alloccopy(int **ptr, int count) {
-  *ptr = (int *)malloc(sizeof(int) * (count));
+  *ptr = new int[count];
   return copy(ptr, count);
 }
 
@@ -97,8 +97,38 @@ void AList::display(int n) {
 /* Insert an element ele to the beginning of the list */
 void AList::insertbeg(int ele) { this->insertpos(ele, 0); }
 
+/* Insert n elements from an array to the beginning of the list
+ * Does not rotate the list
+ * Arguments:
+ * int *list: array of elements to insert
+ * int count: number of elements in the array
+ * Example:
+ * If the list is [1, 2, 3, 4] and the array is [5, 6, 7], the list will become
+ * [5, 6, 7, 1, 2, 3, 4]
+ */
+void AList::insertbeg(int *list, int count) {
+  for (int i = count - 1; i >= 0; i--) {
+    this->insertbeg(list[i]);
+  }
+}
+
 /* Insert an element ele to the end of the list */
 void AList::insertend(int ele) { insertpos(ele, this->count); }
+
+/* Insert n elements from an array to the end of the list
+ * Does not rotate the list
+ * Arguments:
+ * int *list: array of elements to insert
+ * int count: number of elements in the array
+ * Example:
+ * If the list is [1, 2, 3, 4] and the array is [5, 6, 7], the list will become
+ * [1, 2, 3, 4, 5, 6, 7]
+ */
+void AList::insertend(int *list, int count) {
+  for (int i = 0; i < count; i++) {
+    this->insertend(list[i]);
+  }
+}
 
 /* Insert an element ele to a position pos
  * Arguments:
@@ -121,8 +151,39 @@ bool AList::insertpos(int ele, int pos) {
 /* Delete the first element of the list */
 bool AList::deletebeg() { return this->deletepos(0); }
 
-/* Delete the last element of the list */
-int AList::deleteend() { return this->deletepos(this->count); }
+/* Delete the first n elements of the list
+ * Returns:
+ * bool: Success/failure status
+ */
+bool AList::deletebeg(int count) {
+  if (count < 1 || count > this->count) {
+    return false;
+  }
+  for (int i = 0; i < count; i++) {
+    this->deletebeg();
+  }
+  return true;
+}
+
+/* Delete the last element of the list
+ * Returns:
+ * bool: Success/failure status
+ */
+bool AList::deleteend() { return this->deletepos(this->count); }
+
+/* Delete the last n elements of the list
+ * Returns:
+ * bool: Success/failure status
+ */
+bool AList::deleteend(int n) {
+  if (n < 1 || n > this->count) {
+    return false;
+  }
+  for (int i = 0; i < n; i++) {
+    this->deleteend();
+  }
+  return true;
+}
 
 /* Delete an element from a given position pos
  * Arguments:
@@ -165,4 +226,68 @@ int AList::linearsearch(int ele) {
     }
   }
   return -1;
+}
+
+/* Reverse the list */
+void AList::reverse() {
+  int start = 0;
+  int end = this->size - 1;
+
+  this->reverse(start, end);
+}
+
+/* Reverse the list from start to end index
+ * Arguments:
+ * int start: start index
+ * int end: end index
+ * Returns:
+ * bool: Success/failure status
+ */
+bool AList::reverse(int start, int end) {
+
+  if (start < 0 || end >= this->count) {
+    return false;
+  }
+
+  while (start < end) {
+    int temp = this->ptr[start];
+    this->ptr[start] = this->ptr[end];
+    this->ptr[end] = temp;
+    start++;
+    end--;
+  }
+
+  return true;
+}
+
+/* Get the element at a given position
+ * Arguments:
+ * int pos: position to get the element from
+ * Returns:
+ * int: element at the position
+ * NOTE: Uses unsigned int to handle negative positions
+ * NOTE: The list is treated as a circular list
+ */
+int AList::get(unsigned int pos) {
+  if (pos < 0) {
+    throw "Invalid position";
+  }
+
+  pos = pos % this->count;
+  return this->ptr[pos];
+}
+
+/* Set the value of given position
+ * Arguments:
+ * int pos: position to set the element
+ * int value: value to set
+ * Returns:
+ * bool: Success/failure status
+ */
+bool AList::set(int pos, int value) {
+  if (pos < 0 || pos >= this->count) {
+    return false;
+  }
+  this->ptr[pos] = value;
+  return true;
 }
