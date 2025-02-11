@@ -4,6 +4,8 @@ Copyright 2025 Pranaov S
 https://opensource.org/license/MIT
 */
 
+/* This is a simple list ADT implementation using arrays in C++ */
+
 #include "listadt.h"
 
 /* Resize the list by a given value */

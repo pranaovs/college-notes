@@ -1,3 +1,5 @@
+/* This is a list ADT implementation with rotation feature in C++ */
+
 #include "AList.cpp"
 #include <iostream>
 using namespace std;
