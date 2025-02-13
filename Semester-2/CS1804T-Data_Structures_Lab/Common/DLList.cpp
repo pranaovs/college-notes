@@ -286,6 +286,13 @@ bool DLList::deleteend(int n) {
   }
   return true;
 }
+
+/* Delete a node from a position
+ * Arguments:
+ * int pos: position to delete the element from
+ * Returns:
+ * bool: True if the element was deleted, false otherwise
+ */
 bool DLList::deletepos(int pos) {
   if (pos < 0 || pos >= this->count) {
     return false;
