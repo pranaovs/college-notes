@@ -6,7 +6,9 @@ https://opensource.org/license/MIT
 
 /* This is a simple list ADT implementation using arrays in C++ */
 
-#include "listadt.h"
+#include "AList.h"
+#include <cstdlib>
+#include <iostream>
 
 /* Resize the list by a given value */
 void AList::resize(int value) {
