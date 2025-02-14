@@ -32,7 +32,6 @@ public:
   int alloccopy(int **ptr, int count);
   int alloccopy(int **ptr, int start, int end);
   void display();
-  void double_display();
   void insertbeg(int ele);
   void insertbeg(int *list, int count);
   void insertend(int ele);
