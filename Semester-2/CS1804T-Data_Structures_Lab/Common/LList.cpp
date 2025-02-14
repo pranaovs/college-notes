@@ -50,6 +50,28 @@ LList::LList() {
   this->size = 0;
 }
 
+/* Destructor for the LList class
+ * Deallocates memory for all nodes in the list
+ * Arguments:
+ * None
+ * Returns:
+ * None
+ */
+LList::~LList() {
+  struct Node *current = this->head;
+  struct Node *next = nullptr;
+
+  while (current != nullptr) {
+    next = current->next;
+    delete_node(current);
+    current = next;
+  }
+
+  this->head = nullptr;
+  this->count = 0;
+  this->size = 0;
+}
+
 /* Return the size of the list
  * A shortcut to accessing (int) this->count (which is internal)
  * (int) this->size can also be used

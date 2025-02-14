@@ -7,9 +7,11 @@ https://opensource.org/license/MIT
 /* This is a simple list ADT implementation using doubly linked list in C++ */
 
 class LList {
+
 private:
   int count;
 
+protected:
   struct Node {
     int data;
     struct LList::Node *next;
@@ -24,6 +26,7 @@ public:
   int size;
 
   LList();
+  ~LList();
   int getsize();
   int copy(int **ptr);
   int copy(int **ptr, int count);
