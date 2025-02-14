@@ -27,8 +27,10 @@ public:
   int getsize();
   int copy(int **ptr);
   int copy(int **ptr, int count);
+  int copy(int **ptr, int start, int end);
   int alloccopy(int **ptr);
   int alloccopy(int **ptr, int count);
+  int alloccopy(int **ptr, int start, int end);
   void display();
   void double_display();
   void insertbeg(int ele);

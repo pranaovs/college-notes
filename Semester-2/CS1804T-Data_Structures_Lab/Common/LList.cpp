@@ -71,14 +71,32 @@ int LList::copy(int **ptr) { return this->copy(ptr, this->count); }
  * int count: number of elements to copy
  * Returns: int - number of elements in the new list (count)
  */
-int LList::copy(int **ptr, int count) {
+int LList::copy(int **ptr, int count) { return this->copy(ptr, 0, count - 1); }
+
+/* Copies the list elements into int * ptr argument from given
+ * Arguments:
+ * int * ptr: to copy the list elements into
+ * int count: number of elements to copy
+ * Returns: int - number of elements in the new list (count)
+ */
+int LList::copy(int **ptr, int start, int end) {
+
+  if (start < 0 || end >= this->count) {
+    return -1;
+  }
 
   struct LList::Node *tmp = this->head;
-  for (int i = 0; i < count; i++) {
-    (*ptr)[i] = tmp->data;
+  for (int i = 0; i < start; i++) {
     tmp = tmp->next;
   }
-  return count;
+
+  int arr_pos = 0;
+  for (int j = start; j <= end; j++) {
+    (*ptr)[arr_pos] = tmp->data;
+    arr_pos++;
+    tmp = tmp->next;
+  }
+  return end - start + 1;
 }
 
 /* Copies all list elements into int * ptr argument.
@@ -104,8 +122,18 @@ int LList::alloccopy(int **ptr) { return alloccopy(ptr, this->count); }
  * NOTE: Any value stored in * ptr will be overwritten
  */
 int LList::alloccopy(int **ptr, int count) {
-  *ptr = new int[count];
-  return copy(ptr, count);
+  return this->alloccopy(ptr, 0, count - 1);
+}
+
+int LList::alloccopy(int **ptr, int start, int end) {
+
+  if (start < 0 || end >= this->count) {
+    return -1;
+  }
+
+  int arr_size = end - start + 1;
+  *ptr = new int[arr_size];
+  return copy(ptr, start, end);
 }
 
 /* Print the list elements to stdout
