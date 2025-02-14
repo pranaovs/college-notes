@@ -43,8 +43,8 @@ public:
   bool deleteend();
   bool deleteend(int count);
   bool deletepos(int pos);
-  // void reverse();
-  // bool reverse(int start, int end);
+  void reverse();
+  bool reverse(int start, int end);
   int search(int ele);
   int linearsearch(int ele);
   int get(unsigned int pos);

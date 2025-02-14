@@ -309,6 +309,43 @@ bool LList::deletepos(int pos) {
   return true;
 }
 
+void LList::reverse() { this->reverse(0, this->count - 1); }
+
+bool LList::reverse(int start, int end) {
+
+  if (start < 0 || end >= this->count) {
+    return false;
+  }
+
+  // Coping required elements from linked list to array
+  int *tmparr;
+  int tmparr_size = this->alloccopy(&tmparr, start, end);
+
+  // Reversing the array
+  int tmpele;
+  for (int i = 0; i < (tmparr_size / 2); i++) {
+    tmpele = tmparr[i];
+    tmparr[i] = tmparr[tmparr_size - 1 - i];
+    tmparr[tmparr_size - 1 - i] = tmpele;
+  }
+
+  // Deleting elements from list
+  for (int j = start; j <= end; j++) {
+    this->deletepos(start);
+  }
+
+  // TODO: Write insertpos(int **ptr, int pos) function
+
+  // Adding the reversed array back to the list
+  int arr_pos = 0;
+  for (int k = start; k <= end; k++) {
+    this->insertpos(tmparr[arr_pos], k);
+    arr_pos++;
+  }
+
+  return true;
+}
+
 /* Search for an element in the list
  * Shortcut to this->linearsearch()
  * Arguments:
