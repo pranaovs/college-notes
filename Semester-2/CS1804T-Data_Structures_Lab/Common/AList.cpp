@@ -153,11 +153,13 @@ bool AList::insertpos(int ele, int pos) {
 }
 
 /* Delete the first element of the list */
-bool AList::deletebeg() { return this->deletepos(0); }
+int AList::deletebeg() { return this->deletepos(0); }
 
 /* Delete the first n elements of the list
  * Returns:
- * bool: Success/failure status
+ * int: the element deleted
+ * throws:
+ * "invalid position" if the position is invalid
  */
 bool AList::deletebeg(int count) {
   if (count < 1 || count > this->count) {
@@ -171,9 +173,11 @@ bool AList::deletebeg(int count) {
 
 /* Delete the last element of the list
  * Returns:
- * bool: Success/failure status
+ * int: the element deleted
+ * throws:
+ * "invalid position" if the position is invalid
  */
-bool AList::deleteend() { return this->deletepos(this->count); }
+int AList::deleteend() { return this->deletepos(this->count); }
 
 /* Delete the last n elements of the list
  * Returns:
@@ -193,17 +197,20 @@ bool AList::deleteend(int n) {
  * Arguments:
  * int pos: List position to delete
  * Returns:
- * bool: Success/failure status
+ * int: the element deleted
+ * throws:
+ * "invalid position" if the position is invalid
  */
-bool AList::deletepos(int pos) {
+int AList::deletepos(int pos) {
   if (count < 1 || pos < 0 || pos > count - 1) {
-    return false;
+    throw "Invalid position";
   }
+  int ele = this->ptr[pos];
   for (int i = pos; i < this->count; i++) {
     this->ptr[i] = this->ptr[i + 1];
   }
   resize(-1);
-  return true;
+  return ele;
 }
 
 /* Search for an element in the list

@@ -244,13 +244,15 @@ bool DLList::insertpos(int ele, int pos) {
   }
 }
 
-/* Delete the last node from the List
+/* Delete the first node from the List
  * Arguments:
  * None
  * Returns:
- * bool: True if the element was deleted, false otherwise
+ * int: the element deleted
+ * throws:
+ * "invalid position" if the position is invalid
  */
-bool DLList::deletebeg() { return this->deletepos(0); }
+int DLList::deletebeg() { return this->deletepos(0); }
 
 /* Delete the first n elements of the list
  * Returns:
@@ -269,9 +271,11 @@ bool DLList::deletebeg(int count) {
  * Arguments:
  * None
  * Returns:
- * bool: True if the element was deleted, false otherwise
+ * int: the element deleted
+ * throws:
+ * "invalid position" if the position is invalid
  */
-bool DLList::deleteend() { return this->deletepos(this->count - 1); }
+int DLList::deleteend() { return this->deletepos(this->count - 1); }
 
 /* Delete the last n elements of the list
  * Returns:
@@ -291,17 +295,21 @@ bool DLList::deleteend(int n) {
  * Arguments:
  * int pos: position to delete the element from
  * Returns:
- * bool: True if the element was deleted, false otherwise
+ * int: the element deleted
+ * throws:
+ * "invalid position" if the position is invalid
  */
-bool DLList::deletepos(int pos) {
+int DLList::deletepos(int pos) {
   if (pos < 0 || pos >= this->count) {
-    return false;
+    throw "Invalid position";
   }
 
   struct DLList::Node *tmp = this->head;
   for (int i = 0; i < pos; i++) {
     tmp = tmp->next;
   }
+
+  int ele = tmp->data;
 
   // Change head if the element to be deleted is the first element
   if (tmp->prev != nullptr) {
@@ -318,7 +326,7 @@ bool DLList::deletepos(int pos) {
 
   delete_node(tmp);
 
-  return true;
+  return ele;
 }
 
 /* Search for an element in the list

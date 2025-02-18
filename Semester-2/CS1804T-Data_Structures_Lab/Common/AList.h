@@ -28,11 +28,11 @@ public:
   void insertend(int ele);
   void insertend(int *list, int count);
   bool insertpos(int ele, int pos);
-  bool deletebeg();
+  int deletebeg();
   bool deletebeg(int count);
-  bool deleteend();
+  int deleteend();
   bool deleteend(int count);
-  bool deletepos(int pos);
+  int deletepos(int pos);
   void reverse();
   bool reverse(int start, int end);
   int search(int ele);

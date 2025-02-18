@@ -259,9 +259,11 @@ bool LList::insertpos(int ele, int pos) {
  * Arguments:
  * None
  * Returns:
- * bool: True if the element was deleted, false otherwise
+ * int: the element deleted
+ * throws:
+ * "invalid position" if the position is invalid
  */
-bool LList::deletebeg() { return this->deletepos(0); }
+int LList::deletebeg() { return this->deletepos(0); }
 
 /* Delete the first n elements of the list
  * Returns:
@@ -280,9 +282,11 @@ bool LList::deletebeg(int count) {
  * Arguments:
  * None
  * Returns:
- * bool: True if the element was deleted, false otherwise
+ * int: the element deleted
+ * throws:
+ * "invalid position" if the position is invalid
  */
-bool LList::deleteend() { return this->deletepos(this->count - 1); }
+int LList::deleteend() { return this->deletepos(this->count - 1); }
 
 /* Delete the last n elements of the list
  * Returns:
@@ -302,11 +306,13 @@ bool LList::deleteend(int n) {
  * Arguments:
  * int pos: position to delete the element from
  * Returns:
- * bool: True if the element was deleted, false otherwise
+ * int: the element deleted
+ * throws:
+ * "invalid position" if the position is invalid
  */
-bool LList::deletepos(int pos) {
+int LList::deletepos(int pos) {
   if (pos < 0 || pos >= this->count) {
-    return false;
+    throw "Invalid position";
   }
 
   struct LList::Node *tmp = this->head;
@@ -314,8 +320,9 @@ bool LList::deletepos(int pos) {
   // Handle we need to delete first element (head modification)
   if (pos == 0) {
     this->head = tmp->next;
+    int ele = tmp->data;
     this->delete_node(tmp);
-    return true;
+    return ele;
   }
 
   for (int i = 0; i < pos - 1; i++) {
@@ -323,12 +330,13 @@ bool LList::deletepos(int pos) {
   }
 
   struct LList::Node *to_delete = tmp->next;
+  int ele = to_delete->data;
 
   tmp->next = to_delete->next;
 
   delete_node(to_delete);
 
-  return true;
+  return ele;
 }
 
 void LList::reverse() { this->reverse(0, this->count - 1); }
