@@ -14,6 +14,7 @@ https://opensource.org/license/MIT
  * struct CDLList::Node *prev: The prev node in the list
  * Returns:
  * struct CDLList::Node *: The newly created node
+ * Time complexity: O(1)
  */
 struct CDLList::Node *CDLList::new_node(int ele, struct CDLList::Node *next,
                                         struct CDLList::Node *prev) {
@@ -33,6 +34,7 @@ struct CDLList::Node *CDLList::new_node(int ele, struct CDLList::Node *next,
  * struct CDLList::Node *node: The node to be deleted
  * Returns:
  * None
+ * Time complexity: O(1)
  */
 void CDLList::delete_node(struct CDLList::Node *node) {
   delete node;
@@ -46,6 +48,7 @@ void CDLList::delete_node(struct CDLList::Node *node) {
  * None
  * Returns:
  * None
+ * Time complexity: O(1)
  */
 CDLList::CDLList() {
   this->head = nullptr;
@@ -56,6 +59,7 @@ CDLList::CDLList() {
 /* Return the size of the list
  * A shortcut to accessing (int) this->count (which is internal)
  * (int) this->size can also be used
+ * Time complexity: O(1)
  */
 int CDLList::getsize() { return this->size; }
 
@@ -65,6 +69,7 @@ int CDLList::getsize() { return this->size; }
  * int * ptr: to copy the list elements into
  * Returns:
  * int: number of elements in the list
+ * Time complexity: O(this->count)
  */
 int CDLList::copy(int **ptr) { return this->copy(ptr, this->count); }
 
@@ -73,6 +78,7 @@ int CDLList::copy(int **ptr) { return this->copy(ptr, this->count); }
  * int * ptr: to copy the list elements into
  * int count: number of elements to copy
  * Returns: int - number of elements in the new list (count)
+ * Time complexity: O(count)
  */
 int CDLList::copy(int **ptr, int count) {
 
@@ -92,6 +98,7 @@ int CDLList::copy(int **ptr, int count) {
  * int count: number of elements to copy
  * Returns:
  * int: number of elements in the list
+ * Time complexity: O(this->count)
  * NOTE: Any value stored in * ptr will be overwritten
  */
 int CDLList::alloccopy(int **ptr) { return alloccopy(ptr, this->count); }
@@ -116,6 +123,7 @@ int CDLList::alloccopy(int **ptr, int count) {
  * None
  * Returns:
  * None
+ * Time complexity: O(this->count)
  */
 void CDLList::display() {
   if (this->head == nullptr) {
@@ -138,6 +146,7 @@ void CDLList::display() {
  * None
  * Returns:
  * None
+ * Time complexity: O(this->count)
  */
 void CDLList::double_display() {
   if (this->head == nullptr) {
@@ -172,6 +181,7 @@ void CDLList::double_display() {
  * int ele: The element to be inserted
  * Returns:
  * None
+ * Time complexity: O(1)
  */
 void CDLList::insertbeg(int ele) { this->insertpos(ele, 0); }
 
@@ -195,6 +205,7 @@ void CDLList::insertbeg(int *list, int count) {
  * int ele: The element to be inserted
  * Returns:
  * None
+ * Time complexity: O(1)
  */
 void CDLList::insertend(int ele) { this->insertpos(ele, this->count); }
 
@@ -219,6 +230,7 @@ void CDLList::insertend(int *list, int count) {
  * int pos: The position at which the element is to be inserted
  * Returns:
  * bool: True if the element was inserted, false otherwise
+ * Time complexity: O(this->count)
  */
 bool CDLList::insertpos(int ele, int pos) {
   if (pos < 0 || pos > this->count) {
@@ -262,12 +274,14 @@ bool CDLList::insertpos(int ele, int pos) {
  * int: the element deleted
  * throws:
  * "invalid position" if the position is invalid
+ * Time complexity: O(1)
  */
 int CDLList::deletebeg() { return this->deletepos(0); }
 
 /* Delete the first n elements of the list
  * Returns:
  * bool: Success/failure status
+ * Time complexity: O(count)
  */
 bool CDLList::deletebeg(int count) {
   if (count < 1 || count > this->count) {
@@ -285,12 +299,14 @@ bool CDLList::deletebeg(int count) {
  * int: the element deleted
  * throws:
  * "invalid position" if the position is invalid
+ * Time complexity: O(1)
  */
 int CDLList::deleteend() { return this->deletepos(this->count - 1); }
 
 /* Delete the last n elements of the list
  * Returns:
  * bool: Success/failure status
+ * Time complexity: O(n)
  */
 bool CDLList::deleteend(int n) {
   if (n < 1 || n > this->count) {
@@ -309,6 +325,7 @@ bool CDLList::deleteend(int n) {
  * int: the element deleted
  * throws:
  * "invalid position" if the position is invalid
+ * Time complexity: O(this->count)
  */
 int CDLList::deletepos(int pos) {
   if (pos < 0 || pos >= this->count) {
@@ -350,6 +367,7 @@ int CDLList::deletepos(int pos) {
  * Returns:
  * int: index of the element in the list
  * -1 if not found
+ * Time complexity: O(this->count)
  */
 int CDLList::search(int ele) { return this->linearsearch(ele); }
 
@@ -369,6 +387,7 @@ int CDLList::linearsearch(int ele) {
  * int pos: position to get the element from
  * Returns:
  * int: element at the position
+ * Time complexity: O(this->count)
  * NOTE: Uses unsigned int to handle negative positions
  * NOTE: The list is treated as a circular list
  */
@@ -393,6 +412,7 @@ int CDLList::get(unsigned int pos) {
  * int value: value to set
  * Returns:
  * bool: Success/failure status
+ * Time complexity: O(this->count)
  */
 bool CDLList::set(int pos, int value) {
   if (pos < 0 || pos >= this->count) {
