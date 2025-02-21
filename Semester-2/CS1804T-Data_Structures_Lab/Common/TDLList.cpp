@@ -14,6 +14,7 @@ https://opensource.org/license/MIT
  * struct TDLList::Node *prev: The prev node in the list
  * Returns:
  * struct TDLList::Node *: The newly created node
+ * Time complexity: O(1)
  */
 struct TDLList::Node *TDLList::new_node(int ele, struct TDLList::Node *next,
                                         struct TDLList::Node *prev) {
@@ -33,6 +34,7 @@ struct TDLList::Node *TDLList::new_node(int ele, struct TDLList::Node *next,
  * struct TDLList::Node *node: The node to be deleted
  * Returns:
  * None
+ * Time complexity: O(1)
  */
 void TDLList::delete_node(struct TDLList::Node *node) {
   delete node;
@@ -46,6 +48,7 @@ void TDLList::delete_node(struct TDLList::Node *node) {
  * None
  * Returns:
  * None
+ * Time complexity: O(1)
  */
 TDLList::TDLList() {
   this->head = nullptr;
@@ -57,6 +60,7 @@ TDLList::TDLList() {
 /* Return the size of the list
  * A shortcut to accessing (int) this->count (which is internal)
  * (int) this->size can also be used
+ * Time complexity: O(1)
  */
 int TDLList::getsize() { return this->size; }
 
@@ -66,6 +70,7 @@ int TDLList::getsize() { return this->size; }
  * int * ptr: to copy the list elements into
  * Returns:
  * int: number of elements in the list
+ * Time complexity: O(count)
  */
 int TDLList::copy(int **ptr) { return this->copy(ptr, this->count); }
 
@@ -74,6 +79,7 @@ int TDLList::copy(int **ptr) { return this->copy(ptr, this->count); }
  * int * ptr: to copy the list elements into
  * int count: number of elements to copy
  * Returns: int - number of elements in the new list (count)
+ * Time complexity: O(count)
  */
 int TDLList::copy(int **ptr, int count) {
 
@@ -93,6 +99,7 @@ int TDLList::copy(int **ptr, int count) {
  * int count: number of elements to copy
  * Returns:
  * int: number of elements in the list
+ * Time complexity: O(count)
  * NOTE: Any value stored in * ptr will be overwritten
  */
 int TDLList::alloccopy(int **ptr) { return alloccopy(ptr, this->count); }
@@ -105,6 +112,7 @@ int TDLList::alloccopy(int **ptr) { return alloccopy(ptr, this->count); }
  * int count: number of elements to copy
  * Returns:
  * int: number of elements in the list
+ * Time complexity: O(count)
  * NOTE: Any value stored in * ptr will be overwritten
  */
 int TDLList::alloccopy(int **ptr, int count) {
@@ -117,6 +125,7 @@ int TDLList::alloccopy(int **ptr, int count) {
  * None
  * Returns:
  * None
+ * Time complexity: O(this->count)
  */
 void TDLList::display() {
   struct TDLList::Node *tmp = this->head;
@@ -134,6 +143,7 @@ void TDLList::display() {
  * None
  * Returns:
  * None
+ * Time complexity: O(this->count)
  */
 void TDLList::double_display() {
   struct TDLList::Node *tmp = this->head;
@@ -162,6 +172,7 @@ void TDLList::double_display() {
  * int ele: The element to be inserted
  * Returns:
  * None
+ * Time complexity: O(1)
  */
 void TDLList::insertbeg(int ele) { this->insertpos(ele, 0); }
 
@@ -173,6 +184,7 @@ void TDLList::insertbeg(int ele) { this->insertpos(ele, 0); }
  * Example:
  * If the list is [1, 2, 3, 4] and the array is [5, 6, 7], the list will become
  * [5, 6, 7, 1, 2, 3, 4]
+ * Time complexity: O(count)
  */
 void TDLList::insertbeg(int *list, int count) {
   for (int i = count - 1; i >= 0; i--) {
@@ -185,6 +197,7 @@ void TDLList::insertbeg(int *list, int count) {
  * int ele: The element to be inserted
  * Returns:
  * None
+ * Time complexity: O(1)
  */
 void TDLList::insertend(int ele) { this->insertpos(ele, this->count); }
 
@@ -196,6 +209,7 @@ void TDLList::insertend(int ele) { this->insertpos(ele, this->count); }
  * Example:
  * If the list is [1, 2, 3, 4] and the array is [5, 6, 7], the list will become
  * [1, 2, 3, 4, 5, 6, 7]
+ * Time complexity: O(count)
  */
 void TDLList::insertend(int *list, int count) {
   for (int i = 0; i < count; i++) {
@@ -209,6 +223,7 @@ void TDLList::insertend(int *list, int count) {
  * int pos: The position at which the element is to be inserted
  * Returns:
  * bool: True if the element was inserted, false otherwise
+ * Time complexity: O(this->count)
  */
 bool TDLList::insertpos(int ele, int pos) {
   if (pos < 0 || pos > this->count) {
@@ -257,12 +272,14 @@ bool TDLList::insertpos(int ele, int pos) {
  * int: the element deleted
  * throws:
  * "invalid position" if the position is invalid
+ * Time complexity: O(1)
  */
 int TDLList::deletebeg() { return this->deletepos(0); }
 
 /* Delete the first n elements of the list
  * Returns:
  * bool: Success/failure status
+ * Time complexity: O(count)
  */
 bool TDLList::deletebeg(int count) {
   if (count < 1 || count > this->count) {
@@ -280,12 +297,14 @@ bool TDLList::deletebeg(int count) {
  * int: the element deleted
  * throws:
  * "invalid position" if the position is invalid
+ * Time complexity: O(1)
  */
 int TDLList::deleteend() { return this->deletepos(this->count - 1); }
 
 /* Delete the last n elements of the list
  * Returns:
  * bool: Success/failure status
+ * Time complexity: O(n)
  */
 bool TDLList::deleteend(int n) {
   if (n < 1 || n > this->count) {
@@ -304,6 +323,7 @@ bool TDLList::deleteend(int n) {
  * int: the element deleted
  * throws:
  * "invalid position" if the position is invalid
+ * Time complexity: O(this->count)
  */
 int TDLList::deletepos(int pos) {
   if (pos < 0 || pos >= this->count) {
@@ -344,6 +364,7 @@ int TDLList::deletepos(int pos) {
  * Returns:
  * int: index of the element in the list
  * -1 if not found
+ * Time complexity: O(this->count)
  */
 int TDLList::search(int ele) { return this->linearsearch(ele); }
 
@@ -363,6 +384,7 @@ int TDLList::linearsearch(int ele) {
  * int pos: position to get the element from
  * Returns:
  * int: element at the position
+ * Time complexity: O(this->count)
  * NOTE: Uses unsigned int to handle negative positions
  * NOTE: The list is treated as a circular list
  */
@@ -387,6 +409,7 @@ int TDLList::get(unsigned int pos) {
  * int value: value to set
  * Returns:
  * bool: Success/failure status
+ * Time complexity: O(this->count)
  */
 bool TDLList::set(int pos, int value) {
   if (pos < 0 || pos >= this->count) {
