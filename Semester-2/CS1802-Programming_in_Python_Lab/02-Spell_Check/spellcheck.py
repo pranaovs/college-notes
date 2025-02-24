@@ -36,11 +36,24 @@ class SpellChecker:
 
         return wordlist
 
+    def replace2(self, word: str):
+        """Returns permutations 2 edits away"""
+        one_edit = self.replace1(word)
+        two_edits = []
+        for w in one_edit:
+            two_edits.extend(self.replace1(w))
+        return list(set(two_edits))  # Remove duplicates
+
     def known(self, combination: list) -> set:
         return set(w for w in combination if w in self.wordlist)
 
     def candidates(self, word: str) -> set:
-        return self.known([word]) or self.known(self.replace1(word)) or set([word])
+        return (
+            self.known([word])
+            or self.known(self.replace1(word))
+            or self.known(self.replace2(word))
+            or {word}
+        )
 
 
 def main():
