@@ -1,0 +1,140 @@
+\documentclass[english,course]{lecture}
+
+% Packages
+\usepackage{geometry}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+% Page Setting
+\geometry{a4paper}
+
+% Custom environments
+\newenvironment{qanda}{\begin{enumerate}\setlength{\parindent}{0pt}}{\medskip\end{enumerate}}
+\newcommand{\Q}{\bigskip\bfseries \item}
+\newcommand{\A}{\par\textbf{A:} \normalfont}
+
+% Headers
+\title{Probability and Statistics}
+\subtitle{MA1002}
+% \shorttitle{Title}
+% \subject{Subject of the Talk}
+\author{Author}
+% \email{Author's email}
+\speaker{Speaker}
+% \spemail{Speaker's email}
+\ccode{Subject Code}
+\date{DD}{MM}{YYYY}
+% \dateend{}{}{}
+% \flag{An extra line if you need it}
+% \attn{Something to get reader's attention}
+\morelink{}
+
+\begin{document}
+
+\newpage
+
+
+
+
+
+
+\section{Basic Concepts}
+
+\subsection{Random Experiment}
+
+We know all the possible outcomes, but do not know the result of the experiment until it is performed.
+
+\textbf{Example:} Tossing a coin, rolling a die, drawing a card from a deck of cards.
+
+\subsection{Outcome}
+
+Result of the random experiment in a single trial.
+
+\subsection{Event}
+
+It is a set of outcomes
+
+\subsection{Equally Likely Event}
+
+There are no reasons o give preference to one outcome over the other.
+
+\textbf{Example:} Tossing a fair coin, rolling a fair die.
+
+\subsection{Mutually Exclusive Events}
+
+Simultaneous occurence of the events is not possible.
+
+\textbf{Example:}
+\begin{enumerate}
+  \item  Tossing a coin and getting a head and a tail. 
+  \item Getting odd and even number on a die.
+\end{enumerate}
+
+$A \cup B = \phi$
+
+\subsection{Independent Events}
+
+Occurence of one event does not affect the occurence of the other event.
+
+\textbf{Example:} Tossing a coin two times
+
+$A \cup B = \{HT\} \rightarrow$ Not mutually exclusive
+
+But $A$ and $B$ are Independent
+
+$P(A \cap B) = P(A) \cdot P(B)$
+
+
+\subsection{Classical Definition of Probability}
+
+In a random experiment, there are $n$ equally likely outcomes.
+Let $E$ be the event of interest and $m$ be the number of favourable outcomes in $E$.
+Then the probability of event $E$ is given by $P(E) = \frac{m}{n}$
+
+\textbf{Limitations:} 
+\begin{itemize}
+  \item It is applicable only when all the outcomes are equally likely. 
+    \item $n$ may be infinite.
+\end{itemize}
+
+\textbf{Example: }
+From 25 ticketts, marked with 25 numerals, one ticket is drawn at random. Find the probability that the number on the ticket is a multiple of 3 or 7.
+
+
+\begin{gather*}
+  E = \{3, 6, 9, 12, 15, 18, 21, 24, 7, 14\}\\
+  P(E) = \frac{10}{25} = 0.4
+\end{gather*}
+
+\subsection{Emperical Reference of Probability}
+
+Consider Random Experiment, which can be repeated in homogeneous condition in $N$ times of trials.
+We have got $M$ favourable outcomes for an event $E$.
+
+$\therefore P(E) = {lim}_{N \to \infty}\frac{M}{N} $
+
+\\
+
+\textbf{Limitations: }
+\begin{itemize}
+  \item Sequence may not converge 
+  \item Homogeneous condition may change
+\end{itemize}
+
+
+\subsection{Sample Space}
+
+A set of all possible outcomes of a random experiment is called sample space.
+
+\textbf{Notation:} $S$
+
+Each outcomes if called sample point or elementary event.
+
+\subsection{Event}
+
+
+An event is a subset of sample space $S$.
+$P: \underset{\textbf{Events $P(A)$}}{\text{domain}} \rightarrow \underset{\textbf{$[0,1]$}}{\text{range}}$
+
+\end{document}
