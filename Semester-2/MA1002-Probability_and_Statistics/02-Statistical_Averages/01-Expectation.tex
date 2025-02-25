@@ -1,0 +1,68 @@
+\documentclass[english,course]{lecture}
+
+% Packages
+\usepackage{geometry}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+% Page Setting
+\geometry{a4paper}
+
+% Custom environments
+\newenvironment{qanda}{\begin{enumerate}\setlength{\parindent}{0pt}}{\medskip\end{enumerate}}
+\newcommand{\Q}{\bigskip\bfseries \item}
+\newcommand{\A}{\par\textbf{A:} \normalfont}
+
+% Headers
+\title{Statistical Averages}
+\subtitle{Unit 2}
+\shorttitle{Expectation}
+% \subject{Subject of the Talk}
+\author{Pranaov S}
+% \email{Author's email}
+\speaker{Dr. Jenifer}
+% \spemail{Speaker's email}
+\ccode{MA1002}
+\date{25}{02}{2025}
+% \dateend{}{}{}
+% \flag{An extra line if you need it}
+% \attn{Something to get reader's attention}
+\morelink{https://github.com/pranaovs/college-notes}
+
+\begin{document}
+
+\newpage
+
+\section{Expectation}
+
+Expectation talks about the long term.
+
+\subsection{Mathematical Expectation}
+
+If $X$ is a random variable variablw which can assume any one of the values $x_{1}, x_{2}, x_{3}, \dots, x_{n}$
+with respective probabilities $p_1, p_2, p_3, \dots, p_n$, then the expectation of $X$ is defined as:
+
+\[
+  E(X) = x_{1}p_1 + x_{2} p_2 + \cdots + x_n p_n = \sum_{}^{}x_i p_i
+\]
+
+\\
+
+If $X$ is a continuous random variable with probability density function $f(x)$, then the expectation of $X$ is defined as:
+
+\[
+  E(X) = \int_{-\infty}^{\infty} x f(x) dx
+\]
+
+\subsection{Properties}
+
+\begin{enumerate}
+    \item $E(c) = c$ where $c$ is a constant
+    \item $E(cX) = cE(X)$ where $c$ is a constant
+    \item $E(aX + b) = aE(X) + b$ where $a$ and $b$ are constants
+    \item $E(X + Y) = E(X) + E(Y)$
+    \item $E(XY) = E(X) \cdot E(Y)$, if $X$ and $Y$ are \textbf{independent} random variables
+\end{enumerate}
+
+\end{document}
