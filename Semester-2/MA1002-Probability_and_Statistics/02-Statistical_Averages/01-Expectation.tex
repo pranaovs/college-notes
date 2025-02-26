@@ -65,4 +65,40 @@ If $X$ is a continuous random variable with probability density function $f(x)$,
     \item $E(XY) = E(X) \cdot E(Y)$, if $X$ and $Y$ are \textbf{independent} random variables
 \end{enumerate}
 
+\subsubsection*{Note}
+
+\begin{itemize}
+  \item For a random variable, expectation is the average value of the variable.
+  \item $E(X^2) = \sum_{}^{}x_i^2 p_i$ or $\int_{-\infty}^{\infty} x^2 f(x) dx$
+\end{itemize}
+
+\section{Variance}
+
+Variance tells us how much the values of a random variable differ from the mean.
+
+$$Var(x) = \sigma^2 = R[X-R(x)]^2 = E(X^2) - [E(x)]^2$$
+
+$$ = \sum_{}^{}x_i^2 p_i - [\sum_{}^{}x_i p_i]^2$$
+
+$$\sigma = \sqrt{Var(X)}$$
+
+\\
+
+\subsection{Properties of Variance}
+
+\begin{enumerate}
+  \item $Var(c) = 0$ where $c$ is a constant
+  \item $Var(X + c) = Var(X)$ where $c$ is a constant
+  \item $Var(aX) = a^2 Var(X)$ where $a$ and $b$ are constants
+  \item $Var(aX + b) = a^2 Var(X)$ where $a$ and $b$ are constants
+\end{enumerate}
+
+\subsubsection*{Note}
+
+\begin{itemize}
+  \item $Var(X)$ is always non-negative.
+  \item Standard deviation is practically more useful than variance.
+\end{itemize}
+
+
 \end{document}
