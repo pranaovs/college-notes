@@ -11,6 +11,7 @@ https://opensource.org/license/MIT
 #include <iostream>
 
 /* Resize the list by a given value */
+/* Time Complexity: O(n) */
 void AList::resize(int value) {
   this->ptr = (char *)realloc(this->ptr, sizeof(char) * (this->count + value));
   this->count = this->count + (value);
@@ -18,6 +19,7 @@ void AList::resize(int value) {
 }
 
 /* Constructor to initialize the array */
+/* Time Complexity: O(1) */
 AList::AList() {
   this->ptr = new char;
   this->count = 0;
@@ -25,12 +27,14 @@ AList::AList() {
 }
 
 /* Destructor to free the allocated memory */
+/* Time Complexity: O(1) */
 AList::~AList() { delete[] this->ptr; }
 
 /* Return the size of the list
  * A shortcut to accessing (int) this->count (which is internal)
  * (int) this->size can also be used
  */
+/* Time Complexity: O(1) */
 int AList::getsize() { return this->count; }
 
 /* Copies all list elements into int * ptr argument.
@@ -40,6 +44,7 @@ int AList::getsize() { return this->count; }
  * Returns:
  * int: number of elements in the list
  */
+/* Time Complexity: O(n) */
 int AList::copy(char **ptr) { return this->copy(ptr, this->count); }
 
 /* Copies the list elements into int * ptr argument until count elements
@@ -48,6 +53,7 @@ int AList::copy(char **ptr) { return this->copy(ptr, this->count); }
  * int count: number of elements to copy
  * Returns: int - number of elements in the new list (count)
  */
+/* Time Complexity: O(n) */
 int AList::copy(char **ptr, int count) {
   for (int i = 0; i < count; i++) {
     (*ptr)[i] = this->ptr[i];
@@ -65,6 +71,7 @@ int AList::copy(char **ptr, int count) {
  * int: number of elements in the list
  * NOTE: Any value stored in * ptr will be overwritten
  */
+/* Time Complexity: O(n) */
 int AList::alloccopy(char **ptr) { return alloccopy(ptr, this->count); }
 
 /* Copies the list elements into int * ptr argument until count elements.
@@ -77,12 +84,14 @@ int AList::alloccopy(char **ptr) { return alloccopy(ptr, this->count); }
  * int: number of elements in the list
  * NOTE: Any value stored in * ptr will be overwritten
  */
+/* Time Complexity: O(n) */
 int AList::alloccopy(char **ptr, int count) {
   *ptr = new char[count];
   return copy(ptr, count);
 }
 
 /* Print all elements of the list to stdout */
+/* Time Complexity: O(n) */
 void AList::display() {
   for (int i = 0; i < this->count; i++) {
     std::cout << this->ptr[i] << " ";
@@ -91,6 +100,7 @@ void AList::display() {
 }
 
 /* Print n elements of the list to stdout */
+/* Time Complexity: O(n) */
 void AList::display(int n) {
   if (n < 0 || n > count) {
     return;
@@ -102,6 +112,7 @@ void AList::display(int n) {
 }
 
 /* Insert an element ele to the beginning of the list */
+/* Time Complexity: O(n) */
 void AList::insertbeg(char ele) { this->insertpos(ele, 0); }
 
 /* Insert n elements from an array to the beginning of the list
@@ -113,6 +124,7 @@ void AList::insertbeg(char ele) { this->insertpos(ele, 0); }
  * If the list is [1, 2, 3, 4] and the array is [5, 6, 7], the list will become
  * [5, 6, 7, 1, 2, 3, 4]
  */
+/* Time Complexity: O(n^2) */
 void AList::insertbeg(char *list, int count) {
   for (int i = count - 1; i >= 0; i--) {
     this->insertbeg(list[i]);
@@ -120,6 +132,7 @@ void AList::insertbeg(char *list, int count) {
 }
 
 /* Insert an element ele to the end of the list */
+/* Time Complexity: O(1) amortized */
 void AList::insertend(char ele) { insertpos(ele, this->count); }
 
 /* Insert n elements from an array to the end of the list
@@ -131,6 +144,7 @@ void AList::insertend(char ele) { insertpos(ele, this->count); }
  * If the list is [1, 2, 3, 4] and the array is [5, 6, 7], the list will become
  * [1, 2, 3, 4, 5, 6, 7]
  */
+/* Time Complexity: O(n) */
 void AList::insertend(char *list, int count) {
   for (int i = 0; i < count; i++) {
     this->insertend(list[i]);
@@ -143,6 +157,7 @@ void AList::insertend(char *list, int count) {
  * int pos: list index to insert to
  * Returns: bool - success/failure status
  */
+/* Time Complexity: O(n) */
 bool AList::insertpos(char ele, int pos) {
   if (pos < 0 || pos > count) {
     return false;
@@ -156,6 +171,7 @@ bool AList::insertpos(char ele, int pos) {
 }
 
 /* Delete the first element of the list */
+/* Time Complexity: O(n) */
 char AList::deletebeg() { return this->deletepos(0); }
 
 /* Delete the first n elements of the list
@@ -164,6 +180,7 @@ char AList::deletebeg() { return this->deletepos(0); }
  * throws:
  * "invalid position" if the position is invalid
  */
+/* Time Complexity: O(n^2) */
 bool AList::deletebeg(int count) {
   if (count < 1 || count > this->count) {
     return false;
@@ -180,12 +197,14 @@ bool AList::deletebeg(int count) {
  * throws:
  * "invalid position" if the position is invalid
  */
+/* Time Complexity: O(1) */
 char AList::deleteend() { return this->deletepos(this->count - 1); }
 
 /* Delete the last n elements of the list
  * Returns:
  * bool: Success/failure status
  */
+/* Time Complexity: O(n) */
 bool AList::deleteend(int n) {
   if (n < 1 || n > this->count) {
     return false;
@@ -204,6 +223,7 @@ bool AList::deleteend(int n) {
  * throws:
  * "invalid position" if the position is invalid
  */
+/* Time Complexity: O(n) */
 char AList::deletepos(int pos) {
   if (pos < 0 || pos > count - 1) {
     throw "Invalid position";
@@ -224,6 +244,7 @@ char AList::deletepos(int pos) {
  * int: index of the element in the list
  * -1 if not found
  */
+/* Time Complexity: O(n) */
 int AList::search(int ele) { return this->linearsearch(ele); }
 
 /* Linear search for an element in the list
@@ -233,6 +254,7 @@ int AList::search(int ele) { return this->linearsearch(ele); }
  * int: index of the element in the list
  * -1 if not found
  */
+/* Time Complexity: O(n) */
 int AList::linearsearch(int ele) {
   for (int i = 0; i < this->count; i++) {
     if (this->ptr[i] == ele) {
@@ -243,6 +265,7 @@ int AList::linearsearch(int ele) {
 }
 
 /* Reverse the list */
+/* Time Complexity: O(n) */
 void AList::reverse() {
   int start = 0;
   int end = this->size - 1;
@@ -257,6 +280,7 @@ void AList::reverse() {
  * Returns:
  * bool: Success/failure status
  */
+/* Time Complexity: O(n) */
 bool AList::reverse(int start, int end) {
 
   if (start < 0 || end >= this->count) {
@@ -282,6 +306,7 @@ bool AList::reverse(int start, int end) {
  * NOTE: Uses unsigned int to handle negative positions
  * NOTE: The list is treated as a circular list
  */
+/* Time Complexity: O(1) */
 char AList::get(unsigned int pos) {
   if (pos < 0) {
     throw "Invalid position";
@@ -298,6 +323,7 @@ char AList::get(unsigned int pos) {
  * Returns:
  * bool: Success/failure status
  */
+/* Time Complexity: O(1) */
 bool AList::set(int pos, char value) {
   if (pos < 0 || pos >= this->count) {
     return false;
