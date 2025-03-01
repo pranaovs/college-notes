@@ -4,7 +4,6 @@ class AStack : private AList {
 
 public:
   void push(char ele);
-  void push(char *list, int count);
   char pop();
   void pop(int count);
   char top();

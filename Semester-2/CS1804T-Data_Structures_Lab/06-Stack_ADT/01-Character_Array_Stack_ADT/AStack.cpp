@@ -3,9 +3,6 @@
 /* Time Complexity: O(1) amortized */
 void AStack::push(char ele) { AList::insertend(ele); }
 
-/* Time Complexity: O(n) */
-void AStack::push(char *list, int count) { AList::insertend(list, count); }
-
 /* Time Complexity: O(1) */
 char AStack::pop() { return AList::deleteend(); }
 
