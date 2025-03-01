@@ -11,7 +11,7 @@ bool isOperand(char c) {
 int precedence(char op) {
   if (op == '+' || op == '-')
     return 1;
-  if (op == '*' || op == '/')
+  if (op == '*' || op == '/' || op == '%')
     return 2;
   if (op == '^')
     return 3;
@@ -98,6 +98,9 @@ int evaluatePostfix(const char *postfix) {
         stack.push(result);
         break;
       }
+      case '%':
+        stack.push(val1 % val2);
+        break;
       }
     }
   }
