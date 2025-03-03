@@ -40,14 +40,12 @@ Expectation talks about the long term.
 
 \subsection{Mathematical Expectation}
 
-If $X$ is a random variable variablw which can assume any one of the values $x_{1}, x_{2}, x_{3}, \dots, x_{n}$
+If $X$ is a random variable which can assume any one of the values $x_{1}, x_{2}, x_{3}, \dots, x_{n}$
 with respective probabilities $p_1, p_2, p_3, \dots, p_n$, then the expectation of $X$ is defined as:
 
 \[
   E(X) = x_{1}p_1 + x_{2} p_2 + \cdots + x_n p_n = \sum_{}^{}x_i p_i
 \]
-
-\\
 
 If $X$ is a continuous random variable with probability density function $f(x)$, then the expectation of $X$ is defined as:
 
@@ -58,11 +56,11 @@ If $X$ is a continuous random variable with probability density function $f(x)$,
 \subsection{Properties}
 
 \begin{enumerate}
-    \item $E(c) = c$ where $c$ is a constant
-    \item $E(cX) = cE(X)$ where $c$ is a constant
-    \item $E(aX + b) = aE(X) + b$ where $a$ and $b$ are constants
-    \item $E(X + Y) = E(X) + E(Y)$
-    \item $E(XY) = E(X) \cdot E(Y)$, if $X$ and $Y$ are \textbf{independent} random variables
+  \item $E(c) = c$ where $c$ is a constant
+  \item $E(cX) = cE(X)$ where $c$ is a constant
+  \item $E(aX + b) = aE(X) + b$ where $a$ and $b$ are constants
+  \item $E(X + Y) = E(X) + E(Y)$
+  \item $E(XY) = E(X) \cdot E(Y)$, if $X$ and $Y$ are \textbf{independent} random variables
 \end{enumerate}
 
 \subsubsection*{Note}
@@ -76,20 +74,24 @@ If $X$ is a continuous random variable with probability density function $f(x)$,
 
 Variance tells us how much the values of a random variable differ from the mean.
 
-$$Var(x) = \sigma^2 = R[X-R(x)]^2 = E(X^2) - [E(x)]^2$$
+\[
+  Var(x) = \sigma^2 = E[X - E(X)]^2 = E(X^2) - [E(X)]^2
+\]
 
-$$ = \sum_{}^{}x_i^2 p_i - [\sum_{}^{}x_i p_i]^2$$
+\[
+  = \sum_{}^{}x_i^2 p_i - [\sum_{}^{}x_i p_i]^2
+\]
 
-$$\sigma = \sqrt{Var(X)}$$
-
-\\
+\[
+  \sigma = \sqrt{Var(X)}
+\]
 
 \subsection{Properties of Variance}
 
 \begin{enumerate}
   \item $Var(c) = 0$ where $c$ is a constant
   \item $Var(X + c) = Var(X)$ where $c$ is a constant
-  \item $Var(aX) = a^2 Var(X)$ where $a$ and $b$ are constants
+  \item $Var(aX) = a^2 Var(X)$ where $a$ is a constant
   \item $Var(aX + b) = a^2 Var(X)$ where $a$ and $b$ are constants
 \end{enumerate}
 
@@ -100,5 +102,82 @@ $$\sigma = \sqrt{Var(X)}$$
   \item Standard deviation is practically more useful than variance.
 \end{itemize}
 
+\subsection{Moments}
+
+Moments of a random variable are the expected values of powers of the random variable.
+
+\subsubsection{Moments about the mean}
+
+Mean is the first moment of a random variable.
+
+\[
+  \mu = E(X) = \sum_{}^{}x_i p_i
+\]
+
+\subsubsection{Moments about any point a}
+
+The $r^{th}$ moment of a random variable about any point $a$ is defined as:
+
+\[
+  \mu = E[(X-a)^r] = \sum_{}^{}(x_i - a)^r p_i
+\]
+
+\subsubsection{Moments about the origin}
+
+The $r^{th}$ moment of a random variable about the origin is defined as:
+
+\[
+  \mu = E(X^r) = \sum_{}^{}x_i^r p_i
+\]
+
+\subsection{Relation between moments}
+
+\begin{itemize}
+  \item $\mu_2 = \mu_2' - \mu_1'^2$
+  \item $\mu_3 = \mu_3' - 3\mu_1\mu_2' + 2\mu_1^3$
+  \item $\mu_4 = \mu_4' - 4\mu_1\mu_3' + 6\mu_1^2\mu_2' - 3\mu_1^4$
+\end{itemize}
+
+where $\mu_1 = E(X)$, $\mu_2 = E(X^2)$, $\mu_3 = E(X^3)$, $\mu_4 = E(X^4)$ and $\mu_1'$, $\mu_2'$, $\mu_3'$, $\mu_4'$ are the moments about the origin.
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Moment} & \textbf{Discrete} & \textbf{Continuous} \\
+    \hline
+    About the mean & $E[(X - \mu)^r] = \sum_{}^{} (x_i - \mu)^r p_i$ & $E[(X - \mu)^r] = \int_{-\infty}^{\infty} (x - \mu)^r f(x) dx$ \\
+    \hline
+    About any point $a$ & $E[(X - a)^r] = \sum_{}^{} (x_i - a)^r p_i$ & $E[(X - a)^r] = \int_{-\infty}^{\infty} (x - a)^r f(x) dx$ \\
+    \hline
+    About the origin & $E(X^r) = \sum_{}^{} x_i^r p_i$ & $E(X^r) = \int_{-\infty}^{\infty} x^r f(x) dx$ \\
+    \hline
+  \end{tabular}
+  \caption{Moments of Discrete and Continuous Random Variables}
+  \label{tab:moments}
+\end{table}
+
+\section{Skewness}
+
+Skewness is a measure of the asymmetry of the probability distribution of a real-valued random variable about its mean.
+
+Coefficient of skewness is defined as:
+
+$$\gamma_1 = \displaystyle\frac{\mu_3}{\sigma^3}$$
+
+where $\mu_3$ is the third moment about the mean and $\sigma$ is the standard deviation.
+
+$\mu_3 = E[(X - \mu)^3] = \sum_{}^{}(x_i - \mu)^3 p_i$
+
+\section{Kurtosis}
+
+Kurtosis is a measure of the "tailedness" of the probability distribution of a real-valued random variable.
+
+Coefficient of kurtosis is defined as:
+
+$$\gamma_2 = \displaystyle\frac{\mu_4}{\sigma^4}$$
+
+where $\mu_4$ is the fourth moment about the mean and $\sigma$ is the standard deviation.
+$\sigma$ can be calculated as $\sqrt{Var(X)}$.
 
 \end{document}
