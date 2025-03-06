@@ -1,4 +1,4 @@
-#!./.venv/bin/python
+#!./.venv/bin/env python3
 
 
 def celsius_to_fahrenheit(celsius):

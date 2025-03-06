@@ -1,4 +1,4 @@
-#!./.venv/bin/python
+#!./.venv/bin/env python3
 
 
 def grade(mark):
