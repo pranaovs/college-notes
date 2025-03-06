@@ -1,4 +1,4 @@
-# ./.venv/bin/python
+#!./.venv/bin/env python3
 
 
 def calculate_pay(hours: float, rate: int = 40):
