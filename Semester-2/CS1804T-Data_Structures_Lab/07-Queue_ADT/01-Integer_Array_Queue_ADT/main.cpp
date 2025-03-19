@@ -2,14 +2,17 @@
 #include <iostream>
 
 // Queue class inheriting from AList
+// Queue class inheriting from AList
 class Queue : public AList {
 public:
   Queue() : AList() {}
 
   // Enqueue operation: add an element to the back of the queue
+  // Time Complexity: O(1) - constant time operation
   void enqueue(int element) { insertend(element); }
 
   // Dequeue operation: remove an element from the front of the queue
+  // Time Complexity: O(n) - requires shifting all elements in the array
   int dequeue() {
     if (getsize() == 0) {
       throw "Queue is empty";
@@ -18,6 +21,7 @@ public:
   }
 
   // Peek operation: view the element at the front without removing it
+  // Time Complexity: O(1) - constant time operation
   int peek() {
     if (getsize() == 0) {
       throw "Queue is empty";
@@ -26,6 +30,7 @@ public:
   }
 
   // Check if queue is empty
+  // Time Complexity: O(1) - constant time operation
   bool isEmpty() { return getsize() == 0; }
 };
 
