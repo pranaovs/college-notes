@@ -1,0 +1,68 @@
+\documentclass[english,course]{lecture}
+
+% Packages
+\usepackage{geometry}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+% Page Setting
+\geometry{a4paper}
+
+% Custom environments
+\newenvironment{qanda}{\begin{enumerate}\setlength{\parindent}{0pt}}{\medskip\end{enumerate}}
+\newcommand{\Q}{\bigskip\bfseries \item}
+\newcommand{\A}{\par\textbf{A:} \normalfont}
+
+% Headers
+\title{Probability Distributions}
+\subtitle{Unit 3}
+\shorttitle{Probability Distributions}
+% \subject{Subject of the Talk}
+\author{Pranaov S}
+% \email{Author's email}
+\speaker{Dr. Sahaya Jenifer}
+% \spemail{Speaker's email}
+\ccode{MA1002}
+\date{21}{03}{2025}
+% \dateend{}{}{}
+% \flag{An extra line if you need it}
+% \attn{Something to get reader's attention}
+\morelink{https://github.com/pranaovs/college-notes}
+
+\begin{document}
+
+\newpage
+
+\section{Bernoulli Trial}
+
+A Bernoulli trial is a random experiment with exactly two possible outcomes, ``success'' and ``failure'', in which the probability of success is the same every time the experiment is conducted. The outcomes are mutually exclusive and exhaustive.
+
+Examples:
+\begin{itemize}
+  \item "Heads" or "Tails" in a coin toss.
+  \item "Pass" or "Fail" in an exam.
+  \item "Defective" or "Non-defective" in a manufacturing process.
+  \item "Even" or "Odd" in a dice roll.
+\end{itemize}
+
+Suppose that a Bernoulli trial is repeated $n$ times,
+independently and each time with the same probability of success, $p$.
+
+The probability of getting exactly $x$ successes in $n$ trials is given by the formula
+
+$$^nC_x \cdot p^x \cdot (1-p)^{n-x}$$
+where $^nC_x = \frac{n!}{x! \cdot (n-x)!}$ is the number of ways of choosing $x$ successes from $n$ trials,
+and $p$ is the probability of success in each trial.
+
+
+\section{Binomial Distribution}
+
+A random variable $X$ is said to have a binomial distribution with parameters $n$ and $p$ if its probability mass function is given by:
+
+$$ P(X = x) = ^nC_x \cdot p^x \cdot (1-p)^{n-x} \quad \text{for } x = 0, 1, 2, \ldots, n, \text{ 0 otherwise}$$
+
+Where $n$ is the number of trials and $p$ is the probability of success in each trial, $X$ is the number of successes in $n$ trials.
+
+
+\end{document}
