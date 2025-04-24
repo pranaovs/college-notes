@@ -1,0 +1,47 @@
+[
+  {
+    "algorithm": "Display List in Reverse (using auxiliary array)",
+    "input": [
+      "list: The CDLList object instance."
+    ],
+    "output": [
+      "Prints the elements of the list in reverse order to the standard output."
+    ],
+    "steps": [
+      {
+        "step": "Declare a pointer `tmp_arr` to hold an integer array."
+      },
+      {
+        "step": "Call the `list.alloccopy(&tmp_arr)` method.",
+         "substeps": [
+             {
+                 "step": "This allocates a new integer array."
+             },
+              {
+                 "step": "Copies all elements from the `list` into `tmp_arr`."
+             },
+             {
+                "step": "Sets `tmp_arr` to point to the newly allocated and populated array."
+             }
+         ]
+      },
+      {
+        "step": "Let $n$ be the size of the list (`list.size`)."
+      },
+      {
+        "step": "Iterate with index $i$ from $n-1$ down to $0$:",
+        "substeps": [
+          {
+            "step": "Print the element `tmp_arr[i]` followed by a space."
+          }
+        ]
+      },
+      {
+        "step": "Print a newline character."
+      },
+       {
+        "step": "(Implicitly, `tmp_arr` should be deallocated eventually, although not shown in this specific case block)."
+      }
+    ]
+  }
+]

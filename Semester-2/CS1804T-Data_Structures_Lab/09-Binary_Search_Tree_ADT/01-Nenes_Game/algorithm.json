@@ -1,0 +1,23 @@
+[
+  {
+    "algorithm": "Query Result Calculation",
+    "input": [
+      "a[0] - The first element of the input array `a`.",
+      "num - An element from the query array `n`."
+    ],
+    "output": [
+      "result - The calculated result for the query `num`, printed to standard output."
+    ],
+    "steps": [
+      {
+        "step": "Calculate the limiting value: $limit = \\min(a[0], num + 1)$."
+      },
+      {
+        "step": "Calculate the result: $result = limit - 1$."
+      },
+      {
+          "step": "Print the calculated `result` followed by a space."
+      }
+    ]
+  }
+]

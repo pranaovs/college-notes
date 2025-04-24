@@ -1,0 +1,51 @@
+[
+  {
+    "algorithm": "Parentheses Balancing Check",
+    "input": [
+      "parentheses - A string containing characters, intended to be only '(' and ')'."
+    ],
+    "output": [
+      "balanced - A boolean value: true if the parentheses are balanced, false otherwise."
+    ],
+    "steps": [
+      {
+        "step": "Initialize an empty character stack `stack` (using AStack)."
+      },
+      {
+        "step": "Iterate through each character `c` in the input `parentheses` string." ,
+        "substeps": [
+            {
+                "step": "If `c` is an opening parenthesis '(': ",
+                "substeps": [
+                    {
+                        "step": "Push `c` onto the `stack`."
+                    }
+                ]
+            },
+            {
+                "step": "Else if `c` is a closing parenthesis ')': ",
+                "substeps": [
+                    {
+                        "step": "Check if the `stack` is currently empty.",
+                        "substeps": [
+                            {
+                                "step": "If true (empty stack), return `false` (unmatched closing parenthesis found)."
+                            }
+                        ]
+                    },
+                    {
+                         "step": "If the stack is not empty, pop one element from the `stack` (matching the opening parenthesis)."
+                    }
+                ]
+            }
+        ]
+      },
+      {
+          "step": "After iterating through all characters, check if the `stack` is empty."
+      },
+      {
+          "step": "Return the result of the check (true if empty, meaning all parentheses were matched; false if not empty, meaning unmatched opening parentheses remain)."
+      }
+    ]
+  }
+]

@@ -1,0 +1,114 @@
+[
+  {
+    "algorithm": "Queue Enqueue (using AList::insertend)",
+    "input": [
+      "element - The integer value to add to the queue."
+    ],
+    "output": [
+      "None (Queue is modified in place)"
+    ],
+    "steps": [
+      {
+        "step": "Call AList::insertpos(element, current_count)." ,
+        "substeps": [
+            {
+                "step": "Check validity: Ensure insertion position (`current_count`) is not less than 0 and not greater than `current_count` (always true for `insertend`)."
+            },
+            {
+                "step": "Resize storage: Call internal `resize(+1)`.",
+                "substeps": [
+                     {
+                         "step": "Reallocate memory for the internal array (`ptr`) to hold `current_count + 1` integers."
+                     },
+                     {
+                         "step": "Increment the internal element count (`count`) by 1."
+                     },
+                     {
+                         "step": "Update the public size variable (`size`) to the new `count`."
+                     }
+                ]
+            },
+            {
+                "step": "Shift existing elements (for insertpos general case): For i from `new_count - 1` down to `position + 1`, set `ptr[i] = ptr[i - 1]`. (Note: This loop does not execute when inserting at the end, as `new_count - 1` is equal to the insertion position `current_count`)."
+            },
+            {
+                "step": "Insert new element: Set `ptr[current_count]` (the new last index) to the input `element`."
+            }
+        ]
+      }
+    ]
+  },
+  {
+    "algorithm": "Queue Dequeue (using AList::deletebeg)",
+    "input": [
+      "None"
+    ],
+    "output": [
+      "element - The integer value removed from the front of the queue."
+    ],
+    "steps": [
+      {
+        "step": "Check if queue is empty: If `getsize()` returns 0, throw 'Queue is empty' exception."
+      },
+      {
+        "step": "Call AList::deletepos(0)." ,
+        "substeps": [
+            {
+                "step": "Check validity: Ensure position (0) is not less than 0 and is less than `current_count`. If `current_count` is 0, throw 'Invalid position'."
+            },
+            {
+                "step": "Retrieve element: Store the value at the front `ptr[0]` in a temporary variable `ele`."
+            },
+            {
+                "step": "Shift remaining elements: For i from 0 up to `current_count - 2`, set `ptr[i] = ptr[i + 1]`."
+            },
+            {
+                "step": "Resize storage: Call internal `resize(-1)`.",
+                 "substeps": [
+                     {
+                         "step": "Reallocate memory for the internal array (`ptr`) to hold `current_count - 1` integers."
+                     },
+                     {
+                         "step": "Decrement the internal element count (`count`) by 1."
+                     },
+                     {
+                         "step": "Update the public size variable (`size`) to the new `count`."
+                     }
+                 ]
+            },
+            {
+                "step": "Return the retrieved element `ele`."
+            }
+        ]
+      }
+    ]
+  },
+   {
+    "algorithm": "Queue Peek (using AList::get)",
+    "input": [
+      "None"
+    ],
+    "output": [
+      "element - The integer value at the front of the queue."
+    ],
+    "steps": [
+      {
+        "step": "Check if queue is empty: If `getsize()` returns 0, throw 'Queue is empty' exception."
+      },
+      {
+        "step": "Call AList::get(0)." ,
+        "substeps": [
+            {
+                "step": "Check validity: Ensure position (0) is not less than 0. If it is, throw 'Invalid position'."
+            },
+            {
+                "step": "Calculate effective position: `effective_pos = 0 % current_count`. (Result is 0 if `current_count > 0`)."
+            },
+            {
+                "step": "Return the element at the calculated index: `ptr[effective_pos]`."
+            }
+        ]
+      }
+    ]
+  }
+]

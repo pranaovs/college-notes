@@ -1,0 +1,116 @@
+[
+  {
+    "algorithm": "Bubble Sort",
+    "input": [
+      "array: A vector or array of integers to be sorted."
+    ],
+    "output": [
+      "The input array sorted in ascending order (in-place)."
+    ],
+    "steps": [
+      {
+        "step": "Let $n$ be the size of the input `array`."
+      },
+      {
+        "step": "Iterate with index $i$ from $0$ to $n-1$:",
+        "substeps": [
+          {
+            "step": "Iterate with index $j$ from $i$ to $n-1$:",
+            "substeps": [
+              {
+                "step": "If `array[i]` > `array[j]`:",
+                "substeps": [
+                  {
+                    "step": "Swap the elements at indices $i$ and $j$."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "algorithm": "Insertion Sort",
+    "input": [
+      "array: A vector or array of integers to be sorted."
+    ],
+    "output": [
+      "The input array sorted in ascending order (in-place)."
+    ],
+    "steps": [
+      {
+        "step": "Let $n$ be the size of the input `array`."
+      },
+      {
+        "step": "Iterate with index $i$ from $1$ to $n-1$:",
+        "substeps": [
+          {
+            "step": "Store the current element to be inserted: `key = array[i]`."
+          },
+          {
+            "step": "Initialize comparison index for the sorted subarray: `j = i - 1`."
+          },
+          {
+            "step": "While `j >= 0` and the element `array[j]` is greater than `key`:",
+            "substeps": [
+              {
+                "step": "Shift the element `array[j]` one position to the right: `array[j + 1] = array[j]`."
+              },
+              {
+                "step": "Decrement the comparison index: `j = j - 1`."
+              }
+            ]
+          },
+          {
+            "step": "Insert the stored `key` into its correct sorted position: `array[j + 1] = key`."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "algorithm": "Selection Sort",
+    "input": [
+      "array: A vector or array of integers to be sorted."
+    ],
+    "output": [
+      "The input array sorted in ascending order (in-place)."
+    ],
+    "steps": [
+      {
+        "step": "Let $n$ be the size of the input `array`."
+      },
+      {
+        "step": "Iterate with index $i$ from $0$ to $n-2$ (representing the start of the unsorted subarray):",
+        "substeps": [
+          {
+            "step": "Assume the index of the minimum element in the unsorted subarray is initially $i$: `minIndex = i`."
+          },
+          {
+            "step": "Iterate with index $j$ from $i + 1$ to $n-1$ (to scan the rest of the unsorted subarray):",
+            "substeps": [
+              {
+                "step": "If `array[j]` is less than `array[minIndex]`:",
+                "substeps": [
+                  {
+                    "step": "Update the index of the minimum element found so far: `minIndex = j`."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "step": "If the index of the minimum element (`minIndex`) is different from the starting index of this pass (`i`):",
+             "substeps": [
+                 {
+                    "step": "Swap the element at index $i$ with the element at `minIndex`."
+                 }
+             ]
+          }
+        ]
+      }
+    ]
+  }
+]

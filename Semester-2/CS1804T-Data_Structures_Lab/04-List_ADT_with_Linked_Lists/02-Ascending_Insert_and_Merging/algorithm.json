@@ -1,0 +1,172 @@
+[
+  {
+    "algorithm": "LList Insert at Position",
+    "input": [
+      "ele: The integer element to insert.",
+      "pos: The zero-based index at which to insert the element."
+    ],
+    "output": [
+      "Returns `true` if insertion is successful, `false` otherwise.",
+      "A new node containing `ele` is inserted at index `pos`.",
+      "The list size increases by 1."
+    ],
+    "steps": [
+      {
+        "step": "Check if the position `pos` is valid (from $0$ to `count` inclusive)."
+      },
+      {
+        "step": "If `pos` is invalid, return `false`."
+      },
+      {
+        "step": "If `pos == 0` (insert at beginning):",
+        "substeps": [
+          {
+            "step": "Create a new node `new_node` with data `ele` and `next` pointing to the current `head` (using `new_node` logic, which also increments count/size)."
+          },
+          {
+            "step": "Update the list's `head` to point to `new_node`."
+          },
+          {
+            "step": "Return `true`."
+          }
+        ]
+      },
+      {
+        "step": "Else (insert at `pos > 0`):",
+        "substeps": [
+          {
+            "step": "Initialize `temp_node = head`."
+          },
+          {
+            "step": "Iterate `pos - 1` times to reach the node *before* the insertion point: `temp_node = temp_node->next`."
+          },
+          {
+            "step": "Create a new node `new_node` with data `ele` and `next` pointing to `temp_node->next` (using `new_node` logic)."
+          },
+          {
+            "step": "Update the `next` pointer of `temp_node` to point to `new_node`: `temp_node->next = new_node`."
+          },
+          {
+            "step": "Return `true`."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "algorithm": "Bubble Sort (for customSort)",
+    "input": [
+      "arr: An array of integers.",
+      "size: The number of elements in the array."
+    ],
+    "output": [
+      "The input array `arr` sorted in ascending order (in-place)."
+    ],
+    "steps": [
+      {
+        "step": "Iterate with index $i$ from $0$ to `size - 2`:",
+        "substeps": [
+          {
+            "step": "Iterate with index $j$ from $0$ to `size - i - 2`:",
+            "substeps": [
+              {
+                "step": "If `arr[j] > arr[j + 1]`:",
+                "substeps": [
+                  {
+                    "step": "Swap `arr[j]` and `arr[j + 1]`."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "algorithm": "SortedLList Sorted Insert",
+    "input": [
+      "ele: The integer element to insert."
+    ],
+    "output": [
+      "A new node containing `ele` is inserted into the list, maintaining ascending sorted order.",
+      "The list size increases by 1."
+    ],
+    "steps": [
+      {
+        "step": "If the list is empty (`head == nullptr`) or `ele` is less than or equal to the head's data (`ele <= head->data`):",
+        "substeps": [
+          {
+            "step": "Insert `ele` at the beginning of the list using `insertbeg(ele)`."
+          },
+          {
+            "step": "Return."
+          }
+        ]
+      },
+      {
+        "step": "Initialize `current = head`."
+      },
+      {
+        "step": "Initialize `prev = nullptr`."
+      },
+      {
+        "step": "While `current` is not `nullptr` AND `current->data < ele`:",
+        "substeps": [
+          {
+            "step": "Update `prev = current`."
+          },
+          {
+            "step": "Update `current = current->next`."
+          }
+        ]
+      },
+      {
+        "step": "Create a new node `newNode` with data `ele` and `next` pointing to `current` (using `new_node` logic)."
+      },
+      {
+        "step": "Update the `next` pointer of `prev` to point to `newNode`: `prev->next = newNode`."
+      }
+    ]
+  },
+  {
+    "algorithm": "SortedLList Insert Merged Arrays",
+    "input": [
+      "arr1: The first integer array.",
+      "size1: The number of elements in `arr1`.",
+      "arr2: The second integer array.",
+      "size2: The number of elements in `arr2`."
+    ],
+    "output": [
+      "All elements from `arr1` and `arr2` are inserted into the sorted linked list, maintaining sorted order."
+    ],
+    "steps": [
+      {
+        "step": "Calculate total size: `totalSize = size1 + size2`."
+      },
+      {
+        "step": "Allocate a temporary merged array: `mergedArray = new int[totalSize]`."
+      },
+      {
+        "step": "Copy elements from `arr1` to the beginning of `mergedArray`."
+      },
+      {
+        "step": "Copy elements from `arr2` to `mergedArray` starting after the elements from `arr1`."
+      },
+      {
+        "step": "Sort `mergedArray` using the Bubble Sort algorithm (`customSort(mergedArray, totalSize)`)."
+      },
+      {
+        "step": "Iterate through the sorted `mergedArray` with index $i$ from $0$ to `totalSize - 1`:",
+        "substeps": [
+          {
+            "step": "Insert the element `mergedArray[i]` into the sorted linked list using the `SortedLList::insert` method."
+          }
+        ]
+      },
+      {
+        "step": "Deallocate the temporary `mergedArray`."
+      }
+    ]
+  }
+]

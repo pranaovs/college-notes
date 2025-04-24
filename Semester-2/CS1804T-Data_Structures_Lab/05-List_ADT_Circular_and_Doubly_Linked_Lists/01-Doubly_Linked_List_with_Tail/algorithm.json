@@ -1,0 +1,369 @@
+[
+  {
+    "algorithm": "TDLList Double Display",
+    "input": [
+      "Implicitly takes the TDLList object instance."
+    ],
+    "output": [
+      "Prints the list elements in forward order.",
+      "Prints the list elements in reverse order."
+    ],
+    "steps": [
+      {
+        "step": "Forward Display:",
+        "substeps": [
+          {
+            "step": "Initialize `temp_node = head`."
+          },
+          {
+            "step": "Print 'Forward: '."
+          },
+          {
+            "step": "While `temp_node->next` is not `nullptr`:",
+            "substeps": [
+              {
+                "step": "Print `temp_node->data` followed by ' -> '."
+              },
+              {
+                "step": "Move to the next node: `temp_node = temp_node->next`."
+              }
+            ]
+          },
+          {
+             "step": "Print the data of the last node (`temp_node->data`)."
+          },
+           {
+             "step": "Print a newline."
+           }
+        ]
+      },
+       {
+        "step": "Reverse Display:",
+        "substeps": [
+          {
+            "step": "Initialize `temp_node = tail` (or use the last node from the forward pass)."
+          },
+          {
+            "step": "Print 'Reverse: '."
+          },
+          {
+            "step": "While `temp_node->prev` is not `nullptr`:",
+            "substeps": [
+              {
+                "step": "Print `temp_node->data` followed by ' <- '."
+              },
+              {
+                "step": "Move to the previous node: `temp_node = temp_node->prev`."
+              }
+            ]
+          },
+          {
+             "step": "Print the data of the first node (`temp_node->data`)."
+          },
+           {
+             "step": "Print a newline."
+           }
+        ]
+      }
+    ]
+  },
+  {
+    "algorithm": "TDLList Insert at Position",
+    "input": [
+      "ele: The integer element to insert.",
+      "pos: The zero-based index at which to insert the element."
+    ],
+    "output": [
+      "Returns `true` if insertion is successful, `false` otherwise.",
+      "A new node containing `ele` is inserted at index `pos`, maintaining doubly linked list structure.",
+      "The list size increases by 1."
+    ],
+    "steps": [
+      {
+        "step": "Check if the position `pos` is valid (from $0$ to `count` inclusive)."
+      },
+      {
+        "step": "If `pos` is invalid, return `false`."
+      },
+      {
+        "step": "If `pos == 0` (insert at head):",
+        "substeps": [
+          {
+            "step": "Create a new node `newNode` with data `ele`, `next` pointing to the current `head`, and `prev` pointing to `nullptr` (using `new_node` logic)."
+          },
+          {
+            "step": "If the list was not empty (`head` existed):",
+             "substeps": [
+                 {
+                    "step": "Set the `prev` pointer of the original head node to `newNode`: `head->prev = newNode`."
+                 }
+             ]
+          },
+          {
+            "step": "Else (list was empty):",
+             "substeps": [
+                 {
+                    "step": "Set the `tail` pointer to `newNode`."
+                 }
+             ]
+          },
+          {
+            "step": "Update the list's `head` pointer to `newNode`."
+          },
+          {
+            "step": "Return `true`."
+          }
+        ]
+      },
+      {
+        "step": "Else if `pos == count` (insert at tail):",
+        "substeps": [
+          {
+            "step": "Create a new node `newNode` with data `ele`, `next` pointing to `nullptr`, and `prev` pointing to the current `tail` (using `new_node` logic)."
+          },
+          {
+            "step": "If the list was not empty (`tail` existed):",
+             "substeps": [
+                 {
+                    "step": "Set the `next` pointer of the original tail node to `newNode`: `tail->next = newNode`."
+                 }
+             ]
+          },
+          {
+            "step": "Else (list was empty):",
+             "substeps": [
+                 {
+                    "step": "Set the `head` pointer to `newNode`."
+                 }
+             ]
+          },
+          {
+            "step": "Update the list's `tail` pointer to `newNode`."
+          },
+          {
+            "step": "Return `true`."
+          }
+        ]
+      },
+      {
+        "step": "Else (insert in the middle):",
+        "substeps": [
+          {
+            "step": "Initialize `temp_node = head`."
+          },
+          {
+            "step": "Iterate `pos - 1` times to reach the node *before* the insertion point: `temp_node = temp_node->next`."
+          },
+          {
+            "step": "Create a new node `newNode` with data `ele`, `next` pointing to `temp_node->next`, and `prev` pointing to `temp_node` (using `new_node` logic)."
+          },
+          {
+            "step": "Set the `prev` pointer of the node originally after `temp_node` to `newNode`: `newNode->next->prev = newNode`."
+          },
+          {
+            "step": "Set the `next` pointer of `temp_node` to `newNode`: `temp_node->next = newNode`."
+          },
+          {
+            "step": "Return `true`."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "algorithm": "TDLList Delete at Position",
+    "input": [
+      "pos: The zero-based index from which to delete the element."
+    ],
+    "output": [
+      "Returns the integer element that was deleted.",
+      "The node at index `pos` is removed and deallocated, maintaining doubly linked list structure.",
+      "The list size decreases by 1.",
+      "Throws an exception or indicates an error if `pos` is invalid."
+    ],
+    "steps": [
+      {
+        "step": "Check if `pos < 0` or `pos >= count`."
+      },
+      {
+        "step": "If invalid, throw an exception or signal an error ('Invalid position')."
+      },
+      {
+        "step": "Initialize `node_to_delete = head`."
+      },
+      {
+        "step": "Iterate `pos` times to reach the node to be deleted: `node_to_delete = node_to_delete->next`."
+      },
+      {
+        "step": "Store the data from the node: `deleted_element = node_to_delete->data`."
+      },
+      {
+        "step": "Update the `next` pointer of the *previous* node:",
+        "substeps": [
+          {
+            "step": "If `node_to_delete->prev` exists (not deleting head):",
+            "substeps": [
+              {
+                "step": "Set `node_to_delete->prev->next = node_to_delete->next`."
+              }
+            ]
+          },
+          {
+            "step": "Else (deleting head):",
+            "substeps": [
+              {
+                "step": "Update `head = node_to_delete->next`."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "step": "Update the `prev` pointer of the *next* node:",
+        "substeps": [
+          {
+            "step": "If `node_to_delete->next` exists (not deleting tail):",
+            "substeps": [
+              {
+                "step": "Set `node_to_delete->next->prev = node_to_delete->prev`."
+              }
+            ]
+          },
+          {
+            "step": "Else (deleting tail):",
+            "substeps": [
+              {
+                "step": "Update `tail = node_to_delete->prev`."
+              }
+            ]
+          }
+        ]
+      },
+      {
+           "step": "If the list becomes empty after deletion (`head` is now `nullptr`):",
+           "substeps": [
+               {
+                   "step": "Set `tail = nullptr`."
+               }
+           ]
+       },
+      {
+        "step": "Deallocate the `node_to_delete` (using `delete_node` logic, which also decrements count/size)."
+      },
+      {
+        "step": "Return `deleted_element`."
+      }
+    ]
+  },
+  {
+    "algorithm": "TDLList Linear Search",
+    "input": [
+      "ele: The integer element to search for."
+    ],
+    "output": [
+      "Returns the zero-based index of the first occurrence of `ele` if found.",
+      "Returns -1 if `ele` is not found in the list."
+    ],
+    "steps": [
+      {
+        "step": "Initialize `current_node = head`."
+      },
+      {
+        "step": "Initialize index `i = 0`."
+      },
+      {
+        "step": "While `current_node` is not `nullptr`:",
+        "substeps": [
+          {
+            "step": "If `current_node->data` equals `ele`:",
+            "substeps": [
+              {
+                "step": "Return the current index `i`."
+              }
+            ]
+          },
+          {
+            "step": "Move to the next node: `current_node = current_node->next`."
+          },
+          {
+            "step": "Increment index: `i++`."
+          }
+        ]
+      },
+      {
+        "step": "If the loop completes without finding the element, return -1."
+      }
+    ]
+  },
+   {
+    "algorithm": "TDLList Get Element (Circular)",
+    "input": [
+      "pos: The (unsigned) zero-based index from which to retrieve the element."
+    ],
+    "output": [
+      "Returns the integer element at the effective position.",
+      "Throws an exception or indicates an error if `pos` implies an invalid operation or the list is empty."
+    ],
+    "steps": [
+       {
+         "step": "Check if the list is empty (`count == 0`) or if `pos` represents an invalid scenario (e.g., negative input interpreted incorrectly)."
+       },
+       {
+         "step": "If invalid, throw an exception or signal an error ('Invalid position')."
+       },
+       {
+           "step": "Calculate the effective index within the current list bounds: `effective_pos = pos % count`."
+       },
+       {
+           "step": "Initialize `current_node = head`."
+       },
+       {
+           "step": "Iterate `effective_pos` times:",
+           "substeps": [
+                {
+                    "step": "`current_node = current_node->next`."
+                }
+           ]
+       },
+       {
+           "step": "Return the data from the reached node: `current_node->data`."
+       }
+    ]
+  },
+   {
+    "algorithm": "TDLList Set Element",
+    "input": [
+      "pos: The zero-based index of the element to modify.",
+       "value: The new integer value for the element."
+    ],
+    "output": [
+      "Returns `true` if the update is successful, `false` otherwise.",
+       "The data of the node at index `pos` is updated to `value`."
+    ],
+    "steps": [
+        {
+           "step": "Check if `pos < 0` or `pos >= count`."
+       },
+        {
+           "step": "If invalid, return `false`."
+       },
+        {
+           "step": "Initialize `current_node = head`."
+       },
+       {
+           "step": "Iterate `pos` times:",
+            "substeps": [
+                {
+                    "step": "`current_node = current_node->next`."
+                }
+           ]
+       },
+       {
+           "step": "Update the data of the reached node: `current_node->data = value`."
+       },
+        {
+            "step": "Return `true`."
+        }
+    ]
+  }
+]

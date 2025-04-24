@@ -1,0 +1,85 @@
+[
+  {
+    "algorithm": "Calculate Square Area",
+    "input": [
+      "side: The side length of the square."
+    ],
+    "output": [
+      "The calculated area of the square."
+    ],
+    "steps": [
+      {
+        "step": "Receive the side length $s$."
+      },
+      {
+        "step": "Calculate the area $A = s \\times s$."
+      },
+      {
+        "step": "Return the calculated area $A$."
+      }
+    ]
+  },
+  {
+    "algorithm": "Calculate Rectangle Area",
+    "input": [
+      "length: The length of the rectangle.",
+      "width: The width of the rectangle."
+    ],
+    "output": [
+      "The calculated area of the rectangle."
+    ],
+    "steps": [
+      {
+        "step": "Receive the length $l$ and width $w$."
+      },
+      {
+        "step": "Calculate the area $A = l \\times w$."
+      },
+      {
+        "step": "Return the calculated area $A$."
+      }
+    ]
+  },
+  {
+    "algorithm": "Calculate Cube Surface Area",
+    "input": [
+      "side: The side length of the cube."
+    ],
+    "output": [
+      "The calculated surface area of the cube."
+    ],
+    "steps": [
+      {
+        "step": "Receive the side length $s$."
+      },
+      {
+        "step": "Calculate the surface area $SA = 6 \\times s \\times s$."
+      },
+      {
+        "step": "Return the calculated surface area $SA$."
+      }
+    ]
+  },
+  {
+    "algorithm": "Calculate Cuboid Surface Area",
+    "input": [
+      "length: The length of the cuboid.",
+      "width: The width of the cuboid.",
+      "height: The height of the cuboid."
+    ],
+    "output": [
+      "The calculated surface area of the cuboid."
+    ],
+    "steps": [
+      {
+        "step": "Receive the length $l$, width $w$, and height $h$."
+      },
+      {
+        "step": "Calculate the surface area $SA = 2 \\times (l \\times w + w \\times h + h \\times l)$."
+      },
+      {
+        "step": "Return the calculated surface area $SA$."
+      }
+    ]
+  }
+]

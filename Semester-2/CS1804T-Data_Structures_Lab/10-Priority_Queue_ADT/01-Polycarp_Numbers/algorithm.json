@@ -1,0 +1,63 @@
+[
+  {
+    "algorithm": "Find Prefix Length Before Last Duplicate Pair",
+    "input": [
+      "nums - A vector of integers."
+    ],
+    "output": [
+      "index - An integer representing the index of the second-to-last occurrence of the first element that has at least two occurrences after its initial position. Returns -1 if no such element exists."
+    ],
+    "steps": [
+      {
+        "step": "Initialize `removal_index = -1`."
+      },
+      {
+        "step": "Iterate through the `nums` vector with index `i` from 0 to `nums.size() - 1`.",
+        "substeps": [
+          {
+            "step": "Initialize `second_last_occurrence = -1`."
+          },
+          {
+            "step": "Initialize `last_occurrence = i`."
+          },
+          {
+            "step": "Iterate through the `nums` vector with index `j` from `i + 1` to `nums.size() - 1`." ,
+            "substeps": [
+               {
+                   "step": "If `nums[j]` is equal to `nums[i]`:",
+                   "substeps": [
+                      {
+                          "step": "Update `second_last_occurrence = last_occurrence`."
+                      },
+                       {
+                          "step": "Update `last_occurrence = j`."
+                      }
+                   ]
+               }
+            ]
+          },
+          {
+            "step": "After the inner loop (j), check if `second_last_occurrence` is not equal to -1 (meaning at least two occurrences of `nums[i]` were found after index `i`)." ,
+            "substeps": [
+                {
+                    "step": "If true:",
+                    "substeps": [
+                        {
+                             "step": "Update the outer loop index `i = second_last_occurrence`."
+                        },
+                         {
+                             "step": "Update `removal_index = second_last_occurrence`."
+                        }
+                    ]
+                }
+            ]
+
+          }
+        ]
+      },
+      {
+        "step": "Return `removal_index`."
+      }
+    ]
+  }
+]

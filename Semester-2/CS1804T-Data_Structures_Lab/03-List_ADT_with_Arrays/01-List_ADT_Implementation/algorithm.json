@@ -1,0 +1,325 @@
+[
+  {
+    "algorithm": "AList Resize",
+    "input": [
+      "value: The integer amount by which to change the size (positive to increase, negative to decrease)."
+    ],
+    "output": [
+      "The internal array `ptr` is reallocated to the new size.",
+      "The list's `count` and `size` attributes are updated."
+    ],
+    "steps": [
+      {
+        "step": "Calculate the new required capacity: `new_capacity = current_count + value`."
+      },
+      {
+        "step": "Reallocate the memory for the internal array `ptr` to hold `new_capacity` elements. Store the result back into `ptr`."
+      },
+      {
+        "step": "Update the list's element count: `count = new_capacity`."
+      },
+      {
+        "step": "Update the list's allocated size: `size = new_capacity`."
+      }
+    ]
+  },
+  {
+    "algorithm": "AList Insert at Position",
+    "input": [
+      "ele: The integer element to insert.",
+      "pos: The zero-based index at which to insert the element."
+    ],
+    "output": [
+      "Returns `true` if insertion is successful, `false` otherwise.",
+      "The element `ele` is inserted at index `pos`, shifting subsequent elements.",
+      "The list size increases by 1."
+    ],
+    "steps": [
+      {
+        "step": "Check if the position `pos` is valid (from $0$ to `count` inclusive)."
+      },
+      {
+        "step": "If `pos` is invalid, return `false`."
+      },
+      {
+        "step": "Increase the allocated size of the list by 1 (using the `resize` logic)."
+      },
+      {
+        "step": "Iterate backwards from the new end of the list (`count - 1`) down to `pos + 1`:",
+        "substeps": [
+          {
+            "step": "Shift the element at index `i - 1` to index `i`: `ptr[i] = ptr[i - 1]`."
+          }
+        ]
+      },
+      {
+        "step": "Place the new element `ele` at the target position `pos`: `ptr[pos] = ele`."
+      },
+      {
+        "step": "Return `true`."
+      }
+    ]
+  },
+  {
+    "algorithm": "AList Delete at Position",
+    "input": [
+      "pos: The zero-based index from which to delete the element."
+    ],
+    "output": [
+      "Returns the integer element that was deleted.",
+      "The element at index `pos` is removed, shifting subsequent elements.",
+      "The list size decreases by 1.",
+      "Throws an exception or indicates an error if `pos` is invalid."
+    ],
+    "steps": [
+      {
+        "step": "Check if the list is empty (`count < 1`) or if the position `pos` is invalid (less than $0$ or greater than or equal to `count`)."
+      },
+      {
+        "step": "If invalid, throw an exception or signal an error ('Invalid position')."
+      },
+      {
+        "step": "Store the element to be deleted: `deleted_element = ptr[pos]`."
+      },
+      {
+        "step": "Iterate forward from the deletion position `pos` up to `count - 2`:",
+        "substeps": [
+          {
+            "step": "Shift the element at index `i + 1` to index `i`: `ptr[i] = ptr[i + 1]`."
+          }
+        ]
+      },
+      {
+        "step": "Decrease the allocated size of the list by 1 (using the `resize` logic)."
+      },
+      {
+        "step": "Return `deleted_element`."
+      }
+    ]
+  },
+  {
+    "algorithm": "AList Linear Search",
+    "input": [
+      "ele: The integer element to search for."
+    ],
+    "output": [
+      "Returns the zero-based index of the first occurrence of `ele` if found.",
+      "Returns -1 if `ele` is not found in the list."
+    ],
+    "steps": [
+      {
+        "step": "Iterate with index $i$ from $0$ to `count - 1`:" ,
+        "substeps": [
+            {
+                "step": "If `ptr[i]` equals `ele`:",
+                "substeps": [
+                    {
+                        "step": "Return the current index $i$."
+                    }
+                ]
+            }
+        ]
+      },
+      {
+        "step": "If the loop completes without finding the element, return -1."
+      }
+    ]
+  },
+  {
+    "algorithm": "AList Reverse Sublist",
+    "input": [
+      "start: The starting zero-based index of the sublist to reverse.",
+      "end: The ending zero-based index of the sublist to reverse."
+    ],
+    "output": [
+      "Returns `true` if the reversal is successful, `false` otherwise.",
+      "The elements in the list between indices `start` and `end` (inclusive) are reversed in place."
+    ],
+    "steps": [
+        {
+          "step": "Check if `start` index is less than 0 or `end` index is greater than or equal to `count`."
+        },
+        {
+          "step": "If indices are invalid, return `false`."
+        },
+        {
+            "step": "While `start` < `end`:",
+             "substeps": [
+                {
+                    "step": "Swap the elements `ptr[start]` and `ptr[end]`."
+                },
+                {
+                    "step": "Increment `start`."
+                },
+                {
+                    "step": "Decrement `end`."
+                }
+             ]
+        },
+        {
+          "step": "Return `true`."
+        }
+    ]
+  },
+    {
+    "algorithm": "AList Get Element (Circular)",
+    "input": [
+      "pos: The (unsigned) zero-based index from which to retrieve the element."
+    ],
+    "output": [
+      "Returns the integer element at the effective position.",
+       "Throws an exception or indicates an error if `pos` implies an invalid operation (though the code uses unsigned int and modulo)."
+    ],
+    "steps": [
+       {
+         "step": "If the list is empty (`count == 0`) or an error condition is met (e.g., negative input interpreted incorrectly, although `unsigned int` is used), handle the error (e.g., throw 'Invalid position')."
+       },
+       {
+           "step": "Calculate the effective index within the current list bounds using the modulo operator: `effective_pos = pos % count`."
+       },
+       {
+           "step": "Return the element at the effective index: `ptr[effective_pos]`."
+       }
+    ]
+  },
+  {
+    "algorithm": "Rotate List with Extra Array",
+    "input": [
+      "k: The number of positions to rotate the list to the right."
+    ],
+    "output": [
+      "The list is rotated by $k$ positions in place."
+    ],
+    "steps": [
+      {
+        "step": "Let $n$ be the size of the list (`getsize()`)."
+      },
+      {
+        "step": "If $n$ is 0, return."
+      },
+      {
+        "step": "Calculate the effective rotation amount: `eff_k = k % n`."
+      },
+       {
+        "step": "If `eff_k` is 0, return (no rotation needed)."
+      },
+      {
+        "step": "Create a temporary array `temp` of size $n$."
+      },
+      {
+        "step": "Iterate with index $i$ from $0$ to $n-1$:",
+        "substeps": [
+          {
+            "step": "Copy element from original list to rotated position in temp array: `temp[(i + eff_k) % n] = get(i)`."
+          }
+        ]
+      },
+      {
+        "step": "Iterate with index $i$ from $0$ to $n-1$:",
+        "substeps": [
+          {
+            "step": "Copy element back from temp array to the original list: `set(i, temp[i])`."
+          }
+        ]
+      },
+      {
+        "step": "Deallocate the temporary array `temp`."
+      }
+    ]
+  },
+  {
+    "algorithm": "Rotate List In-Place (Reversal)",
+    "input": [
+      "k: The number of positions to rotate the list to the right."
+    ],
+    "output": [
+      "The list is rotated by $k$ positions in place."
+    ],
+    "steps": [
+      {
+        "step": "Let $n$ be the size of the list (`getsize()`)."
+      },
+      {
+        "step": "If $n$ is 0 or 1, return."
+      },
+      {
+        "step": "Calculate the effective rotation amount: `eff_k = k % n`."
+      },
+      {
+        "step": "If `eff_k` is 0, return."
+      },
+      {
+        "step": "Reverse the entire list (from index 0 to $n-1$) using `AList::reverse(0, n - 1)`."
+      },
+      {
+        "step": "Reverse the first `eff_k` elements (from index 0 to `eff_k - 1`) using `AList::reverse(0, eff_k - 1)`."
+      },
+      {
+        "step": "Reverse the remaining elements (from index `eff_k` to $n-1$) using `AList::reverse(eff_k, n - 1)`."
+      }
+    ]
+  },
+  {
+    "algorithm": "Rotate List Cyclically (Juggling Algorithm)",
+    "input": [
+      "k: The number of positions to rotate the list to the right."
+    ],
+    "output": [
+      "The list is rotated by $k$ positions in place."
+    ],
+    "steps": [
+      {
+        "step": "Let $n$ be the size of the list (`getsize()`)."
+      },
+      {
+        "step": "If $n$ is 0 or 1, return."
+      },
+      {
+        "step": "Calculate the effective rotation amount: `eff_k = k % n`."
+      },
+       {
+        "step": "If `eff_k` is 0, return."
+      },
+      {
+        "step": "Initialize `elements_moved_count = 0`."
+      },
+      {
+        "step": "Iterate with `start_index` from $0$ up to $n-1$, as long as `elements_moved_count < n`:",
+        "substeps": [
+            {
+                "step": "Set `current_index = start_index`."
+            },
+            {
+                "step": "Store the value at the start of the current cycle: `value_to_move = get(start_index)`."
+            },
+            {
+                "step": "Start a do-while loop (executes at least once):",
+                "substeps": [
+                    {
+                        "step": "Calculate the index where the `value_to_move` should go: `next_index = (current_index + eff_k) % n`."
+                    },
+                    {
+                         "step": "Temporarily store the value currently at `next_index`: `temp_value = get(next_index)`."
+                    },
+                    {
+                        "step": "Place `value_to_move` at `next_index`: `set(next_index, value_to_move)`."
+                    },
+                    {
+                        "step": "Update `value_to_move` with the value that was displaced: `value_to_move = temp_value`."
+                    },
+                    {
+                        "step": "Update `current_index` to `next_index`."
+                    },
+                    {
+                         "step": "Increment `elements_moved_count`."
+                    }
+                ]
+            },
+            {
+                "step": "Continue the loop while `current_index != start_index` (until the cycle completes)."
+            }
+        ]
+      }
+    ]
+  }
+]

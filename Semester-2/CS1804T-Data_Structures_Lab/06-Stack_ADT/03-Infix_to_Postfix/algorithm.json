@@ -1,0 +1,174 @@
+[
+  {
+    "algorithm": "Infix to Postfix Conversion",
+    "input": [
+      "infix - A null-terminated character array representing the infix expression.",
+      "postfix - A character array to store the resulting postfix expression."
+    ],
+    "output": [
+      "The `postfix` array is populated with the null-terminated postfix representation of the `infix` expression."
+    ],
+    "steps": [
+      {
+        "step": "Initialize an empty character stack `stack` (using LLStack)."
+      },
+      {
+        "step": "Initialize an integer index `k` to 0 (for the `postfix` array)."
+      },
+      {
+        "step": "Iterate through the `infix` expression character by character (`c`) from index `i = 0` until the null terminator is reached." ,
+        "substeps": [
+            {
+                "step": "If `c` is an operand (checked using `isOperand(c)`):",
+                "substeps": [
+                    {
+                        "step": "Assign `c` to `postfix[k]`."
+                    },
+                    {
+                        "step": "Increment `k`."
+                    }
+                ]
+            },
+            {
+                "step": "Else if `c` is an opening parenthesis '(': ",
+                "substeps": [
+                    {
+                        "step": "Push `c` onto `stack`."
+                    }
+                ]
+            },
+            {
+                "step": "Else if `c` is a closing parenthesis ')': ",
+                "substeps": [
+                    {
+                        "step": "While `stack` is not empty AND the top element (`stack.peek()`) is not '(': ",
+                        "substeps": [
+                            {
+                                "step": "Pop an element from `stack` and assign it to `postfix[k]`."
+                            },
+                             {
+                                "step": "Increment `k`."
+                            }
+                        ]
+                    },
+                    {
+                        "step": "If `stack` is not empty AND `stack.peek()` is '(': ",
+                         "substeps": [
+                            {
+                                "step": "Pop the '(' from `stack` (discard it)."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "step": "Else (if `c` is an operator):",
+                 "substeps": [
+                    {
+                        "step": "While `stack` is not empty AND `stack.peek()` is not '(' AND `precedence(c)` <= `precedence(stack.peek())`: ",
+                        "substeps": [
+                            {
+                                "step": "Pop an element from `stack` and assign it to `postfix[k]`."
+                            },
+                             {
+                                "step": "Increment `k`."
+                            }
+                        ]
+                    },
+                    {
+                        "step": "Push `c` onto `stack`."
+                    }
+                ]
+            }
+        ]
+      },
+       {
+        "step": "After iterating through the entire `infix` expression, while `stack` is not empty:",
+        "substeps": [
+            {
+                 "step": "Pop an element from `stack` and assign it to `postfix[k]`."
+            },
+            {
+                 "step": "Increment `k`."
+            }
+        ]
+      },
+      {
+          "step": "Assign the null terminator `\\0` to `postfix[k]`."
+      }
+    ]
+  },
+  {
+    "algorithm": "Postfix Expression Evaluation",
+    "input": [
+      "postfix - A null-terminated character array representing the postfix expression (assumed to contain single-digit operands 0-9 and operators +, -, *, /, ^, %)."
+    ],
+    "output": [
+      "result - An integer representing the evaluated result of the postfix expression."
+    ],
+    "steps": [
+       {
+        "step": "Initialize an empty integer stack `stack` (using LLStack, assuming it's adapted for integers for this function)."
+      },
+       {
+        "step": "Iterate through the `postfix` expression character by character (`c`) from index `i = 0` until the null terminator is reached." ,
+        "substeps": [
+            {
+                "step": "If `c` is a digit ('0' through '9'):",
+                "substeps": [
+                    {
+                        "step": "Convert `c` to its integer value (e.g., `c - '0'`)."
+                    },
+                    {
+                        "step": "Push the integer value onto `stack`."
+                    }
+                ]
+            },
+            {
+                 "step": "Else (if `c` is an operator):",
+                 "substeps": [
+                     {
+                         "step": "Pop the top integer value from `stack` into variable `val2`."
+                     },
+                     {
+                         "step": "Pop the next integer value from `stack` into variable `val1`."
+                     },
+                     {
+                         "step": "Perform the operation indicated by `c` using `val1` and `val2`:",
+                         "substeps": [
+                             {
+                                 "step": "If `c` is '+': Calculate `result = val1 + val2`."
+                             },
+                             {
+                                 "step": "If `c` is '-': Calculate `result = val1 - val2`."
+                             },
+                              {
+                                 "step": "If `c` is '*': Calculate `result = val1 * val2`."
+                             },
+                              {
+                                 "step": "If `c` is '/': Calculate `result = val1 / val2` (integer division)."
+                             },
+                              {
+                                 "step": "If `c` is '^': Calculate `result = val1` raised to the power of `val2` (e.g., using a loop or `pow` function)."
+                             },
+                             {
+                                 "step": "If `c` is '%': Calculate `result = val1 % val2`."
+                             }
+                         ]
+                     },
+                     {
+                         "step": "Push the calculated `result` back onto `stack`."
+                     }
+                 ]
+            }
+        ]
+       },
+       {
+           "step": "After iterating through the expression, pop the final result from `stack`."
+       },
+       {
+           "step": "Return the final result."
+       }
+    ]
+  }
+]
