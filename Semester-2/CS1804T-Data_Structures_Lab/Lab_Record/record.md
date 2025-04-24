@@ -1,5 +1,0 @@
----
-toc: true
-toc-depth: 2
-numbersections: true
----
