@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-for folder in $(fd -t d --min-depth 2 --exclude=Common --exclude=Lab_Record); do
+for folder in $(fd . ../. -t d --min-depth 2 --exclude=Common --exclude=Lab_Record); do
   (
     cd "$folder" || (
       echo "Couldn't cd into $folder"
