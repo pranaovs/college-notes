@@ -1,0 +1,81 @@
+[
+  {
+    "algorithm": "AlgorithmName1",
+    "input": [
+      "input 1",
+      "input 2"
+    ],
+    "output": [
+      "output 1",
+      "output 2"
+    ],
+    "steps": [
+      {
+        "step": "step 1"
+      },
+      {
+        "step": "step 2"
+      },
+      {
+        "step": "step 3",
+        "substeps": [
+          {
+            "step": "step31"
+          },
+          {
+            "step": "step32"
+          },
+          {
+            "step": "step33",
+            "substeps": [
+              {
+                "step": "step331"
+              },
+              {
+                "step": "step332"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "step": "step 4"
+      },
+      {
+        "step": "step 5",
+        "substeps": [
+          {
+            "step": "step51"
+          },
+          {
+            "step": "step52"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "algorithm": "AlgorithmName2",
+    "input": [
+      "input 1",
+      "input 2"
+    ],
+    "output": [
+      "output 1",
+      "output 2"
+    ],
+    "steps": [
+      {
+        "step": "step 1"
+      },
+      {
+        "step": "step 2",
+        "substeps": [
+          {
+            "step": "step 21"
+          }
+        ]
+      }
+    ]
+  }
+]
