@@ -1,5 +1,25 @@
 #!/usr/bin/env bash
 
+# Script to easily generate lab record from raw code, algorithm.json and output.txt in respective subdirectories.
+
+# Copyright (C) 2025 Pranaov S <pranaov@hotmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+# Nesting level required: 2
+# Parent directory should contain all the topic.
+# Subdirectories should contain the question name, and have main.cpp, algorithm.json, output.txt and any optional .cpp/.h codes.
+
 IFS=$'\n'
 
 if [[ $# -ne 2 ]]; then
