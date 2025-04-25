@@ -20,6 +20,11 @@
 # Parent directory should contain all the topic.
 # Subdirectories should contain the question name, and have main.cpp, algorithm.json, output.txt and any optional .cpp/.h codes.
 
+MAIN_CODE_FILENAME="main.cpp"
+DATE_FILENAME="date.txt"
+ALGORITHM_FILENAME="algorithm.json"
+OUTPUT_FILENAME="output.txt"
+
 IFS=$'\n'
 
 if [[ $# -ne 2 ]]; then
@@ -134,18 +139,22 @@ main() {
 
       echo "Question $(basename "$question")"
 
+      if [[ -f "$DATE_FILENAME" ]]; then
+        write_file "__Date: $(cat $DATE_FILENAME)__"
+      fi
+
       write_file "### Algorithm"
-      parse_algorithm "$question/algorithm.json"
+      parse_algorithm "$question/$ALGORITHM_FILENAME"
 
       write_file "### Code"
-      write_file "__main.cpp__"
-      write_file '```cpp'
-      cat "$question/main.cpp" >>"$output_file"
+      write_file "__${MAIN_CODE_FILENAME}__"
+      write_file "\`\`\`${MAIN_CODE_FILENAME##*.}"
+      cat "$question/$MAIN_CODE_FILENAME" >>"$output_file"
       write_file '```'
 
-      for extra_code in $(fd . "$week/$question" -e "cpp" -e "h" --max-depth=1 --exclude=main.cpp); do
+      for extra_code in $(fd . "$week/$question" -e "cpp" -e "h" --max-depth=1 --exclude=$MAIN_CODE_FILENAME); do
         write_file "__$(basename "$extra_code")__"
-        write_file '```cpp'
+        write_file "\`\`\`${extra_code##*.}"
         cat "$extra_code" >>"$output_file"
         write_file ""
         write_file '```'
@@ -153,7 +162,7 @@ main() {
 
       write_file "### Execution"
       write_file '```sh'
-      cat "$question/output.txt" >>"$output_file"
+      cat "$question/$OUTPUT_FILENAME" >>"$output_file"
       write_file '```'
 
     done
