@@ -82,10 +82,14 @@ class CaesarCipherBruteForce:
 
     def decode(self) -> int | None:
 
-        if key := self.brute_force_check_spaces() is not None:
+        print("Trying strategy 1: Checking for spaces in the text.")
+        key = self.brute_force_check_spaces()
+        if key is not None:
             return key
 
-        if key := self.brute_force_user_input() is not None:
+        print("\nTrying strategy 2: User input")
+        key = self.brute_force_user_input()
+        if key is not None:
             return key
 
 
