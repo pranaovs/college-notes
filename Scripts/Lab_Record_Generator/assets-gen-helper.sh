@@ -101,6 +101,12 @@ for folder in $(fd . "$parent_directory" -t d --min-depth "$depth" --max-depth "
       echo "Pasting for $(basename "$folder") into $filename"
     fi
 
-    $paste_cmd >"$filename"
+    if [[ "$paste_cmd" == "-" ]]; then
+      # Read from stdin and redirect to the file
+      read -r -p "Enter data for $filename: " line
+      echo "$line" >"$filename"
+    else
+      $paste_cmd >"$filename"
+    fi
   )
 done
