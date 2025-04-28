@@ -22,6 +22,7 @@
 
 MAIN_CODE_FILENAME="main.cpp"
 DATE_FILENAME="date.txt"
+QUESTION_FILENAME="question.txt"
 ALGORITHM_FILENAME="algorithm.json"
 OUTPUT_FILENAME="output.txt"
 
@@ -145,8 +146,19 @@ main() {
         write_file "__Date: $(cat $DATE_FILENAME)__"
       fi
 
-      write_file "### Algorithm"
-      parse_algorithm "$question/$ALGORITHM_FILENAME"
+      if [[ -f "$question/$QUESTION_FILENAME" ]]; then
+        write_file "### Question"
+        write_file "$(cat "$question/$QUESTION_FILENAME")"
+      else
+        echo "Question file question.txt not found in $question" >&2
+      fi
+
+      if [[ -f "$question/$ALGORITHM_FILENAME" ]]; then
+        write_file "### Algorithm"
+        parse_algorithm "$question/$ALGORITHM_FILENAME"
+      else
+        echo "Algorithm file $ALGORITHM_FILENAME not found in $question" >&2
+      fi
 
       write_file "### Code"
       write_file "__${MAIN_CODE_FILENAME}__"
@@ -162,10 +174,14 @@ main() {
         write_file '```'
       done
 
-      write_file "### Execution"
-      write_file '```sh'
-      cat "$question/$OUTPUT_FILENAME" >>"$output_file"
-      write_file '```'
+      if [[ -f "$question/$OUTPUT_FILENAME" ]]; then
+        write_file "### Execution"
+        write_file '```sh'
+        cat "$question/$OUTPUT_FILENAME" >>"$output_file"
+        write_file '```'
+      else
+        echo "Output file $OUTPUT_FILENAME not found in $question" >&2
+      fi
 
     done
   done
