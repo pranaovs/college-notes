@@ -100,24 +100,26 @@ process_steps() {
 parse_algorithm() {
   local file="$1"
 
+  algorithm_count=0
   for algorithm in $(jq -c '.[]' "$file"); do
+    algorithm_count=$((algorithm_count + 1))
 
     # Name of the algorithm
-    write_file "#### $(echo "$algorithm" | jq -r '.algorithm')"
+    write_file "#### Algorithm $algorithm_count - $(echo "$algorithm" | jq -r '.algorithm') {.unnumbered}"
 
-    write_file "##### Input"
+    write_file "##### Input {.unnumbered}"
     local input_count=0
     for input in $(echo "$algorithm" | jq -r -c '.input[]'); do
       input_count=$((input_count + 1))
       write_file "$input_count. $input"
     done
 
-    write_file "##### Output"
+    write_file "##### Output {.unnumbered}"
     for output in $(echo "$algorithm" | jq -r -c '.output[]'); do
       write_file "- $output"
     done
 
-    write_file "##### Steps"
+    write_file "##### Steps {.unnumbered}"
     process_steps "$(echo "$algorithm" | jq -r -c '.steps')"
     write_file ""
 
