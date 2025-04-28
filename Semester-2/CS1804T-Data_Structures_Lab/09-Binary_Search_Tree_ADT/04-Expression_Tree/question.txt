@@ -1,0 +1,8 @@
+Add a "construct expression tree" method to the binary tree data structure from the previous lab code—import stack from the standard template library (STL) to construct the expression tree. Import the Tree ADT program into another program that gets a valid postfix expression, constructs, and prints the expression tree. It consists of the following operations.
+
+1. Postfix Expression
+2. Construct Expression Tree
+3. Preorder
+4. Inorder
+5. Postorder
+6. Exit

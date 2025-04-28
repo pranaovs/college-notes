@@ -1,0 +1,11 @@
+Write a C++ menu-driven program to implement List ADT using a doubly linked list with a tail. Maintain proper boundary conditions and follow good coding practices. The List ADT has the following operations,
+
+1. Insert Beginning
+2. Insert End
+3. Insert Position
+4. Delete Beginning
+5. Delete End
+6. Delete Position
+7. Search
+8. Display
+9. Exit

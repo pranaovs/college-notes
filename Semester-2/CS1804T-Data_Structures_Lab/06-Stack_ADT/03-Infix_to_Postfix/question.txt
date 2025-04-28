@@ -1,0 +1,6 @@
+Write a C++ menu-driven program to implement infix to postfix and postfix evaluation. Use the singly linked list (SLL) to implement the stack ADT as a header file. Maintain proper boundary conditions and follow good coding practices. The program has the following operations,
+
+1. Get Infix
+2. Convert Infix
+3. Evaluate Postfix
+4. Exit
