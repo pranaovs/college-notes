@@ -45,9 +45,9 @@ $(PDF_FILE): $(MARKDOWN_FILE) $(TEMPLATE_FILE) $(PANDOC_METADATA) $(PANDOC_HEADE
 	$(MARKDOWN_FILE)
 
 # Phony target to explicitly run the markdown generation step.
-# It depends on the actual file target. Running 'make record'
+# It depends on the actual file target. Running 'make markdown'
 # will ensure the markdown file is up-to-date.
-record: $(MARKDOWN_FILE)
+markdown: $(MARKDOWN_FILE)
 	@echo "--- Markdown file ensured up-to-date ---"
 
 # Phony target to explicitly run the PDF generation step.
@@ -70,4 +70,4 @@ clean:
 # Declare targets that do not correspond to actual files.
 # This prevents issues if a file with the same name exists and
 # ensures the commands always run when the target is invoked (unless prerequisites stop it).
-.PHONY: all pdf record show clean
+.PHONY: all pdf markdown show clean
