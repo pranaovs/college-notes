@@ -148,7 +148,8 @@ main() {
 
       if [[ -f "$question/$QUESTION_FILENAME" ]]; then
         write_file "### Question"
-        write_file "$(cat "$question/$QUESTION_FILENAME")"
+        cat "$question/$QUESTION_FILENAME" >>"$output_file"
+        write_file "" ""
       else
         echo "Question file question.txt not found in $question" >&2
       fi
