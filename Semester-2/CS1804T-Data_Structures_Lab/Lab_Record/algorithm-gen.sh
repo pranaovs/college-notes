@@ -1,1 +1,0 @@
-../../../Scripts/Lab_Record_Generator/algorithm-gen.sh
