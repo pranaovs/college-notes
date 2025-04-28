@@ -1,0 +1,47 @@
+[
+  {
+    "algorithm": "Process String (Remove '+' and Preceding)",
+    "input": [
+      "s - The input string containing characters and '+'."
+    ],
+    "output": [
+      "Prints the processed string to standard output."
+    ],
+    "steps": [
+      {
+        "step": "Initialize an empty stack `s1`."
+      },
+      {
+        "step": "Loop through `s` (index `i`)."
+      },
+      {
+        "step": "Get current character `c = s[i]`."
+      },
+      {
+        "step": "If `c` is '+':",
+        "substeps": [
+          {
+            "step": "Pop from `s1`."
+          }
+        ]
+      },
+      {
+        "step": "Else (if `c` is not '+'):",
+        "substeps": [
+          {
+            "step": "Push `c` onto `s1`."
+          }
+        ]
+      },
+      {
+        "step": "After loop, while stack is not empty (`s1.head != NULL`):"
+      },
+      {
+        "step": "Print data of current head: `s1.head->data`."
+      },
+      {
+        "step": "Move head to next node: `s1.head = s1.head->next`."
+      }
+    ]
+  }
+]

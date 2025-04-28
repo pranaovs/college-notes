@@ -1,0 +1,6 @@
+Write a separate C++ menu-driven program to implement Circular Queue ADT using an integer array of size 5. Maintain proper boundary conditions and follow good coding practices. The Circular Queue ADT has the following operations:
+
+1. Enqueue
+2. Dequeue
+3. Peek
+4. Exit

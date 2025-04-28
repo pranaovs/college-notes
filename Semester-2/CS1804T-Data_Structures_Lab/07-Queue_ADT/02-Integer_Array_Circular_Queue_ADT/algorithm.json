@@ -1,0 +1,61 @@
+[
+  {
+    "algorithm": "Circular Queue Enqueue",
+    "input": [
+      "x - The integer value to enqueue."
+    ],
+    "output": [
+      "Adds `x` to the queue if not full.",
+      "Prints 'Queue is full' if full."
+    ],
+    "steps": [
+      {
+        "step": "Check if queue is full (`size == 5`)."
+      },
+      {
+        "step": "If full, print 'Queue is full' and return."
+      },
+      {
+        "step": "If queue was empty (`front == -1`):",
+        "substeps": [
+          {
+            "step": "Set `front = 0`."
+          }
+        ]
+      },
+      {
+        "step": "Calculate next rear: `rear = (rear + 1) % 5`."
+      },
+      {
+        "step": "Store element: `arr[rear] = x`."
+      },
+      {
+        "step": "Increment `size`."
+      }
+    ]
+  },
+  {
+    "algorithm": "Circular Queue Dequeue",
+    "input": [
+      "None"
+    ],
+    "output": [
+      "Removes the front element if not empty.",
+      "Prints 'Queue is empty' if empty."
+    ],
+    "steps": [
+      {
+        "step": "Check if queue is empty (`size == 0`)."
+      },
+      {
+        "step": "If empty, print 'Queue is empty' and return."
+      },
+      {
+        "step": "Calculate next front: `front = (front + 1) % 5`."
+      },
+      {
+        "step": "Decrement `size`."
+      }
+    ]
+  }
+]

@@ -1,0 +1,80 @@
+[
+  {
+    "algorithm": "Linked List Queue Enqueue",
+    "input": [
+      "x - The integer value to enqueue."
+    ],
+    "output": [
+      "Adds `x` to the rear of the queue."
+    ],
+    "steps": [
+      {
+        "step": "Create a new node `temp`."
+      },
+      {
+        "step": "Set `temp->data = x`."
+      },
+      {
+        "step": "Set `temp->next = NULL`."
+      },
+      {
+        "step": "If queue is empty (`front == NULL`):",
+        "substeps": [
+          {
+            "step": "Set `front = temp`."
+          },
+          {
+            "step": "Set `rear = temp`."
+          },
+          {
+            "step": "Return."
+          }
+        ]
+      },
+      {
+        "step": "Else (queue not empty):"
+      },
+      {
+        "step": "Set `rear->next = temp`."
+      },
+      {
+        "step": "Update `rear = temp`."
+      }
+    ]
+  },
+  {
+    "algorithm": "Linked List Queue Dequeue",
+    "input": [
+      "None"
+    ],
+    "output": [
+      "Removes the front element if not empty.",
+      "Prints 'Queue is empty' if empty."
+    ],
+    "steps": [
+      {
+        "step": "Check if queue is empty (`front == NULL`)."
+      },
+      {
+        "step": "If empty, print 'Queue is empty' and return."
+      },
+      {
+        "step": "Store `front` node in `temp`."
+      },
+      {
+        "step": "Move `front` to `front->next`."
+      },
+      {
+        "step": "Delete the old front node (`temp`)."
+      },
+      {
+          "step": "If `front` became `NULL` (queue is now empty):",
+          "substeps": [
+              {
+                  "step": "Set `rear = NULL`."
+              }
+          ]
+      }
+    ]
+  }
+]

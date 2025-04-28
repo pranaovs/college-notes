@@ -1,0 +1,144 @@
+[
+  {
+    "algorithm": "Add Process (Circular Linked List)",
+    "input": [
+      "duration - The execution time required for the new process."
+    ],
+    "output": [
+      "A new process node is added to the end of the circular linked list."
+    ],
+    "steps": [
+      {
+        "step": "Create a new `Process` node."
+      },
+      {
+        "step": "Set new node's `remaining_time` to `duration`."
+      },
+      {
+        "step": "If list is empty (`head == nullptr`):" ,
+        "substeps": [
+           {
+               "step": "Set `head` and `tail` to the new node."
+           },
+           {
+                "step": "Make the new node point to itself (`next = head`)."
+           }
+        ]
+      },
+      {
+        "step": "Else (list is not empty):",
+        "substeps": [
+            {
+                "step": "Set current `tail->next` to the new node."
+            },
+             {
+                "step": "Update `tail` to be the new node."
+            },
+            {
+                 "step": "Set new `tail->next` to `head` (maintain circularity)."
+            }
+        ]
+      },
+       {
+        "step": "Increment `process_count`."
+      }
+    ]
+  },
+  {
+    "algorithm": "Execute Round Robin Cycle",
+    "input": [
+      "None (uses internal `head`, `tail`, `time_slice`)."
+    ],
+    "output": [
+      "Executes the current process at `head` for one `time_slice`." ,
+      "Prints execution status and remaining time.",
+      "Removes process if completed, otherwise rotates the list."
+    ],
+    "steps": [
+       {
+        "step": "If list is empty (`head == nullptr`):",
+        "substeps": [
+            {
+                "step": "Print 'No processes' message."
+            },
+            {
+                 "step": "Return."
+            }
+        ]
+      },
+      {
+          "step": "Reduce current `head->remaining_time` by `time_slice`."
+      },
+      {
+          "step": "Print execution details (time executed, remaining time)."
+      },
+      {
+          "step": "Check if `head->remaining_time <= 0`."
+      },
+      {
+          "step": "If true (process completed):",
+          "substeps": [
+              {
+                 "step": "Call `delete_completed_process()`."
+              }
+          ]
+      },
+      {
+          "step": "Else (process not completed):",
+          "substeps": [
+              {
+                  "step": "Move `tail` pointer to current `head`."
+              },
+               {
+                  "step": "Move `head` pointer to the next process (`head->next`)."
+              }
+          ]
+      },
+      {
+          "step": "Print current number of pending processes (`process_count`)."
+      }
+    ]
+  },
+   {
+    "algorithm": "Delete Completed Process (Circular Linked List)",
+    "input": [
+       "None (operates on internal `head` and `tail`)."
+    ],
+    "output": [
+      "Removes the node pointed to by `head` from the circular list."
+    ],
+    "steps": [
+      {
+        "step": "If only one process exists (`head == tail`):" ,
+        "substeps": [
+           {
+               "step": "Delete the `head` node."
+           },
+           {
+               "step": "Set `head` and `tail` to `nullptr`."
+           }
+        ]
+      },
+      {
+        "step": "Else (more than one process):",
+        "substeps": [
+            {
+                "step": "Store `head` in a temporary pointer `completed`."
+            },
+             {
+                "step": "Move `head` to the next node (`head->next`)."
+            },
+             {
+                "step": "Update `tail->next` to point to the new `head`."
+            },
+            {
+                "step": "Delete the node pointed to by `completed`."
+            }
+        ]
+      },
+      {
+          "step": "Decrement `process_count`."
+      }
+    ]
+  }
+]
