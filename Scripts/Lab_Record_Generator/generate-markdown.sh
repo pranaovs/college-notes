@@ -187,6 +187,7 @@ main() {
       fi
 
     done
+    write_file "\\pagebreak"
   done
 
 }
