@@ -1,0 +1,107 @@
+[
+  {
+    "algorithm": "Insert Edge (Adjacency Matrix)",
+    "input": [
+      "u - Source vertex index.",
+      "v - Destination vertex index."
+    ],
+    "output": [
+      "Prints success or invalid vertex message."
+    ],
+    "steps": [
+      {
+        "step": "Check if `u` and `v` are valid indices."
+      },
+      {
+        "step": "If valid:",
+        "substeps": [
+          {
+            "step": "Set `adj[u][v] = 1`."
+          },
+          {
+            "step": "Print success message."
+          }
+        ]
+      },
+      {
+        "step": "Else (invalid):" ,
+        "substeps": [
+            {
+                "step": "Print invalid vertex message."
+            }
+        ]
+      }
+    ]
+  },
+  {
+    "algorithm": "Delete Edge (Adjacency Matrix)",
+    "input": [
+      "u - Source vertex index.",
+      "v - Destination vertex index."
+    ],
+    "output": [
+      "Prints success or invalid vertex message."
+    ],
+    "steps": [
+       {
+        "step": "Check if `u` and `v` are valid indices."
+      },
+       {
+        "step": "If valid:",
+        "substeps": [
+           {
+            "step": "Set `adj[u][v] = 0`."
+           },
+           {
+            "step": "Print success message."
+           }
+        ]
+      },
+      {
+        "step": "Else (invalid):",
+        "substeps": [
+            {
+                "step": "Print invalid vertex message."
+            }
+        ]
+      }
+    ]
+  },
+  {
+    "algorithm": "Search Edge (Adjacency Matrix)",
+    "input": [
+      "u - Source vertex index.",
+      "v - Destination vertex index."
+    ],
+    "output": [
+      "Prints if edge exists or not, or invalid vertex message."
+    ],
+    "steps": [
+      {
+        "step": "Check if `u` and `v` are valid indices."
+      },
+      {
+        "step": "If valid:",
+        "substeps": [
+          {
+            "step": "Check if `adj[u][v] == 1`."
+          },
+          {
+            "step": "If true, print 'Edge exists'."
+          },
+          {
+            "step": "Else, print 'Edge does not exist'."
+          }
+        ]
+      },
+      {
+        "step": "Else (invalid):",
+        "substeps": [
+           {
+               "step": "Print invalid vertex message."
+           }
+        ]
+      }
+    ]
+  }
+]

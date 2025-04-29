@@ -1,0 +1,115 @@
+[
+  {
+    "algorithm": "Insert Edge (Adjacency List)",
+    "input": [
+      "u - Source vertex index.",
+      "v - Destination vertex index."
+    ],
+    "output": [
+      "Prints success or invalid vertex message."
+    ],
+    "steps": [
+      {
+        "step": "Check if `u` and `v` are valid indices."
+      },
+      {
+        "step": "If valid:",
+        "substeps": [
+          {
+            "step": "Append `v` to the list `adjList[u]`."
+          },
+          {
+            "step": "Print success message."
+          }
+        ]
+      },
+      {
+        "step": "Else (invalid):",
+        "substeps": [
+            {
+                "step": "Print invalid vertex message."
+            }
+        ]
+      }
+    ]
+  },
+  {
+    "algorithm": "Delete Edge (Adjacency List)",
+    "input": [
+      "u - Source vertex index.",
+      "v - Destination vertex index."
+    ],
+    "output": [
+      "Prints success or invalid vertex message."
+    ],
+    "steps": [
+       {
+        "step": "Check if `u` and `v` are valid indices."
+      },
+       {
+        "step": "If valid:",
+        "substeps": [
+           {
+            "step": "Remove value `v` from list `adjList[u]`."
+           },
+           {
+            "step": "Print success message."
+           }
+        ]
+      },
+      {
+        "step": "Else (invalid):",
+         "substeps": [
+            {
+                "step": "Print invalid vertex message."
+            }
+         ]
+      }
+    ]
+  },
+  {
+    "algorithm": "Search Edge (Adjacency List)",
+    "input": [
+      "u - Source vertex index.",
+      "v - Destination vertex index."
+    ],
+    "output": [
+      "Prints if edge exists or not, or invalid vertex message."
+    ],
+    "steps": [
+      {
+        "step": "Check if `u` and `v` are valid indices."
+      },
+      {
+        "step": "If valid:",
+        "substeps": [
+          {
+            "step": "Loop through each `neighbor` in `adjList[u]`."
+          },
+          {
+            "step": "If `neighbor == v`:",
+            "substeps": [
+                {
+                    "step": "Print 'Edge exists'."
+                },
+                {
+                    "step": "Return."
+                }
+            ]
+          },
+          {
+            "step": "After loop, print 'Edge does not exist'."
+          }
+        ]
+      },
+      {
+        "step": "Else (invalid):",
+        "substeps": [
+            {
+                 "step": "Print invalid vertex message."
+            }
+        ]
+      }
+    ]
+  }
+]
