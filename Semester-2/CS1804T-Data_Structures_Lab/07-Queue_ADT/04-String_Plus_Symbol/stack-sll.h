@@ -3,13 +3,13 @@ using namespace std;
 
 class stack
 {
+    public:
     struct node
     {
         char data;
         struct node* next;
     }*head;
     
-    public:
     stack()
     {
         head=NULL;
@@ -43,7 +43,7 @@ class stack
         else
         {
             struct node *temp=head;
-            if(temp->next=NULL)
+            if(temp->next == NULL)
             {
                 free(head);
                 head=NULL;
