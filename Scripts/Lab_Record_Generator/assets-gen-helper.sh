@@ -70,7 +70,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 # Validate required arguments
-if [[ -z "$filename" || -z "$parent_directory" ]]; then
+if [[ (-z "$filename" && "$paste_cmd" != ":") || -z "$parent_directory" ]]; then
   echo "Error: Both filename and directory are required."
   print_usage
 fi
@@ -105,6 +105,8 @@ for folder in $(fd . "$parent_directory" -t d --min-depth "$depth" --max-depth "
       # Read from stdin and redirect to the file
       read -r -p "Enter data for $filename: " line
       echo "$line" >"$filename"
+    elif [[ "$paste_cmd" == ":" ]]; then
+      :
     else
       $paste_cmd >"$filename"
     fi
