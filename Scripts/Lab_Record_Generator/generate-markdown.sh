@@ -138,7 +138,7 @@ main() {
     if [[ -f "$week/$DATE_FILENAME" ]]; then
       write_file "__Date: $(cat "$week/$DATE_FILENAME")__"
     else
-      echo "Date file $DATE_FILENAME not found in $week" >&2
+      echo "WARNING: Date file $DATE_FILENAME not found in $week" >&2
     fi
 
     for question in $(fd . "$week" -t d --max-depth=1 --exclude=Common); do
@@ -153,14 +153,14 @@ main() {
         cat "$question/$QUESTION_FILENAME" >>"$output_file"
         write_file "" ""
       else
-        echo "Question file $QUESTION_FILENAME not found in $question" >&2
+        echo "WARNING: Question file $QUESTION_FILENAME not found in $question" >&2
       fi
 
       if [[ -f "$question/$ALGORITHM_FILENAME" ]]; then
         write_file "### Algorithm"
         parse_algorithm "$question/$ALGORITHM_FILENAME"
       else
-        echo "Algorithm file $ALGORITHM_FILENAME not found in $question" >&2
+        echo "WARNING: Algorithm file $ALGORITHM_FILENAME not found in $question" >&2
       fi
 
       write_file "### Code"
@@ -183,7 +183,7 @@ main() {
         cat "$question/$OUTPUT_FILENAME" >>"$output_file"
         write_file '```'
       else
-        echo "Output file $OUTPUT_FILENAME not found in $question" >&2
+        echo "WARNING: Output file $OUTPUT_FILENAME not found in $question" >&2
       fi
 
     done
