@@ -70,7 +70,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 # Validate required arguments
-if [[ (-z "$filename" && "$paste_cmd" != ":") || -z "$parent_directory" ]]; then
+if [[ -z "$filename" || -z "$parent_directory" ]]; then
   echo "Error: Both filename and directory are required."
   print_usage
 fi
