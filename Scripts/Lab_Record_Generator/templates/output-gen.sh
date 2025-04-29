@@ -1,0 +1,1 @@
+./assets-gen-helper.sh -f output.txt -d ../. -p ":" -c "script -c 'g++ main.cpp && ./a.out' output.txt; cat output.txt | head -n -2 | tail -n +2 | tee output.txt; sed -i '1s/^/\$ g++ main.cpp \&\& .\/a.out\n\n/' output.txt "
