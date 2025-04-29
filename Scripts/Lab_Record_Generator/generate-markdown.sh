@@ -135,6 +135,12 @@ main() {
     )
     echo "Processing $(basename "$week")"
 
+    if [[ -f "$week/$DATE_FILENAME" ]]; then
+      write_file "__Date: $(cat "$week/$DATE_FILENAME")__"
+    else
+      echo "Date file $DATE_FILENAME not found in $week" >&2
+    fi
+
     for question in $(fd . "$week" -t d --max-depth=1 --exclude=Common); do
       (
         write_file "## $(format_name "$question")"
@@ -142,16 +148,12 @@ main() {
 
       echo "Question $(basename "$question")"
 
-      if [[ -f "$DATE_FILENAME" ]]; then
-        write_file "__Date: $(cat $DATE_FILENAME)__"
-      fi
-
       if [[ -f "$question/$QUESTION_FILENAME" ]]; then
         write_file "### Question"
         cat "$question/$QUESTION_FILENAME" >>"$output_file"
         write_file "" ""
       else
-        echo "Question file question.txt not found in $question" >&2
+        echo "Question file $QUESTION_FILENAME not found in $question" >&2
       fi
 
       if [[ -f "$question/$ALGORITHM_FILENAME" ]]; then
