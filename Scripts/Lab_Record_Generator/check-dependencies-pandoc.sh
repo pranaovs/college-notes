@@ -153,7 +153,7 @@ check_pdf_assets() {
 
   if [ ${#missing_assets[@]} -ne 0 ]; then
     echo "ERROR: Required pdf assets not found: ${missing_assets[*]}"
-    echo "Save the required assets and try again."
+    echo "Create the required assets and try again."
     exit 1
   fi
 
