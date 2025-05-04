@@ -1,0 +1,51 @@
+[
+    {
+      "algorithm": "RemovePlusSymbols",
+      "input": [
+        "s - string with characters and '+' symbols"
+      ],
+      "output": [
+        "Modified string after applying '+' operations"
+      ],
+      "steps": [
+        {
+          "step": "Initialize empty stack $s1$"
+        },
+        {
+          "step": "For $i$ from $0$ to $s.length()-1$:",
+          "substeps": [
+            {
+              "step": "If $s[i] = '+'$:",
+              "substeps": [
+                {
+                  "step": "Pop last character from $s1$"
+                }
+              ]
+            },
+            {
+              "step": "Else:",
+              "substeps": [
+                {
+                  "step": "Push $s[i]$ onto $s1$"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step": "Initialize empty result string $result$"
+        },
+        {
+          "step": "While $s1$ is not empty:",
+          "substeps": [
+            {
+              "step": "Print character at top of $s1$"
+            },
+            {
+              "step": "Move to next node in stack"
+            }
+          ]
+        }
+      ]
+    }
+  ]

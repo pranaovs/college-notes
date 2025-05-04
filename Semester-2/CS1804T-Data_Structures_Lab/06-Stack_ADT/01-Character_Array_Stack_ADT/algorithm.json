@@ -1,0 +1,87 @@
+[
+  {
+    "algorithm": "ArrayStackPush",
+    "input": [
+      "ch - character to push",
+      "arr[] - array storing the stack elements",
+      "cur - current position (top) of stack"
+    ],
+    "output": [
+      "Updated stack with character ch added"
+    ],
+    "steps": [
+      {
+        "step": "If $cur = 5$ (stack is full):",
+        "substeps": [
+          {
+            "step": "Print \"List is full\""
+          },
+          {
+            "step": "Return"
+          }
+        ]
+      },
+      {
+        "step": "$arr[cur] \\leftarrow ch$"
+      },
+      {
+        "step": "$cur \\leftarrow cur + 1$"
+      }
+    ]
+  },
+  {
+    "algorithm": "ArrayStackPop",
+    "input": [
+      "arr[] - array storing the stack elements",
+      "cur - current position (top) of stack"
+    ],
+    "output": [
+      "Character from the top of stack and updated stack"
+    ],
+    "steps": [
+      {
+        "step": "If $cur = 0$ (stack is empty):",
+        "substeps": [
+          {
+            "step": "Print \"List is empty\""
+          },
+          {
+            "step": "Return \\$0$"
+          }
+        ]
+      },
+      {
+        "step": "$cur \\leftarrow cur - 1$"
+      },
+      {
+        "step": "Return $arr[cur]$"
+      }
+    ]
+  },
+  {
+    "algorithm": "ArrayStackPeek",
+    "input": [
+      "arr[] - array storing the stack elements",
+      "cur - current position (top) of stack"
+    ],
+    "output": [
+      "Character from the top of stack (without removing it)"
+    ],
+    "steps": [
+      {
+        "step": "If $cur = 0$ (stack is empty):",
+        "substeps": [
+          {
+            "step": "Print \"List is empty\""
+          },
+          {
+            "step": "Return"
+          }
+        ]
+      },
+      {
+        "step": "Print $arr[cur-1]$"
+      }
+    ]
+  }
+]

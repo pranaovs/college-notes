@@ -1,0 +1,92 @@
+[
+    {
+      "algorithm": "QueueEnqueue",
+      "input": [
+        "num - element to insert into queue",
+        "arr[] - array storing the queue elements",
+        "cur - current number of elements"
+      ],
+      "output": [
+        "Updated queue with num inserted at the end"
+      ],
+      "steps": [
+        {
+          "step": "If $cur = 5$:",
+          "substeps": [
+            {
+              "step": "Print \"Queue is full\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "$arr[cur] \\leftarrow num$"
+        },
+        {
+          "step": "$cur \\leftarrow cur + 1$"
+        }
+      ]
+    },
+    {
+      "algorithm": "QueueDequeue",
+      "input": [
+        "arr[] - array storing the queue elements",
+        "cur - current number of elements"
+      ],
+      "output": [
+        "Updated queue with front element removed"
+      ],
+      "steps": [
+        {
+          "step": "If $cur = 0$:",
+          "substeps": [
+            {
+              "step": "Print \"Queue is empty\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "For $i$ from $0$ to $cur-2$:",
+          "substeps": [
+            {
+              "step": "$arr[i] \\leftarrow arr[i+1]$"
+            }
+          ]
+        },
+        {
+          "step": "$cur \\leftarrow cur - 1$"
+        }
+      ]
+    },
+    {
+      "algorithm": "QueuePeek",
+      "input": [
+        "arr[] - array storing the queue elements",
+        "cur - current number of elements"
+      ],
+      "output": [
+        "Value of the front element (without removing it)"
+      ],
+      "steps": [
+        {
+          "step": "If $cur = 0$:",
+          "substeps": [
+            {
+              "step": "Print \"Queue is empty\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "Print $arr[0]$"
+        }
+      ]
+    }
+  ]

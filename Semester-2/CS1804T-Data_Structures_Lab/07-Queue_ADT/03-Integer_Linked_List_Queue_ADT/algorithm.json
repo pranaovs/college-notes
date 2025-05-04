@@ -1,0 +1,95 @@
+[
+    {
+      "algorithm": "QueueEnqueue",
+      "input": [
+        "x - element to insert into queue",
+        "front - pointer to front of queue",
+        "rear - pointer to rear of queue"
+      ],
+      "output": [
+        "Updated queue with x inserted at the rear"
+      ],
+      "steps": [
+        {
+          "step": "Create new node $temp$ with $data = x$ and $next = null$"
+        },
+        {
+          "step": "If $front = null$ (queue is empty):",
+          "substeps": [
+            {
+              "step": "$front \\leftarrow temp$"
+            },
+            {
+              "step": "$rear \\leftarrow temp$"
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "$rear.next \\leftarrow temp$"
+        },
+        {
+          "step": "$rear \\leftarrow temp$"
+        }
+      ]
+    },
+    {
+      "algorithm": "QueueDequeue",
+      "input": [
+        "front - pointer to front of queue",
+        "rear - pointer to rear of queue"
+      ],
+      "output": [
+        "Updated queue with front element removed"
+      ],
+      "steps": [
+        {
+          "step": "If $front = null$ (queue is empty):",
+          "substeps": [
+            {
+              "step": "Print \"Queue is empty\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "$temp \\leftarrow front$"
+        },
+        {
+          "step": "$front \\leftarrow front.next$"
+        },
+        {
+          "step": "Delete $temp$"
+        }
+      ]
+    },
+    {
+      "algorithm": "QueuePeek",
+      "input": [
+        "front - pointer to front of queue"
+      ],
+      "output": [
+        "Value of the front element (without removing it)"
+      ],
+      "steps": [
+        {
+          "step": "If $front = null$ (queue is empty):",
+          "substeps": [
+            {
+              "step": "Print \"Queue is empty\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "Print $front.data$"
+        }
+      ]
+    }
+  ]

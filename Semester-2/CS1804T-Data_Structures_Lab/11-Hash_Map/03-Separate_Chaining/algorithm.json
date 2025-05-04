@@ -1,0 +1,238 @@
+[
+    {
+      "algorithm": "SeparateChainingInsert",
+      "input": [
+        "num - value to insert",
+        "table[] - hash table with linked lists",
+        "SIZE - size of hash table"
+      ],
+      "output": [
+        "Updated hash table with num inserted"
+      ],
+      "steps": [
+        {
+          "step": "$index \\leftarrow num \\bmod SIZE$"
+        },
+        {
+          "step": "Create $newnode$ with $data = num$"
+        },
+        {
+          "step": "$newnode.next \\leftarrow table[index]$"
+        },
+        {
+          "step": "$table[index] \\leftarrow newnode$"
+        }
+      ]
+    },
+    {
+      "algorithm": "SeparateChainingDelete",
+      "input": [
+        "num - value to delete",
+        "table[] - hash table with linked lists",
+        "SIZE - size of hash table"
+      ],
+      "output": [
+        "Updated hash table with num removed (if found)"
+      ],
+      "steps": [
+        {
+          "step": "$index \\leftarrow num \\bmod SIZE$"
+        },
+        {
+          "step": "If $table[index] = null$:",
+          "substeps": [
+            {
+              "step": "Print \"Element not found\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "$temp \\leftarrow table[index]$"
+        },
+        {
+          "step": "If $temp.next = null$:",
+          "substeps": [
+            {
+              "step": "If $temp.data = num$:",
+              "substeps": [
+                {
+                  "step": "Delete $temp$"
+                },
+                {
+                  "step": "$table[index] \\leftarrow null$"
+                },
+                {
+                  "step": "Return"
+                }
+              ]
+            },
+            {
+              "step": "Else:",
+              "substeps": [
+                {
+                  "step": "Print \"Element not found\""
+                },
+                {
+                  "step": "Return"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step": "If $temp.data = num$:",
+          "substeps": [
+            {
+              "step": "$table[index] \\leftarrow temp.next$"
+            },
+            {
+              "step": "Delete $temp$"
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "While $temp.next \\neq null$:",
+          "substeps": [
+            {
+              "step": "If $temp.next.data \\neq num$:",
+              "substeps": [
+                {
+                  "step": "$temp \\leftarrow temp.next$"
+                }
+              ]
+            },
+            {
+              "step": "Else:",
+              "substeps": [
+                {
+                  "step": "Break loop"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step": "If $temp.next \\neq null$ and $temp.next.data = num$:",
+          "substeps": [
+            {
+              "step": "$temp2 \\leftarrow temp.next$"
+            },
+            {
+              "step": "$temp.next \\leftarrow temp2.next$"
+            },
+            {
+              "step": "Delete $temp2$"
+            }
+          ]
+        },
+        {
+          "step": "Else:",
+          "substeps": [
+            {
+              "step": "Print \"Element not found\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "SeparateChainingSearch",
+      "input": [
+        "num - value to search for",
+        "table[] - hash table with linked lists",
+        "SIZE - size of hash table"
+      ],
+      "output": [
+        "Status message indicating if num was found or not"
+      ],
+      "steps": [
+        {
+          "step": "$index \\leftarrow num \\bmod SIZE$"
+        },
+        {
+          "step": "$temp \\leftarrow table[index]$"
+        },
+        {
+          "step": "While $temp \\neq null$:",
+          "substeps": [
+            {
+              "step": "If $temp.data = num$:",
+              "substeps": [
+                {
+                  "step": "Print \"Element found at index $index$\""
+                },
+                {
+                  "step": "Return"
+                }
+              ]
+            },
+            {
+              "step": "$temp \\leftarrow temp.next$"
+            }
+          ]
+        },
+        {
+          "step": "Print \"Element not found\""
+        }
+      ]
+    },
+    {
+      "algorithm": "SeparateChainingDisplay",
+      "input": [
+        "table[] - hash table with linked lists",
+        "SIZE - size of hash table"
+      ],
+      "output": [
+        "Visual representation of the hash table with all chains"
+      ],
+      "steps": [
+        {
+          "step": "For $i$ from $0$ to $SIZE-1$:",
+          "substeps": [
+            {
+              "step": "Print \"Index $i$: \""
+            },
+            {
+              "step": "$temp \\leftarrow table[i]$"
+            },
+            {
+              "step": "If $temp = null$:",
+              "substeps": [
+                {
+                  "step": "Print \"Empty\""
+                }
+              ]
+            },
+            {
+              "step": "Else:",
+              "substeps": [
+                {
+                  "step": "While $temp \\neq null$:",
+                  "substeps": [
+                    {
+                      "step": "Print $temp.data$ followed by \" -> \""
+                    },
+                    {
+                      "step": "$temp \\leftarrow temp.next$"
+                    }
+                  ]
+                },
+                {
+                  "step": "Print \"NULL\""
+                }
+              ]
+            },
+            {
+              "step": "Print newline"
+            }
+          ]
+        }
+      ]
+    }
+]

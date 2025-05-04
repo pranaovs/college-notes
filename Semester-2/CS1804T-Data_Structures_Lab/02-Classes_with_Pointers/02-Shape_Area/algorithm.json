@@ -1,0 +1,73 @@
+[
+    {
+      "algorithm": "CalculateSquareArea",
+      "input": [
+        "len - side length of square"
+      ],
+      "output": [
+        "area - area of the square"
+      ],
+      "steps": [
+        {
+          "step": "$area \\leftarrow len \\times len$"
+        },
+        {
+          "step": "Return $area$"
+        }
+      ]
+    },
+    {
+      "algorithm": "CalculateRectangleArea",
+      "input": [
+        "len - length of rectangle",
+        "bre - breadth of rectangle"
+      ],
+      "output": [
+        "area - area of the rectangle"
+      ],
+      "steps": [
+        {
+          "step": "$area \\leftarrow len \\times bre$"
+        },
+        {
+          "step": "Return $area$"
+        }
+      ]
+    },
+    {
+      "algorithm": "CalculateCubeArea",
+      "input": [
+        "len - side length of cube"
+      ],
+      "output": [
+        "area - surface area of the cube"
+      ],
+      "steps": [
+        {
+          "step": "$area \\leftarrow 6 \\times len \\times len$"
+        },
+        {
+          "step": "Return $area$"
+        }
+      ]
+    },
+    {
+      "algorithm": "CalculateCuboidArea",
+      "input": [
+        "len - length of cuboid",
+        "bre - breadth of cuboid",
+        "hei - height of cuboid"
+      ],
+      "output": [
+        "area - surface area of the cuboid"
+      ],
+      "steps": [
+        {
+          "step": "$area \\leftarrow 2 \\times (len \\times bre + bre \\times hei + hei \\times len)$"
+        },
+        {
+          "step": "Return $area$"
+        }
+      ]
+    }
+  ]

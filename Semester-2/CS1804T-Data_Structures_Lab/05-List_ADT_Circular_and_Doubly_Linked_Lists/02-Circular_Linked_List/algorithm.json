@@ -1,0 +1,330 @@
+[
+    {
+      "algorithm": "CircularLinkedListInsertBeginning",
+      "input": [
+        "num - value to insert",
+        "head - pointer to head of circular linked list"
+      ],
+      "output": [
+        "Updated circular linked list with num inserted at beginning"
+      ],
+      "steps": [
+        {
+          "step": "Create new node $newnode$ with $data = num$"
+        },
+        {
+          "step": "If $head = null$ (list is empty):",
+          "substeps": [
+            {
+              "step": "$head \\leftarrow newnode$"
+            },
+            {
+              "step": "$newnode.next \\leftarrow head$ (self-reference to make it circular)"
+            }
+          ]
+        },
+        {
+          "step": "Else:",
+          "substeps": [
+            {
+              "step": "$temp \\leftarrow head$"
+            },
+            {
+              "step": "While $temp.next \\neq head$:",
+              "substeps": [
+                {
+                  "step": "$temp \\leftarrow temp.next$"
+                }
+              ]
+            },
+            {
+              "step": "$temp.next \\leftarrow newnode$"
+            },
+            {
+              "step": "$newnode.next \\leftarrow head$"
+            },
+            {
+              "step": "$head \\leftarrow newnode$"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "CircularLinkedListInsertEnd",
+      "input": [
+        "num - value to insert",
+        "head - pointer to head of circular linked list"
+      ],
+      "output": [
+        "Updated circular linked list with num inserted at end"
+      ],
+      "steps": [
+        {
+          "step": "If $head = null$ (list is empty):",
+          "substeps": [
+            {
+              "step": "Call $insert\\_beginning(num)$"
+            }
+          ]
+        },
+        {
+          "step": "Else:",
+          "substeps": [
+            {
+              "step": "Create new node $newnode$ with $data = num$"
+            },
+            {
+              "step": "$newnode.next \\leftarrow head$"
+            },
+            {
+              "step": "$temp \\leftarrow head$"
+            },
+            {
+              "step": "While $temp.next \\neq head$:",
+              "substeps": [
+                {
+                  "step": "$temp \\leftarrow temp.next$"
+                }
+              ]
+            },
+            {
+              "step": "$temp.next \\leftarrow newnode$"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "CircularLinkedListInsertPosition",
+      "input": [
+        "num - value to insert",
+        "pos - position to insert at",
+        "head - pointer to head of circular linked list"
+      ],
+      "output": [
+        "Updated circular linked list with num inserted at position pos"
+      ],
+      "steps": [
+        {
+          "step": "If $pos = 1$:",
+          "substeps": [
+            {
+              "step": "Call $insert\\_beginning(num)$"
+            }
+          ]
+        },
+        {
+          "step": "Else:",
+          "substeps": [
+            {
+              "step": "Create new node $newnode$ with $data = num$"
+            },
+            {
+              "step": "$temp \\leftarrow head$"
+            },
+            {
+              "step": "For $i$ from $1$ to $pos-2$:",
+              "substeps": [
+                {
+                  "step": "$temp \\leftarrow temp.next$"
+                }
+              ]
+            },
+            {
+              "step": "$newnode.next \\leftarrow temp.next$"
+            },
+            {
+              "step": "$temp.next \\leftarrow newnode$"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "CircularLinkedListDeleteBeginning",
+      "input": [
+        "head - pointer to head of circular linked list"
+      ],
+      "output": [
+        "Updated circular linked list with first node removed"
+      ],
+      "steps": [
+        {
+          "step": "If $head = null$ (list is empty):",
+          "substeps": [
+            {
+              "step": "Print \"List is empty\""
+            }
+          ]
+        },
+        {
+          "step": "Else:",
+          "substeps": [
+            {
+              "step": "$temp \\leftarrow head$"
+            },
+            {
+              "step": "While $temp.next \\neq head$:",
+              "substeps": [
+                {
+                  "step": "$temp \\leftarrow temp.next$"
+                }
+              ]
+            },
+            {
+              "step": "$temp.next \\leftarrow head.next$"
+            },
+            {
+              "step": "Delete $head$"
+            },
+            {
+              "step": "$head \\leftarrow temp.next$"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "CircularLinkedListDeleteEnd",
+      "input": [
+        "head - pointer to head of circular linked list"
+      ],
+      "output": [
+        "Updated circular linked list with last node removed"
+      ],
+      "steps": [
+        {
+          "step": "If $head = null$ (list is empty):",
+          "substeps": [
+            {
+              "step": "Print \"List is empty\""
+            }
+          ]
+        },
+        {
+          "step": "Else:",
+          "substeps": [
+            {
+              "step": "$temp \\leftarrow head$"
+            },
+            {
+              "step": "While $temp.next.next \\neq head$:",
+              "substeps": [
+                {
+                  "step": "$temp \\leftarrow temp.next$"
+                }
+              ]
+            },
+            {
+              "step": "Delete $temp.next$"
+            },
+            {
+              "step": "$temp.next \\leftarrow head$"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "CircularLinkedListDeletePosition",
+      "input": [
+        "pos - position to delete",
+        "head - pointer to head of circular linked list"
+      ],
+      "output": [
+        "Updated circular linked list with node at position pos removed"
+      ],
+      "steps": [
+        {
+          "step": "If $pos = 1$:",
+          "substeps": [
+            {
+              "step": "Call $delete\\_beginning()$"
+            }
+          ]
+        },
+        {
+          "step": "Else:",
+          "substeps": [
+            {
+              "step": "$temp \\leftarrow head$"
+            },
+            {
+              "step": "For $i$ from $1$ to $pos-2$:",
+              "substeps": [
+                {
+                  "step": "$temp \\leftarrow temp.next$"
+                }
+              ]
+            },
+            {
+              "step": "$temp1 \\leftarrow temp.next$"
+            },
+            {
+              "step": "$temp.next \\leftarrow temp1.next$"
+            },
+            {
+              "step": "Delete $temp1$"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "CircularLinkedListSearch",
+      "input": [
+        "num - value to search for",
+        "head - pointer to head of circular linked list"
+      ],
+      "output": [
+        "Position of num in the linked list if found, else message \"Element not found\""
+      ],
+      "steps": [
+        {
+          "step": "$temp \\leftarrow head$"
+        },
+        {
+          "step": "$pos \\leftarrow 1$"
+        },
+        {
+          "step": "While $temp.next \\neq head$:",
+          "substeps": [
+            {
+              "step": "If $temp.data = num$:",
+              "substeps": [
+                {
+                  "step": "Print \"Element found at position $pos$\""
+                },
+                {
+                  "step": "Return"
+                }
+              ]
+            },
+            {
+              "step": "$temp \\leftarrow temp.next$"
+            },
+            {
+              "step": "$pos \\leftarrow pos + 1$"
+            }
+          ]
+        },
+        {
+          "step": "If $temp.data = num$:",
+          "substeps": [
+            {
+              "step": "Print \"Element found at position $pos$\""
+            }
+          ]
+        },
+        {
+          "step": "Else:",
+          "substeps": [
+            {
+              "step": "Print \"Element not found\""
+            }
+          ]
+        }
+      ]
+    }
+  ]

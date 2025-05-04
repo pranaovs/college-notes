@@ -1,0 +1,238 @@
+[
+    {
+      "algorithm": "DoublyLinkedListInsertBeginning",
+      "input": [
+        "num - value to insert",
+        "head - pointer to head of doubly linked list",
+        "tail - pointer to tail of doubly linked list"
+      ],
+      "output": [
+        "Updated doubly linked list with num inserted at beginning"
+      ],
+      "steps": [
+        {
+          "step": "Create new node $newnode$ with $data = num$, $next = head$, $prev = null$"
+        },
+        {
+          "step": "If $head = null$ (list is empty):",
+          "substeps": [
+            {
+              "step": "$head \\leftarrow newnode$"
+            },
+            {
+              "step": "$tail \\leftarrow newnode$"
+            }
+          ]
+        },
+        {
+          "step": "Else:",
+          "substeps": [
+            {
+              "step": "$head.prev \\leftarrow newnode$"
+            },
+            {
+              "step": "$head \\leftarrow newnode$"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "DoublyLinkedListInsertEnd",
+      "input": [
+        "num - value to insert",
+        "head - pointer to head of doubly linked list",
+        "tail - pointer to tail of doubly linked list"
+      ],
+      "output": [
+        "Updated doubly linked list with num inserted at end"
+      ],
+      "steps": [
+        {
+          "step": "Create new node $newnode$ with $data = num$, $next = null$, $prev = tail$"
+        },
+        {
+          "step": "If $head = null$ (list is empty):",
+          "substeps": [
+            {
+              "step": "$head \\leftarrow newnode$"
+            },
+            {
+              "step": "$tail \\leftarrow newnode$"
+            }
+          ]
+        },
+        {
+          "step": "Else:",
+          "substeps": [
+            {
+              "step": "$tail.next \\leftarrow newnode$"
+            },
+            {
+              "step": "$tail \\leftarrow newnode$"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "DoublyLinkedListInsertPosition",
+      "input": [
+        "num - value to insert",
+        "pos - position to insert at",
+        "head - pointer to head of doubly linked list",
+        "tail - pointer to tail of doubly linked list"
+      ],
+      "output": [
+        "Updated doubly linked list with num inserted at position pos"
+      ],
+      "steps": [
+        {
+          "step": "If $pos = 1$:",
+          "substeps": [
+            {
+              "step": "Call $insert\\_beginning(num)$"
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "$temp \\leftarrow head$"
+        },
+        {
+          "step": "For $i$ from $1$ to $pos-2$:",
+          "substeps": [
+            {
+              "step": "$temp \\leftarrow temp.next$"
+            }
+          ]
+        },
+        {
+          "step": "If $temp.next = null$:",
+          "substeps": [
+            {
+              "step": "Call $insert\\_end(num)$"
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "Create new node $newnode$ with $data = num$"
+        },
+        {
+          "step": "$newnode.next \\leftarrow temp.next$"
+        },
+        {
+          "step": "$newnode.prev \\leftarrow temp$"
+        },
+        {
+          "step": "$temp.next \\leftarrow newnode$"
+        },
+        {
+          "step": "$newnode.next.prev \\leftarrow newnode$"
+        }
+      ]
+    },
+    {
+      "algorithm": "DoublyLinkedListDeleteBeginning",
+      "input": [
+        "head - pointer to head of doubly linked list",
+        "tail - pointer to tail of doubly linked list"
+      ],
+      "output": [
+        "Updated doubly linked list with first node removed"
+      ],
+      "steps": [
+        {
+          "step": "If $head = null$ (list is empty):",
+          "substeps": [
+            {
+              "step": "Print \"List is empty\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "$temp \\leftarrow head$"
+        },
+        {
+          "step": "If $head.next = null$ (only one node):",
+          "substeps": [
+            {
+              "step": "$head \\leftarrow null$"
+            },
+            {
+              "step": "$tail \\leftarrow null$"
+            },
+            {
+              "step": "Delete $temp$"
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "$head \\leftarrow head.next$"
+        },
+        {
+          "step": "Delete $temp$"
+        },
+        {
+          "step": "$head.prev \\leftarrow null$"
+        }
+      ]
+    },
+    {
+      "algorithm": "DoublyLinkedListDeleteEnd",
+      "input": [
+        "head - pointer to head of doubly linked list",
+        "tail - pointer to tail of doubly linked list"
+      ],
+      "output": [
+        "Updated doubly linked list with last node removed"
+      ],
+      "steps": [
+        {
+          "step": "If $head = null$ (list is empty):",
+          "substeps": [
+            {
+              "step": "Print \"List is empty\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "If $head.next = null$ (only one node):",
+          "substeps": [
+            {
+              "step": "Call $delete\\_beginning()$"
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "$temp \\leftarrow tail$"
+        },
+        {
+          "step": "$tail \\leftarrow tail.prev$"
+        },
+        {
+          "step": "Delete $temp$"
+        },
+        {
+          "step": "$tail.next \\leftarrow null$"
+        }
+      ]
+    }
+  ]

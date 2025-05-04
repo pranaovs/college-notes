@@ -1,0 +1,142 @@
+[
+    {
+      "algorithm": "CreateExpressionTree",
+      "input": [
+        "postfix - String containing postfix expression"
+      ],
+      "output": [
+        "Root node of the expression tree"
+      ],
+      "steps": [
+        {
+          "step": "Initialize empty stack $s$"
+        },
+        {
+          "step": "For each character $c$ in postfix expression:",
+          "substeps": [
+            {
+              "step": "If $c$ is a digit (operand):",
+              "substeps": [
+                {
+                  "step": "Create new node $newnode$ with $data = c$"
+                },
+                {
+                  "step": "$newnode.left \\leftarrow null$"
+                },
+                {
+                  "step": "$newnode.right \\leftarrow null$"
+                },
+                {
+                  "step": "Push $newnode$ onto stack $s$"
+                }
+              ]
+            },
+            {
+              "step": "Else ($c$ is an operator):",
+              "substeps": [
+                {
+                  "step": "Create new node $newnode$ with $data = c$"
+                },
+                {
+                  "step": "$newnode.right \\leftarrow s.top()$"
+                },
+                {
+                  "step": "Pop element from stack $s$"
+                },
+                {
+                  "step": "$newnode.left \\leftarrow s.top()$"
+                },
+                {
+                  "step": "Pop element from stack $s$"
+                },
+                {
+                  "step": "Push $newnode$ onto stack $s$"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step": "$root \\leftarrow s.top()$"
+        },
+        {
+          "step": "Return $root$"
+        }
+      ]
+    },
+    {
+      "algorithm": "InorderTraversal",
+      "input": [
+        "root - Root node of the expression tree"
+      ],
+      "output": [
+        "Inorder representation of the expression tree"
+      ],
+      "steps": [
+        {
+          "step": "If $root \\neq null$:",
+          "substeps": [
+            {
+              "step": "InorderTraversal($root.left$)"
+            },
+            {
+              "step": "Print $root.data$"
+            },
+            {
+              "step": "InorderTraversal($root.right$)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "PreorderTraversal",
+      "input": [
+        "root - Root node of the expression tree"
+      ],
+      "output": [
+        "Preorder representation of the expression tree"
+      ],
+      "steps": [
+        {
+          "step": "If $root \\neq null$:",
+          "substeps": [
+            {
+              "step": "Print $root.data$"
+            },
+            {
+              "step": "PreorderTraversal($root.left$)"
+            },
+            {
+              "step": "PreorderTraversal($root.right$)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "PostorderTraversal",
+      "input": [
+        "root - Root node of the expression tree"
+      ],
+      "output": [
+        "Postorder representation of the expression tree"
+      ],
+      "steps": [
+        {
+          "step": "If $root \\neq null$:",
+          "substeps": [
+            {
+              "step": "PostorderTraversal($root.left$)"
+            },
+            {
+              "step": "PostorderTraversal($root.right$)"
+            },
+            {
+              "step": "Print $root.data$"
+            }
+          ]
+        }
+      ]
+    }
+  ]

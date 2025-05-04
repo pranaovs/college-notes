@@ -1,0 +1,52 @@
+[
+    {
+      "algorithm": "NenesGameSimulation",
+      "input": [
+        "a[] - array of k integers representing Nene's moves",
+        "b[] - array of q integers representing initial pile sizes"
+      ],
+      "output": [
+        "Final pile sizes after all possible moves"
+      ],
+      "steps": [
+        {
+          "step": "For each query $i$ from $0$ to $q-1$:",
+          "substeps": [
+            {
+              "step": "Create vector $c$ of size $b[i]$ with all zeros"
+            },
+            {
+              "step": "Set $flag \\leftarrow 1$"
+            },
+            {
+              "step": "While $flag = 1$:",
+              "substeps": [
+                {
+                  "step": "$flag \\leftarrow 0$"
+                },
+                {
+                  "step": "For $j$ from $k-1$ down to $0$:",
+                  "substeps": [
+                    {
+                      "step": "If $a[j] \\leq c.size()$:",
+                      "substeps": [
+                        {
+                          "step": "Erase element at position $(a[j]-1)$ from vector $c$"
+                        },
+                        {
+                          "step": "$flag \\leftarrow 1$"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "step": "Output the final size of vector $c$"
+            }
+          ]
+        }
+      ]
+    }
+  ]

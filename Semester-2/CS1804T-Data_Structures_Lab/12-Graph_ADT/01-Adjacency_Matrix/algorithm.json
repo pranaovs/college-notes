@@ -1,0 +1,136 @@
+[
+    {
+      "algorithm": "InsertEdge",
+      "input": [
+        "u - first vertex",
+        "v - second vertex",
+        "adj[][] - adjacency matrix of graph",
+        "n - number of vertices"
+      ],
+      "output": [
+        "Updated adjacency matrix with edge (u,v) inserted"
+      ],
+      "steps": [
+        {
+          "step": "If $u \\geq n$ or $v \\geq n$:",
+          "substeps": [
+            {
+              "step": "Print \"Invalid vertex\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "$adj[u][v] \\leftarrow 1$"
+        },
+        {
+          "step": "$adj[v][u] \\leftarrow 1$"
+        }
+      ]
+    },
+    {
+      "algorithm": "DeleteEdge",
+      "input": [
+        "u - first vertex",
+        "v - second vertex",
+        "adj[][] - adjacency matrix of graph",
+        "n - number of vertices"
+      ],
+      "output": [
+        "Updated adjacency matrix with edge (u,v) removed"
+      ],
+      "steps": [
+        {
+          "step": "If $u \\geq n$ or $v \\geq n$:",
+          "substeps": [
+            {
+              "step": "Print \"Invalid vertex\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "$adj[u][v] \\leftarrow 0$"
+        },
+        {
+          "step": "$adj[v][u] \\leftarrow 0$"
+        }
+      ]
+    },
+    {
+      "algorithm": "SearchEdge",
+      "input": [
+        "u - first vertex",
+        "v - second vertex",
+        "adj[][] - adjacency matrix of graph",
+        "n - number of vertices"
+      ],
+      "output": [
+        "Status of edge existence between vertices u and v"
+      ],
+      "steps": [
+        {
+          "step": "If $u \\geq n$ or $v \\geq n$:",
+          "substeps": [
+            {
+              "step": "Print \"Invalid vertex\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "If $adj[u][v] = 1$:",
+          "substeps": [
+            {
+              "step": "Print \"Edge exists between $u$ and $v$\""
+            }
+          ]
+        },
+        {
+          "step": "Else:",
+          "substeps": [
+            {
+              "step": "Print \"No edge exists between $u$ and $v$\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "DisplayGraph",
+      "input": [
+        "adj[][] - adjacency matrix of graph",
+        "n - number of vertices"
+      ],
+      "output": [
+        "Visual representation of the adjacency matrix"
+      ],
+      "steps": [
+        {
+          "step": "Print \"Adjacency Matrix:\""
+        },
+        {
+          "step": "For $i$ from $0$ to $n-1$:",
+          "substeps": [
+            {
+              "step": "For $j$ from $0$ to $n-1$:",
+              "substeps": [
+                {
+                  "step": "Print $adj[i][j]$ followed by space"
+                }
+              ]
+            },
+            {
+              "step": "Print newline"
+            }
+          ]
+        }
+      ]
+    }
+  ]

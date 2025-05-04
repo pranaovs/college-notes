@@ -1,0 +1,501 @@
+[
+    {
+      "algorithm": "Insert_Beginning",
+      "input": [
+        "num - value to insert",
+        "head - pointer to head of linked list"
+      ],
+      "output": [
+        "Updated linked list with num inserted at the beginning"
+      ],
+      "steps": [
+        {
+          "step": "Create new node $newnode$ with $data = num$"
+        },
+        {
+          "step": "$newnode.next \\leftarrow head$"
+        },
+        {
+          "step": "$head \\leftarrow newnode$"
+        }
+      ]
+    },
+    {
+      "algorithm": "Insert_End",
+      "input": [
+        "num - value to insert",
+        "head - pointer to head of linked list"
+      ],
+      "output": [
+        "Updated linked list with num inserted at the end"
+      ],
+      "steps": [
+        {
+          "step": "If $head = null$ (list is empty):",
+          "substeps": [
+            {
+              "step": "Call $insert\\_beg(num)$"
+            }
+          ]
+        },
+        {
+          "step": "Else:",
+          "substeps": [
+            {
+              "step": "Create new node $newnode$ with $data = num$ and $next = null$"
+            },
+            {
+              "step": "$temp \\leftarrow head$"
+            },
+            {
+              "step": "While $temp.next \\neq null$:",
+              "substeps": [
+                {
+                  "step": "$temp \\leftarrow temp.next$"
+                }
+              ]
+            },
+            {
+              "step": "$temp.next \\leftarrow newnode$"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "Insert_Position",
+      "input": [
+        "num - value to insert",
+        "pos - position to insert at",
+        "head - pointer to head of linked list"
+      ],
+      "output": [
+        "Updated linked list with num inserted at position pos"
+      ],
+      "steps": [
+        {
+          "step": "Create new node $newnode$ with $data = num$"
+        },
+        {
+          "step": "If $pos = 1$:",
+          "substeps": [
+            {
+              "step": "Call $insert\\_beg(num)$"
+            }
+          ]
+        },
+        {
+          "step": "Else if $pos = count() + 1$:",
+          "substeps": [
+            {
+              "step": "Call $insert\\_end(num)$"
+            }
+          ]
+        },
+        {
+          "step": "Else:",
+          "substeps": [
+            {
+              "step": "$temp \\leftarrow head$"
+            },
+            {
+              "step": "For $i$ from $1$ to $pos-2$:",
+              "substeps": [
+                {
+                  "step": "$temp \\leftarrow temp.next$"
+                }
+              ]
+            },
+            {
+              "step": "$newnode.next \\leftarrow temp.next$"
+            },
+            {
+              "step": "$temp.next \\leftarrow newnode$"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "Delete_Beginning",
+      "input": [
+        "head - pointer to head of linked list"
+      ],
+      "output": [
+        "Updated linked list with first node removed"
+      ],
+      "steps": [
+        {
+          "step": "If $head = null$ (list is empty):",
+          "substeps": [
+            {
+              "step": "Print \"List is empty\""
+            }
+          ]
+        },
+        {
+          "step": "Else:",
+          "substeps": [
+            {
+              "step": "$temp \\leftarrow head.next$"
+            },
+            {
+              "step": "Free $head$"
+            },
+            {
+              "step": "$head \\leftarrow temp$"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "Delete_End",
+      "input": [
+        "head - pointer to head of linked list"
+      ],
+      "output": [
+        "Updated linked list with last node removed"
+      ],
+      "steps": [
+        {
+          "step": "If $head = null$ (list is empty):",
+          "substeps": [
+            {
+              "step": "Print \"List is empty\""
+            }
+          ]
+        },
+        {
+          "step": "Else:",
+          "substeps": [
+            {
+              "step": "$temp \\leftarrow head$"
+            },
+            {
+              "step": "If $temp.next = null$ (only one node):",
+              "substeps": [
+                {
+                  "step": "Call $delete\\_beg()$"
+                }
+              ]
+            },
+            {
+              "step": "Else:",
+              "substeps": [
+                {
+                  "step": "While $temp.next.next \\neq null$:",
+                  "substeps": [
+                    {
+                      "step": "$temp \\leftarrow temp.next$"
+                    }
+                  ]
+                },
+                {
+                  "step": "Free $temp.next$"
+                },
+                {
+                  "step": "$temp.next \\leftarrow null$"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "Delete_Position",
+      "input": [
+        "pos - position to delete",
+        "head - pointer to head of linked list"
+      ],
+      "output": [
+        "Updated linked list with node at position pos removed"
+      ],
+      "steps": [
+        {
+          "step": "If $pos = 1$:",
+          "substeps": [
+            {
+              "step": "Call $delete\\_beg()$"
+            }
+          ]
+        },
+        {
+          "step": "Else if $pos = count()$:",
+          "substeps": [
+            {
+              "step": "Call $delete\\_end()$"
+            }
+          ]
+        },
+        {
+          "step": "Else:",
+          "substeps": [
+            {
+              "step": "$temp \\leftarrow head$"
+            },
+            {
+              "step": "For $i$ from $1$ to $pos-1$:",
+              "substeps": [
+                {
+                  "step": "$temp \\leftarrow temp.next$"
+                }
+              ]
+            },
+            {
+              "step": "$temp2 \\leftarrow temp.next.next$"
+            },
+            {
+              "step": "Free $temp.next$"
+            },
+            {
+              "step": "$temp.next \\leftarrow temp2$"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "Display",
+      "input": [
+        "head - pointer to head of linked list"
+      ],
+      "output": [
+        "Elements of the linked list printed"
+      ],
+      "steps": [
+        {
+          "step": "$temp \\leftarrow head$"
+        },
+        {
+          "step": "If $head = null$ (list is empty):",
+          "substeps": [
+            {
+              "step": "Print \"List is empty\""
+            }
+          ]
+        },
+        {
+          "step": "Else:",
+          "substeps": [
+            {
+              "step": "While $temp \\neq null$:",
+              "substeps": [
+                {
+                  "step": "Print $temp.data$ followed by \" ->\""
+                },
+                {
+                  "step": "$temp \\leftarrow temp.next$"
+                }
+              ]
+            },
+            {
+              "step": "Print newline"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "Search",
+      "input": [
+        "num - value to search for",
+        "head - pointer to head of linked list"
+      ],
+      "output": [
+        "Status message indicating if num was found or not"
+      ],
+      "steps": [
+        {
+          "step": "$temp \\leftarrow head$"
+        },
+        {
+          "step": "If $head = null$ (list is empty):",
+          "substeps": [
+            {
+              "step": "Print \"List is empty\""
+            }
+          ]
+        },
+        {
+          "step": "Else:",
+          "substeps": [
+            {
+              "step": "While $temp \\neq null$:",
+              "substeps": [
+                {
+                  "step": "If $temp.data = num$:",
+                  "substeps": [
+                    {
+                      "step": "Print \"Element found\""
+                    },
+                    {
+                      "step": "Return"
+                    }
+                  ]
+                },
+                {
+                  "step": "$temp \\leftarrow temp.next$"
+                }
+              ]
+            },
+            {
+              "step": "Print \"Element not found\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "Count",
+      "input": [
+        "head - pointer to head of linked list"
+      ],
+      "output": [
+        "Number of nodes in the linked list"
+      ],
+      "steps": [
+        {
+          "step": "$temp \\leftarrow head$"
+        },
+        {
+          "step": "$c \\leftarrow 0$"
+        },
+        {
+          "step": "While $temp \\neq null$:",
+          "substeps": [
+            {
+              "step": "$c \\leftarrow c + 1$"
+            },
+            {
+              "step": "$temp \\leftarrow temp.next$"
+            }
+          ]
+        },
+        {
+          "step": "Return $c$"
+        }
+      ]
+    },
+    {
+      "algorithm": "ReverseLink",
+      "input": [
+        "head - pointer to head of linked list"
+      ],
+      "output": [
+        "Linked list with all links reversed"
+      ],
+      "steps": [
+        {
+          "step": "$temp \\leftarrow head$"
+        },
+        {
+          "step": "$len \\leftarrow count()$ (Count number of nodes)"
+        },
+        {
+          "step": "Create array $arr$ of size $len$ to store all node pointers"
+        },
+        {
+          "step": "For $i$ from $0$ to $len-1$:",
+          "substeps": [
+            {
+              "step": "$arr[i] \\leftarrow temp$"
+            },
+            {
+              "step": "$temp \\leftarrow temp.next$"
+            }
+          ]
+        },
+        {
+          "step": "Create array $arr2$ of size $len$ with reversed pointers"
+        },
+        {
+          "step": "For $i$ from $0$ to $len-1$:",
+          "substeps": [
+            {
+              "step": "$arr2[i] \\leftarrow arr[len-1-i]$"
+            }
+          ]
+        },
+        {
+          "step": "$head \\leftarrow arr2[0]$"
+        },
+        {
+          "step": "$temp \\leftarrow head$"
+        },
+        {
+          "step": "For $i$ from $1$ to $len-1$:",
+          "substeps": [
+            {
+              "step": "$temp.next \\leftarrow arr2[i]$"
+            },
+            {
+              "step": "$temp \\leftarrow temp.next$"
+            }
+          ]
+        },
+        {
+          "step": "$temp.next \\leftarrow null$"
+        }
+      ]
+    },
+    {
+      "algorithm": "ReverseDisplay",
+      "input": [
+        "head - pointer to head of linked list"
+      ],
+      "output": [
+        "Elements of the linked list displayed in reverse order"
+      ],
+      "steps": [
+        {
+          "step": "$len \\leftarrow count()$ (Count number of nodes)"
+        },
+        {
+          "step": "Create array $arr$ of size $len$ to store node values"
+        },
+        {
+          "step": "If $head = null$ (list is empty):",
+          "substeps": [
+            {
+              "step": "Print \"List is empty\""
+            }
+          ]
+        },
+        {
+          "step": "Else:",
+          "substeps": [
+            {
+              "step": "$temp \\leftarrow head$"
+            },
+            {
+              "step": "$i \\leftarrow 0$"
+            },
+            {
+              "step": "While $temp \\neq null$:",
+              "substeps": [
+                {
+                  "step": "$arr[len-1-i] \\leftarrow temp.data$"
+                },
+                {
+                  "step": "$temp \\leftarrow temp.next$"
+                },
+                {
+                  "step": "$i \\leftarrow i + 1$"
+                }
+              ]
+            },
+            {
+              "step": "For $j$ from $0$ to $len-1$:",
+              "substeps": [
+                {
+                  "step": "Print $arr[j]$ followed by space"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]

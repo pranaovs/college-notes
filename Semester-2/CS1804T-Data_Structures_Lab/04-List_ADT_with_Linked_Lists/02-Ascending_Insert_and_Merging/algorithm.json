@@ -1,0 +1,121 @@
+[
+    {
+      "algorithm": "InsertAscending",
+      "input": [
+        "num - value to insert",
+        "head - pointer to head of linked list"
+      ],
+      "output": [
+        "Updated linked list with num inserted in ascending order"
+      ],
+      "steps": [
+        {
+          "step": "Create new node $newnode$ with $data = num$ and $next = null$"
+        },
+        {
+          "step": "If $head = null$ (list is empty) or $num < head.data$:",
+          "substeps": [
+            {
+              "step": "$newnode.next \\leftarrow head$"
+            },
+            {
+              "step": "$head \\leftarrow newnode$"
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "$temp \\leftarrow head$"
+        },
+        {
+          "step": "While $temp.next \\neq null$ and $temp.next.data < num$:",
+          "substeps": [
+            {
+              "step": "$temp \\leftarrow temp.next$"
+            }
+          ]
+        },
+        {
+          "step": "$newnode.next \\leftarrow temp.next$"
+        },
+        {
+          "step": "$temp.next \\leftarrow newnode$"
+        }
+      ]
+    },
+    {
+      "algorithm": "MergeLists",
+      "input": [
+        "l1 - first sorted linked list",
+        "l2 - second sorted linked list"
+      ],
+      "output": [
+        "l3 - merged sorted linked list containing all elements from l1 and l2"
+      ],
+      "steps": [
+        {
+          "step": "Initialize new empty list $l3$"
+        },
+        {
+          "step": "$p1 \\leftarrow l1.head$"
+        },
+        {
+          "step": "$p2 \\leftarrow l2.head$"
+        },
+        {
+          "step": "While $p1 \\neq null$ and $p2 \\neq null$:",
+          "substeps": [
+            {
+              "step": "If $p1.data \\leq p2.data$:",
+              "substeps": [
+                {
+                  "step": "$l3.insert\\_end(p1.data)$"
+                },
+                {
+                  "step": "$p1 \\leftarrow p1.next$"
+                }
+              ]
+            },
+            {
+              "step": "Else:",
+              "substeps": [
+                {
+                  "step": "$l3.insert\\_end(p2.data)$"
+                },
+                {
+                  "step": "$p2 \\leftarrow p2.next$"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step": "While $p1 \\neq null$:",
+          "substeps": [
+            {
+              "step": "$l3.insert\\_end(p1.data)$"
+            },
+            {
+              "step": "$p1 \\leftarrow p1.next$"
+            }
+          ]
+        },
+        {
+          "step": "While $p2 \\neq null$:",
+          "substeps": [
+            {
+              "step": "$l3.insert\\_end(p2.data)$"
+            },
+            {
+              "step": "$p2 \\leftarrow p2.next$"
+            }
+          ]
+        },
+        {
+          "step": "Return $l3$"
+        }
+      ]
+    }
+  ]

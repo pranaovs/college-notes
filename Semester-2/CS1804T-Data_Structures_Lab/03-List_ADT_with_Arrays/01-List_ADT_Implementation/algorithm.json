@@ -1,0 +1,349 @@
+[
+    {
+      "algorithm": "ArrayListInsertBeginning",
+      "input": [
+        "num - value to insert",
+        "arr[] - array storing the list elements",
+        "cur - current number of elements"
+      ],
+      "output": [
+        "Updated array list with num inserted at beginning"
+      ],
+      "steps": [
+        {
+          "step": "If $cur = 5$ (list is full):",
+          "substeps": [
+            {
+              "step": "Print \"List is full\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "For $i$ from $cur$ down to $1$:",
+          "substeps": [
+            {
+              "step": "$arr[i] \\leftarrow arr[i-1]$"
+            }
+          ]
+        },
+        {
+          "step": "$arr[0] \\leftarrow num$"
+        },
+        {
+          "step": "$cur \\leftarrow cur + 1$"
+        }
+      ]
+    },
+    {
+      "algorithm": "ArrayListInsertEnd",
+      "input": [
+        "num - value to insert",
+        "arr[] - array storing the list elements",
+        "cur - current number of elements"
+      ],
+      "output": [
+        "Updated array list with num inserted at end"
+      ],
+      "steps": [
+        {
+          "step": "If $cur = 5$ (list is full):",
+          "substeps": [
+            {
+              "step": "Print \"List is full\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "$arr[cur] \\leftarrow num$"
+        },
+        {
+          "step": "$cur \\leftarrow cur + 1$"
+        }
+      ]
+    },
+    {
+      "algorithm": "ArrayListInsertPosition",
+      "input": [
+        "num - value to insert",
+        "pos - position to insert at",
+        "arr[] - array storing the list elements",
+        "cur - current number of elements"
+      ],
+      "output": [
+        "Updated array list with num inserted at position pos"
+      ],
+      "steps": [
+        {
+          "step": "If $cur = 5$ (list is full):",
+          "substeps": [
+            {
+              "step": "Print \"List is full\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "If $pos < 0$ or $pos > cur$:",
+          "substeps": [
+            {
+              "step": "Print \"Invalid position\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "For $i$ from $cur$ down to $pos+1$:",
+          "substeps": [
+            {
+              "step": "$arr[i] \\leftarrow arr[i-1]$"
+            }
+          ]
+        },
+        {
+          "step": "$arr[pos] \\leftarrow num$"
+        },
+        {
+          "step": "$cur \\leftarrow cur + 1$"
+        }
+      ]
+    },
+    {
+      "algorithm": "ArrayListDeleteBeginning",
+      "input": [
+        "arr[] - array storing the list elements",
+        "cur - current number of elements"
+      ],
+      "output": [
+        "Updated array list with first element removed"
+      ],
+      "steps": [
+        {
+          "step": "If $cur = 0$ (list is empty):",
+          "substeps": [
+            {
+              "step": "Print \"List is empty\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "For $i$ from $0$ to $cur-2$:",
+          "substeps": [
+            {
+              "step": "$arr[i] \\leftarrow arr[i+1]$"
+            }
+          ]
+        },
+        {
+          "step": "$cur \\leftarrow cur - 1$"
+        }
+      ]
+    },
+    {
+      "algorithm": "ArrayListDeleteEnd",
+      "input": [
+        "arr[] - array storing the list elements",
+        "cur - current number of elements"
+      ],
+      "output": [
+        "Updated array list with last element removed"
+      ],
+      "steps": [
+        {
+          "step": "If $cur = 0$ (list is empty):",
+          "substeps": [
+            {
+              "step": "Print \"List is empty\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "$cur \\leftarrow cur - 1$"
+        }
+      ]
+    },
+    {
+      "algorithm": "ArrayListDeletePosition",
+      "input": [
+        "pos - position to delete",
+        "arr[] - array storing the list elements",
+        "cur - current number of elements"
+      ],
+      "output": [
+        "Updated array list with element at position pos removed"
+      ],
+      "steps": [
+        {
+          "step": "If $cur = 0$ (list is empty):",
+          "substeps": [
+            {
+              "step": "Print \"List is empty\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "If $pos < 0$ or $pos \\geq cur$:",
+          "substeps": [
+            {
+              "step": "Print \"Invalid position\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "For $i$ from $pos$ to $cur-2$:",
+          "substeps": [
+            {
+              "step": "$arr[i] \\leftarrow arr[i+1]$"
+            }
+          ]
+        },
+        {
+          "step": "$cur \\leftarrow cur - 1$"
+        }
+      ]
+    },
+    {
+      "algorithm": "ArrayListSearch",
+      "input": [
+        "num - value to search for",
+        "arr[] - array storing the list elements",
+        "cur - current number of elements"
+      ],
+      "output": [
+        "Status message indicating if num was found or not"
+      ],
+      "steps": [
+        {
+          "step": "If $cur = 0$ (list is empty):",
+          "substeps": [
+            {
+              "step": "Print \"List is empty\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "For $i$ from $0$ to $cur-1$:",
+          "substeps": [
+            {
+              "step": "If $arr[i] = num$:",
+              "substeps": [
+                {
+                  "step": "Print \"Element found\""
+                },
+                {
+                  "step": "Return"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step": "Print \"Element not found\""
+        }
+      ]
+    },
+    {
+      "algorithm": "ArrayListDisplay",
+      "input": [
+        "arr[] - array storing the list elements",
+        "cur - current number of elements"
+      ],
+      "output": [
+        "All elements in the list printed"
+      ],
+      "steps": [
+        {
+          "step": "If $cur = 0$ (list is empty):",
+          "substeps": [
+            {
+              "step": "Print \"List is empty\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "For $i$ from $0$ to $cur-1$:",
+          "substeps": [
+            {
+              "step": "Print $arr[i]$ followed by space"
+            }
+          ]
+        },
+        {
+          "step": "Print newline"
+        }
+      ]
+    },
+    {
+      "algorithm": "ArrayListRotate",
+      "input": [
+        "k - number of rotations",
+        "arr[] - array storing the list elements",
+        "cur - current number of elements"
+      ],
+      "output": [
+        "Updated array list rotated k times"
+      ],
+      "steps": [
+        {
+          "step": "If $cur = 0$ (list is empty):",
+          "substeps": [
+            {
+              "step": "Print \"List is empty\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "$k \\leftarrow k \\bmod cur$"
+        },
+        {
+          "step": "For $i$ from $0$ to $k-1$:",
+          "substeps": [
+            {
+              "step": "$temp \\leftarrow arr[cur-1]$"
+            },
+            {
+              "step": "For $j$ from $cur-1$ down to $1$:",
+              "substeps": [
+                {
+                  "step": "$arr[j] \\leftarrow arr[j-1]$"
+                }
+              ]
+            },
+            {
+              "step": "$arr[0] \\leftarrow temp$"
+            }
+          ]
+        }
+      ]
+    }
+  ]

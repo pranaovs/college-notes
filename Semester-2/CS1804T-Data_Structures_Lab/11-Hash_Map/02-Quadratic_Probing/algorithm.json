@@ -1,0 +1,159 @@
+[
+    {
+      "algorithm": "QuadraticProbingInsert",
+      "input": [
+        "num - value to insert",
+        "table[] - hash table array",
+        "SIZE - size of hash table"
+      ],
+      "output": [
+        "Updated hash table with num inserted (if possible)"
+      ],
+      "steps": [
+        {
+          "step": "$index \\leftarrow num \\bmod SIZE$"
+        },
+        {
+          "step": "If $table[index] = EMPTY$:",
+          "substeps": [
+            {
+              "step": "$table[index] \\leftarrow num$"
+            }
+          ]
+        },
+        {
+          "step": "Else:",
+          "substeps": [
+            {
+              "step": "$temp \\leftarrow index$"
+            },
+            {
+              "step": "$col \\leftarrow 1$"
+            },
+            {
+              "step": "While $table[index] \\neq EMPTY$:",
+              "substeps": [
+                {
+                  "step": "$index \\leftarrow (index + col + col^2) \\bmod SIZE$"
+                },
+                {
+                  "step": "$col \\leftarrow col + 1$"
+                },
+                {
+                  "step": "If $index = temp$:",
+                  "substeps": [
+                    {
+                      "step": "Print \"Table is full\""
+                    },
+                    {
+                      "step": "Return"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "step": "$table[index] \\leftarrow num$"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "QuadraticProbingDelete",
+      "input": [
+        "num - value to delete",
+        "table[] - hash table array",
+        "SIZE - size of hash table"
+      ],
+      "output": [
+        "Updated hash table with num removed (if found)"
+      ],
+      "steps": [
+        {
+          "step": "For $i$ from $0$ to $SIZE-1$:",
+          "substeps": [
+            {
+              "step": "If $table[i] = num$:",
+              "substeps": [
+                {
+                  "step": "$table[i] \\leftarrow EMPTY$"
+                },
+                {
+                  "step": "Return"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step": "Print \"Element not found\""
+        }
+      ]
+    },
+    {
+      "algorithm": "QuadraticProbingSearch",
+      "input": [
+        "num - value to search for",
+        "table[] - hash table array",
+        "SIZE - size of hash table"
+      ],
+      "output": [
+        "Status message indicating if num was found or not"
+      ],
+      "steps": [
+        {
+          "step": "For $i$ from $0$ to $SIZE-1$:",
+          "substeps": [
+            {
+              "step": "If $table[i] = num$:",
+              "substeps": [
+                {
+                  "step": "Print \"The element is present at index $i$\""
+                },
+                {
+                  "step": "Return"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step": "Print \"The element is not present\""
+        }
+      ]
+    },
+    {
+      "algorithm": "QuadraticProbingDisplay",
+      "input": [
+        "table[] - hash table array",
+        "SIZE - size of hash table"
+      ],
+      "output": [
+        "Visual representation of the hash table"
+      ],
+      "steps": [
+        {
+          "step": "For $i$ from $0$ to $SIZE-1$:",
+          "substeps": [
+            {
+              "step": "If $table[i] = EMPTY$:",
+              "substeps": [
+                {
+                  "step": "Print \"$i$ -> EMPTY\""
+                }
+              ]
+            },
+            {
+              "step": "Else:",
+              "substeps": [
+                {
+                  "step": "Print \"$i$ -> $table[i]$\""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+ ]

@@ -1,0 +1,143 @@
+[
+    {
+      "algorithm": "BubbleSort",
+      "input": [
+        "arr[] - array of integers",
+        "num - number of elements in array"
+      ],
+      "output": [
+        "sorted array in ascending order"
+      ],
+      "steps": [
+        {
+          "step": "For $i$ from $0$ to $num-2$:",
+          "substeps": [
+            {
+              "step": "For $j$ from $0$ to $num-2-i$:",
+              "substeps": [
+                {
+                  "step": "If $arr[j] > arr[j+1]$:",
+                  "substeps": [
+                    {
+                      "step": "$temp \\leftarrow arr[j]$"
+                    },
+                    {
+                      "step": "$arr[j] \\leftarrow arr[j+1]$"
+                    },
+                    {
+                      "step": "$arr[j+1] \\leftarrow temp$"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "InsertionSort",
+      "input": [
+        "arr[] - array of integers",
+        "num - number of elements in array"
+      ],
+      "output": [
+        "sorted array in ascending order"
+      ],
+      "steps": [
+        {
+          "step": "For $i$ from $1$ to $num-1$:",
+          "substeps": [
+            {
+              "step": "$temp \\leftarrow arr[i]$"
+            },
+            {
+              "step": "$j \\leftarrow i-1$"
+            },
+            {
+              "step": "While $j \\geq 0$ and $arr[j] > temp$:",
+              "substeps": [
+                {
+                  "step": "$arr[j+1] \\leftarrow arr[j]$"
+                },
+                {
+                  "step": "$j \\leftarrow j-1$"
+                }
+              ]
+            },
+            {
+              "step": "$arr[j+1] \\leftarrow temp$"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "SelectionSort",
+      "input": [
+        "arr[] - array of integers",
+        "num - number of elements in array"
+      ],
+      "output": [
+        "sorted array in ascending order"
+      ],
+      "steps": [
+        {
+          "step": "For $i$ from $0$ to $num-1$:",
+          "substeps": [
+            {
+              "step": "$k \\leftarrow i$"
+            },
+            {
+              "step": "$temp \\leftarrow arr[i]$"
+            },
+            {
+              "step": "For $j$ from $i+1$ to $num-1$:",
+              "substeps": [
+                {
+                  "step": "If $arr[j] < temp$:",
+                  "substeps": [
+                    {
+                      "step": "$temp \\leftarrow arr[j]$"
+                    },
+                    {
+                      "step": "$k \\leftarrow j$"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "step": "$arr[k] \\leftarrow arr[i]$"
+            },
+            {
+              "step": "$arr[i] \\leftarrow temp$"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "Display",
+      "input": [
+        "arr[] - array of integers",
+        "num - number of elements in array"
+      ],
+      "output": [
+        "printed array elements"
+      ],
+      "steps": [
+        {
+          "step": "For $i$ from $0$ to $num-1$:",
+          "substeps": [
+            {
+              "step": "Print $arr[i]$ followed by space"
+            }
+          ]
+        },
+        {
+          "step": "Print newline"
+        }
+      ]
+    }
+  ]

@@ -1,0 +1,61 @@
+[
+  {
+    "algorithm": "ParenthesisBalance",
+    "input": [
+      "s - string containing parentheses"
+    ],
+    "output": [
+      "Boolean indicating whether the parentheses are balanced"
+    ],
+    "steps": [
+      {
+        "step": "Initialize empty stack $st$"
+      },
+      {
+        "step": "For each character $c$ in string $s$:",
+        "substeps": [
+          {
+            "step": "If $c$ is an opening bracket ('(' or '{' or '['):",
+            "substeps": [
+              {
+                "step": "Push $c$ onto stack $st$"
+              }
+            ]
+          },
+          {
+            "step": "Else if $c$ is a closing bracket (')' or '}' or ']'):",
+            "substeps": [
+              {
+                "step": "If $st$ is empty:",
+                "substeps": [
+                  {
+                    "step": "Return $false$"
+                  }
+                ]
+              },
+              {
+                "step": "If (st.peek() = '(' and c = ')') or (st.peek() = '{' and c = '}') or (st.peek() = '[' and c = ']'):",
+                "substeps": [
+                  {
+                    "step": "Pop top element from $st$"
+                  }
+                ]
+              },
+              {
+                "step": "Else:",
+                "substeps": [
+                  {
+                    "step": "Return $false$"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "step": "Return $st.empty()$"
+      }
+    ]
+  }
+]

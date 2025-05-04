@@ -1,0 +1,215 @@
+[
+    {
+      "algorithm": "MaxHeapInsert",
+      "input": [
+        "x - element to insert",
+        "array[] - heap represented as an array",
+        "n - current size of the heap"
+      ],
+      "output": [
+        "Updated heap with new element inserted"
+      ],
+      "steps": [
+        {
+          "step": "If $array$ is empty:",
+          "substeps": [
+            {
+              "step": "$array.push\\_back(x)$"
+            }
+          ]
+        },
+        {
+          "step": "Else:",
+          "substeps": [
+            {
+              "step": "$array.push\\_back(x)$"
+            },
+            {
+              "step": "$i \\leftarrow array.size() - 1$"
+            },
+            {
+              "step": "While $((i+1)/2 - 1) \\geq 0$:",
+              "substeps": [
+                {
+                  "step": "If $array[i] > array[((i+1)/2 - 1)]$:",
+                  "substeps": [
+                    {
+                      "step": "Swap $array[i]$ and $array[((i+1)/2 - 1)]$"
+                    },
+                    {
+                      "step": "$i \\leftarrow (i+1)/2 - 1$"
+                    }
+                  ]
+                },
+                {
+                  "step": "Else:",
+                  "substeps": [
+                    {
+                      "step": "Break loop"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "MaxHeapDeleteRoot",
+      "input": [
+        "array[] - heap represented as an array",
+        "n - current size of the heap"
+      ],
+      "output": [
+        "Updated heap with root element removed"
+      ],
+      "steps": [
+        {
+          "step": "If $array$ is empty:",
+          "substeps": [
+            {
+              "step": "Print \"The Queue is empty\""
+            }
+          ]
+        },
+        {
+          "step": "Else:",
+          "substeps": [
+            {
+              "step": "$array[0] \\leftarrow array.back()$"
+            },
+            {
+              "step": "$array.pop\\_back()$"
+            },
+            {
+              "step": "$i \\leftarrow 0$"
+            },
+            {
+              "step": "While $2i + 1 < array.size()$:",
+              "substeps": [
+                {
+                  "step": "$j \\leftarrow 2i + 1$"
+                },
+                {
+                  "step": "If $j + 1 < array.size()$:",
+                  "substeps": [
+                    {
+                      "step": "If $array[i] < array[j]$ and $array[i] < array[j+1]$:",
+                      "substeps": [
+                        {
+                          "step": "If $array[j] > array[j+1]$:",
+                          "substeps": [
+                            {
+                              "step": "Swap $array[i]$ and $array[j]$"
+                            },
+                            {
+                              "step": "$i \\leftarrow j$"
+                            }
+                          ]
+                        },
+                        {
+                          "step": "Else:",
+                          "substeps": [
+                            {
+                              "step": "Swap $array[i]$ and $array[j+1]$"
+                            },
+                            {
+                              "step": "$i \\leftarrow j+1$"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "step": "Else if $array[i] < array[j]$:",
+                      "substeps": [
+                        {
+                          "step": "Swap $array[i]$ and $array[j]$"
+                        },
+                        {
+                          "step": "$i \\leftarrow j$"
+                        }
+                      ]
+                    },
+                    {
+                      "step": "Else if $array[i] < array[j+1]$:",
+                      "substeps": [
+                        {
+                          "step": "Swap $array[i]$ and $array[j+1]$"
+                        },
+                        {
+                          "step": "$i \\leftarrow j+1$"
+                        }
+                      ]
+                    },
+                    {
+                      "step": "Else:",
+                      "substeps": [
+                        {
+                          "step": "Break loop"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "step": "Else:",
+                  "substeps": [
+                    {
+                      "step": "If $array[i] < array[j]$:",
+                      "substeps": [
+                        {
+                          "step": "Swap $array[i]$ and $array[j]$"
+                        },
+                        {
+                          "step": "$i \\leftarrow j$"
+                        }
+                      ]
+                    },
+                    {
+                      "step": "Else:",
+                      "substeps": [
+                        {
+                          "step": "Break loop"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "HeapSort",
+      "input": [
+        "array[] - heap represented as an array",
+        "n - current size of the heap"
+      ],
+      "output": [
+        "Sorted array in descending order"
+      ],
+      "steps": [
+        {
+          "step": "Initialize empty vector $sorted$"
+        },
+        {
+          "step": "While $array$ is not empty:",
+          "substeps": [
+            {
+              "step": "$sorted.push\\_back(array[0])$"
+            },
+            {
+              "step": "Call $delete\\_root()$ to remove the maximum element"
+            }
+          ]
+        },
+        {
+          "step": "$array \\leftarrow sorted$"
+        }
+      ]
+    }
+  ]

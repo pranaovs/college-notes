@@ -1,0 +1,47 @@
+[
+    {
+      "algorithm": "RoundRobinScheduler",
+      "input": [
+        "processList - circular linked list containing process burst times",
+        "timeSlot - time quantum for each execution"
+      ],
+      "output": [
+        "Execution order of processes"
+      ],
+      "steps": [
+        {
+          "step": "Initialize circular linked list $processList$"
+        },
+        {
+          "step": "Input time quantum $timeSlot$"
+        },
+        {
+          "step": "While $processList$ is not empty:",
+          "substeps": [
+            {
+              "step": "$val \\leftarrow processList.delete\\_beginning()$ (Extract first process)"
+            },
+            {
+              "step": "$remainingTime \\leftarrow val - timeSlot$"
+            },
+            {
+              "step": "If $remainingTime > 0$:",
+              "substeps": [
+                {
+                  "step": "$processList.insert\\_end(remainingTime)$ (Reinsert process at end with updated time)"
+                }
+              ]
+            },
+            {
+              "step": "Else:",
+              "substeps": [
+                {
+                  "step": "Process completed execution"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]

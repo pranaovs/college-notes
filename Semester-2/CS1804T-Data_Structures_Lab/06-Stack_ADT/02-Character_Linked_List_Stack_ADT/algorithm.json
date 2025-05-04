@@ -1,0 +1,147 @@
+[
+    {
+      "algorithm": "StackPush",
+      "input": [
+        "ch - character to push",
+        "head - pointer to top of stack"
+      ],
+      "output": [
+        "Updated stack with character ch added"
+      ],
+      "steps": [
+        {
+          "step": "Create new node $newnode$ with $data = ch$ and $next = null$"
+        },
+        {
+          "step": "If $head = null$ (stack is empty):",
+          "substeps": [
+            {
+              "step": "$head \\leftarrow newnode$"
+            }
+          ]
+        },
+        {
+          "step": "Else:",
+          "substeps": [
+            {
+              "step": "$temp \\leftarrow head$"
+            },
+            {
+              "step": "While $temp.next \\neq null$:",
+              "substeps": [
+                {
+                  "step": "$temp \\leftarrow temp.next$"
+                }
+              ]
+            },
+            {
+              "step": "$temp.next \\leftarrow newnode$"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "StackPop",
+      "input": [
+        "head - pointer to top of stack"
+      ],
+      "output": [
+        "Character from the top of stack and updated stack"
+      ],
+      "steps": [
+        {
+          "step": "If $head = null$ (stack is empty):",
+          "substeps": [
+            {
+              "step": "Print \"List is empty\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "$temp \\leftarrow head$"
+        },
+        {
+          "step": "If $temp.next = null$ (only one element):",
+          "substeps": [
+            {
+              "step": "$ch \\leftarrow head.data$"
+            },
+            {
+              "step": "Free $head$"
+            },
+            {
+              "step": "$head \\leftarrow null$"
+            },
+            {
+              "step": "Return $ch$"
+            }
+          ]
+        },
+        {
+          "step": "Else:",
+          "substeps": [
+            {
+              "step": "While $temp.next.next \\neq null$:",
+              "substeps": [
+                {
+                  "step": "$temp \\leftarrow temp.next$"
+                }
+              ]
+            },
+            {
+              "step": "$ch \\leftarrow temp.next.data$"
+            },
+            {
+              "step": "Free $temp.next$"
+            },
+            {
+              "step": "$temp.next \\leftarrow null$"
+            },
+            {
+              "step": "Return $ch$"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "StackPeek",
+      "input": [
+        "head - pointer to top of stack"
+      ],
+      "output": [
+        "Character from the top of stack (without removing it)"
+      ],
+      "steps": [
+        {
+          "step": "If $head = null$ (stack is empty):",
+          "substeps": [
+            {
+              "step": "Print \"List is empty\""
+            },
+            {
+              "step": "Return $0$"
+            }
+          ]
+        },
+        {
+          "step": "$temp \\leftarrow head$"
+        },
+        {
+          "step": "While $temp.next \\neq null$:",
+          "substeps": [
+            {
+              "step": "$temp \\leftarrow temp.next$"
+            }
+          ]
+        },
+        {
+          "step": "Return $temp.data$"
+        }
+      ]
+    }
+  ]

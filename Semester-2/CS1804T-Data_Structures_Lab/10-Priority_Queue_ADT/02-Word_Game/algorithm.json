@@ -1,0 +1,91 @@
+[
+    {
+      "algorithm": "WordGameScoring",
+      "input": [
+        "a[][] - 3×n matrix of strings where a[i] represents words written by player i"
+      ],
+      "output": [
+        "p[] - array of 3 integers representing points of each player"
+      ],
+      "steps": [
+        {
+          "step": "Initialize score array $p[0...2] \\leftarrow 0$"
+        },
+        {
+          "step": "For player 0's words (i from $0$ to $n-1$):",
+          "substeps": [
+            {
+              "step": "If word $a[0][i]$ appears in player 1's list but not in player 2's list:",
+              "substeps": [
+                {
+                  "step": "$p[0] \\leftarrow p[0] + 1$"
+                },
+                {
+                  "step": "$p[1] \\leftarrow p[1] + 1$"
+                }
+              ]
+            },
+            {
+              "step": "Else if word $a[0][i]$ appears in player 2's list but not in player 1's list:",
+              "substeps": [
+                {
+                  "step": "$p[0] \\leftarrow p[0] + 1$"
+                },
+                {
+                  "step": "$p[2] \\leftarrow p[2] + 1$"
+                }
+              ]
+            },
+            {
+              "step": "Else if word $a[0][i]$ appears in neither player 1's nor player 2's list:",
+              "substeps": [
+                {
+                  "step": "$p[0] \\leftarrow p[0] + 3$"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step": "For player 1's words (i from $0$ to $n-1$):",
+          "substeps": [
+            {
+              "step": "If word $a[1][i]$ appears in player 2's list but not in player 0's list:",
+              "substeps": [
+                {
+                  "step": "$p[1] \\leftarrow p[1] + 1$"
+                },
+                {
+                  "step": "$p[2] \\leftarrow p[2] + 1$"
+                }
+              ]
+            },
+            {
+              "step": "Else if word $a[1][i]$ appears in neither player 0's nor player 2's list:",
+              "substeps": [
+                {
+                  "step": "$p[1] \\leftarrow p[1] + 3$"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step": "For player 2's words (i from $0$ to $n-1$):",
+          "substeps": [
+            {
+              "step": "If word $a[2][i]$ appears in neither player 0's nor player 1's list:",
+              "substeps": [
+                {
+                  "step": "$p[2] \\leftarrow p[2] + 3$"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step": "Return array $p$"
+        }
+      ]
+    }
+  ]

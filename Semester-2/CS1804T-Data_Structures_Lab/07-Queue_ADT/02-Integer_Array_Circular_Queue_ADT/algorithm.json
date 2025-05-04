@@ -1,0 +1,105 @@
+[
+    {
+      "algorithm": "CircularQueueEnqueue",
+      "input": [
+        "x - element to insert into queue",
+        "arr[] - array storing the queue elements",
+        "front - front index of queue",
+        "rear - rear index of queue",
+        "size - current number of elements",
+        "MAX_SIZE - maximum capacity of queue"
+      ],
+      "output": [
+        "Updated circular queue with x inserted"
+      ],
+      "steps": [
+        {
+          "step": "If $size = MAX\\_SIZE$:",
+          "substeps": [
+            {
+              "step": "Print \"Queue is full\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "If $front = -1$ (queue is empty):",
+          "substeps": [
+            {
+              "step": "$front \\leftarrow 0$"
+            }
+          ]
+        },
+        {
+          "step": "$rear \\leftarrow (rear + 1) \\bmod MAX\\_SIZE$"
+        },
+        {
+          "step": "$arr[rear] \\leftarrow x$"
+        },
+        {
+          "step": "$size \\leftarrow size + 1$"
+        }
+      ]
+    },
+    {
+      "algorithm": "CircularQueueDequeue",
+      "input": [
+        "arr[] - array storing the queue elements",
+        "front - front index of queue",
+        "rear - rear index of queue",
+        "size - current number of elements",
+        "MAX_SIZE - maximum capacity of queue"
+      ],
+      "output": [
+        "Updated circular queue with front element removed"
+      ],
+      "steps": [
+        {
+          "step": "If $size = 0$:",
+          "substeps": [
+            {
+              "step": "Print \"Queue is empty\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "$front \\leftarrow (front + 1) \\bmod MAX\\_SIZE$"
+        },
+        {
+          "step": "$size \\leftarrow size - 1$"
+        }
+      ]
+    },
+    {
+      "algorithm": "CircularQueuePeek",
+      "input": [
+        "arr[] - array storing the queue elements",
+        "front - front index of queue",
+        "size - current number of elements"
+      ],
+      "output": [
+        "Value of the front element (without removing it)"
+      ],
+      "steps": [
+        {
+          "step": "If $size = 0$:",
+          "substeps": [
+            {
+              "step": "Print \"Queue is empty\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "Print $arr[front]$"
+        }
+      ]
+    }
+  ]

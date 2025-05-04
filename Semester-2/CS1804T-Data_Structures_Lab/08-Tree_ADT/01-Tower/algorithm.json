@@ -1,0 +1,32 @@
+[
+    {
+      "algorithm": "MaximizeTowerHeight",
+      "input": [
+        "tower[] - array of n integers representing tower heights"
+      ],
+      "output": [
+        "Maximum possible height of tower[0] after operations"
+      ],
+      "steps": [
+        {
+          "step": "For $k$ from $1$ to $n-1$:",
+          "substeps": [
+            {
+              "step": "While $tower[k] > tower[0]$:",
+              "substeps": [
+                {
+                  "step": "$tower[0] \\leftarrow tower[0] + 1$"
+                },
+                {
+                  "step": "$tower[k] \\leftarrow tower[k] - 1$"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step": "Return $tower[0]$"
+        }
+      ]
+    }
+  ]

@@ -1,0 +1,196 @@
+[
+    {
+      "algorithm": "InsertEdge",
+      "input": [
+        "u - first vertex",
+        "v - second vertex",
+        "adjList[] - adjacency list representation of graph",
+        "n - number of vertices"
+      ],
+      "output": [
+        "Updated adjacency list with edge (u,v) inserted"
+      ],
+      "steps": [
+        {
+          "step": "If $u \\geq n$ or $v \\geq n$:",
+          "substeps": [
+            {
+              "step": "Print \"Invalid vertex\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "Create new node $newNode$ with $data = v$ and $next = adjList[u]$"
+        },
+        {
+          "step": "$adjList[u] \\leftarrow newNode$"
+        },
+        {
+          "step": "Create new node $newNode$ with $data = u$ and $next = adjList[v]$"
+        },
+        {
+          "step": "$adjList[v] \\leftarrow newNode$"
+        }
+      ]
+    },
+    {
+      "algorithm": "DeleteEdge",
+      "input": [
+        "u - first vertex",
+        "v - second vertex",
+        "adjList[] - adjacency list representation of graph",
+        "n - number of vertices"
+      ],
+      "output": [
+        "Updated adjacency list with edge (u,v) removed"
+      ],
+      "steps": [
+        {
+          "step": "If $u \\geq n$ or $v \\geq n$:",
+          "substeps": [
+            {
+              "step": "Print \"Invalid vertex\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "$temp \\leftarrow adjList[u]$"
+        },
+        {
+          "step": "$prev \\leftarrow null$"
+        },
+        {
+          "step": "While $temp \\neq null$ and $temp.data \\neq v$:",
+          "substeps": [
+            {
+              "step": "$prev \\leftarrow temp$"
+            },
+            {
+              "step": "$temp \\leftarrow temp.next$"
+            }
+          ]
+        },
+        {
+          "step": "If $temp \\neq null$:",
+          "substeps": [
+            {
+              "step": "If $prev = null$:",
+              "substeps": [
+                {
+                  "step": "$adjList[u] \\leftarrow temp.next$"
+                }
+              ]
+            },
+            {
+              "step": "Else:",
+              "substeps": [
+                {
+                  "step": "$prev.next \\leftarrow temp.next$"
+                }
+              ]
+            },
+            {
+              "step": "Delete $temp$"
+            }
+          ]
+        },
+        {
+          "step": "$temp \\leftarrow adjList[v]$"
+        },
+        {
+          "step": "$prev \\leftarrow null$"
+        },
+        {
+          "step": "While $temp \\neq null$ and $temp.data \\neq u$:",
+          "substeps": [
+            {
+              "step": "$prev \\leftarrow temp$"
+            },
+            {
+              "step": "$temp \\leftarrow temp.next$"
+            }
+          ]
+        },
+        {
+          "step": "If $temp \\neq null$:",
+          "substeps": [
+            {
+              "step": "If $prev = null$:",
+              "substeps": [
+                {
+                  "step": "$adjList[v] \\leftarrow temp.next$"
+                }
+              ]
+            },
+            {
+              "step": "Else:",
+              "substeps": [
+                {
+                  "step": "$prev.next \\leftarrow temp.next$"
+                }
+              ]
+            },
+            {
+              "step": "Delete $temp$"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "SearchEdge",
+      "input": [
+        "u - first vertex",
+        "v - second vertex", 
+        "adjList[] - adjacency list representation of graph",
+        "n - number of vertices"
+      ],
+      "output": [
+        "True if edge (u,v) exists, False otherwise"
+      ],
+      "steps": [
+        {
+          "step": "If $u \\geq n$ or $v \\geq n$:",
+          "substeps": [
+            {
+              "step": "Print \"Invalid vertex\""
+            },
+            {
+              "step": "Return"
+            }
+          ]
+        },
+        {
+          "step": "$temp \\leftarrow adjList[u]$"
+        },
+        {
+          "step": "While $temp \\neq null$:",
+          "substeps": [
+            {
+              "step": "If $temp.data = v$:",
+              "substeps": [
+                {
+                  "step": "Print \"Edge exists between $u$ and $v$\""
+                },
+                {
+                  "step": "Return"
+                }
+              ]
+            },
+            {
+              "step": "$temp \\leftarrow temp.next$"
+            }
+          ]
+        },
+        {
+          "step": "Print \"No edge exists between $u$ and $v$\""
+        }
+      ]
+    }
+  ]

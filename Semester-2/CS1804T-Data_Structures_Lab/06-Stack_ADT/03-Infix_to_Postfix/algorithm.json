@@ -1,0 +1,162 @@
+[
+    {
+      "algorithm": "InfixToPostfix",
+      "input": [
+        "infix - infix expression string"
+      ],
+      "output": [
+        "postfix - equivalent postfix expression string"
+      ],
+      "steps": [
+        {
+          "step": "Initialize empty stack $s$"
+        },
+        {
+          "step": "Initialize empty string $postfix$"
+        },
+        {
+          "step": "For each character $c$ in $infix$:",
+          "substeps": [
+            {
+              "step": "If $c$ is a digit (operand):",
+              "substeps": [
+                {
+                  "step": "Append $c$ to $postfix$"
+                }
+              ]
+            },
+            {
+              "step": "Else if $c = '('$:",
+              "substeps": [
+                {
+                  "step": "Push $c$ onto stack $s$"
+                }
+              ]
+            },
+            {
+              "step": "Else if $c = ')'$:",
+              "substeps": [
+                {
+                  "step": "While $s$ is not empty and top of $s$ is not '(':",
+                  "substeps": [
+                    {
+                      "step": "Append $s.pop()$ to $postfix$"
+                    }
+                  ]
+                },
+                {
+                  "step": "If $s$ is not empty and top of $s$ is '(':",
+                  "substeps": [
+                    {
+                      "step": "Pop '(' from $s$"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "step": "Else if $c$ is an operator ($+, -, *, /, \\%$):",
+              "substeps": [
+                {
+                  "step": "While $s$ is not empty and top of $s$ is not '(' and $precedence(s.peek()) \\geq precedence(c)$:",
+                  "substeps": [
+                    {
+                      "step": "Append $s.pop()$ to $postfix$"
+                    }
+                  ]
+                },
+                {
+                  "step": "Push $c$ onto stack $s$"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step": "While $s$ is not empty:",
+          "substeps": [
+            {
+              "step": "If top of $s$ is not '(':",
+              "substeps": [
+                {
+                  "step": "Append $s.pop()$ to $postfix$"
+                }
+              ]
+            },
+            {
+              "step": "Else:",
+              "substeps": [
+                {
+                  "step": "Pop '(' from $s$"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step": "Return $postfix$"
+        }
+      ]
+    },
+    {
+      "algorithm": "EvaluatePostfix",
+      "input": [
+        "postfix - postfix expression string"
+      ],
+      "output": [
+        "result - numerical result after evaluating the expression"
+      ],
+      "steps": [
+        {
+          "step": "Initialize empty stack $s$"
+        },
+        {
+          "step": "For each character $c$ in $postfix$:",
+          "substeps": [
+            {
+              "step": "If $c$ is a digit (operand):",
+              "substeps": [
+                {
+                  "step": "Convert $c$ to integer and push onto stack $s$"
+                }
+              ]
+            },
+            {
+              "step": "Else ($c$ is an operator):",
+              "substeps": [
+                {
+                  "step": "$op2 \\leftarrow s.pop()$"
+                },
+                {
+                  "step": "$op1 \\leftarrow s.pop()$"
+                },
+                {
+                  "step": "Apply operator $c$ on $op1$ and $op2$:",
+                  "substeps": [
+                    {
+                      "step": "If $c = '+'$: $s.push(op1 + op2)$"
+                    },
+                    {
+                      "step": "If $c = '-'$: $s.push(op1 - op2)$"
+                    },
+                    {
+                      "step": "If $c = '*'$: $s.push(op1 * op2)$"
+                    },
+                    {
+                      "step": "If $c = '/'$: $s.push(op1 / op2)$"
+                    },
+                    {
+                      "step": "If $c = '\\%'$: $s.push(op1 \\bmod op2)$"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step": "Return $s.pop()$ as the final result"
+        }
+      ]
+    }
+  ]

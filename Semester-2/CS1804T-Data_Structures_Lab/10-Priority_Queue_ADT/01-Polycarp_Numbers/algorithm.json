@@ -1,0 +1,40 @@
+[
+    {
+      "algorithm": "MinimumElementsToRemove",
+      "input": [
+        "a[] - array of n integers"
+      ],
+      "output": [
+        "k - minimum number of elements to remove from beginning"
+      ],
+      "steps": [
+        {
+          "step": "Initialize unordered_set $b \\leftarrow \\emptyset$"
+        },
+        {
+          "step": "For $i \\leftarrow n-1$ down to $0$:",
+          "substeps": [
+            {
+              "step": "If $a[i] \\notin b$:",
+              "substeps": [
+                {
+                  "step": "$b \\leftarrow b \\cup \\{a[i]\\}$"
+                }
+              ]
+            },
+            {
+              "step": "Else:",
+              "substeps": [
+                {
+                  "step": "Break loop"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step": "Return $n - |b|$"
+        }
+      ]
+    }
+  ]

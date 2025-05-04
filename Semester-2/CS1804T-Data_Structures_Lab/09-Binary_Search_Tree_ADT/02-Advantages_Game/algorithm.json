@@ -1,0 +1,61 @@
+[
+    {
+      "algorithm": "CalculateAdvantages",
+      "input": [
+        "nums[] - array of n integers"
+      ],
+      "output": [
+        "advantages[] - array of n integers representing the advantages"
+      ],
+      "steps": [
+        {
+          "step": "Create a copy $max[] \\leftarrow nums[]$"
+        },
+        {
+          "step": "Sort $max[]$ in descending order using bubble sort:",
+          "substeps": [
+            {
+              "step": "For $i$ from $0$ to $n-2$:",
+              "substeps": [
+                {
+                  "step": "For $j$ from $0$ to $n-i-2$:",
+                  "substeps": [
+                    {
+                      "step": "If $max[j] < max[j+1]$:",
+                      "substeps": [
+                        {
+                          "step": "Swap $max[j]$ and $max[j+1]$"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step": "For each element $nums[i]$ from $0$ to $n-1$:",
+          "substeps": [
+            {
+              "step": "$dif \\leftarrow nums[i] - max[0]$"
+            },
+            {
+              "step": "If $dif = 0$ (current element is the maximum):",
+              "substeps": [
+                {
+                  "step": "$dif \\leftarrow nums[i] - max[1]$ (calculate advantage over second maximum)"
+                }
+              ]
+            },
+            {
+              "step": "Store $dif$ as the advantage for element $nums[i]$"
+            }
+          ]
+        },
+        {
+          "step": "Return array of advantages"
+        }
+      ]
+    }
+  ]

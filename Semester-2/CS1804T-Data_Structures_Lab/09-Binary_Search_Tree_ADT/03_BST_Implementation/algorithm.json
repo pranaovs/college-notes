@@ -1,0 +1,178 @@
+[
+    {
+      "algorithm": "BSTInsert",
+      "input": [
+        "root - root of binary search tree",
+        "num - value to insert"
+      ],
+      "output": [
+        "Updated binary search tree with num inserted"
+      ],
+      "steps": [
+        {
+          "step": "If $root = null$:",
+          "substeps": [
+            {
+              "step": "Create new node $newnode$"
+            },
+            {
+              "step": "$newnode.data \\leftarrow num$"
+            },
+            {
+              "step": "$newnode.left \\leftarrow null$"
+            },
+            {
+              "step": "$newnode.right \\leftarrow null$"
+            },
+            {
+              "step": "Return $newnode$"
+            }
+          ]
+        },
+        {
+          "step": "If $num < root.data$:",
+          "substeps": [
+            {
+              "step": "$root.left \\leftarrow insert(root.left, num)$"
+            }
+          ]
+        },
+        {
+          "step": "Else if $num > root.data$:",
+          "substeps": [
+            {
+              "step": "$root.right \\leftarrow insert(root.right, num)$"
+            }
+          ]
+        },
+        {
+          "step": "Return $root$"
+        }
+      ]
+    },
+    {
+      "algorithm": "BSTSearch",
+      "input": [
+        "root - root of binary search tree",
+        "num - value to search for"
+      ],
+      "output": [
+        "Boolean indicating whether num is found in the tree"
+      ],
+      "steps": [
+        {
+          "step": "$p \\leftarrow root$"
+        },
+        {
+          "step": "While $p \\neq null$:",
+          "substeps": [
+            {
+              "step": "If $p.data = num$:",
+              "substeps": [
+                {
+                  "step": "Print \"Element found\""
+                },
+                {
+                  "step": "Return"
+                }
+              ]
+            },
+            {
+              "step": "Else if $num < p.data$:",
+              "substeps": [
+                {
+                  "step": "$p \\leftarrow p.left$"
+                }
+              ]
+            },
+            {
+              "step": "Else:",
+              "substeps": [
+                {
+                  "step": "$p \\leftarrow p.right$"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step": "Print \"Element not found\""
+        }
+      ]
+    },
+    {
+      "algorithm": "InorderTraversal",
+      "input": [
+        "root - root of binary search tree"
+      ],
+      "output": [
+        "Inorder traversal of the tree (sorted values)"
+      ],
+      "steps": [
+        {
+          "step": "If $root \\neq null$:",
+          "substeps": [
+            {
+              "step": "InorderTraversal($root.left$)"
+            },
+            {
+              "step": "Print $root.data$"
+            },
+            {
+              "step": "InorderTraversal($root.right$)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "PreorderTraversal",
+      "input": [
+        "root - root of binary search tree"
+      ],
+      "output": [
+        "Preorder traversal of the tree"
+      ],
+      "steps": [
+        {
+          "step": "If $root \\neq null$:",
+          "substeps": [
+            {
+              "step": "Print $root.data$"
+            },
+            {
+              "step": "PreorderTraversal($root.left$)"
+            },
+            {
+              "step": "PreorderTraversal($root.right$)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "PostorderTraversal",
+      "input": [
+        "root - root of binary search tree"
+      ],
+      "output": [
+        "Postorder traversal of the tree"
+      ],
+      "steps": [
+        {
+          "step": "If $root \\neq null$:",
+          "substeps": [
+            {
+              "step": "PostorderTraversal($root.left$)"
+            },
+            {
+              "step": "PostorderTraversal($root.right$)"
+            },
+            {
+              "step": "Print $root.data$"
+            }
+          ]
+        }
+      ]
+    }
+  ]

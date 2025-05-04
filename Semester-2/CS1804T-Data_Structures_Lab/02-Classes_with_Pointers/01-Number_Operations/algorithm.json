@@ -1,0 +1,197 @@
+[
+    {
+      "algorithm": "CheckPalindrome",
+      "input": [
+        "num - pointer to the number to check"
+      ],
+      "output": [
+        "Message indicating whether the number is a palindrome"
+      ],
+      "steps": [
+        {
+          "step": "Allocate memory for $sum$, $rem$, and $temp$ pointers"
+        },
+        {
+          "step": "$*sum \\leftarrow 0$"
+        },
+        {
+          "step": "$*temp \\leftarrow *num$"
+        },
+        {
+          "step": "While $*temp > 0$:",
+          "substeps": [
+            {
+              "step": "$*rem \\leftarrow (*temp) \\bmod 10$"
+            },
+            {
+              "step": "$*sum \\leftarrow (*sum) \\times 10 + *rem$"
+            },
+            {
+              "step": "$*temp \\leftarrow *temp / 10$"
+            }
+          ]
+        },
+        {
+          "step": "If $*sum = *num$:",
+          "substeps": [
+            {
+              "step": "Print \"It is a palindrome\""
+            }
+          ]
+        },
+        {
+          "step": "Else:",
+          "substeps": [
+            {
+              "step": "Print \"It is not a palindrome\""
+            }
+          ]
+        },
+        {
+          "step": "Free allocated memory"
+        }
+      ]
+    },
+    {
+      "algorithm": "CountDigits",
+      "input": [
+        "num - pointer to the number to count digits of"
+      ],
+      "output": [
+        "Number of digits in the number"
+      ],
+      "steps": [
+        {
+          "step": "Allocate memory for $temp$ and $len$ pointers"
+        },
+        {
+          "step": "$*temp \\leftarrow *num$"
+        },
+        {
+          "step": "$*len \\leftarrow 0$"
+        },
+        {
+          "step": "While $*temp > 0$:",
+          "substeps": [
+            {
+              "step": "$*temp \\leftarrow *temp / 10$"
+            },
+            {
+              "step": "$*len \\leftarrow *len + 1$"
+            }
+          ]
+        },
+        {
+          "step": "Return $*len$"
+        },
+        {
+          "step": "Free allocated memory"
+        }
+      ]
+    },
+    {
+      "algorithm": "CheckArmstrong",
+      "input": [
+        "num - pointer to the number to check"
+      ],
+      "output": [
+        "Message indicating whether the number is an Armstrong number"
+      ],
+      "steps": [
+        {
+          "step": "Allocate memory for $sum$, $rem$, $temp$, and $len$ pointers"
+        },
+        {
+          "step": "$*sum \\leftarrow 0$"
+        },
+        {
+          "step": "$*temp \\leftarrow *num$"
+        },
+        {
+          "step": "$*len \\leftarrow count(num)$"
+        },
+        {
+          "step": "While $*temp > 0$:",
+          "substeps": [
+            {
+              "step": "$*rem \\leftarrow *temp \\bmod 10$"
+            },
+            {
+              "step": "$*sum \\leftarrow *sum + pow(*rem, *len)$"
+            },
+            {
+              "step": "$*temp \\leftarrow *temp / 10$"
+            }
+          ]
+        },
+        {
+          "step": "If $*sum = *num$:",
+          "substeps": [
+            {
+              "step": "Print \"It is an Armstrong number\""
+            }
+          ]
+        },
+        {
+          "step": "Else:",
+          "substeps": [
+            {
+              "step": "Print \"It is not an Armstrong number\""
+            }
+          ]
+        },
+        {
+          "step": "Free allocated memory"
+        }
+      ]
+    },
+    {
+      "algorithm": "CheckPerfect",
+      "input": [
+        "num - pointer to the number to check"
+      ],
+      "output": [
+        "Message indicating whether the number is a perfect number"
+      ],
+      "steps": [
+        {
+          "step": "Allocate memory for $sum$ and $i$ pointers"
+        },
+        {
+          "step": "$*sum \\leftarrow 0$"
+        },
+        {
+          "step": "For $*i$ from $1$ to $(*num)-1$:",
+          "substeps": [
+            {
+              "step": "If $(*num) \\bmod (*i) = 0$:",
+              "substeps": [
+                {
+                  "step": "$(*sum) \\leftarrow (*sum) + (*i)$"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step": "If $*sum = *num$:",
+          "substeps": [
+            {
+              "step": "Print \"It is a perfect number\""
+            }
+          ]
+        },
+        {
+          "step": "Else:",
+          "substeps": [
+            {
+              "step": "Print \"It is not a perfect number\""
+            }
+          ]
+        },
+        {
+          "step": "Free allocated memory"
+        }
+      ]
+    }
+  ]

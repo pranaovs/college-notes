@@ -1,0 +1,200 @@
+[
+    {
+      "algorithm": "BinaryTreeInsert",
+      "input": [
+        "x - character to insert",
+        "root - root node of binary tree"
+      ],
+      "output": [
+        "Updated binary tree with x inserted"
+      ],
+      "steps": [
+        {
+          "step": "Create new node $temp$ with $data = x$, $left = null$, $right = null$"
+        },
+        {
+          "step": "If $root = null$:",
+          "substeps": [
+            {
+              "step": "$root \\leftarrow temp$"
+            }
+          ]
+        },
+        {
+          "step": "Else:",
+          "substeps": [
+            {
+              "step": "$p \\leftarrow root$"
+            },
+            {
+              "step": "While $p.left \\neq null$ AND $p.right \\neq null$:",
+              "substeps": [
+                {
+                  "step": "If $p.left \\neq null$:",
+                  "substeps": [
+                    {
+                      "step": "$p \\leftarrow p.left$"
+                    }
+                  ]
+                },
+                {
+                  "step": "Else:",
+                  "substeps": [
+                    {
+                      "step": "$p \\leftarrow p.right$"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "step": "If $p.left = null$:",
+              "substeps": [
+                {
+                  "step": "$p.left \\leftarrow temp$"
+                }
+              ]
+            },
+            {
+              "step": "Else:",
+              "substeps": [
+                {
+                  "step": "$p.right \\leftarrow temp$"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "InorderTraversal",
+      "input": [
+        "p - root node of binary tree or subtree"
+      ],
+      "output": [
+        "Inorder traversal sequence of the tree"
+      ],
+      "steps": [
+        {
+          "step": "If $p \\neq null$:",
+          "substeps": [
+            {
+              "step": "InorderTraversal($p.left$)"
+            },
+            {
+              "step": "Print $p.data$"
+            },
+            {
+              "step": "InorderTraversal($p.right$)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "PostorderTraversal",
+      "input": [
+        "p - root node of binary tree or subtree"
+      ],
+      "output": [
+        "Postorder traversal sequence of the tree"
+      ],
+      "steps": [
+        {
+          "step": "If $p \\neq null$:",
+          "substeps": [
+            {
+              "step": "PostorderTraversal($p.left$)"
+            },
+            {
+              "step": "PostorderTraversal($p.right$)"
+            },
+            {
+              "step": "Print $p.data$"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "PreorderTraversal",
+      "input": [
+        "p - root node of binary tree or subtree"
+      ],
+      "output": [
+        "Preorder traversal sequence of the tree"
+      ],
+      "steps": [
+        {
+          "step": "If $p \\neq null$:",
+          "substeps": [
+            {
+              "step": "Print $p.data$"
+            },
+            {
+              "step": "PreorderTraversal($p.left$)"
+            },
+            {
+              "step": "PreorderTraversal($p.right$)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "algorithm": "TreeSearch",
+      "input": [
+        "x - character to search for",
+        "root - root node of binary tree"
+      ],
+      "output": [
+        "Status message indicating if x was found"
+      ],
+      "steps": [
+        {
+          "step": "$p \\leftarrow root$"
+        },
+        {
+          "step": "While $p \\neq null$:",
+          "substeps": [
+            {
+              "step": "If $p.data = x$:",
+              "substeps": [
+                {
+                  "step": "Print \"Element found\""
+                },
+                {
+                  "step": "Return"
+                }
+              ]
+            },
+            {
+              "step": "Else:",
+              "substeps": [
+                {
+                  "step": "If $p.left \\neq null$:",
+                  "substeps": [
+                    {
+                      "step": "$p \\leftarrow p.left$"
+                    }
+                  ]
+                },
+                {
+                  "step": "Else:",
+                  "substeps": [
+                    {
+                      "step": "$p \\leftarrow p.right$"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step": "Print \"Element not found\""
+        }
+      ]
+    }
+  ]

@@ -1,0 +1,88 @@
+[
+    {
+      "algorithm": "LinearSearch",
+      "input": [
+        "arr[] - array of integers",
+        "num - number of elements in the array",
+        "temp - value to search for"
+      ],
+      "output": [
+        "1 if temp is found in arr[], 0 otherwise"
+      ],
+      "steps": [
+        {
+          "step": "For $i$ from $0$ to $num-1$:",
+          "substeps": [
+            {
+              "step": "If $arr[i] = temp$:",
+              "substeps": [
+                {
+                  "step": "Return $1$"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step": "Return $0$"
+        }
+      ]
+    },
+    {
+      "algorithm": "BinarySearch",
+      "input": [
+        "arr[] - array of integers",
+        "num - number of elements in the array",
+        "temp - value to search for"
+      ],
+      "output": [
+        "1 if temp is found in sorted arr[], 0 otherwise"
+      ],
+      "steps": [
+        {
+          "step": "Sort $arr[]$ using bubble sort"
+        },
+        {
+          "step": "$start \\leftarrow 0$"
+        },
+        {
+          "step": "$end \\leftarrow num-1$"
+        },
+        {
+          "step": "While $start \\leq end$:",
+          "substeps": [
+            {
+              "step": "$mid \\leftarrow \\lfloor(start + end) / 2\\rfloor$"
+            },
+            {
+              "step": "If $arr[mid] = temp$:",
+              "substeps": [
+                {
+                  "step": "Return $1$"
+                }
+              ]
+            },
+            {
+              "step": "If $arr[mid] < temp$:",
+              "substeps": [
+                {
+                  "step": "$start \\leftarrow mid + 1$"
+                }
+              ]
+            },
+            {
+              "step": "If $arr[mid] > temp$:",
+              "substeps": [
+                {
+                  "step": "$end \\leftarrow mid - 1$"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step": "Return $0$"
+        }
+      ]
+    }
+  ]
