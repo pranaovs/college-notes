@@ -36,6 +36,9 @@ parent_directory="$2"
 REQUIRED_TOOLS=("jq" "fd" "sed" "tr" "basename" "dirname")
 
 check_requirements() {
+
+  local IFS=" "
+
   local missing_tools=()
   for tool in "${REQUIRED_TOOLS[@]}"; do
     if ! command -v "$tool" &>/dev/null; then

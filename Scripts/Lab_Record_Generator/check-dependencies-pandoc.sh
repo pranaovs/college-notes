@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Required tools
-REQUIRED_TOOLS=("pandoc" "kpsewhich" "pdflatex")
+REQUIRED_TOOLS=("pandoc" "pdflatex" "kpsewhich")
 
 LATEX_DEPENDENCIES=(
   article.cls
@@ -101,6 +101,9 @@ PDF_ASSETS=(
 )
 
 check_tools() {
+
+  local IFS=" "
+
   local missing_tools=()
   for tool in "${REQUIRED_TOOLS[@]}"; do
     if ! command -v "$tool" &>/dev/null; then
@@ -118,6 +121,9 @@ check_tools() {
 }
 
 check_latex_depends() {
+
+  local IFS=" "
+
   local missing_tools=()
   for tool in "${LATEX_DEPENDENCIES[@]}"; do
     if ! kpsewhich "$tool" &>/dev/null; then
@@ -135,6 +141,9 @@ check_latex_depends() {
 }
 
 check_pdf_assets() {
+
+  local IFS=" "
+
   local missing_assets=()
   for asset in "${PDF_ASSETS[@]}"; do
     if [[ ! -f "$asset" ]]; then
