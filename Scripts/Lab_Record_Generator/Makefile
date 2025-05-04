@@ -65,7 +65,7 @@ show: $(PDF_FILE)
 # Clean up generated files
 clean:
 	@echo "--- Cleaning generated files ---"
-	rm -f $(PDF_FILE) $(MARKDOWN_FILE)
+	rm -f $(MARKDOWN_FILE)
 
 # Declare targets that do not correspond to actual files.
 # This prevents issues if a file with the same name exists and
