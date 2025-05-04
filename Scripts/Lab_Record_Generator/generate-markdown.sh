@@ -216,7 +216,7 @@ main() {
         code_exts+=("-e" "$ext")
       done
 
-      for extra_code in $(fd . "$week/$question" "${code_exts[@]}" --max-depth=1 --exclude=$MAIN_CODE_FILENAME); do
+      for extra_code in $(fd . "$week/$question" "${code_exts[@]}" --max-depth=1 --exclude="$MAIN_CODE_FILENAME"); do
         write "__$(basename "$extra_code")__"
         write "\`\`\`${extra_code##*.}"
         write_file "$extra_code"
