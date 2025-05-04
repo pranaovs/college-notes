@@ -5,20 +5,25 @@
 MARKDOWN_FILE = record.md
 PDF_FILE = record.pdf
 
+# Code filenames
+include config.mk
+
 # Configuration and Tools
 TEMPLATE_FILE = template.tex
 FILES ?= ../.
 GENERATION_SCRIPT = ./generate-markdown.sh
+DEPENDENCIES_SCRIPT = ./check-dependencies-pandoc.sh
 PANDOC_METADATA = metadata.yaml
 PANDOC_HEADER_INCLUDE = deeplists.tex
 PDF_VIEWER = zathura
+
 
 # === Targets ===
 all: $(PDF_FILE)
 
 $(MARKDOWN_FILE): $(GENERATION_SCRIPT)
 	@echo "--- Generating Markdown file: $(MARKDOWN_FILE) using files from $(FILES) ---"
-	$(GENERATION_SCRIPT) $(MARKDOWN_FILE) $(FILES)
+	MAIN_CODE_FILENAME="$(MAIN_CODE_FILENAME)" CODE_EXTENSIONS="$(CODE_EXTENSIONS)" $(GENERATION_SCRIPT) $(MARKDOWN_FILE) $(FILES)
 
 $(PDF_FILE): $(MARKDOWN_FILE) $(TEMPLATE_FILE) $(PANDOC_METADATA) $(PANDOC_HEADER_INCLUDE)
 	@echo "--- Generating PDF file: $(PDF_FILE) ---"
@@ -57,7 +62,7 @@ clean:
 # Check dependencies
 checkdepends:
 	@echo "--- Checking dependencies ---"
-	./check-dependencies-pandoc.sh
+	$(DEPENDENCIES_SCRIPT)
 
 # Declare targets that do not correspond to actual files.
 # This prevents issues if a file with the same name exists and

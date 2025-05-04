@@ -1,0 +1,2 @@
+MAIN_CODE_FILENAME = main.cpp
+CODE_EXTENSIONS = cpp h

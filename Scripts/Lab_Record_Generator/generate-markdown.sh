@@ -18,10 +18,8 @@
 
 # Nesting level required: 2
 # Parent directory should contain all the topic.
-# Subdirectories should contain the question name, and have main.cpp, algorithm.json, output.txt and any optional .cpp/.h codes.
+# Subdirectories should contain the question name, and have $MAIN_CODE_FILENAME, algorithm.json, output.txt and any optional $CODE_EXTENSIONS codes.
 
-MAIN_CODE_FILENAME="${MAIN_CODE_FILENAME:-main.cpp}"
-CODE_EXTENSIONS=("${CODE_EXTENSIONS:-"cpp h"}")
 DATE_FILENAME="date.txt"
 QUESTION_FILENAME="question.txt"
 ALGORITHM_FILENAME="algorithm.json"
@@ -38,6 +36,22 @@ IFS=$'\n'
 check_requirements() {
 
   local IFS=" "
+
+  if [[ -z "$parent_directory" || -z "$output_file" ]]; then
+    echo "Usage: $0 <parent_directory> <output_file>" >&2
+    exit 1
+  fi
+
+  if [[ -z $MAIN_CODE_FILENAME ]]; then
+    echo "ERROR: MAIN_CODE_FILENAME is not set. Please set it before running the script." >&2
+    exit 1
+  fi
+
+  if [[ -z $CODE_EXTENSIONS ]]; then
+    CODE_EXTENSIONS=()
+  else
+    CODE_EXTENSIONS=($CODE_EXTENSIONS) # Convert string to array
+  fi
 
   local missing_tools=()
   for tool in "${REQUIRED_TOOLS[@]}"; do
