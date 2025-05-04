@@ -20,10 +20,8 @@
 # Parent directory should contain all the topic.
 # Subdirectories should contain the question name, and have main.cpp, algorithm.json, output.txt and any optional .cpp/.h codes.
 
-IFS=$'\n'
-
-MAIN_CODE_FILENAME="main.cpp"
-CODE_EXTENSIONS=("cpp" "h")
+MAIN_CODE_FILENAME="${MAIN_CODE_FILENAME:-main.cpp}"
+CODE_EXTENSIONS=("${CODE_EXTENSIONS:-"cpp h"}")
 DATE_FILENAME="date.txt"
 QUESTION_FILENAME="question.txt"
 ALGORITHM_FILENAME="algorithm.json"
@@ -34,6 +32,8 @@ parent_directory="$2"
 
 # Required tools
 REQUIRED_TOOLS=("jq" "fd" "sed" "tr" "basename" "dirname")
+
+IFS=$'\n'
 
 check_requirements() {
 
