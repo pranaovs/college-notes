@@ -32,7 +32,7 @@ $(PDF_FILE): $(MARKDOWN_FILE) $(TEMPLATE_FILE) $(PANDOC_METADATA) $(PANDOC_HEADE
 	--to=pdf \
 	$(MARKDOWN_FILE) || { \
 		echo "ERROR: Failed to generate PDF file."; \
-		echo "Please run make checkdepends-pdf to ensure all dependencies are met."; \
+		echo "Run make checkdepends to ensure all dependencies are met."; \
 		exit 1; \
 	}
 
@@ -54,8 +54,9 @@ clean:
 	@echo "--- Cleaning generated files ---"
 	rm -f $(MARKDOWN_FILE)
 
-checkdepends-pdf:
-	@echo "--- Checking dependencies for PDF generation ---"
+# Check dependencies
+checkdepends:
+	@echo "--- Checking dependencies ---"
 	./check-dependencies-pandoc.sh
 
 # Declare targets that do not correspond to actual files.
