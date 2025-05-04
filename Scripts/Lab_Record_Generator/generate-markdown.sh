@@ -48,11 +48,17 @@ format_name() {
   echo "$name"
 }
 
-write_file() {
-  echo "$1" >>"$output_file"
-  if ! [[ "$#" -gt 1 ]]; then
+write() {
+  if [[ "$#" -gt 0 ]]; then
+    echo "$1" >>"$output_file"
+  fi
+  if [[ "$2" != "nonl" ]]; then
     echo >>"$output_file"
   fi
+}
+
+write_file() {
+  tr -d '\r' <"$1" >>"$output_file"
 }
 
 # From Gemini 2.5 Pro
@@ -81,7 +87,7 @@ process_steps() {
     substeps_json=$(jq -c '.substeps // empty' <<<"$item")
 
     # Print the current item with proper indentation and numbering.
-    write_file "$(printf "%s%d. %s\n" "$indent" "$i" "$step_text")" "placehold"
+    write "$(printf "%s%d. %s\n" "$indent" "$i" "$step_text")" "nonl"
 
     # Check if 'substeps' exists and is not an empty array '[]'.
     # -n checks if the substeps_json string is non-empty.
@@ -106,24 +112,25 @@ parse_algorithm() {
     algorithm_count=$((algorithm_count + 1))
 
     # Name of the algorithm
-    write_file "#### Algorithm $algorithm_count - $(echo "$algorithm" | jq -r '.algorithm') {.unnumbered}"
+    write "#### Algorithm $algorithm_count - $(echo "$algorithm" | jq -r '.algorithm') {.unnumbered}"
 
-    write_file "##### Input {.unnumbered}"
+    write "##### Input {.unnumbered}"
     local input_count=0
     for input in $(echo "$algorithm" | jq -r -c '.input[]'); do
       input_count=$((input_count + 1))
-      write_file "$input_count. $input"
+      write "$input_count. $input" "nonl"
     done
+    write
 
-    write_file "##### Output {.unnumbered}"
+    write "##### Output {.unnumbered}"
     for output in $(echo "$algorithm" | jq -r -c '.output[]'); do
-      write_file "- $output"
+      write "- $output" "nonl"
     done
+    write
 
-    write_file "##### Steps {.unnumbered}"
+    write "##### Steps {.unnumbered}"
     process_steps "$(echo "$algorithm" | jq -r -c '.steps')"
-    write_file ""
-
+    write
   done
 }
 
@@ -131,63 +138,65 @@ main() {
 
   for week in $(fd . "$parent_directory" -t d --exclude=Common --exclude=Lab_Record --max-depth=1); do
     (
-      write_file "# $(format_name "$week")"
+      write "# $(format_name "$week")"
     )
     echo "Processing $(basename "$week")"
 
     if [[ -f "$week/$DATE_FILENAME" ]]; then
-      write_file "__Date: $(cat "$week/$DATE_FILENAME")__"
+      write "__Date: $(cat "$week/$DATE_FILENAME")__"
     else
       echo "WARNING: Date file $DATE_FILENAME not found in $week" >&2
     fi
 
     for question in $(fd . "$week" -t d --max-depth=1 --exclude=Common); do
       (
-        write_file "## $(format_name "$question")"
+        write "## $(format_name "$question")"
       )
 
       echo "Question $(basename "$question")"
 
       if [[ -f "$question/$QUESTION_FILENAME" ]]; then
-        write_file "### Question"
-        cat "$question/$QUESTION_FILENAME" >>"$output_file"
-        write_file "" ""
+        write "### Question"
+        write_file "$question/$QUESTION_FILENAME"
+        write
       else
         echo "WARNING: Question file $QUESTION_FILENAME not found in $question" >&2
       fi
 
       if [[ -f "$question/$ALGORITHM_FILENAME" ]]; then
-        write_file "### Algorithm"
+        write "### Algorithm"
         parse_algorithm "$question/$ALGORITHM_FILENAME"
       else
         echo "WARNING: Algorithm file $ALGORITHM_FILENAME not found in $question" >&2
       fi
 
-      write_file "### Code"
-      write_file "__${MAIN_CODE_FILENAME}__"
-      write_file "\`\`\`${MAIN_CODE_FILENAME##*.}"
-      cat "$question/$MAIN_CODE_FILENAME" >>"$output_file"
-      write_file '```'
+      write "### Code"
+      write "__${MAIN_CODE_FILENAME}__"
+      write "\`\`\`${MAIN_CODE_FILENAME##*.}"
+      write_file "$question/$MAIN_CODE_FILENAME"
+      write
+      write '```'
 
       for extra_code in $(fd . "$week/$question" -e "cpp" -e "h" --max-depth=1 --exclude=$MAIN_CODE_FILENAME); do
-        write_file "__$(basename "$extra_code")__"
-        write_file "\`\`\`${extra_code##*.}"
-        cat "$extra_code" >>"$output_file"
-        write_file ""
-        write_file '```'
+        write "__$(basename "$extra_code")__"
+        write "\`\`\`${extra_code##*.}"
+        write_file "$extra_code"
+        write
+        write '```'
       done
 
       if [[ -f "$question/$OUTPUT_FILENAME" ]]; then
-        write_file "### Execution"
-        write_file '```sh'
-        cat "$question/$OUTPUT_FILENAME" >>"$output_file"
-        write_file '```'
+        write "### Execution"
+        write '```sh'
+        write_file "$question/$OUTPUT_FILENAME"
+        write
+        write '```'
       else
         echo "WARNING: Output file $OUTPUT_FILENAME not found in $question" >&2
       fi
 
     done
-    write_file "\\pagebreak"
+    write "\\pagebreak"
   done
 
 }
