@@ -40,6 +40,7 @@ $(PDF_FILE): $(MARKDOWN_FILE) $(TEMPLATE_FILE) $(PANDOC_METADATA) $(PANDOC_HEADE
 		echo "Run make checkdepends to ensure all dependencies are met."; \
 		exit 1; \
 	}
+	@echo "--- Generated PDF file: $(PDF_FILE) ---"
 
 # Explicitly run the Markdown generation step.
 markdown: $(MARKDOWN_FILE)
