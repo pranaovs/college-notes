@@ -156,7 +156,7 @@ parse_algorithm() {
 
 main() {
 
-  for week in $(fd . "$parent_directory" -t d --exclude=Common --exclude=Lab_Record --max-depth=1); do
+  for week in $(fd . "$parent_directory" -t d --exclude=Common --exclude="$(basename "$(realpath "$(dirname "$0")")")" --max-depth=1); do
     (
       write "# $(format_name "$week")"
     )
