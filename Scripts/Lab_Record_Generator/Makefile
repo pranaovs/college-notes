@@ -42,7 +42,11 @@ $(PDF_FILE): $(MARKDOWN_FILE) $(TEMPLATE_FILE) $(PANDOC_METADATA) $(PANDOC_HEADE
 	--template=$(TEMPLATE_FILE) \
 	--from=markdown \
 	--to=pdf \
-	$(MARKDOWN_FILE)
+	$(MARKDOWN_FILE) || { \
+		echo "ERROR: Failed to generate PDF file."; \
+		echo "Please run make checkdepends-pdf to ensure all dependencies are met."; \
+		exit 1; \
+	}
 
 # Phony target to explicitly run the markdown generation step.
 # It depends on the actual file target. Running 'make markdown'
@@ -66,6 +70,10 @@ show: $(PDF_FILE)
 clean:
 	@echo "--- Cleaning generated files ---"
 	rm -f $(MARKDOWN_FILE)
+
+checkdepends-pdf:
+	@echo "--- Checking dependencies for PDF generation ---"
+	./check-dependencies-pandoc.sh
 
 # Declare targets that do not correspond to actual files.
 # This prevents issues if a file with the same name exists and

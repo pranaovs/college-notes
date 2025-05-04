@@ -23,6 +23,7 @@
 IFS=$'\n'
 
 MAIN_CODE_FILENAME="main.cpp"
+CODE_EXTENSIONS=("cpp" "h")
 DATE_FILENAME="date.txt"
 QUESTION_FILENAME="question.txt"
 ALGORITHM_FILENAME="algorithm.json"
@@ -44,7 +45,7 @@ check_requirements() {
 
   if [ ${#missing_tools[@]} -ne 0 ]; then
     echo "ERROR: Required tools not found: ${missing_tools[*]}"
-    echo "Please install the missing tools and try again."
+    echo "Install the missing tools and try again."
     if [[ " ${missing_tools[*]} " == *" fd "* ]]; then
       echo "fd installation steps: https://github.com/sharkdp/fd#installation"
     fi
@@ -193,7 +194,12 @@ main() {
       write
       write '```'
 
-      for extra_code in $(fd . "$week/$question" -e "cpp" -e "h" --max-depth=1 --exclude=$MAIN_CODE_FILENAME); do
+      code_exts=()
+      for ext in "${CODE_EXTENSIONS[@]}"; do
+        code_exts+=("-e" "$ext")
+      done
+
+      for extra_code in $(fd . "$week/$question" "${code_exts[@]}" --max-depth=1 --exclude=$MAIN_CODE_FILENAME); do
         write "__$(basename "$extra_code")__"
         write "\`\`\`${extra_code##*.}"
         write_file "$extra_code"
