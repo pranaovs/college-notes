@@ -20,21 +20,37 @@
 # Parent directory should contain all the topic.
 # Subdirectories should contain the question name, and have main.cpp, algorithm.json, output.txt and any optional .cpp/.h codes.
 
+IFS=$'\n'
+
 MAIN_CODE_FILENAME="main.cpp"
 DATE_FILENAME="date.txt"
 QUESTION_FILENAME="question.txt"
 ALGORITHM_FILENAME="algorithm.json"
 OUTPUT_FILENAME="output.txt"
 
-IFS=$'\n'
-
-if [[ $# -ne 2 ]]; then
-  echo "Usage: $0 <output_file> <parent_directory>"
-  exit 1
-fi
-
 output_file="$1"
 parent_directory="$2"
+
+# Required tools
+REQUIRED_TOOLS=("jq" "fd" "sed" "tr" "basename" "dirname")
+
+check_requirements() {
+  local missing_tools=()
+  for tool in "${REQUIRED_TOOLS[@]}"; do
+    if ! command -v "$tool" &>/dev/null; then
+      missing_tools+=("$tool")
+    fi
+  done
+
+  if [ ${#missing_tools[@]} -ne 0 ]; then
+    echo "ERROR: Required tools not found: ${missing_tools[*]}"
+    echo "Please install the missing tools and try again."
+    if [[ " ${missing_tools[*]} " == *" fd "* ]]; then
+      echo "fd installation steps: https://github.com/sharkdp/fd#installation"
+    fi
+    exit 1
+  fi
+}
 
 if [[ -f "$output_file" ]]; then
   echo "$output_file file exists. Terminating"
@@ -201,4 +217,5 @@ main() {
 
 }
 
+check_requirements
 main
