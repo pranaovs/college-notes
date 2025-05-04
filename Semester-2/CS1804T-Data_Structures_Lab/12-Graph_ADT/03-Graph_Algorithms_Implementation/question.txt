@@ -1,0 +1,3 @@
+Write a separate C++ menu-driven program to implement Graph ADT with the
+implementation for Prim’s algorithm, Kruskal’s algorithm, and Dijkstra’s algorithm. Maintain
+proper boundary conditions and follow good coding practices.

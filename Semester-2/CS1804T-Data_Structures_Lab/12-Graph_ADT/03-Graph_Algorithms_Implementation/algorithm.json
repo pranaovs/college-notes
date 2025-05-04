@@ -1,0 +1,234 @@
+[
+    {
+      "algorithm": "Kruskal's Algorithm",
+      "input": [
+        "G(V,E) - Graph with vertices V and edges E",
+        "w(u,v) - Weight of edge between vertices u and v"
+      ],
+      "output": [
+        "MST - Minimum Spanning Tree of G",
+        "mstWeight - Total weight of the MST"
+      ],
+      "steps": [
+        {
+          "step": "Initialize $priorityQueue \\leftarrow$ empty MinHeap"
+        },
+        {
+          "step": "Initialize $mstWeight \\leftarrow 0$"
+        },
+        {
+          "step": "Create DisjointSet $ds$ with $vertices$ elements"
+        },
+        {
+          "step": "For each vertex $i$ from $0$ to $vertices-1$:",
+          "substeps": [
+            {
+              "step": "For each vertex $j$ from $0$ to $vertices-1$:",
+              "substeps": [
+                {
+                  "step": "$weight \\leftarrow$ weight of edge $(i,j)$"
+                },
+                {
+                  "step": "If $weight > 0$:",
+                  "substeps": [
+                    {
+                      "step": "Add edge $(i,j,weight)$ to $priorityQueue$"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step": "While $priorityQueue$ is not empty:",
+          "substeps": [
+            {
+              "step": "Extract min edge $(u,v,weight)$ from $priorityQueue$"
+            },
+            {
+              "step": "If $ds.find(u) \\neq ds.find(v)$:",
+              "substeps": [
+                {
+                  "step": "$ds.unite(u,v)$"
+                },
+                {
+                  "step": "Add edge $(u,v,weight)$ to MST"
+                },
+                {
+                  "step": "$mstWeight \\leftarrow mstWeight + weight$"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step": "Return MST and $mstWeight$"
+        }
+      ]
+    },
+    {
+      "algorithm": "Prim's Algorithm",
+      "input": [
+        "G(V,E) - Graph with vertices V and edges E",
+        "w(u,v) - Weight of edge between vertices u and v",
+        "start - Starting vertex"
+      ],
+      "output": [
+        "MST - Minimum Spanning Tree of G",
+        "mstWeight - Total weight of the MST"
+      ],
+      "steps": [
+        {
+          "step": "Initialize $visited$ map with all vertices marked as false"
+        },
+        {
+          "step": "Initialize $priorityQueue \\leftarrow$ empty MinHeap"
+        },
+        {
+          "step": "Set $visited[start] \\leftarrow true$"
+        },
+        {
+          "step": "For each vertex $i$ from $0$ to $vertices-1$:",
+          "substeps": [
+            {
+              "step": "If $i \\neq start$:",
+              "substeps": [
+                {
+                  "step": "$weight \\leftarrow$ weight of edge $(start,i)$"
+                },
+                {
+                  "step": "If $weight > 0$:",
+                  "substeps": [
+                    {
+                      "step": "Add edge $(start,i,weight)$ to $priorityQueue$"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step": "Initialize $mstWeight \\leftarrow 0$"
+        },
+        {
+          "step": "While $priorityQueue$ not empty and $|visited| < vertices$:",
+          "substeps": [
+            {
+              "step": "Extract min edge $(u,v,weight)$ from $priorityQueue$"
+            },
+            {
+              "step": "If $visited[v]$, continue"
+            },
+            {
+              "step": "Add edge $(u,v,weight)$ to MST"
+            },
+            {
+              "step": "$mstWeight \\leftarrow mstWeight + weight$"
+            },
+            {
+              "step": "$visited[v] \\leftarrow true$"
+            },
+            {
+              "step": "For each vertex $i$ from $0$ to $vertices-1$:",
+              "substeps": [
+                {
+                  "step": "If $!visited[i]$:",
+                  "substeps": [
+                    {
+                      "step": "$edgeWeight \\leftarrow$ weight of edge $(v,i)$"
+                    },
+                    {
+                      "step": "If $edgeWeight > 0$:",
+                      "substeps": [
+                        {
+                          "step": "Add edge $(v,i,edgeWeight)$ to $priorityQueue$"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step": "Return MST and $mstWeight$"
+        }
+      ]
+    },
+    {
+      "algorithm": "Dijkstra's Algorithm",
+      "input": [
+        "G(V,E) - Graph with vertices V and edges E",
+        "w(u,v) - Weight of edge between vertices u and v",
+        "start - Starting vertex"
+      ],
+      "output": [
+        "distance[] - Array of shortest distances from start to all vertices"
+      ],
+      "steps": [
+        {
+          "step": "Initialize $visited$ map with all vertices marked as false"
+        },
+        {
+          "step": "Initialize $distance[i] \\leftarrow \\infty$ for all vertices $i$"
+        },
+        {
+          "step": "Set $distance[start] \\leftarrow 0$"
+        },
+        {
+          "step": "While $!visited[start]$:",
+          "substeps": [
+            {
+              "step": "For each vertex $i$ from $0$ to $vertices-1$:",
+              "substeps": [
+                {
+                  "step": "If $i \\neq start$:",
+                  "substeps": [
+                    {
+                      "step": "$weight \\leftarrow$ weight of edge $(start,i)$"
+                    },
+                    {
+                      "step": "If $weight > 0$ and $distance[start] + weight < distance[i]$:",
+                      "substeps": [
+                        {
+                          "step": "$distance[i] \\leftarrow distance[start] + weight$"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "step": "$visited[start] \\leftarrow true$"
+            },
+            {
+              "step": "$minim \\leftarrow \\infty$"
+            },
+            {
+              "step": "For each vertex $i$ from $0$ to $vertices-1$:",
+              "substeps": [
+                {
+                  "step": "If $!visited[i]$ and $distance[i] < minim$:",
+                  "substeps": [
+                    {
+                      "step": "$minim \\leftarrow distance[i]$"
+                    },
+                    {
+                      "step": "$start \\leftarrow i$"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "step": "Return $distance[]$"
+        }
+      ]
+    }
+  ]
