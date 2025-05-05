@@ -111,7 +111,7 @@ show: $(PDF_FILE)
 # Clean up generated files
 clean:
 	@echo "--- Cleaning generated files ---"
-	rm -f $(DOCX_FILE) $(ODT_FILE) $(PDF_FILE)
+	rm -f $(DOCX_FILE) $(ODT_FILE) $(PDF_FILE) $(MARKDOWN_FILE)
 
 # Check dependencies
 checkdepends:
