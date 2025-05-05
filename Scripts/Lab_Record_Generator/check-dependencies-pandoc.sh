@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-# Required tools
 REQUIRED_TOOLS=("pandoc" "pdflatex" "kpsewhich")
+
+OPTIONAL_TOOLS=("libreoffice")
 
 LATEX_DEPENDENCIES=(
   article.cls
@@ -115,9 +116,27 @@ check_tools() {
     echo "ERROR: Required tools not found: ${missing_tools[*]}"
     echo "Install the missing tools and try again."
     exit 1
+  else
+    echo "All required tools are installed"
   fi
+}
 
-  echo "Required tools are installed"
+check_opt_tools() {
+
+  local IFS=" "
+
+  local missing_tools=()
+  for tool in "${OPTIONAL_TOOLS[@]}"; do
+    if ! command -v "$tool" &>/dev/null; then
+      missing_tools+=("$tool")
+    fi
+  done
+
+  if [ ${#missing_tools[@]} -ne 0 ]; then
+    echo "WARNING: Optional tools not found: ${missing_tools[*]}"
+  else
+    echo "All optional tools are installed"
+  fi
 }
 
 check_latex_depends() {
@@ -135,9 +154,9 @@ check_latex_depends() {
     echo "ERROR: Required latex files not found: ${missing_tools[*]}"
     echo "Install the missing files and try again."
     exit 1
+  else
+    echo "Latex packages requirements satisfied"
   fi
-
-  echo "Latex packages requirements satisfied"
 }
 
 check_pdf_assets() {
@@ -155,16 +174,17 @@ check_pdf_assets() {
     echo "ERROR: Required pdf assets not found: ${missing_assets[*]}"
     echo "Create the required assets and try again."
     exit 1
+  else
+    echo "PDF assets requirements satisfied"
   fi
-
-  echo "PDF assets requirements satisfied"
 }
 
 main() {
   check_tools
+  check_opt_tools
   check_latex_depends
   check_pdf_assets
-  echo "All dependencies are installed."
+  echo "All dependencies are satisfied."
 }
 
 main
