@@ -23,6 +23,7 @@
 DATE_FILENAME="date.txt"
 QUESTION_FILENAME="question.txt"
 ALGORITHM_FILENAME="algorithm.json"
+AIM_FILENAME="aim.txt"
 OUTPUT_FILENAME="output.txt"
 
 output_file="$1"
@@ -188,13 +189,27 @@ main() {
       )
 
       echo "Question $(basename "$question")"
+      local missing_question
+
+      if [[ -f "$question/$AIM_FILENAME" ]]; then
+        write_file "__$question/${AIM_FILENAME}__"
+        write
+        missing_question=0
+      else
+        missing_question=1
+      fi
 
       if [[ -f "$question/$QUESTION_FILENAME" ]]; then
         write "### Question"
         write_file "$question/$QUESTION_FILENAME"
         write
+        missing_question=0
       else
-        echo "WARNING: Question file $QUESTION_FILENAME not found in $question" >&2
+        missing_question=1
+      fi
+
+      if [[ $missing_question -eq 1 ]]; then
+        echo "WARNING: Question file $QUESTION_FILENAME or Aim file $AIM_FILENAME not found in $question" >&2
       fi
 
       if [[ -f "$question/$ALGORITHM_FILENAME" ]]; then
