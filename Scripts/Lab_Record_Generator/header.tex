@@ -1,3 +1,6 @@
+% Deeplists
+% https://github.com/jgm/pandoc/issues/2922#issuecomment-360201454
+
 \usepackage{enumitem}
 \setlistdepth{9}
 
@@ -22,3 +25,9 @@
 \setlist[enumerate,8]{label=$\alph*.$}
 \setlist[enumerate,9]{label=$\roman*.$}
 \renewlist{enumerate}{enumerate}{9}
+
+% Code block wrap
+% https://tex.stackexchange.com/a/651559
+
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}

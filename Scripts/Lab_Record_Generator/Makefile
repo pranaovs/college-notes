@@ -17,7 +17,7 @@ FILES ?= ../.
 GENERATION_SCRIPT = ./generate-markdown.sh
 DEPENDENCIES_SCRIPT = ./check-dependencies-pandoc.sh
 PANDOC_METADATA = metadata.yaml
-PANDOC_HEADER_INCLUDE = deeplists.tex
+PANDOC_HEADER_INCLUDE = header.tex
 PDF_VIEWER = zathura
 LIBREOFFICE_TOOL = libreoffice
 
