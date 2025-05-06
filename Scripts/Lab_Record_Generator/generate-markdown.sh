@@ -233,7 +233,7 @@ main() {
       write "### Code"
 
       if [[ -f "$question/.files-to-prompt" ]]; then
-        write "$(files-to-prompt "$question" --markdown --ignore-gitignore --ignore "${EXCLUDED_FOLDERS[@]//--exclude/--ignore}")"
+        write "$(files-to-prompt "$question" --markdown --ignore-gitignore --ignore "${EXCLUDED_FOLDERS[@]//--exclude/--ignore}" | sed "s|$question||g")"
         write
 
       else
@@ -245,10 +245,10 @@ main() {
 
         code_exts=()
         for ext in "${CODE_EXTENSIONS[@]}"; do
-          code_exts+=("--exclude" "$ext")
+          code_exts+=("--extension" "$ext")
         done
 
-        for extra_code in $(fd . "$week/$question" "${code_exts[@]}" --max-depth=1 --exclude="$MAIN_CODE_FILENAME"); do
+        for extra_code in $(fd . "$question" "${code_exts[@]}" --max-depth=1 --exclude="$MAIN_CODE_FILENAME"); do
           write "__$(basename "$extra_code")__"
           write "\`\`\`${extra_code##*.}"
           write_file "$extra_code"
