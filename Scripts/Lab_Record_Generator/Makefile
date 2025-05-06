@@ -30,7 +30,7 @@ $(PDF_FILE): PDF-FROM-$(INTERMEDIATE_FORMAT)
 # PDF generation from Markdown
 PDF-FROM-MARKDOWN: $(MARKDOWN_FILE) $(TEMPLATE_FILE) $(PANDOC_METADATA) $(PANDOC_HEADER_INCLUDE)
 	@echo "--- Generating PDF from Markdown ---"
-	pandoc \
+	@pandoc \
 		--output=$(PDF_FILE) \
 		--standalone \
 		--include-in-header=$(PANDOC_HEADER_INCLUDE) \
