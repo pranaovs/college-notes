@@ -94,7 +94,7 @@ void HashTable::insert(int key) {
 
   // Quadratic probing to find the next available slot
   do {
-    // Quadratic probing formula: (hash(key) + i²) % SIZE
+    // Quadratic probing formula: (hash(key) + i^2) % SIZE
     index = (startIndex + i * i) % SIZE;
 
     // If we've checked all positions, the table is full

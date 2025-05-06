@@ -312,7 +312,7 @@ char LList::deleteend() { return this->deletepos(this->count - 1); }
 /* Delete the last n elements of the list
  * Returns:
  * bool: Success/failure status
- * Time complexity: O(n²) where n is the number of elements to delete
+ * Time complexity: O(n^2) where n is the number of elements to delete
  */
 bool LList::deleteend(int n) {
   if (n < 1 || n > this->count) {
