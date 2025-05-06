@@ -1,1 +1,1 @@
-../01-Spell_Check/spellcheck.py
+../01-Spellchecker/main.py
