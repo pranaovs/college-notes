@@ -48,6 +48,12 @@ check_requirements() {
     exit 1
   fi
 
+  if [[ -z $EXCLUDED_FOLDERS ]]; then
+    EXCLUDED_FOLDERS=()
+  else
+    EXCLUDED_FOLDERS=($EXCLUDED_FOLDERS) # Convert string to array
+  fi
+
   if [[ -z $CODE_EXTENSIONS ]]; then
     CODE_EXTENSIONS=()
   else
@@ -171,7 +177,12 @@ parse_algorithm() {
 
 main() {
 
-  for week in $(fd . "$parent_directory" -t d --exclude=Common --exclude="$(basename "$(realpath "$(dirname "$0")")")" --max-depth=1); do
+  excl_folders=()
+  for folder in "${EXCLUDED_FOLDERS[@]}"; do
+    excl_folders+=("--exclude" "$folder")
+  done
+
+  for week in $(fd . "$parent_directory" -t d --exclude=Common --exclude="$(basename "$(realpath "$(dirname "$0")")")" --max-depth=1 "${excl_folders[@]}"); do
     (
       write "# $(format_name "$week")"
     )
@@ -183,7 +194,7 @@ main() {
       echo "WARNING: Date file $DATE_FILENAME not found in $week" >&2
     fi
 
-    for question in $(fd . "$week" -t d --max-depth=1 --exclude=Common); do
+    for question in $(fd . "$week" -t d --max-depth=1 --exclude=Common "${excl_folders[@]}"); do
       (
         write "## $(format_name "$question")"
       )
@@ -228,7 +239,7 @@ main() {
 
       code_exts=()
       for ext in "${CODE_EXTENSIONS[@]}"; do
-        code_exts+=("-e" "$ext")
+        code_exts+=("--exclude" "$ext")
       done
 
       for extra_code in $(fd . "$week/$question" "${code_exts[@]}" --max-depth=1 --exclude="$MAIN_CODE_FILENAME"); do
