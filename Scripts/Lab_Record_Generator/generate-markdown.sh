@@ -231,24 +231,32 @@ main() {
       fi
 
       write "### Code"
-      write "__${MAIN_CODE_FILENAME}__"
-      write "\`\`\`${MAIN_CODE_FILENAME##*.}"
-      write_file "$question/$MAIN_CODE_FILENAME"
-      write
-      write '```'
 
-      code_exts=()
-      for ext in "${CODE_EXTENSIONS[@]}"; do
-        code_exts+=("--exclude" "$ext")
-      done
+      if [[ -f "$question/.files-to-prompt" ]]; then
+        write "$(files-to-prompt "$question" --markdown --ignore-gitignore --ignore "${EXCLUDED_FOLDERS[@]//--exclude/--ignore}")"
+        write
 
-      for extra_code in $(fd . "$week/$question" "${code_exts[@]}" --max-depth=1 --exclude="$MAIN_CODE_FILENAME"); do
-        write "__$(basename "$extra_code")__"
-        write "\`\`\`${extra_code##*.}"
-        write_file "$extra_code"
+      else
+        write "__${MAIN_CODE_FILENAME}__"
+        write "\`\`\`${MAIN_CODE_FILENAME##*.}"
+        write_file "$question/$MAIN_CODE_FILENAME"
         write
         write '```'
-      done
+
+        code_exts=()
+        for ext in "${CODE_EXTENSIONS[@]}"; do
+          code_exts+=("--exclude" "$ext")
+        done
+
+        for extra_code in $(fd . "$week/$question" "${code_exts[@]}" --max-depth=1 --exclude="$MAIN_CODE_FILENAME"); do
+          write "__$(basename "$extra_code")__"
+          write "\`\`\`${extra_code##*.}"
+          write_file "$extra_code"
+          write
+          write '```'
+        done
+
+      fi
 
       if [[ -f "$question/$OUTPUT_FILENAME" ]]; then
         write "### Execution"
