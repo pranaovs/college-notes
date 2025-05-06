@@ -1,2 +1,3 @@
 MAIN_CODE_FILENAME = main.py
 CODE_EXTENSIONS = py
+EXCLUDED_FOLDERS = __pycache__
