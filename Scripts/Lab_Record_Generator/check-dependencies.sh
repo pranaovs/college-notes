@@ -2,7 +2,7 @@
 
 REQUIRED_TOOLS=("pandoc" "pdflatex" "kpsewhich")
 
-OPTIONAL_TOOLS=("libreoffice")
+OPTIONAL_TOOLS=("libreoffice" "files-to-prompt")
 
 LATEX_DEPENDENCIES=(
   article.cls
