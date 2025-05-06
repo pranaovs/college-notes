@@ -96,7 +96,7 @@ PDF_ASSETS=(
   "./assets/private/cover.jpeg"
   "./assets/private/bonafide.jpeg"
   "./assets/private/index.jpeg"
-  "./deeplists.tex"
+  "./header.tex"
   "./metadata.yaml"
   "./template.tex"
 )
