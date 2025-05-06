@@ -15,7 +15,7 @@ include config.mk
 TEMPLATE_FILE = template.tex
 FILES ?= ../.
 GENERATION_SCRIPT = ./generate-markdown.sh
-DEPENDENCIES_SCRIPT = ./check-dependencies-pandoc.sh
+DEPENDENCIES_SCRIPT = ./check-dependencies.sh
 PANDOC_METADATA = metadata.yaml
 PANDOC_HEADER_INCLUDE = header.tex
 PDF_VIEWER = zathura
