@@ -48,17 +48,27 @@ check_requirements() {
     exit 1
   fi
 
-  if [[ -z $EXCLUDED_FOLDERS ]]; then
-    EXCLUDED_FOLDERS=()
+  if [[ -z $EXCLUDED_PATTERNS ]]; then
+    EXCLUDED_PATTERNS=()
   else
-    EXCLUDED_FOLDERS=($EXCLUDED_FOLDERS) # Convert string to array
+    EXCLUDED_PATTERNS=($EXCLUDED_PATTERNS) # Convert string to array
   fi
+
+  excl_patterns=()
+  for pattern in "${EXCLUDED_PATTERNS[@]}"; do
+    excl_patterns+=("--exclude" "$pattern")
+  done
 
   if [[ -z $CODE_EXTENSIONS ]]; then
     CODE_EXTENSIONS=()
   else
     CODE_EXTENSIONS=($CODE_EXTENSIONS) # Convert string to array
   fi
+
+  code_exts=()
+  for ext in "${CODE_EXTENSIONS[@]}"; do
+    code_exts+=("--extension" "$ext")
+  done
 
   local missing_tools=()
   for tool in "${REQUIRED_TOOLS[@]}"; do
@@ -177,12 +187,7 @@ parse_algorithm() {
 
 main() {
 
-  excl_folders=()
-  for folder in "${EXCLUDED_FOLDERS[@]}"; do
-    excl_folders+=("--exclude" "$folder")
-  done
-
-  for week in $(fd . "$parent_directory" -t d --exclude=Common --exclude="$(basename "$(realpath "$(dirname "$0")")")" --max-depth=1 "${excl_folders[@]}"); do
+  for week in $(fd . "$parent_directory" -t d --exclude=Common --exclude="$(basename "$(realpath "$(dirname "$0")")")" --max-depth=1 "${excl_patterns[@]}"); do
     (
       write "# $(format_name "$week")"
     )
@@ -194,7 +199,7 @@ main() {
       echo "WARNING: Date file $DATE_FILENAME not found in $week" >&2
     fi
 
-    for question in $(fd . "$week" -t d --max-depth=1 --exclude=Common "${excl_folders[@]}"); do
+    for question in $(fd . "$week" -t d --max-depth=1 --exclude=Common "${excl_patterns[@]}"); do
       (
         write "## $(format_name "$question")"
       )
@@ -233,7 +238,7 @@ main() {
       write "### Code"
 
       if [[ -f "$question/.files-to-prompt" ]]; then
-        write "$(files-to-prompt "$question" --markdown --ignore-gitignore --ignore "${EXCLUDED_FOLDERS[@]//--exclude/--ignore}" | sed "s|$question||g")"
+        write "$(files-to-prompt "$question" --markdown --ignore-gitignore --ignore "${EXCLUDED_PATTERNS[@]//--exclude/--ignore}" | sed "s|$question||g")"
         write
 
       else
@@ -243,12 +248,7 @@ main() {
         write
         write '```'
 
-        code_exts=()
-        for ext in "${CODE_EXTENSIONS[@]}"; do
-          code_exts+=("--extension" "$ext")
-        done
-
-        for extra_code in $(fd . "$question" "${code_exts[@]}" --max-depth=1 --exclude="$MAIN_CODE_FILENAME"); do
+        for extra_code in $(fd . "$question" "${code_exts[@]}" --max-depth=1 --exclude="$MAIN_CODE_FILENAME" "${excl_patterns[@]}"); do
           write "__$(basename "$extra_code")__"
           write "\`\`\`${extra_code##*.}"
           write_file "$extra_code"
