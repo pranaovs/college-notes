@@ -1,0 +1,1 @@
+Compute the sub of an alternating-sign power series based on the Fibonacci sequence

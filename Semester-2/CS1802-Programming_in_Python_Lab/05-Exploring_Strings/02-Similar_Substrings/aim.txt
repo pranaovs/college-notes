@@ -1,0 +1,1 @@
+Find all the substrings of a string that starts and ends with the same character

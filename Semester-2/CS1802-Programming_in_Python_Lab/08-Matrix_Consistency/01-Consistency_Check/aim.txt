@@ -1,0 +1,1 @@
+Analyze the consistency of a given set of equatioons and find out if they have no solutions, unique solution or infinitely many solutions

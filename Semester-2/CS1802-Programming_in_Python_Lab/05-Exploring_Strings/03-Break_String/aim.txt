@@ -1,0 +1,1 @@
+Split a string into substrings of set length

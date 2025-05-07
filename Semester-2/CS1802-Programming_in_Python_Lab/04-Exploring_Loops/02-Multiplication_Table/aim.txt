@@ -1,0 +1,1 @@
+Print the multiplication table of a number

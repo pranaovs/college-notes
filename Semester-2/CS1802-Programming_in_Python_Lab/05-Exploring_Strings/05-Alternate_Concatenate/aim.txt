@@ -1,0 +1,1 @@
+Alternatively concatenate characters from two strings of equal length
