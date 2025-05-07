@@ -1,0 +1,176 @@
+[
+  {
+    "algorithm": "PolynomialEvaluation",
+    "input": [
+      "coeffs (list of polynomial coefficients in descending order of degree)",
+      "x (value at which to evaluate the polynomial)"
+    ],
+    "output": [
+      "result of evaluating the polynomial at x"
+    ],
+    "steps": [
+      {
+        "step": "Initialize sum to 0"
+      },
+      {
+        "step": "Determine polynomial order as (length of coefficients - 1)"
+      },
+      {
+        "step": "For each coefficient at index i",
+        "substeps": [
+          {
+            "step": "Calculate term = coefficient × x^(order-i)"
+          },
+          {
+            "step": "Add term to running sum"
+          }
+        ]
+      },
+      {
+        "step": "Return final sum"
+      }
+    ]
+  },
+  {
+    "algorithm": "PolynomialRootFinder",
+    "input": [
+      "coeffs (list of polynomial coefficients in descending order of degree)"
+    ],
+    "output": [
+      "list of real roots of the polynomial"
+    ],
+    "steps": [
+      {
+        "step": "Use NumPy's roots function to find all roots (real and complex)"
+      },
+      {
+        "step": "Filter the roots to keep only real roots using np.isreal"
+      },
+      {
+        "step": "Return the array of real roots"
+      }
+    ]
+  },
+  {
+    "algorithm": "BisectionMethodRootFinder",
+    "input": [
+      "coeffs (list of polynomial coefficients)",
+      "a (lower bound of interval)",
+      "b (upper bound of interval)",
+      "tolerance (acceptable error margin, default 1e-6)",
+      "max_iterations (maximum number of iterations, default 100)"
+    ],
+    "output": [
+      "approximation of a root within the interval [a,b]"
+    ],
+    "steps": [
+      {
+        "step": "Evaluate polynomial at endpoints: f(a) and f(b)"
+      },
+      {
+        "step": "Verify f(a) and f(b) have opposite signs",
+        "substeps": [
+          {
+            "step": "If f(a) × f(b) > 0, raise ValueError (no guaranteed root in interval)"
+          }
+        ]
+      },
+      {
+        "step": "Perform bisection method iterations",
+        "substeps": [
+          {
+            "step": "For i = 1 to max_iterations:"
+          },
+          {
+            "step": "Calculate midpoint c = (a + b) / 2"
+          },
+          {
+            "step": "Evaluate polynomial at midpoint: f(c)"
+          },
+          {
+            "step": "If |f(c)| < tolerance, return c (root found within tolerance)"
+          },
+          {
+            "step": "Update interval boundaries:",
+            "substeps": [
+              {
+                "step": "If f(a) × f(c) < 0, set b = c (root is in [a,c])"
+              },
+              {
+                "step": "Otherwise, set a = c (root is in [c,b])"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "step": "Return (a + b) / 2 as best approximation after max iterations"
+      }
+    ]
+  },
+  {
+    "algorithm": "PolynomialRootFinderInterface",
+    "input": [
+      "user-specified polynomial order and coefficients",
+      "interval bounds a and b"
+    ],
+    "output": [
+      "polynomial roots and detailed evaluation"
+    ],
+    "steps": [
+      {
+        "step": "Get polynomial order from user input"
+      },
+      {
+        "step": "Validate order is between 2 and 26"
+      },
+      {
+        "step": "Generate a formatted polynomial string for display"
+      },
+      {
+        "step": "Get coefficients from user input and convert to float values"
+      },
+      {
+        "step": "Validate number of coefficients matches polynomial order + 1"
+      },
+      {
+        "step": "Get interval bounds a and b from user"
+      },
+      {
+        "step": "Validate a < b"
+      },
+      {
+        "step": "Evaluate polynomial at a and b: f(a) and f(b)"
+      },
+      {
+        "step": "Display f(a) and f(b) values"
+      },
+      {
+        "step": "Validate f(a) < 0 and f(b) > 0 for bisection method"
+      },
+      {
+        "step": "Find all real roots using NumPy for reference"
+      },
+      {
+        "step": "Display all real roots"
+      },
+      {
+        "step": "Perform additional validation checks on roots"
+      },
+      {
+        "step": "Try to find a specific root using bisection method",
+        "substeps": [
+          {
+            "step": "Handle potential errors with try-except block"
+          },
+          {
+            "step": "If successful, display root and function value at root"
+          },
+          {
+            "step": "If error occurs, display error message"
+          }
+        ]
+      }
+    ]
+  }
+]

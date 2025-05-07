@@ -1,0 +1,74 @@
+[
+  {
+    "algorithm": "SymmetricNumberPattern",
+    "input": [
+      "n (integer determining pattern size)",
+      "padding (string used for spacing, default is space character)"
+    ],
+    "output": [
+      "printed pattern of 2n-1 rows"
+    ],
+    "steps": [
+      {
+        "step": "Generate the increasing part of the pattern (first n rows)",
+        "substeps": [
+          {
+            "step": "For each integer $i$ from 1 to $n$ (inclusive):"
+          },
+          {
+            "step": "Calculate leading spaces: $(n-i)$ padding characters"
+          },
+          {
+            "step": "Generate pattern segment: repeat $(i + padding)$ exactly $i$ times"
+          },
+          {
+            "step": "Concatenate leading spaces and pattern segment"
+          },
+          {
+            "step": "Print the resulting string"
+          }
+        ]
+      },
+      {
+        "step": "Generate the decreasing part of the pattern (last n-1 rows)",
+        "substeps": [
+          {
+            "step": "For each integer $i$ from $n-1$ down to 1:"
+          },
+          {
+            "step": "Calculate leading spaces: $(n-i)$ padding characters"
+          },
+          {
+            "step": "Generate pattern segment: repeat $(i + padding)$ exactly $i$ times"
+          },
+          {
+            "step": "Concatenate leading spaces and pattern segment"
+          },
+          {
+            "step": "Print the resulting string"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "algorithm": "PatternPrinterInterface",
+    "input": [
+      "user input for pattern size"
+    ],
+    "output": [
+      "displayed symmetric number pattern"
+    ],
+    "steps": [
+      {
+        "step": "Prompt user to enter value $N$ for a $(2N-1)$-row pattern"
+      },
+      {
+        "step": "Convert input to integer"
+      },
+      {
+        "step": "Call SymmetricNumberPattern algorithm with input $N$ and default padding"
+      }
+    ]
+  }
+]

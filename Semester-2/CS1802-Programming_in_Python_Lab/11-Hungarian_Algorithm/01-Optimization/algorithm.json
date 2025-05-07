@@ -1,0 +1,205 @@
+[
+  {
+    "algorithm": "HungarianAlgorithm",
+    "input": [
+      "cost_matrix (matrix where element [i,j] represents the cost of assigning task j to worker i)"
+    ],
+    "output": [
+      "optimal_assignment (list of (row, column) pairs representing the assignment)",
+      "optimal_cost (total cost of the optimal assignment)"
+    ],
+    "steps": [
+      {
+        "step": "Initialize the problem",
+        "substeps": [
+          {
+            "step": "Convert input matrix to NumPy array"
+          },
+          {
+            "step": "Create a working copy to preserve the original matrix"
+          }
+        ]
+      },
+      {
+        "step": "Pre-process the matrix (reduction phase)",
+        "substeps": [
+          {
+            "step": "Row reduction: Subtract minimum value from each row",
+            "substeps": [
+              {
+                "step": "For each row, find the minimum value"
+              },
+              {
+                "step": "Subtract this minimum from every element in the row"
+              }
+            ]
+          },
+          {
+            "step": "Column reduction: Subtract minimum value from each column",
+            "substeps": [
+              {
+                "step": "For each column, find the minimum value"
+              },
+              {
+                "step": "Subtract this minimum from every element in the column"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "step": "Make the matrix square (if needed)",
+        "substeps": [
+          {
+            "step": "Determine dimensions of the matrix"
+          },
+          {
+            "step": "If not square, pad with zeros to create a square matrix"
+          }
+        ]
+      },
+      {
+        "step": "Find initial feasible solution",
+        "substeps": [
+          {
+            "step": "Mark zeros as 'starred' (initial assignment)"
+          },
+          {
+            "step": "Ensure no two starred zeros share a row or column"
+          },
+          {
+            "step": "Initialize row and column covering vectors to false"
+          }
+        ]
+      },
+      {
+        "step": "Main algorithm loop",
+        "substeps": [
+          {
+            "step": "Cover columns with starred zeros"
+          },
+          {
+            "step": "Check if the number of covered columns equals the matrix size (min dimension)",
+            "substeps": [
+              {
+                "step": "If equal, the optimal assignment is found, terminate the loop"
+              }
+            ]
+          },
+          {
+            "step": "Find an uncovered zero",
+            "substeps": [
+              {
+                "step": "If found, prime (mark) it"
+              },
+              {
+                "step": "Check if there's a starred zero in the same row"
+              },
+              {
+                "step": "If yes, cover that row and uncover the column with the starred zero"
+              },
+              {
+                "step": "If no, start augmenting path from this primed zero"
+              }
+            ]
+          },
+          {
+            "step": "If no uncovered zero exists, update the matrix",
+            "substeps": [
+              {
+                "step": "Find the minimum uncovered value"
+              },
+              {
+                "step": "Add this value to every covered row"
+              },
+              {
+                "step": "Subtract this value from every uncovered column"
+              },
+              {
+                "step": "Continue searching for uncovered zeros"
+              }
+            ]
+          },
+          {
+            "step": "Augment path to include more assignments",
+            "substeps": [
+              {
+                "step": "Start with the primed zero"
+              },
+              {
+                "step": "Alternately follow starred zeros in the same column and primed zeros in the same row"
+              },
+              {
+                "step": "Toggle the starred status of all zeros in the path"
+              },
+              {
+                "step": "Reset all coverings and primings"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "step": "Extract final assignment",
+        "substeps": [
+          {
+            "step": "Collect all (row, column) pairs with starred zeros"
+          },
+          {
+            "step": "Ensure pairs don't exceed original matrix dimensions"
+          }
+        ]
+      },
+      {
+        "step": "Calculate optimal cost",
+        "substeps": [
+          {
+            "step": "Sum the original cost matrix values for each assigned pair"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "algorithm": "TransportOptimizer",
+    "input": [
+      "filename containing cost matrices"
+    ],
+    "output": [
+      "optimal assignments and costs for each input matrix"
+    ],
+    "steps": [
+      {
+        "step": "Parse input matrices from file",
+        "substeps": [
+          {
+            "step": "Read the file line by line"
+          },
+          {
+            "step": "Parse each line as a row of integers"
+          },
+          {
+            "step": "Use empty lines to separate different matrices"
+          }
+        ]
+      },
+      {
+        "step": "For each input matrix",
+        "substeps": [
+          {
+            "step": "Create a Transport object with the matrix"
+          },
+          {
+            "step": "Call optimize method to find optimal assignment"
+          },
+          {
+            "step": "Get and display the assignment"
+          },
+          {
+            "step": "Calculate and display the optimal cost"
+          }
+        ]
+      }
+    ]
+  }
+]

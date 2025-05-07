@@ -1,0 +1,89 @@
+[
+  {
+    "algorithm": "CaesarCipher",
+    "input": [
+      "s (string to be encrypted)",
+      "k (integer shift value)"
+    ],
+    "output": [
+      "encrypted string with characters shifted by k positions"
+    ],
+    "steps": [
+      {
+        "step": "Initialize an empty string to store the encrypted result"
+      },
+      {
+        "step": "Normalize the shift value to handle large shifts",
+        "substeps": [
+          {
+            "step": "Calculate effective shift as $k \\bmod 26$ (since there are 26 letters in English alphabet)"
+          }
+        ]
+      },
+      {
+        "step": "Process each character in the input string",
+        "substeps": [
+          {
+            "step": "For each character at position $i$ in the input string:"
+          },
+          {
+            "step": "Check if the character is an alphabetic letter"
+          },
+          {
+            "step": "If alphabetic:",
+            "substeps": [
+              {
+                "step": "Convert character to ASCII code using $ord()$"
+              },
+              {
+                "step": "Apply shift by adding the shift value"
+              },
+              {
+                "step": "Normalize to range 0-25 by subtracting 97 (ASCII for 'a'), taking modulo 26, then adding 97 back"
+              },
+              {
+                "step": "Convert back to character using $chr()$"
+              },
+              {
+                "step": "Append the encrypted character to result string"
+              }
+            ]
+          },
+          {
+            "step": "If not alphabetic, append the original character unchanged"
+          }
+        ]
+      },
+      {
+        "step": "Return the complete encrypted string"
+      }
+    ]
+  },
+  {
+    "algorithm": "CaesarCipherInterface",
+    "input": [
+      "plaintext string from user",
+      "shift value from user"
+    ],
+    "output": [
+      "encrypted string displayed to user"
+    ],
+    "steps": [
+      {
+        "step": "Prompt user for input string to encrypt"
+      },
+      {
+        "step": "Prompt user for shift value"
+      },
+      {
+        "step": "Convert shift value to integer"
+      },
+      {
+        "step": "Encrypt the input string using CaesarCipher algorithm"
+      },
+      {
+        "step": "Display the encrypted result"
+      }
+    ]
+  }
+]

@@ -1,0 +1,88 @@
+[
+  {
+    "algorithm": "ListProcessingWithMapFilter",
+    "input": [
+      "space-separated list of comma-separated sublists",
+      "filter threshold value"
+    ],
+    "output": [
+      "various processed versions of the input list"
+    ],
+    "steps": [
+      {
+        "step": "Parse nested list input",
+        "substeps": [
+          {
+            "step": "Split input string by spaces to get sublists"
+          },
+          {
+            "step": "For each sublist, split by commas to get elements"
+          },
+          {
+            "step": "Store the result as a list of lists"
+          },
+          {
+            "step": "Display the parsed nested list structure"
+          }
+        ]
+      },
+      {
+        "step": "Flatten the nested list",
+        "substeps": [
+          {
+            "step": "Initialize an empty list for flat structure"
+          },
+          {
+            "step": "For each sublist in the nested list:"
+          },
+          {
+            "step": "For each element in the sublist:"
+          },
+          {
+            "step": "Append the element to the flat list"
+          },
+          {
+            "step": "Display the flattened list"
+          }
+        ]
+      },
+      {
+        "step": "Apply map function to transform elements",
+        "substeps": [
+          {
+            "step": "Map int function to convert each element to integer"
+          },
+          {
+            "step": "Convert map result to list and display"
+          },
+          {
+            "step": "Map float function to convert each element to floating-point"
+          },
+          {
+            "step": "Convert map result to list and display"
+          }
+        ]
+      },
+      {
+        "step": "Get filter threshold from user input"
+      },
+      {
+        "step": "Apply filter function to select elements based on criteria",
+        "substeps": [
+          {
+            "step": "Filter elements less than threshold using lambda function"
+          },
+          {
+            "step": "Convert filter result to list and display"
+          },
+          {
+            "step": "Filter elements greater than threshold using lambda function"
+          },
+          {
+            "step": "Convert filter result to list and display"
+          }
+        ]
+      }
+    ]
+  }
+]

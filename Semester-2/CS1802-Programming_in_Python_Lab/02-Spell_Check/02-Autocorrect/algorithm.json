@@ -1,0 +1,105 @@
+[
+  {
+    "algorithm": "AutocompleteInitialization",
+    "input": [
+      "filename (path to dictionary file)"
+    ],
+    "output": [
+      "initialized AutoComplete object with loaded wordlist"
+    ],
+    "steps": [
+      {
+        "step": "Initialize parent SpellChecker object with dictionary file"
+      },
+      {
+        "step": "Inherit wordlist and spell checking capabilities from parent"
+      }
+    ]
+  },
+  {
+    "algorithm": "AutocompleteSuggestions",
+    "input": [
+      "prefix (string to autocomplete)",
+      "wordlist (dictionary of valid words)"
+    ],
+    "output": [
+      "set of candidate words that could complete the prefix"
+    ],
+    "steps": [
+      {
+        "step": "Initialize empty set for candidate words"
+      },
+      {
+        "step": "Obtain corrected versions of the prefix using spell checker",
+        "substeps": [
+          {
+            "step": "Check if prefix exists in dictionary"
+          },
+          {
+            "step": "If not found, find words at one edit distance"
+          },
+          {
+            "step": "If still not found, find words at two edit distances"
+          },
+          {
+            "step": "If still not found, use original prefix"
+          }
+        ]
+      },
+      {
+        "step": "For each corrected prefix version",
+        "substeps": [
+          {
+            "step": "Scan through entire dictionary wordlist"
+          },
+          {
+            "step": "For each dictionary word, check if it starts with the corrected prefix"
+          },
+          {
+            "step": "If match found, add dictionary word to candidate set"
+          }
+        ]
+      },
+      {
+        "step": "Return the set of all candidate words"
+      }
+    ]
+  },
+  {
+    "algorithm": "AutocompleteInterface",
+    "input": [
+      "user input (prefix to autocomplete)"
+    ],
+    "output": [
+      "list of suggested completions displayed to user"
+    ],
+    "steps": [
+      {
+        "step": "Initialize AutoComplete object with dictionary"
+      },
+      {
+        "step": "Prompt user for input prefix"
+      },
+      {
+        "step": "Continuously process user input until exit command",
+        "substeps": [
+          {
+            "step": "Read user input prefix"
+          },
+          {
+            "step": "If input is 'exit', terminate program"
+          },
+          {
+            "step": "Generate autocomplete candidates for prefix"
+          },
+          {
+            "step": "Display suggestions to user"
+          },
+          {
+            "step": "Return to prompt for next input"
+          }
+        ]
+      }
+    ]
+  }
+]

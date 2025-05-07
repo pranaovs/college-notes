@@ -1,0 +1,102 @@
+[
+  {
+    "algorithm": "FibonacciSequenceGenerator",
+    "input": [
+      "until (integer specifying number of terms to generate)"
+    ],
+    "output": [
+      "tuple containing the first 'until' Fibonacci numbers"
+    ],
+    "steps": [
+      {
+        "step": "Initialize an empty list to store Fibonacci numbers"
+      },
+      {
+        "step": "Initialize first two Fibonacci terms: $a = 1$, $b = 1$"
+      },
+      {
+        "step": "Generate sequence term by term",
+        "substeps": [
+          {
+            "step": "For each position $i$ from 1 to $until$ (inclusive):"
+          },
+          {
+            "step": "If $i = 1$, set $a = 1$ and $b = 1$"
+          },
+          {
+            "step": "Otherwise, update values: $a_{new} = b$ and $b_{new} = a + b$"
+          },
+          {
+            "step": "Append current value of $a$ to result list"
+          }
+        ]
+      },
+      {
+        "step": "Convert result list to tuple"
+      },
+      {
+        "step": "Return tuple of Fibonacci numbers"
+      }
+    ]
+  },
+  {
+    "algorithm": "AlternatingFibonacciPowerSeries",
+    "input": [
+      "num (integer specifying number of terms in the series)"
+    ],
+    "output": [
+      "sum of alternating Fibonacci power series"
+    ],
+    "steps": [
+      {
+        "step": "Generate the first $num$ Fibonacci numbers using FibonacciSequenceGenerator"
+      },
+      {
+        "step": "Initialize sum to 0"
+      },
+      {
+        "step": "Compute the alternating power series",
+        "substeps": [
+          {
+            "step": "For each position $i$ from 0 to $num-1$:"
+          },
+          {
+            "step": "Determine sign: $sign = +1$ if $i$ is even, $sign = -1$ if $i$ is odd"
+          },
+          {
+            "step": "Calculate term: $sign \\times F_i^{i+1}$ where $F_i$ is the $i$-th Fibonacci number"
+          },
+          {
+            "step": "Add term to running sum"
+          }
+        ]
+      },
+      {
+        "step": "Return final sum"
+      }
+    ]
+  },
+  {
+    "algorithm": "FibonacciPowersInterface",
+    "input": [
+      "user input specifying number of terms"
+    ],
+    "output": [
+      "formatted display of the alternating Fibonacci power series sum"
+    ],
+    "steps": [
+      {
+        "step": "Prompt user for number of terms"
+      },
+      {
+        "step": "Convert input to integer"
+      },
+      {
+        "step": "Calculate series sum by calling AlternatingFibonacciPowerSeries algorithm"
+      },
+      {
+        "step": "Display formatted result showing the sum of the series"
+      }
+    ]
+  }
+]

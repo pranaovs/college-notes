@@ -1,0 +1,71 @@
+[
+  {
+    "algorithm": "MultiplicationTable",
+    "input": [
+      "m (multiplicand integer)",
+      "n (number of rows in table)"
+    ],
+    "output": [
+      "tuple containing multiplication results from 0 to n"
+    ],
+    "steps": [
+      {
+        "step": "Initialize an empty list to store multiplication results"
+      },
+      {
+        "step": "Iterate from 0 to n (inclusive)",
+        "substeps": [
+          {
+            "step": "For each integer $i$ in range $[0, n]$:"
+          },
+          {
+            "step": "Calculate product $m \\times i$"
+          },
+          {
+            "step": "Append product to results list"
+          }
+        ]
+      },
+      {
+        "step": "Convert result list to tuple"
+      },
+      {
+        "step": "Return tuple of multiplication results"
+      }
+    ]
+  },
+  {
+    "algorithm": "MultiplicationTableInterface",
+    "input": [
+      "user input in the format 'mxn'"
+    ],
+    "output": [
+      "formatted multiplication table display"
+    ],
+    "steps": [
+      {
+        "step": "Prompt user for input in format 'mxn'"
+      },
+      {
+        "step": "Parse input by splitting at 'x' character"
+      },
+      {
+        "step": "Convert split values to integers m and n"
+      },
+      {
+        "step": "Generate multiplication table by calling MultiplicationTable algorithm with m and n"
+      },
+      {
+        "step": "Display formatted results",
+        "substeps": [
+          {
+            "step": "For each integer $i$ in range $[0, n]$:"
+          },
+          {
+            "step": "Print formatted string '$m$ x $i$ = $result[i]$'"
+          }
+        ]
+      }
+    ]
+  }
+]

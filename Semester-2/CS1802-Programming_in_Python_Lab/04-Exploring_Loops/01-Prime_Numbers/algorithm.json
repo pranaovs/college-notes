@@ -1,0 +1,72 @@
+[
+  {
+    "algorithm": "PrimalityTest",
+    "input": [
+      "num (an integer to test for primality)"
+    ],
+    "output": [
+      "boolean value (true if the number is prime, false otherwise)"
+    ],
+    "steps": [
+      {
+        "step": "Check if input number is less than or equal to 1",
+        "substeps": [
+          {
+            "step": "If $num \\leq 1$, return False (not prime)"
+          }
+        ]
+      },
+      {
+        "step": "Iterate through possible divisors from 2 to $\\sqrt{num}$",
+        "substeps": [
+          {
+            "step": "Calculate upper bound as $\\lfloor\\sqrt{num}\\rfloor + 1$"
+          },
+          {
+            "step": "For each integer $i$ in range $[2, \\sqrt{num}]$:"
+          },
+          {
+            "step": "Check if $num$ is divisible by $i$ (i.e., $num \\bmod i = 0$)"
+          },
+          {
+            "step": "If $num$ is divisible by any $i$, return False (not prime)"
+          }
+        ]
+      },
+      {
+        "step": "If no divisors are found, return True (number is prime)"
+      }
+    ]
+  },
+  {
+    "algorithm": "PrimeNumberGenerator",
+    "input": [
+      "limit (an integer up to which prime numbers are to be found)"
+    ],
+    "output": [
+      "list of all prime numbers less than the limit"
+    ],
+    "steps": [
+      {
+        "step": "Accept user input for the upper limit"
+      },
+      {
+        "step": "Convert input to integer"
+      },
+      {
+        "step": "Iterate through all integers from 2 to limit-1",
+        "substeps": [
+          {
+            "step": "For each number $i$ in range $[2, limit)$:"
+          },
+          {
+            "step": "Test if $i$ is prime using PrimalityTest algorithm"
+          },
+          {
+            "step": "If $i$ is prime, output it"
+          }
+        ]
+      }
+    ]
+  }
+]

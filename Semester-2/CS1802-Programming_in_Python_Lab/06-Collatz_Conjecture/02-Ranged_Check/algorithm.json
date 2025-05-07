@@ -1,0 +1,52 @@
+[
+  {
+    "algorithm": "CollatzRangeChecker",
+    "input": [
+      "max_num (upper limit for checking Collatz sequences)"
+    ],
+    "output": [
+      "list of starting numbers and their maximum sequence values"
+    ],
+    "steps": [
+      {
+        "step": "Validate command line arguments",
+        "substeps": [
+          {
+            "step": "Check if at least one argument is provided"
+          },
+          {
+            "step": "If no argument, display usage message and terminate"
+          }
+        ]
+      },
+      {
+        "step": "Extract maximum number from command line argument"
+      },
+      {
+        "step": "Iterate through the range of numbers",
+        "substeps": [
+          {
+            "step": "For each integer $i$ from 1 to $max\\_num$ (inclusive):"
+          },
+          {
+            "step": "Use error handling to protect against potential issues",
+            "substeps": [
+              {
+                "step": "Call CollatzSequence algorithm with current number $i$ and show_steps=False"
+              },
+              {
+                "step": "Extract the maximum value reached in the sequence"
+              },
+              {
+                "step": "Print the starting number and its maximum sequence value"
+              },
+              {
+                "step": "If an exception occurs, print error message and terminate iteration"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

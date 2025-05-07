@@ -1,0 +1,144 @@
+[
+  {
+    "algorithm": "MazeSolverDFS",
+    "input": [
+      "start (starting position coordinate tuple)",
+      "end (target position coordinate tuple)",
+      "matrix (2D grid representing the maze)"
+    ],
+    "output": [
+      "Boolean/message indicating if a path exists"
+    ],
+    "steps": [
+      {
+        "step": "Initialize an empty list 'explored' to track visited positions"
+      },
+      {
+        "step": "Check if start position equals end position",
+        "substeps": [
+          {
+            "step": "If equal, return 'Result found'"
+          }
+        ]
+      },
+      {
+        "step": "Initialize an empty stack for depth-first search traversal"
+      },
+      {
+        "step": "Set current position to start position"
+      },
+      {
+        "step": "Begin exploration loop",
+        "substeps": [
+          {
+            "step": "For each direction (top, right, down, left):",
+            "substeps": [
+              {
+                "step": "Check if moving in that direction is valid",
+                "substeps": [
+                  {
+                    "step": "Verify current position is not already explored"
+                  },
+                  {
+                    "step": "Verify target position is within maze boundaries"
+                  },
+                  {
+                    "step": "Verify target position is a path (0) or the end (3)"
+                  },
+                  {
+                    "step": "Verify target position has not been explored"
+                  }
+                ]
+              },
+              {
+                "step": "If movement is valid, add the new position to stack"
+              }
+            ]
+          },
+          {
+            "step": "Mark current position as explored by adding to 'explored' list"
+          },
+          {
+            "step": "If stack is empty, return 'No solution found' and terminate"
+          },
+          {
+            "step": "Pop the next position from stack and make it the current position"
+          },
+          {
+            "step": "If current position equals end position, return 'Solution found' and terminate"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "algorithm": "DirectionCheck",
+    "input": [
+      "matrix (2D grid representing the maze)",
+      "pos (current position coordinate tuple)"
+    ],
+    "output": [
+      "Boolean indicating if movement in specified direction is valid"
+    ],
+    "steps": [
+      {
+        "step": "Check if current position is already explored",
+        "substeps": [
+          {
+            "step": "If explored, return False"
+          }
+        ]
+      },
+      {
+        "step": "Check if target position is within maze boundaries",
+        "substeps": [
+          {
+            "step": "If outside boundaries, return False"
+          }
+        ]
+      },
+      {
+        "step": "Check if target position is a path (0) or end (3)",
+        "substeps": [
+          {
+            "step": "If not a valid path cell, return False"
+          }
+        ]
+      },
+      {
+        "step": "Check if target position has already been explored",
+        "substeps": [
+          {
+            "step": "If already explored, return False"
+          }
+        ]
+      },
+      {
+        "step": "If all checks pass, return True"
+      }
+    ]
+  },
+  {
+    "algorithm": "MazeInitialization",
+    "input": [
+      "matrix (2D grid with numeric codes representing maze elements)"
+    ],
+    "output": [
+      "start position, end position"
+    ],
+    "steps": [
+      {
+        "step": "Iterate through each cell in the matrix"
+      },
+      {
+        "step": "Find cell with value 2 (start position)"
+      },
+      {
+        "step": "Find cell with value 3 (end position)"
+      },
+      {
+        "step": "Return coordinates of start and end positions"
+      }
+    ]
+  }
+]

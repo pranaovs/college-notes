@@ -1,0 +1,127 @@
+[
+  {
+    "algorithm": "LSBSteganographyDecoding",
+    "input": [
+      "list of integers (pixel values or data where message is hidden)"
+    ],
+    "output": [
+      "list of characters representing the decoded hidden message"
+    ],
+    "steps": [
+      {
+        "step": "Initialize the decoder with input data"
+      },
+      {
+        "step": "Process input data in 8-element blocks (1 byte)",
+        "substeps": [
+          {
+            "step": "Initialize counter and result list"
+          },
+          {
+            "step": "For each block (8 consecutive values in input):",
+            "substeps": [
+              {
+                "step": "Extract 8 values from input data"
+              },
+              {
+                "step": "Store the block in a list"
+              },
+              {
+                "step": "Handle end of input with exception catching"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "step": "Extract hidden bits from LSB of each value",
+        "substeps": [
+          {
+            "step": "For each block of 8 input values:",
+            "substeps": [
+              {
+                "step": "Apply _is_odd function to each value to extract LSB",
+                "substeps": [
+                  {
+                    "step": "Check if value is odd (modulo 2 ≠ 0)"
+                  },
+                  {
+                    "step": "Return '1' for odd values, '0' for even values"
+                  }
+                ]
+              },
+              {
+                "step": "Join the 8 bits into a binary string"
+              },
+              {
+                "step": "Convert binary string to integer"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "step": "Convert binary values to ASCII characters",
+        "substeps": [
+          {
+            "step": "For each binary value:",
+            "substeps": [
+              {
+                "step": "Convert binary value to decimal using base-2 interpretation"
+              },
+              {
+                "step": "Convert decimal value to ASCII character using chr() function"
+              },
+              {
+                "step": "Append character to decoded result list"
+              },
+              {
+                "step": "Print character as it's decoded (for debugging)"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "step": "Return complete decoded message as list of characters"
+      }
+    ]
+  },
+  {
+    "algorithm": "LSBSteganographyDecoderInterface",
+    "input": [
+      "filename containing integers where message is hidden"
+    ],
+    "output": [
+      "decoded hidden message printed to console"
+    ],
+    "steps": [
+      {
+        "step": "Read input file",
+        "substeps": [
+          {
+            "step": "Open specified file"
+          },
+          {
+            "step": "Read each line and split into integer values"
+          },
+          {
+            "step": "Convert string values to integers"
+          },
+          {
+            "step": "Store all integers in a list"
+          }
+        ]
+      },
+      {
+        "step": "Initialize LSB steganography decoder with input data"
+      },
+      {
+        "step": "Decode hidden message by calling decode method"
+      },
+      {
+        "step": "Print the decoded message"
+      }
+    ]
+  }
+]

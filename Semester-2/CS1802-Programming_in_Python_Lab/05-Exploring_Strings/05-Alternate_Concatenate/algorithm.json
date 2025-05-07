@@ -1,0 +1,77 @@
+[
+  {
+    "algorithm": "AlternateConcatenation",
+    "input": [
+      "str1 (first input string)",
+      "str2 (second input string of the same length as str1)"
+    ],
+    "output": [
+      "string created by alternating characters from str1 and str2"
+    ],
+    "steps": [
+      {
+        "step": "Verify both strings have the same length"
+      },
+      {
+        "step": "Generate the alternating character sequence",
+        "substeps": [
+          {
+            "step": "For each position $i$ from $0$ to $len(str1)-1$:"
+          },
+          {
+            "step": "Take character at position $i$ from $str1$"
+          },
+          {
+            "step": "Take character at position $i$ from $str2$"
+          },
+          {
+            "step": "Concatenate these two characters in order"
+          },
+          {
+            "step": "Add the concatenated pair to result list"
+          }
+        ]
+      },
+      {
+        "step": "Join all character pairs into a single string"
+      },
+      {
+        "step": "Return the alternately concatenated string"
+      }
+    ]
+  },
+  {
+    "algorithm": "AlternateConcatenationInterface",
+    "input": [
+      "two user-provided strings"
+    ],
+    "output": [
+      "alternately concatenated string or error message"
+    ],
+    "steps": [
+      {
+        "step": "Prompt user for first input string"
+      },
+      {
+        "step": "Prompt user for second input string"
+      },
+      {
+        "step": "Check if strings have equal length",
+        "substeps": [
+          {
+            "step": "If lengths do not match, display error message and terminate"
+          },
+          {
+            "step": "If lengths match, proceed with concatenation"
+          }
+        ]
+      },
+      {
+        "step": "Generate alternately concatenated string using AlternateConcatenation algorithm"
+      },
+      {
+        "step": "Display the resulting string"
+      }
+    ]
+  }
+]

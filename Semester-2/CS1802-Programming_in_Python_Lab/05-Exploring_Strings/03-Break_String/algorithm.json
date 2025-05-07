@@ -1,0 +1,69 @@
+[
+  {
+    "algorithm": "StringBreaker",
+    "input": [
+      "s (string to be broken into chunks)",
+      "k (integer specifying the length of each chunk)"
+    ],
+    "output": [
+      "list of strings, each of length k (except possibly the last one)"
+    ],
+    "steps": [
+      {
+        "step": "Initialize an empty list to store the string chunks"
+      },
+      {
+        "step": "Divide the string into chunks of specified length",
+        "substeps": [
+          {
+            "step": "For each starting position $i$ in range $(0, len(s), k)$:"
+          },
+          {
+            "step": "Extract substring $s[i:i+k]$ (characters from index $i$ up to but not including $i+k$)"
+          },
+          {
+            "step": "Append extracted substring to result list"
+          }
+        ]
+      },
+      {
+        "step": "Return the list of string chunks"
+      }
+    ]
+  },
+  {
+    "algorithm": "StringBreakerInterface",
+    "input": [
+      "input string to break",
+      "chunk size"
+    ],
+    "output": [
+      "chunks of the original string printed to standard output"
+    ],
+    "steps": [
+      {
+        "step": "Prompt user for an input string"
+      },
+      {
+        "step": "Prompt user for the desired length of each substring"
+      },
+      {
+        "step": "Convert substring length input to integer"
+      },
+      {
+        "step": "Break the input string into chunks using StringBreaker algorithm"
+      },
+      {
+        "step": "Display resulting chunks",
+        "substeps": [
+          {
+            "step": "For each substring in the result list:"
+          },
+          {
+            "step": "Print the substring"
+          }
+        ]
+      }
+    ]
+  }
+]

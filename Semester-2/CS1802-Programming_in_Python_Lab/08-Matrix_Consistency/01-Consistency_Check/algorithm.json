@@ -1,0 +1,174 @@
+[
+  {
+    "algorithm": "LinearSystemConsistencyAnalyzer",
+    "input": [
+      "filename (path to file containing sets of linear equations)"
+    ],
+    "output": [
+      "consistency analysis for each system of equations"
+    ],
+    "steps": [
+      {
+        "step": "Parse linear equation systems from input file",
+        "substeps": [
+          {
+            "step": "Open and read the specified file"
+          },
+          {
+            "step": "For each line in the file:",
+            "substeps": [
+              {
+                "step": "Initialize empty equation array"
+              },
+              {
+                "step": "Split line into tokens"
+              },
+              {
+                "step": "Process each token, skipping operators (+, -, =)"
+              },
+              {
+                "step": "Convert coefficients using _coeff helper method"
+              },
+              {
+                "step": "Apply negative sign if preceded by '-' operator"
+              },
+              {
+                "step": "Add equation to current equation set"
+              }
+            ]
+          },
+          {
+            "step": "Detect equation set boundaries using blank lines"
+          },
+          {
+            "step": "Store all equation sets in object's eqn attribute"
+          }
+        ]
+      },
+      {
+        "step": "Process coefficient notation",
+        "substeps": [
+          {
+            "step": "If token is alphabetic (variable), return coefficient 1"
+          },
+          {
+            "step": "If token is numeric, return integer value"
+          },
+          {
+            "step": "If token starts with negative sign, return negated value"
+          },
+          {
+            "step": "If token ends with alphabetic character, extract numeric prefix"
+          }
+        ]
+      },
+      {
+        "step": "Extract coefficient matrix and constant vector",
+        "substeps": [
+          {
+            "step": "Determine dimensions of system (n equations, m variables)"
+          },
+          {
+            "step": "Initialize coefficient matrix A with zeros"
+          },
+          {
+            "step": "Initialize constant vector B with zeros"
+          },
+          {
+            "step": "For each equation, populate A with coefficients"
+          },
+          {
+            "step": "For each equation, populate B with negated constants"
+          }
+        ]
+      },
+      {
+        "step": "Calculate matrix rank",
+        "substeps": [
+          {
+            "step": "Determine minimum dimension of matrix"
+          },
+          {
+            "step": "For each possible rank r from min dimension down to 1:",
+            "substeps": [
+              {
+                "step": "Generate all possible r×r submatrices"
+              },
+              {
+                "step": "Calculate determinant of each submatrix"
+              },
+              {
+                "step": "If any determinant is non-zero, return r as the rank"
+              }
+            ]
+          },
+          {
+            "step": "If no non-zero determinant found, return rank 0"
+          }
+        ]
+      },
+      {
+        "step": "Analyze system consistency using rank method",
+        "substeps": [
+          {
+            "step": "Extract matrices A and B from equation set"
+          },
+          {
+            "step": "Form augmented matrix [A|B]"
+          },
+          {
+            "step": "Calculate rank of coefficient matrix A"
+          },
+          {
+            "step": "Calculate rank of augmented matrix [A|B]"
+          },
+          {
+            "step": "Apply rank theorem to determine consistency:",
+            "substeps": [
+              {
+                "step": "If rank(A) = rank([A|B]) = number of variables: Unique solution"
+              },
+              {
+                "step": "If rank(A) = rank([A|B]) < number of variables: Infinitely many solutions"
+              },
+              {
+                "step": "If rank(A) < rank([A|B]): No solution (inconsistent system)"
+              },
+              {
+                "step": "Otherwise: Analysis inconclusive"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "algorithm": "MatrixConsistencyChecker",
+    "input": [
+      "input file containing linear equation systems"
+    ],
+    "output": [
+      "consistency analysis for each system of equations"
+    ],
+    "steps": [
+      {
+        "step": "Initialize Determinants object with input file"
+      },
+      {
+        "step": "For each equation set in the parsed data:",
+        "substeps": [
+          {
+            "step": "Display the equation set"
+          },
+          {
+            "step": "Call analyze_consistency method"
+          },
+          {
+            "step": "Display consistency analysis result"
+          }
+        ]
+      }
+    ]
+  }
+]

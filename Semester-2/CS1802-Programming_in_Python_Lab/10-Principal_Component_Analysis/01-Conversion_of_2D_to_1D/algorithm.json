@@ -1,0 +1,178 @@
+[
+  {
+    "algorithm": "PrincipalAxisTransformation",
+    "input": [
+      "data (set of 2D points)"
+    ],
+    "output": [
+      "transformed data points aligned with principal axis",
+      "rotation matrix"
+    ],
+    "steps": [
+      {
+        "step": "Parse input data into structured format",
+        "substeps": [
+          {
+            "step": "Extract x-coordinates from each point"
+          },
+          {
+            "step": "Extract y-coordinates from each point"
+          },
+          {
+            "step": "Stack coordinates into a single matrix"
+          }
+        ]
+      },
+      {
+        "step": "Calculate best-fit line for the data points",
+        "substeps": [
+          {
+            "step": "Use polynomial fitting (np.polyfit) to find linear relationship"
+          },
+          {
+            "step": "Extract slope ($m$) and y-intercept ($c$)"
+          }
+        ]
+      },
+      {
+        "step": "Determine rotation angle from best-fit line",
+        "substeps": [
+          {
+            "step": "Calculate angle $\\phi = \\arctan(m)$ where $m$ is the slope"
+          }
+        ]
+      },
+      {
+        "step": "Construct rotation matrix",
+        "substeps": [
+          {
+            "step": "Define $R = \\begin{bmatrix} \\cos(\\phi) & \\sin(\\phi) \\\\ -\\sin(\\phi) & \\cos(\\phi) \\end{bmatrix}$"
+          }
+        ]
+      },
+      {
+        "step": "Apply rotation transformation to data",
+        "substeps": [
+          {
+            "step": "Multiply data matrix by transposed rotation matrix: $data \\times R^T$"
+          }
+        ]
+      },
+      {
+        "step": "Return transformed data and rotation matrix"
+      }
+    ]
+  },
+  {
+    "algorithm": "DimensionalityReduction",
+    "input": [
+      "data (set of 2D points)"
+    ],
+    "output": [
+      "dimensionally reduced data (1D representation)",
+      "rotation matrix"
+    ],
+    "steps": [
+      {
+        "step": "Transform data to align with principal axis"
+      },
+      {
+        "step": "Reduce dimensionality",
+        "substeps": [
+          {
+            "step": "Set all y-coordinates (second dimension) to zero"
+          }
+        ]
+      },
+      {
+        "step": "Return reduced data and rotation matrix"
+      }
+    ]
+  },
+  {
+    "algorithm": "DataReconstruction",
+    "input": [
+      "reduced data (1D representation)",
+      "rotation matrix"
+    ],
+    "output": [
+      "reconstructed 2D approximation of original data",
+      "reconstruction error"
+    ],
+    "steps": [
+      {
+        "step": "Apply inverse transformation",
+        "substeps": [
+          {
+            "step": "Multiply reduced data by rotation matrix: $reducedData \\times R$"
+          }
+        ]
+      },
+      {
+        "step": "Calculate reconstruction error",
+        "substeps": [
+          {
+            "step": "Compute squared differences between original and reconstructed points"
+          },
+          {
+            "step": "Sum all squared differences to get total error"
+          }
+        ]
+      },
+      {
+        "step": "Return reconstructed data and error metric"
+      }
+    ]
+  },
+  {
+    "algorithm": "PCARootFindingDemoWorkflow",
+    "input": [
+      "filename containing 2D data points"
+    ],
+    "output": [
+      "visualization and analysis of PCA-based dimensionality reduction"
+    ],
+    "steps": [
+      {
+        "step": "Load data from file",
+        "substeps": [
+          {
+            "step": "Parse each line into a 2D point"
+          },
+          {
+            "step": "Filter out invalid entries"
+          }
+        ]
+      },
+      {
+        "step": "Initialize transformation object with data"
+      },
+      {
+        "step": "Generate transformed data with principal axis alignment"
+      },
+      {
+        "step": "Generate compact representation by reducing to 1D"
+      },
+      {
+        "step": "Reconstruct approximation of original data"
+      },
+      {
+        "step": "Calculate total reconstruction error"
+      },
+      {
+        "step": "Visualize results",
+        "substeps": [
+          {
+            "step": "Plot original data points with best-fit line"
+          },
+          {
+            "step": "Plot reconstructed data points with best-fit line"
+          },
+          {
+            "step": "Display comparison metrics (slope and intercept differences)"
+          }
+        ]
+      }
+    ]
+  }
+]

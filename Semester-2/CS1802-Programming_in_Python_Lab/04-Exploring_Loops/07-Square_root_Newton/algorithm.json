@@ -1,0 +1,63 @@
+[
+  {
+    "algorithm": "NewtonMethodSquareRoot",
+    "input": [
+      "num (positive number whose square root to calculate)",
+      "limit (error tolerance/precision parameter, default 0.00001)"
+    ],
+    "output": [
+      "floating-point approximation of the square root of num"
+    ],
+    "steps": [
+      {
+        "step": "Initialize working variable $tmpnum$ to the input value $num$"
+      },
+      {
+        "step": "Initialize $root$ to 1 (initial guess)"
+      },
+      {
+        "step": "Apply Newton's iteration method until convergence",
+        "substeps": [
+          {
+            "step": "Calculate improved approximation: $root = 0.5 \\times (tmpnum + \\frac{num}{tmpnum})$"
+          },
+          {
+            "step": "Check for convergence: if $|root - tmpnum| < limit$, terminate iterations"
+          },
+          {
+            "step": "Otherwise, update $tmpnum = root$ and repeat"
+          }
+        ]
+      },
+      {
+        "step": "Return the final approximation $root$"
+      }
+    ]
+  },
+  {
+    "algorithm": "SquareRootCalculatorInterface",
+    "input": [
+      "user input containing number and precision limit separated by space"
+    ],
+    "output": [
+      "formatted display of the original number and its square root"
+    ],
+    "steps": [
+      {
+        "step": "Prompt user for a number and precision limit separated by space"
+      },
+      {
+        "step": "Split input string at space character"
+      },
+      {
+        "step": "Convert split values to floating-point numbers"
+      },
+      {
+        "step": "Calculate square root by calling NewtonMethodSquareRoot algorithm"
+      },
+      {
+        "step": "Display formatted result showing the original number and its square root"
+      }
+    ]
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "algorithm": "SumOfDigits",
+    "input": [
+      "num (integer whose digits will be summed)"
+    ],
+    "output": [
+      "integer representing the sum of all digits in the input number"
+    ],
+    "steps": [
+      {
+        "step": "Initialize sum variable to 0"
+      },
+      {
+        "step": "Create a temporary copy of the input number"
+      },
+      {
+        "step": "Process each digit using modular arithmetic",
+        "substeps": [
+          {
+            "step": "While the temporary number is not 0:"
+          },
+          {
+            "step": "Extract the rightmost digit using modulo operation: $digit = tmpnum \\bmod 10$"
+          },
+          {
+            "step": "Add the extracted digit to the running sum"
+          },
+          {
+            "step": "Remove the rightmost digit using integer division: $tmpnum = \\lfloor tmpnum / 10 \\rfloor$"
+          }
+        ]
+      },
+      {
+        "step": "Return the final sum"
+      }
+    ]
+  },
+  {
+    "algorithm": "DigitSumInterface",
+    "input": [
+      "user input integer"
+    ],
+    "output": [
+      "formatted display of the original number and its digit sum"
+    ],
+    "steps": [
+      {
+        "step": "Prompt user for a number"
+      },
+      {
+        "step": "Convert input to integer"
+      },
+      {
+        "step": "Calculate digit sum by calling SumOfDigits algorithm"
+      },
+      {
+        "step": "Display formatted result showing the original number and the sum of its digits"
+      }
+    ]
+  }
+]

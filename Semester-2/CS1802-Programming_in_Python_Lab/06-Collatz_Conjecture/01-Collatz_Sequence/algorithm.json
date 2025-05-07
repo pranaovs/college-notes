@@ -1,0 +1,119 @@
+[
+  {
+    "algorithm": "CollatzSequence",
+    "input": [
+      "num (positive integer starting point)",
+      "show_steps (boolean flag to control step output, default=True)"
+    ],
+    "output": [
+      "steps (integer count of steps to reach 1)",
+      "max_value (maximum value encountered during sequence)",
+      "steps_list (list of all values in the sequence)"
+    ],
+    "steps": [
+      {
+        "step": "Initialize variables",
+        "substeps": [
+          {
+            "step": "Create a copy of the input number as working variable"
+          },
+          {
+            "step": "Initialize step counter to 0"
+          },
+          {
+            "step": "Initialize empty list to store sequence values"
+          },
+          {
+            "step": "Initialize maximum value tracker to 0"
+          }
+        ]
+      },
+      {
+        "step": "Generate Collatz sequence",
+        "substeps": [
+          {
+            "step": "While current number is not 1:",
+            "substeps": [
+              {
+                "step": "Increment step counter"
+              },
+              {
+                "step": "Apply Collatz transformation rules:",
+                "substeps": [
+                  {
+                    "step": "If number is even, divide by 2"
+                  },
+                  {
+                    "step": "If number is odd, multiply by 3 and add 1"
+                  }
+                ]
+              },
+              {
+                "step": "If show_steps is enabled, print the current step with calculation details"
+              },
+              {
+                "step": "Add new value to sequence list"
+              },
+              {
+                "step": "Update maximum value if current value is greater than previous maximum"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "step": "Return tuple containing:",
+        "substeps": [
+          {
+            "step": "Total number of steps taken"
+          },
+          {
+            "step": "Maximum value encountered in the sequence"
+          },
+          {
+            "step": "List of all values in the sequence"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "algorithm": "CollatzInterface",
+    "input": [
+      "command line argument specifying the starting number"
+    ],
+    "output": [
+      "formatted display of steps taken and maximum value reached"
+    ],
+    "steps": [
+      {
+        "step": "Validate command line arguments",
+        "substeps": [
+          {
+            "step": "Check if at least one argument is provided"
+          },
+          {
+            "step": "If no argument, display usage message and terminate"
+          }
+        ]
+      },
+      {
+        "step": "Extract starting number from command line argument"
+      },
+      {
+        "step": "Calculate Collatz sequence properties by calling CollatzSequence algorithm"
+      },
+      {
+        "step": "Display formatted results",
+        "substeps": [
+          {
+            "step": "Print number of steps taken to reach 1"
+          },
+          {
+            "step": "Print maximum value reached during sequence"
+          }
+        ]
+      }
+    ]
+  }
+]

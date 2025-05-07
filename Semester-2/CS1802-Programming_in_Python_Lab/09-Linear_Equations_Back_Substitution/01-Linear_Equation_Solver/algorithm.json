@@ -1,0 +1,153 @@
+[
+  {
+    "algorithm": "LinearEquationSolver",
+    "input": [
+      "filename (path to file containing systems of linear equations)"
+    ],
+    "output": [
+      "solutions for each system of linear equations"
+    ],
+    "steps": [
+      {
+        "step": "Parse multiple systems of linear equations from input file",
+        "substeps": [
+          {
+            "step": "Open and read the file line by line"
+          },
+          {
+            "step": "For each line, extract coefficients and constants",
+            "substeps": [
+              {
+                "step": "Skip operators (+, -, =)"
+              },
+              {
+                "step": "Apply sign based on preceding operator"
+              },
+              {
+                "step": "Convert token to numeric coefficient using _coeff helper"
+              },
+              {
+                "step": "Add equation to current equation set"
+              }
+            ]
+          },
+          {
+            "step": "Use blank lines to separate different equation systems"
+          },
+          {
+            "step": "Store all equation sets for later processing"
+          }
+        ]
+      },
+      {
+        "step": "Process coefficient notation with _coeff method",
+        "substeps": [
+          {
+            "step": "Handle pure alphabetic tokens (variables) as coefficient 1"
+          },
+          {
+            "step": "Handle numeric tokens as integer values"
+          },
+          {
+            "step": "Handle negative coefficients with leading minus sign"
+          },
+          {
+            "step": "Handle coefficient-variable combinations (e.g., 2x)"
+          }
+        ]
+      },
+      {
+        "step": "Extract coefficient matrix A and constant vector B",
+        "substeps": [
+          {
+            "step": "Determine dimensions (n_equations × n_variables)"
+          },
+          {
+            "step": "Initialize A as zero matrix of size n_equations × n_variables"
+          },
+          {
+            "step": "Initialize B as zero vector of size n_equations"
+          },
+          {
+            "step": "For each equation, populate A with coefficients and B with constants"
+          }
+        ]
+      },
+      {
+        "step": "Transform system to row echelon form using Gaussian elimination",
+        "substeps": [
+          {
+            "step": "Create copies of A and B to preserve original matrices"
+          },
+          {
+            "step": "For each potential pivot position i:",
+            "substeps": [
+              {
+                "step": "Find row with maximum absolute value in column i (partial pivoting)"
+              },
+              {
+                "step": "Swap current row with max row to improve numerical stability"
+              },
+              {
+                "step": "Skip column if pivot is approximately zero (singular matrix)"
+              },
+              {
+                "step": "For each row j below the pivot:",
+                "substeps": [
+                  {
+                    "step": "Calculate elimination factor = A[j,i] / A[i,i]"
+                  },
+                  {
+                    "step": "Subtract factor * pivot row from current row (both A and B)"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "step": "Solve the system using back substitution",
+        "substeps": [
+          {
+            "step": "Initialize solution vector x with zeros"
+          },
+          {
+            "step": "Process rows from bottom to top (m-1 down to 0)",
+            "substeps": [
+              {
+                "step": "Skip rows that are all zeros in coefficient matrix"
+              },
+              {
+                "step": "Find the first non-zero coefficient (pivot) in current row"
+              },
+              {
+                "step": "Check for inconsistent system (all zeros in row but non-zero constant)"
+              },
+              {
+                "step": "Calculate sum of already-determined variables multiplied by their coefficients"
+              },
+              {
+                "step": "Solve for current variable: x[pivot_col] = (B[i] - sum_term) / A[i,pivot_col]"
+              }
+            ]
+          },
+          {
+            "step": "Return solution as dictionary mapping variable names to values"
+          }
+        ]
+      },
+      {
+        "step": "Format and display results",
+        "substeps": [
+          {
+            "step": "For each equation set, print original equations in readable form"
+          },
+          {
+            "step": "Solve the system and display solution or diagnostic message"
+          }
+        ]
+      }
+    ]
+  }
+]

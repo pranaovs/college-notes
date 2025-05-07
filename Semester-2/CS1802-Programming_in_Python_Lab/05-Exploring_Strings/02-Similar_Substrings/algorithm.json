@@ -1,0 +1,84 @@
+[
+  {
+    "algorithm": "SimilarityCheck",
+    "input": [
+      "s1 (string to check for similarity property)"
+    ],
+    "output": [
+      "boolean value (true if first and last characters are the same, false otherwise)"
+    ],
+    "steps": [
+      {
+        "step": "Compare the first character of the string $s1[0]$ with the last character $s1[-1]$"
+      },
+      {
+        "step": "Return true if they are identical, false otherwise"
+      }
+    ]
+  },
+  {
+    "algorithm": "SubstringGenerator",
+    "input": [
+      "s (source string from which to generate substrings)"
+    ],
+    "output": [
+      "list containing all substrings of length 2 or greater"
+    ],
+    "steps": [
+      {
+        "step": "Use list comprehension to generate all possible substrings",
+        "substeps": [
+          {
+            "step": "For each starting position $i$ from $0$ to $len(s)-1$:"
+          },
+          {
+            "step": "For each ending position $j$ from $i+2$ to $len(s)$ (ensures minimum length of 2):"
+          },
+          {
+            "step": "Extract substring $s[i:j]$ (characters from index $i$ up to but not including $j$)"
+          },
+          {
+            "step": "Add extracted substring to result list"
+          }
+        ]
+      },
+      {
+        "step": "Return the complete list of substrings"
+      }
+    ]
+  },
+  {
+    "algorithm": "SimilarSubstringFinder",
+    "input": [
+      "input string to analyze for similar substrings"
+    ],
+    "output": [
+      "all substrings with identical first and last characters printed to standard output"
+    ],
+    "steps": [
+      {
+        "step": "Prompt user for an input string"
+      },
+      {
+        "step": "Generate all possible substrings using SubstringGenerator algorithm"
+      },
+      {
+        "step": "Display header message"
+      },
+      {
+        "step": "Filter and print similar substrings",
+        "substeps": [
+          {
+            "step": "For each substring in the generated list:"
+          },
+          {
+            "step": "Check if substring has identical first and last characters using SimilarityCheck algorithm"
+          },
+          {
+            "step": "If similar (first and last characters match), print the substring"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,189 @@
+[
+  {
+    "algorithm": "SpellCheckerInitialization",
+    "input": [
+      "filename (path to dictionary file)"
+    ],
+    "output": [
+      "initialized SpellChecker object with loaded wordlist"
+    ],
+    "steps": [
+      {
+        "step": "Open the specified dictionary file"
+      },
+      {
+        "step": "Read file contents"
+      },
+      {
+        "step": "Split file contents by newline to create wordlist"
+      },
+      {
+        "step": "Store wordlist in SpellChecker object"
+      }
+    ]
+  },
+  {
+    "algorithm": "SingleEditDistance",
+    "input": [
+      "word (string to generate variations for)"
+    ],
+    "output": [
+      "list of all words one edit distance away from input"
+    ],
+    "steps": [
+      {
+        "step": "Convert input word to lowercase"
+      },
+      {
+        "step": "Initialize empty result list"
+      },
+      {
+        "step": "Generate all possible insertions",
+        "substeps": [
+          {
+            "step": "For each position $i$ in the word (including start and end)"
+          },
+          {
+            "step": "For each letter $c$ in the alphabet"
+          },
+          {
+            "step": "Create new word by inserting $c$ at position $i$"
+          },
+          {
+            "step": "Add new word to result list"
+          }
+        ]
+      },
+      {
+        "step": "Generate all possible deletions",
+        "substeps": [
+          {
+            "step": "For each position $i$ in the word"
+          },
+          {
+            "step": "Create new word by removing character at position $i$"
+          },
+          {
+            "step": "Add new word to result list"
+          }
+        ]
+      },
+      {
+        "step": "Generate all possible substitutions",
+        "substeps": [
+          {
+            "step": "For each position $i$ in the word"
+          },
+          {
+            "step": "For each letter $c$ in the alphabet"
+          },
+          {
+            "step": "Create new word by replacing character at position $i$ with $c$"
+          },
+          {
+            "step": "Add new word to result list"
+          }
+        ]
+      },
+      {
+        "step": "Return the list of all generated words"
+      }
+    ]
+  },
+  {
+    "algorithm": "DoubleEditDistance",
+    "input": [
+      "word (string to generate variations for)"
+    ],
+    "output": [
+      "list of all unique words two edit distances away from input"
+    ],
+    "steps": [
+      {
+        "step": "Generate all words at one edit distance using SingleEditDistance"
+      },
+      {
+        "step": "Initialize empty result list for words at two edit distances"
+      },
+      {
+        "step": "For each word at one edit distance",
+        "substeps": [
+          {
+            "step": "Generate all words at one edit distance from current word"
+          },
+          {
+            "step": "Add these new words to the two-edit distance result list"
+          }
+        ]
+      },
+      {
+        "step": "Remove duplicates from the two-edit distance list"
+      },
+      {
+        "step": "Return the deduplicated list"
+      }
+    ]
+  },
+  {
+    "algorithm": "KnownWords",
+    "input": [
+      "word_list (list of candidate words)",
+      "dictionary (list of known valid words)"
+    ],
+    "output": [
+      "set of words from input list that exist in dictionary"
+    ],
+    "steps": [
+      {
+        "step": "Initialize empty result set"
+      },
+      {
+        "step": "For each word in the input word list",
+        "substeps": [
+          {
+            "step": "Check if word exists in dictionary"
+          },
+          {
+            "step": "If word exists, add to result set"
+          }
+        ]
+      },
+      {
+        "step": "Return the set of known words"
+      }
+    ]
+  },
+  {
+    "algorithm": "SpellCorrection",
+    "input": [
+      "word (potentially misspelled word)",
+      "dictionary (list of known valid words)"
+    ],
+    "output": [
+      "set of candidate corrections for the input word"
+    ],
+    "steps": [
+      {
+        "step": "Check if the word itself is in the dictionary"
+      },
+      {
+        "step": "If found, return the word as a singleton set"
+      },
+      {
+        "step": "If not found, check for known words at one edit distance"
+      },
+      {
+        "step": "If found, return the set of known words at one edit distance"
+      },
+      {
+        "step": "If not found, check for known words at two edit distances"
+      },
+      {
+        "step": "If found, return the set of known words at two edit distances"
+      },
+      {
+        "step": "If still not found, return the original word as a singleton set"
+      }
+    ]
+  }
+]

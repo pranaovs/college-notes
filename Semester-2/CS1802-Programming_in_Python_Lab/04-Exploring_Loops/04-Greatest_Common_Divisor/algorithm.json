@@ -1,0 +1,63 @@
+[
+  {
+    "algorithm": "GreatestCommonDivisor",
+    "input": [
+      "m (first positive integer)",
+      "n (second positive integer)"
+    ],
+    "output": [
+      "integer representing the greatest common divisor of m and n"
+    ],
+    "steps": [
+      {
+        "step": "Initialize result value to 1"
+      },
+      {
+        "step": "Find the smaller of the two input numbers"
+      },
+      {
+        "step": "Iterate through possible divisors",
+        "substeps": [
+          {
+            "step": "For each integer $i$ from 2 to $\\min(m, n)$ (inclusive):"
+          },
+          {
+            "step": "Check if $i$ divides both $m$ and $n$ (i.e., $m \\bmod i = 0$ and $n \\bmod i = 0$)"
+          },
+          {
+            "step": "If $i$ is a common divisor, update result to $i$"
+          }
+        ]
+      },
+      {
+        "step": "Return the largest common divisor found"
+      }
+    ]
+  },
+  {
+    "algorithm": "GCDInterface",
+    "input": [
+      "user input containing two space-separated integers"
+    ],
+    "output": [
+      "formatted display of the GCD result"
+    ],
+    "steps": [
+      {
+        "step": "Prompt user for two numbers separated by a space"
+      },
+      {
+        "step": "Split input string at space character"
+      },
+      {
+        "step": "Convert split values to integers m and n"
+      },
+      {
+        "step": "Calculate GCD by calling GreatestCommonDivisor algorithm with m and n"
+      },
+      {
+        "step": "Display formatted result showing the two numbers and their GCD"
+      }
+    ]
+  }
+]

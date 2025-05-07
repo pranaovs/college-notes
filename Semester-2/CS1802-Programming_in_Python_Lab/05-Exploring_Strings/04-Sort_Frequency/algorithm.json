@@ -1,0 +1,47 @@
+[
+  {
+    "algorithm": "SortByCharacterFrequency",
+    "input": [
+      "string (text to be sorted by character frequency)"
+    ],
+    "output": [
+      "string with characters sorted by frequency (most frequent first) with duplicates removed"
+    ],
+    "steps": [
+      {
+        "step": "Accept input string from user"
+      },
+      {
+        "step": "Sort characters by frequency",
+        "substeps": [
+          {
+            "step": "Use $sorted()$ function with a custom key function"
+          },
+          {
+            "step": "Set the key function to $inp\\_str.count$ to count occurrences of each character"
+          },
+          {
+            "step": "Set $reverse=True$ to sort in descending order (highest frequency first)"
+          }
+        ]
+      },
+      {
+        "step": "Remove duplicate characters while preserving order",
+        "substeps": [
+          {
+            "step": "Convert the sorted list to a dictionary with $dict.fromkeys()$"
+          },
+          {
+            "step": "Convert back to a list to maintain the ordering"
+          }
+        ]
+      },
+      {
+        "step": "Join the characters back into a single string"
+      },
+      {
+        "step": "Display the resulting frequency-sorted, deduplicated string"
+      }
+    ]
+  }
+]
