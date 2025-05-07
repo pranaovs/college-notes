@@ -1,1 +1,1 @@
-../01-Collatz_Sequence/collatz.py
+../01-Collatz_Sequence/main.py

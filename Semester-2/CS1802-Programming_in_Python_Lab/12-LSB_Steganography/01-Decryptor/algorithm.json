@@ -43,7 +43,7 @@
                 "step": "Apply _is_odd function to each value to extract LSB",
                 "substeps": [
                   {
-                    "step": "Check if value is odd (modulo 2 ≠ 0)"
+                    "step": "Check if value is odd (modulo 2 $\ne$ 0)"
                   },
                   {
                     "step": "Return '1' for odd values, '0' for even values"
