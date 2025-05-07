@@ -1,1 +1,1 @@
-Demonstrate map and fiuse it to flatten a list and perform various number filtering
+Demonstrate map and use it to flatten a list and perform various number filtering
