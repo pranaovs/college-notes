@@ -238,7 +238,7 @@ main() {
       write "### Code"
 
       if [[ -f "$question/.files-to-prompt" ]]; then
-        write "$(files-to-prompt "$question" --markdown --ignore-gitignore --ignore "${EXCLUDED_PATTERNS[@]//--exclude/--ignore}" | sed "s|$question||g")"
+        write "$(files-to-prompt "$question" --markdown --ignore-gitignore "${excl_patterns[@]//--exclude/--ignore}" | sed "s|$question||g")"
         write
 
       else
