@@ -1,3 +1,3 @@
 MAIN_CODE_FILENAME = main.py
-CODE_EXTENSIONS = py
-EXCLUDED_FOLDERS = __pycache__
+CODE_EXTENSIONS = py txt
+EXCLUDED_PATTERNS = __pycache__ words.txt
