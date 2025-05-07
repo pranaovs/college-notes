@@ -7,9 +7,7 @@ PDF_FILE = record.pdf
 DOCX_FILE = record.docx
 ODT_FILE = record.odt
 INTERMEDIATE_FORMAT ?= MARKDOWN
-
-# Code filenames
-include config.mk
+MAKE_CONFIG = config.mk
 
 # Configuration and Tools
 TEMPLATE_FILE = template.tex
@@ -21,12 +19,14 @@ PANDOC_HEADER_INCLUDE = header.tex
 PDF_VIEWER = zathura
 LIBREOFFICE_TOOL = libreoffice
 
+# Code filenames
+include $(MAKE_CONFIG)
+
 # === Targets ===
 all: $(PDF_FILE)
 
 # Main PDF generation rule that selects the appropriate method
-$(PDF_FILE): $($(INTERMEDIATE_FORMAT:=_FILE))
-	@echo "--- Generating PDF file: $(PDF_FILE) ---"
+$(PDF_FILE): $($(INTERMEDIATE_FORMAT:=_FILE)) $(MAKE_CONFIG)
 	@if [ "$(INTERMEDIATE_FORMAT)" = "MARKDOWN" ]; then \
 		echo "Using pandoc for conversion from $(INTERMEDIATE_FORMAT)"; \
 		pandoc \
@@ -72,9 +72,9 @@ $(ODT_FILE): $(MARKDOWN_FILE)
 		--to=odt \
 		$(MARKDOWN_FILE)
 
-$(MARKDOWN_FILE): $(GENERATION_SCRIPT)
+$(MARKDOWN_FILE): $(GENERATION_SCRIPT) $(MAKE_CONFIG)
 	@echo "--- Generating Markdown file $(MARKDOWN_FILE) using files from $(FILES) ---"
-	MAIN_CODE_FILENAME="$(MAIN_CODE_FILENAME)" CODE_EXTENSIONS="$(CODE_EXTENSIONS)" EXCLUDED_FOLDERS="$(EXCLUDED_FOLDERS)" $(GENERATION_SCRIPT) $(MARKDOWN_FILE) $(FILES)
+	MAIN_CODE_FILENAME="$(MAIN_CODE_FILENAME)" CODE_EXTENSIONS="$(CODE_EXTENSIONS)" EXCLUDED_PATTERNS="$(EXCLUDED_PATTERNS)" $(GENERATION_SCRIPT) $(MARKDOWN_FILE) $(FILES)
 
 # Explicitly run the PDF generation step.
 pdf: $(PDF_FILE)
