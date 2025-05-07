@@ -205,14 +205,11 @@ main() {
       )
 
       echo "Question $(basename "$question")"
-      local missing_question
+      local missing_question=1
 
       if [[ -f "$question/$AIM_FILENAME" ]]; then
-        write_file "__$question/${AIM_FILENAME}__"
-        write
+        write "__$(cat "$question/$AIM_FILENAME")__"
         missing_question=0
-      else
-        missing_question=1
       fi
 
       if [[ -f "$question/$QUESTION_FILENAME" ]]; then
@@ -220,8 +217,6 @@ main() {
         write_file "$question/$QUESTION_FILENAME"
         write
         missing_question=0
-      else
-        missing_question=1
       fi
 
       if [[ $missing_question -eq 1 ]]; then
