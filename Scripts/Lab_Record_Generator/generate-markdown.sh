@@ -51,7 +51,7 @@ check_requirements() {
   if [[ -z $EXCLUDED_PATTERNS ]]; then
     EXCLUDED_PATTERNS=()
   else
-    EXCLUDED_PATTERNS=($EXCLUDED_PATTERNS) # Convert string to array
+    readarray -t EXCLUDED_PATTERNS <<<"${EXCLUDED_PATTERNS}" #$EXCLUDED_PATTERNS is a string, so we need to convert it to an array
   fi
 
   excl_patterns=()
@@ -62,7 +62,7 @@ check_requirements() {
   if [[ -z $CODE_EXTENSIONS ]]; then
     CODE_EXTENSIONS=()
   else
-    CODE_EXTENSIONS=($CODE_EXTENSIONS) # Convert string to array
+    readarray -t CODE_EXTENSIONS <<<"${CODE_EXTENSIONS}" #$CODE_EXTENSIONS is a string, so we need to convert it to an array
   fi
 
   code_exts=()
