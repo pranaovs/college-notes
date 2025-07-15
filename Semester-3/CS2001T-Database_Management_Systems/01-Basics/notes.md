@@ -81,4 +81,79 @@ For example, changing the storage device or file organization does not affect th
    * Examples: SELECT, INSERT, UPDATE, DELETE statements.
 
 When there is no strict definition between conceptual schema and internal schema, the DDL is used to define both.
-If there is clear separation, DDL is used for the conceptual schema and a __Structure Definition Language (SDL)__ (like SQL) is used for the internal schema.
+
+## Entity Relationship Diagram
+
+1. Strong Entity
+2. Weak Entity
+
+### Entity
+
+A property of an entity that describes it.
+
+Denoted by a Rectangle in ERD.
+
+### Weak Entity
+
+A property which is related to an entity but is not related to the database without the entity.
+
+Denoted by a Double Rectangle in ERD.
+
+### Attribute
+
+An attribute is a property of an entity or a weak entity.
+
+It is denoted by an Oval in ERD.
+
+#### Key Attribute
+
+A key attribute is an attribute that uniquely identifies an entity or a weak entity.
+
+It is denoted by a Double Oval in ERD.
+
+#### Multi-valued Attribute
+
+A multi-valued attribute is an attribute that can have multiple values for a single entity or weak entity.
+It is an attribute that can have more than one value.
+
+It is denoted by a Double Oval in ERD.
+
+#### Composite Attribute
+
+A composite attribute is an attribute that can be divided into smaller sub-attributes.
+It is an attribute that can be broken down into smaller parts.
+
+It is denoted by an Oval with a dashed line in ERD.
+
+#### Derived Attribute
+
+A derived attribute is an attribute that can be derived from other attributes.
+It can be calculated from other attributes or entities.
+
+It is denoted by a Dashed Oval in ERD.
+
+#### Complex Attribute
+
+A complex attribute is an attribute that can have multiple values and can be divided into smaller sub-attributes.
+It is an attribute that can have more than one value and can be broken down into smaller parts.
+
+It does not have a specific notation in ERD, but it can be represented using a combination of the above notations.
+Usually, it is represented separately in the ERD.
+
+### Relationship
+
+It is a connection between two or more entities.
+The relationship can be one-to-one, one-to-many, or many-to-many.
+There can also be self-relationships.
+
+It is denoted by a Diamond in ERD.
+
+### Identifying Relationship
+
+A relationship that connects a weak entity to its owner entity.
+
+It is denoted by a Double Diamond in ERD.
+
+### Entity Set
+
+An entity set represents all instances of a specific entity type in the database.
