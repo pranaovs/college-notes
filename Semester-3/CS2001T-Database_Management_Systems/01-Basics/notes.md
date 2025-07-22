@@ -148,6 +148,30 @@ There can also be self-relationships.
 
 It is denoted by a Diamond in ERD.
 
+#### 1-n relationship
+
+One to many (1:n) relationship indicates that one entity can be associated with many instances of the related entity.
+For example, a department can have many employees, but each employee belongs to only one department.
+
+#### n-1 relationship
+
+Many to one (n:1) relationship indicates that many entities can be associated with one instance of another entity.
+This is the inverse of a one-to-many relationship.
+
+#### n-m relationship
+
+Many to many (n:m) relationship indicates that many entities can be associated with many instances of another entity.
+For example, students can enroll in multiple courses, and courses can have multiple students.
+
+#### 1-1 relationship
+
+One to one (1:1) relationship indicates that one entity is associated with exactly one instance of another entity.
+For example, one person has one passport, and one passport belongs to one person.
+
+#### min-max notation
+
+_(min,max)_ notation can be used to denote structural constraints.
+
 ### Identifying Relationship
 
 A relationship that connects a weak entity to its owner entity.
@@ -157,3 +181,8 @@ It is denoted by a Double Diamond in ERD.
 ### Entity Set
 
 An entity set represents all instances of a specific entity type in the database.
+
+### Enhanced Entity-Relationship Model (EER)
+
+It is used to represent more complex relationships and constraints in the database.
+It can include additional features such as specialization, generalization, and aggregation.
