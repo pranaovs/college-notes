@@ -1,0 +1,13 @@
+Develop a Java application to generate an electricity bill. Create a class with the following members: Consumer number, consumer name, previous month reading, current month reading, and type of EB connection (i.e., domestic or commercial). Compute the bill amount using the following tariff.
+
+If the type of the EB connection is domestic, calculate the amount to be paid as follows:
+For the first 100 units, the rate is Rs. 1 per unit.
+For 101 to 200 units, the rate is Rs. 2.50 per unit.
+For 201 to 500 units, the rate is Rs. 4 per unit.
+For units above 500, the rate is Rs. 6 per unit.
+
+If the type of the EB connection is commercial, calculate the amount to be paid as follows:
+For the first 100 units, the rate is Rs. 2 per unit.
+For 101 to 200 units, the rate is Rs. 4.50 per unit.
+For 201 to 500 units, the rate is Rs. 6 per unit.
+For units above 500, the rate is Rs. 7 per unit.
