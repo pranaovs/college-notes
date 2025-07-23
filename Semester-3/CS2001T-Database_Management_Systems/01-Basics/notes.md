@@ -186,3 +186,17 @@ An entity set represents all instances of a specific entity type in the database
 
 It is used to represent more complex relationships and constraints in the database.
 It can include additional features such as specialization, generalization, and aggregation.
+
+## Data Abstractions
+
+### Types of Data Abstractions
+
+* Classifications and Instantiation
+* Aggregation (whole-part relationship) and Association
+* Generalization and Specialization
+* Identification
+
+### Constraints
+
+* Cardinality (Min-max)
+* Coverage (Total/Partial and Exclusive (Disjoint)/Non-exclusive (Overlapping))
