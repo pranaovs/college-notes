@@ -39,7 +39,7 @@ check_requirements() {
   local IFS=" "
 
   if [[ -z "$parent_directory" || -z "$output_file" ]]; then
-    echo "Usage: $0 <parent_directory> <output_file>" >&2
+    echo "Usage: $0 <output_file> <parent_directory>" >&2
     exit 1
   fi
 
