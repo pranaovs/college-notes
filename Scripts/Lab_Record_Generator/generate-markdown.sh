@@ -26,28 +26,57 @@ ALGORITHM_FILENAME="algorithm.json"
 AIM_FILENAME="aim.txt"
 OUTPUT_FILENAME="output.txt"
 
-output_file="$1"
-parent_directory="$2"
-
 # Required tools
-REQUIRED_TOOLS=("jq" "fd" "sed" "tr" "basename" "dirname")
+REQUIRED_TOOLS=("jq" "fd" "sed" "tr" "basename" "dirname" "printf" "echo" "getopts")
 
 IFS=$'\n'
 
+info() {
+  echo "INFO: $1" >&2
+}
+
+warn() {
+  echo "WARNING: $1" >&2
+}
+
+# Kills the script with an error message
+# Usage: die "error message"
+die() {
+  echo "ERROR: $1" >&2
+  exit 1
+}
+
+# Check if requirements are fulfilled for running the main function
+# Should run before invocation of main
+# Checks variables required for the script
 check_requirements() {
 
   local IFS=" "
 
-  if [[ -z "$parent_directory" || -z "$output_file" ]]; then
-    echo "Usage: $0 <output_file> <parent_directory>" >&2
-    exit 1
-  fi
-
   if [[ -z $MAIN_CODE_FILENAME ]]; then
-    echo "ERROR: MAIN_CODE_FILENAME is not set. Please set it before running the script." >&2
-    exit 1
+    die "ERROR: MAIN_CODE_FILENAME is not set. Please set it before running the script."
   fi
 
+  local missing_tools=()
+  for tool in "${REQUIRED_TOOLS[@]}"; do
+    if ! command -v "$tool" &>/dev/null; then
+      missing_tools+=("$tool")
+    fi
+  done
+
+  if [ ${#missing_tools[@]} -ne 0 ]; then
+    warn "Required tools not found: ${missing_tools[*]}"
+    warn "Install the missing tools and try again."
+    if [[ " ${missing_tools[*]} " == *" fd "* ]]; then
+      warn "fd installation steps: https://github.com/sharkdp/fd#installation"
+    fi
+    die
+  fi
+}
+
+# Parses/converts variables required for the script
+# Should run before invocation of main
+prerequisites() {
   if [[ -z $EXCLUDED_PATTERNS ]]; then
     EXCLUDED_PATTERNS=()
   else
@@ -70,51 +99,50 @@ check_requirements() {
     code_exts+=("--extension" "$ext")
   done
 
-  local missing_tools=()
-  for tool in "${REQUIRED_TOOLS[@]}"; do
-    if ! command -v "$tool" &>/dev/null; then
-      missing_tools+=("$tool")
-    fi
-  done
-
-  if [ ${#missing_tools[@]} -ne 0 ]; then
-    echo "ERROR: Required tools not found: ${missing_tools[*]}"
-    echo "Install the missing tools and try again."
-    if [[ " ${missing_tools[*]} " == *" fd "* ]]; then
-      echo "fd installation steps: https://github.com/sharkdp/fd#installation"
-    fi
-    exit 1
-  fi
 }
 
-if [[ -f "$output_file" ]]; then
-  echo "$output_file file exists. Terminating"
-  exit 1
-fi
-
+# Remove directory path, leading digits/hyphen, and replace underscores with spaces
+# To make a friendly title from directory name
+# Usage:
+#   $1: string to format
 format_name() {
-  # Remove directory path, leading digits/hyphen, and replace underscores
   # name=$(echo "$1" | sed "s/^[\.\/]*[0-9]*-//" | sed "s/_/ /g" | sed 's/\/$//')
   name=$(basename "$1" | sed 's/^[0-9]*-//; s/_/ /g; s/\/$//')
   echo "$name"
 }
 
-write() {
-  if [[ "$#" -gt 0 ]]; then
-    echo "$1" >>"$output_file"
-  fi
-  if [[ "$2" != "nonl" ]]; then
-    echo >>"$output_file"
-  fi
+# Generates a string of '#' characters based on the nesting level
+# Usage:
+#   $1: nesting level (1 for h1 (#), 2 for h2 (##), etc.)
+heading() {
+  local level="$1"
+  printf '#%.0s' $(seq 1 "$level")
 }
 
-write_file() {
-  tr -d '\r' <"$1" >>"$output_file"
-}
+# # Helper function to write given string to the file $output_file
+# # Usage:
+# #   $1: string to write to the file
+# #   $2: passing "nonl" would not append the file with a newline (no newline)
+# write() {
+#   if [[ "$#" -gt 0 ]]; then
+#     echo "$1" >>"$output_file"
+#   fi
+#   if [[ "$2" != "nonl" ]]; then
+#     echo >>"$output_file"
+#   fi
+# }
+#
+# write_file() {
+#   tr -d '\r' <"$1" >>"$output_file"
+# }
 
+# Parses the $ALGORITHM_FILENAME and converts it to markdown-based list style
+# Only parses the "steps" key
+# Usage:
+#   $1: "steps" key value
+#   $2: Indentation string. String to use for global indentation.
+#   Used for recursive call for substeps
 # From Gemini 2.5 Pro
-# Arg1: json data
-# Arg2: Indentation string
 process_steps() {
   local json_data="$1"
   local indent="${2:-}"
@@ -138,7 +166,7 @@ process_steps() {
     substeps_json=$(jq -c '.substeps // empty' <<<"$item")
 
     # Print the current item with proper indentation and numbering.
-    write "$(printf "%s%d. %s\n" "$indent" "$i" "$step_text")" "nonl"
+    printf -- "%s%d. %s\n" "$indent" "$i" "$step_text"
 
     # Check if 'substeps' exists and is not an empty array '[]'.
     # -n checks if the substeps_json string is non-empty.
@@ -155,119 +183,197 @@ process_steps() {
 }
 
 # Parse the algorithm section
+# Usage:
+#   $1: algorithm string
+#   $2: staring markdown heading nesting count
 parse_algorithm() {
-  local file="$1"
+  local algorithm_json="$1"
+  local heading_nesting="$2"
 
   algorithm_count=0
-  for algorithm in $(jq -c '.[]' "$file"); do
+  for algorithm in $(echo "$algorithm_json" | jq -c '.[]'); do
     algorithm_count=$((algorithm_count + 1))
 
-    # Name of the algorithm
-    write "#### Algorithm $algorithm_count - $(echo "$algorithm" | jq -r '.algorithm') {.unnumbered}"
+    # Algorithm name
+    printf -- "%s Algorithm %s - %s {.unnumbered}\n\n" "$(heading "$(("$heading_nesting"))")" "$algorithm_count" "$(echo "$algorithm" | jq -r '.algorithm')"
 
-    write "##### Input {.unnumbered}"
+    # Inputs
+    printf -- "%s Input {.unnumbered}\n\n" "$(heading "$(("$heading_nesting" + 1))")"
     local input_count=0
     for input in $(echo "$algorithm" | jq -r -c '.input[]'); do
       input_count=$((input_count + 1))
-      write "$input_count. $input" "nonl"
+      printf -- "%s. %s\n" "$input_count" "$input"
     done
-    write
+    printf -- "\n"
 
-    write "##### Output {.unnumbered}"
+    # Outputs
+    printf -- "%s Output {.unnumbered}\n\n" "$(heading "$(("$heading_nesting" + 1))")"
     for output in $(echo "$algorithm" | jq -r -c '.output[]'); do
-      write "- $output" "nonl"
+      printf -- "- %s\n" "$output"
     done
-    write
+    printf -- "\n"
 
-    write "##### Steps {.unnumbered}"
+    # Steps
+    printf -- "%s Steps {.unnumbered}\n\n" "$(heading "$(("$heading_nesting" + 1))")"
     process_steps "$(echo "$algorithm" | jq -r -c '.steps')"
-    write
+    printf -- "\n"
   done
+}
+
+# Question week directory processing function
+# Usage:
+#   $1: Parent question week directory path (containing questions)
+#   $2: Heading nesting level
+# Each question will be passed to process_question function
+process_week() {
+  local week="$1"
+  local heading_nesting="$2"
+
+  info "Processing $(basename "$week")"
+
+  printf -- "%s %s\n\n" "$(heading $((heading_nesting)))" "$(format_name "$week")"
+
+  # Date
+  if [[ -f "$week/$DATE_FILENAME" ]]; then
+    printf -- "__Date: %s__\n\n" "$(cat "$week/$DATE_FILENAME")"
+  else
+    warn "Date file $DATE_FILENAME not found in $week"
+  fi
+
+  for question in $(fd . "$week" -t d --max-depth=1 --exclude=Common "${excl_patterns[@]}"); do
+    process_question "$question" "$((heading_nesting + 1))"
+
+    printf -- "\\pagebreak\n\n"
+  done
+}
+
+process_question() {
+  local question="$1"
+  local heading_nesting="$2"
+
+  printf -- "%s %s\n\n" "$(heading $((heading_nesting)))" "$(format_name "$question")"
+
+  info "Question $(basename "$question")"
+  local missing_question=1
+
+  if [[ -f "$question/$AIM_FILENAME" ]]; then
+    printf -- "__%s__\n\n" "$(cat "$question/$AIM_FILENAME")"
+    missing_question=0
+  fi
+
+  # Question text
+  if [[ -f "$question/$QUESTION_FILENAME" ]]; then
+    printf -- "%s %s\n\n" "$(heading $((heading_nesting + 1)))" "Question"
+    cat "$question/$QUESTION_FILENAME"
+    printf -- "\n"
+    missing_question=0
+  fi
+
+  if [[ $missing_question -eq 1 ]]; then
+    warn "Question file $QUESTION_FILENAME or Aim file $AIM_FILENAME not found in $question"
+  fi
+
+  # Algorithm
+  if [[ -f "$question/$ALGORITHM_FILENAME" ]]; then
+    printf -- "%s %s\n\n" "$(heading $((heading_nesting + 1)))" "Algorithm"
+    parse_algorithm "$(cat "$question/$ALGORITHM_FILENAME")" "$((heading_nesting + 2))"
+  else
+    warn "Algorithm file $ALGORITHM_FILENAME not found in $question"
+  fi
+
+  # Code
+  printf -- "%s %s\n\n" "$(heading $((heading_nesting + 1)))" "Code"
+
+  # Use files-to-prompt tool if .files-to-prompt file is present in a question directory
+  if [[ -f "$question/.files-to-prompt" ]]; then
+    files-to-prompt "$question" --markdown --ignore-gitignore "${excl_patterns[@]//--exclude/--ignore}" | sed "s|$question||g"
+    printf -- "\n"
+
+  else
+    printf -- "__%s__\n\n" "${MAIN_CODE_FILENAME}"
+    printf -- "\`\`\`%s\n" "${MAIN_CODE_FILENAME##*.}"
+    cat "$question/$MAIN_CODE_FILENAME"
+    printf -- "\n"
+    printf '```\n'
+
+    # Extra dependent codes. Defined by $CODE_EXTENSIONS environment variable
+    if [ ! ${#code_exts[@]} -eq 0 ]; then
+      for extra_code in $(fd . "$question" "${code_exts[@]}" --max-depth=1 --exclude="$MAIN_CODE_FILENAME" "${excl_patterns[@]}"); do
+        echo "${excl_patterns[@]}"
+        printf -- "__%s__\n\n" "$(basename "$extra_code")"
+        printf -- "\`\`\`%s\n" "${extra_code##*.}"
+        cat "$extra_code"
+        printf -- "\n\`\`\`\n"
+      done
+    fi
+  fi
+
+  # Output
+  if [[ -f "$question/$OUTPUT_FILENAME" ]]; then
+    printf -- "%s %s\n\n" "$(heading $((heading_nesting + 1)))" "Execution"
+    printf -- "\`\`\`sh\n"
+    cat "$question/$OUTPUT_FILENAME"
+    printf -- "\`\`\`\n"
+  else
+    warn "Output file $OUTPUT_FILENAME not found in $question"
+  fi
+
+  printf -- "\n"
 }
 
 main() {
 
-  for week in $(fd . "$parent_directory" -t d --exclude=Common --exclude="$(basename "$(realpath "$(dirname "$0")")")" --max-depth=1 "${excl_patterns[@]}"); do
-    (
-      write "# $(format_name "$week")"
-    )
-    echo "Processing $(basename "$week")"
+  heading_nesting=1
 
-    if [[ -f "$week/$DATE_FILENAME" ]]; then
-      write "__Date: $(cat "$week/$DATE_FILENAME")__"
-    else
-      echo "WARNING: Date file $DATE_FILENAME not found in $week" >&2
-    fi
+  if [ -n "$dir_flag" ] && [ -d "$dir_flag" ]; then
+    parent_directory="$dir_flag"
 
-    for question in $(fd . "$week" -t d --max-depth=1 --exclude=Common "${excl_patterns[@]}"); do
-      (
-        write "## $(format_name "$question")"
-      )
-
-      echo "Question $(basename "$question")"
-      local missing_question=1
-
-      if [[ -f "$question/$AIM_FILENAME" ]]; then
-        write "__$(cat "$question/$AIM_FILENAME")__"
-        missing_question=0
-      fi
-
-      if [[ -f "$question/$QUESTION_FILENAME" ]]; then
-        write "### Question"
-        write_file "$question/$QUESTION_FILENAME"
-        write
-        missing_question=0
-      fi
-
-      if [[ $missing_question -eq 1 ]]; then
-        echo "WARNING: Question file $QUESTION_FILENAME or Aim file $AIM_FILENAME not found in $question" >&2
-      fi
-
-      if [[ -f "$question/$ALGORITHM_FILENAME" ]]; then
-        write "### Algorithm"
-        parse_algorithm "$question/$ALGORITHM_FILENAME"
-      else
-        echo "WARNING: Algorithm file $ALGORITHM_FILENAME not found in $question" >&2
-      fi
-
-      write "### Code"
-
-      if [[ -f "$question/.files-to-prompt" ]]; then
-        write "$(files-to-prompt "$question" --markdown --ignore-gitignore "${excl_patterns[@]//--exclude/--ignore}" | sed "s|$question||g")"
-        write
-
-      else
-        write "__${MAIN_CODE_FILENAME}__"
-        write "\`\`\`${MAIN_CODE_FILENAME##*.}"
-        write_file "$question/$MAIN_CODE_FILENAME"
-        write
-        write '```'
-
-        for extra_code in $(fd . "$question" "${code_exts[@]}" --max-depth=1 --exclude="$MAIN_CODE_FILENAME" "${excl_patterns[@]}"); do
-          write "__$(basename "$extra_code")__"
-          write "\`\`\`${extra_code##*.}"
-          write_file "$extra_code"
-          write
-          write '```'
-        done
-
-      fi
-
-      if [[ -f "$question/$OUTPUT_FILENAME" ]]; then
-        write "### Execution"
-        write '```sh'
-        write_file "$question/$OUTPUT_FILENAME"
-        write
-        write '```'
-      else
-        echo "WARNING: Output file $OUTPUT_FILENAME not found in $question" >&2
-      fi
-
+    for week in $(fd . "$parent_directory" -t d --exclude=Common --exclude="$(basename "$(realpath "$(dirname "$0")")")" --max-depth=1 "${excl_patterns[@]}"); do
+      process_week "$week" "$((heading_nesting))"
     done
-    write "\\pagebreak"
-  done
-
+  else
+    for week in "${dirs[@]}"; do
+      if [ -d "$week" ]; then
+        process_week "$week" "$((heading_nesting))"
+      else
+        warn "Invalid directory: $week"
+      fi
+    done
+  fi
 }
 
 check_requirements
+
+# Parse command line options
+dir_flag=""
+dirs=()
+
+# Parse options
+while getopts ":d:" opt; do
+  case "$opt" in
+  d)
+    dir_flag="$OPTARG"
+    ;;
+  \?)
+    die "Unknown option: -$OPTARG"
+    ;;
+  :)
+    die "Option -$OPTARG requires an argument."
+    ;;
+  esac
+done
+
+# Remove parsed options
+shift $((OPTIND - 1))
+
+# If -d not used, collect positional arguments
+if [[ -z "$dir_flag" ]]; then
+  if [[ $# -gt 0 ]]; then
+    dirs=("$@")
+  else
+    die "Invalid usage. Use -d to pass a top level directory or provide arguments for each question directory"
+  fi
+fi
+
+prerequisites
 main
