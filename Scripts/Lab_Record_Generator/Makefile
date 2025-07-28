@@ -11,13 +11,20 @@ MAKE_CONFIG = config.mk
 
 # Configuration and Tools
 TEMPLATE_FILE = template.tex
-FILES ?= ../.
+SINGLE_TEMPLATE_FILE = template-single.tex
+FILES ?= -d ../.
 GENERATION_SCRIPT = ./generate-markdown.sh
 DEPENDENCIES_SCRIPT = ./check-dependencies.sh
 PANDOC_METADATA = metadata.yaml
+SINGLE_PANDOC_METADATA = metadata-single.yaml
 PANDOC_HEADER_INCLUDE = header.tex
 PDF_VIEWER = zathura
 LIBREOFFICE_TOOL = libreoffice
+
+ifeq ($(findstring -d,$(FILES)),)
+	TEMPLATE_FILE := $(SINGLE_TEMPLATE_FILE)
+	PANDOC_METADATA := $(SINGLE_PANDOC_METADATA)
+endif
 
 # Code filenames
 include $(MAKE_CONFIG)
@@ -74,7 +81,7 @@ $(ODT_FILE): $(MARKDOWN_FILE)
 
 $(MARKDOWN_FILE): $(GENERATION_SCRIPT) $(MAKE_CONFIG)
 	@echo "--- Generating Markdown file $(MARKDOWN_FILE) using files from $(FILES) ---"
-	MAIN_CODE_FILENAME="$(MAIN_CODE_FILENAME)" CODE_EXTENSIONS="$(CODE_EXTENSIONS)" EXCLUDED_PATTERNS="$(EXCLUDED_PATTERNS)" $(GENERATION_SCRIPT) -d $(FILES) > $(MARKDOWN_FILE)
+	MAIN_CODE_FILENAME="$(MAIN_CODE_FILENAME)" CODE_EXTENSIONS="$(CODE_EXTENSIONS)" EXCLUDED_PATTERNS="$(EXCLUDED_PATTERNS)" $(GENERATION_SCRIPT) $(FILES) > $(MARKDOWN_FILE)
 
 # Explicitly run the PDF generation step.
 pdf: $(PDF_FILE)
