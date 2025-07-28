@@ -1,0 +1,37 @@
+[
+  {
+    "algorithm": "Pay Slip Generation",
+    "input": [
+      "bp - The Basic Pay of the employee."
+    ],
+    "output": [
+      "Prints a formatted pay slip with all salary components."
+    ],
+    "steps": [
+      {
+        "step": "Calculate DA: `da = 0.97 * bp`."
+      },
+      {
+        "step": "Calculate HRA: `hra = 0.10 * bp`."
+      },
+      {
+        "step": "Calculate PF: `pf = 0.12 * bp`."
+      },
+      {
+        "step": "Calculate Staff Fund: `staffClubFund = 0.001 * bp`."
+      },
+      {
+        "step": "Calculate Gross Salary: `gross = bp + da + hra`."
+      },
+      {
+        "step": "Calculate Net Salary: `net = gross - (pf + staffClubFund)`."
+      },
+      {
+        "step": "Print pay slip header and employee details."
+      },
+      {
+        "step": "Print all calculated salary components (BP, DA, HRA, PF, etc.)."
+      }
+    ]
+  }
+]

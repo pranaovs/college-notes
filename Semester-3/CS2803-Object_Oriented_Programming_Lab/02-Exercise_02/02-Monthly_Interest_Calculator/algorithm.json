@@ -1,0 +1,71 @@
+[
+  {
+    "algorithm": "Monthly Loan Payment Calculation",
+    "input": [
+      "loanAmount - The principal amount of the loan.",
+      "years - The loan term in years.",
+      "annualInterestRate - The yearly interest rate in percent."
+    ],
+    "output": [
+      "monthlyPayment - The calculated fixed monthly payment.",
+      "totalPayment - The total amount paid over the loan's life."
+    ],
+    "steps": [
+      {
+        "step": "Calc monthly rate: $r = (annualInterestRate / 100) / 12$."
+      },
+      {
+        "step": "Calc number of payments: $n = years \\times 12$."
+      },
+      {
+        "step": "Calculate monthly payment using the formula:"
+      },
+      {
+        "step": "$P = L \\times \\frac{r}{1 - (1 + r)^{-n}}$"
+      },
+      {
+        "step": "(where L=loanAmount, P=monthlyPayment)."
+      },
+      {
+        "step": "Calculate total payment: `totalPayment = P * n`."
+      }
+    ]
+  },
+  {
+    "algorithm": "Amortization Schedule Generation",
+    "input": [
+      "loanAmount - The starting loan balance.",
+      "monthlyPayment - The fixed monthly payment.",
+      "monthlyInterestRate - The periodic interest rate (decimal).",
+      "numberOfPayments - The total number of payments."
+    ],
+    "output": [
+      "Prints a formatted table of payments to standard output."
+    ],
+    "steps": [
+      {
+        "step": "Initialize `balance = loanAmount`."
+      },
+      {
+        "step": "Print table headers."
+      },
+      {
+        "step": "Loop `i` from 1 to `numberOfPayments`:",
+        "substeps": [
+          {
+            "step": "Calc interest: `interest = monthlyInterestRate * balance`."
+          },
+          {
+            "step": "Calc principal: `principal = monthlyPayment - interest`."
+          },
+          {
+            "step": "Update balance: `balance = balance - principal`."
+          },
+          {
+            "step": "Print `i`, `interest`, `principal`, and `balance`."
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,63 @@
+[
+  {
+    "algorithm": "Electricity Bill Calculation",
+    "input": [
+      "currReading - Current month's meter reading.",
+      "prevReading - Previous month's meter reading.",
+      "ebConnectionType - Type of connection ('domestic' or 'commercial')."
+    ],
+    "output": [
+      "amount - The calculated bill amount."
+    ],
+    "steps": [
+      {
+        "step": "Calculate units consumed: `units = currReading - prevReading`."
+      },
+      {
+        "step": "If `units < 0`, print error and return."
+      },
+      {
+        "step": "If `ebConnectionType` is 'domestic':",
+        "substeps": [
+          {
+            "step": "If `units <= 100`: `amount = units * 1`."
+          },
+          {
+            "step": "Else if `units <= 200`: `amount = (100 * 1) + (units - 100) * 2.5`."
+          },
+          {
+            "step": "Else if `units <= 500`: `amount = (100 * 1) + (100 * 2.5) + (units - 200) * 4`."
+          },
+          {
+            "step": "Else: `amount = (100 * 1) + (100 * 2.5) + (300 * 4) + (units - 500) * 6`."
+          }
+        ]
+      },
+      {
+        "step": "Else if `ebConnectionType` is 'commercial':",
+        "substeps": [
+          {
+            "step": "If `units <= 100`: `amount = units * 2`."
+          },
+          {
+            "step": "Else if `units <= 200`: `amount = (100 * 2) + (units - 100) * 4.5`."
+          },
+          {
+            "step": "Else if `units <= 500`: `amount = (100 * 2) + (100 * 4.5) + (units - 200) * 6`."
+          },
+          {
+            "step": "Else: `amount = (100 * 2) + (100 * 4.5) + (300 * 6) + (units - 500) * 7`."
+          }
+        ]
+      },
+      {
+        "step": "Else (invalid connection type):",
+        "substeps": [
+            {
+                "step": "Print error message."
+            }
+        ]
+      }
+    ]
+  }
+]
