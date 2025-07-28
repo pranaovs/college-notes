@@ -200,3 +200,36 @@ It can include additional features such as specialization, generalization, and a
 
 * Cardinality (Min-max)
 * Coverage (Total/Partial and Exclusive (Disjoint)/Non-exclusive (Overlapping))
+
+## Key Constraints
+
+1. Super Key
+2. Candidate Key
+3. Primary Key
+
+### Super Key
+
+A set of attributes uniquely identifying a tuple is called a super key.
+
+It can be any combination of attributes that can uniquely identify a tuple in a relation.
+
+> A set of all attributes of a tuple is also a super key
+
+### Key
+
+A minimal super key is called a key.
+
+It is a super key with no redundant attributes.
+Removing any attribute from a key will make it unable to uniquely identify a tuple.
+
+> Any key is a super key, but not all super keys are keys.
+> A set of attributes that include a key is a super key.
+
+### Candidate Key
+
+There can be multiple keys in a relation, and each of them is called a candidate key.
+
+### Primary Key
+
+A primary key is a special type of key that is chosen to uniquely identify tuples in a relation.
+It is a candidate key that is selected as the primary means of identifying tuples in a relation.
