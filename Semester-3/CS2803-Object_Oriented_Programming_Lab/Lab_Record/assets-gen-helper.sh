@@ -1,0 +1,1 @@
+../../../Scripts/Lab_Record_Generator/assets-gen-helper.sh
