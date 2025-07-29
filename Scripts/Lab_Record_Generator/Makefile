@@ -33,7 +33,7 @@ include $(MAKE_CONFIG)
 all: $(PDF_FILE)
 
 # Main PDF generation rule that selects the appropriate method
-$(PDF_FILE): $($(INTERMEDIATE_FORMAT:=_FILE)) $(MAKE_CONFIG)
+$(PDF_FILE): $($(INTERMEDIATE_FORMAT:=_FILE)) $(MAKE_CONFIG) $(SINGLE_PANDOC_METADATA) $(PANDOC_METADATA) $(TEMPLATE_FILE) $(SINGLE_TEMPLATE_FILE) $(PANDOC_HEADER_INCLUDE)
 	@if [ "$(INTERMEDIATE_FORMAT)" = "MARKDOWN" ]; then \
 		echo "Using pandoc for conversion from $(INTERMEDIATE_FORMAT)"; \
 		pandoc \
@@ -59,7 +59,7 @@ $(PDF_FILE): $($(INTERMEDIATE_FORMAT:=_FILE)) $(MAKE_CONFIG)
 	fi
 	@echo "--- Generated PDF file: $(PDF_FILE) ---"
 
-$(DOCX_FILE): $(MARKDOWN_FILE)
+$(DOCX_FILE): $(MARKDOWN_FILE) $(SINGLE_PANDOC_METADATA) $(PANDOC_METADATA) $(TEMPLATE_FILE) $(SINGLE_TEMPLATE_FILE) $(PANDOC_HEADER_INCLUDE) $(LIBREOFFICE_TOOL)
 	@echo "--- Generating DOCX file: $(DOCX_FILE) ---"
 	pandoc \
 		--output=$(DOCX_FILE) \
@@ -69,7 +69,7 @@ $(DOCX_FILE): $(MARKDOWN_FILE)
 		--to=docx \
 		$(MARKDOWN_FILE)
 
-$(ODT_FILE): $(MARKDOWN_FILE)
+$(ODT_FILE): $(MARKDOWN_FILE) $(SINGLE_PANDOC_METADATA) $(PANDOC_METADATA) $(TEMPLATE_FILE) $(SINGLE_TEMPLATE_FILE) $(PANDOC_HEADER_INCLUDE) $(LIBREOFFICE_TOOL)
 	@echo "--- Generating ODT file: $(ODT_FILE) ---"
 	pandoc \
 		--output=$(ODT_FILE) \
