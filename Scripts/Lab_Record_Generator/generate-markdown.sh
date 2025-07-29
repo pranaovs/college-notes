@@ -313,6 +313,7 @@ process_question() {
     printf -- "%s %s\n\n" "$(heading $((heading_nesting + 1)))" "Execution"
     printf -- "\`\`\`sh\n"
     cat "$question/$OUTPUT_FILENAME"
+    printf -- "\n"
     printf -- "\`\`\`\n"
   else
     warn "Output file $OUTPUT_FILENAME not found in $question"
