@@ -1,0 +1,401 @@
+[
+  {
+    "algorithm": "Handle Currency Conversion",
+    "input": [
+      "scanner - A Scanner object for user input."
+    ],
+    "output": [
+      "Prints the result of the chosen currency conversion."
+    ],
+    "steps": [
+      {
+        "step": "Display currency conversion options (1-6)."
+      },
+      {
+        "step": "Read user choice `choice`."
+      },
+      {
+        "step": "Create `CurrencyConverter` object `converter`."
+      },
+      {
+        "step": "Switch on `choice`:"
+      },
+      {
+        "step": "Case 1 (Dollar to INR):",
+        "substeps": [
+          {
+            "step": "Prompt for Dollar amount."
+          },
+          {
+            "step": "Read `amount`."
+          },
+          {
+            "step": "Call `converter.dollarToInr(amount)`."
+          },
+          {
+            "step": "Print formatted result."
+          }
+        ]
+      },
+      {
+        "step": "Case 2 (INR to Dollar):",
+        "substeps": [
+          {
+            "step": "Prompt for INR amount."
+          },
+          {
+            "step": "Read `amount`."
+          },
+          {
+            "step": "Call `converter.inrToDollar(amount)`."
+          },
+          {
+            "step": "Print formatted result."
+          }
+        ]
+      },
+      {
+        "step": "Case 3 (Euro to INR):",
+        "substeps": [
+          {
+            "step": "Prompt for Euro amount."
+          },
+          {
+            "step": "Read `amount`."
+          },
+          {
+            "step": "Call `converter.euroToInr(amount)`."
+          },
+          {
+            "step": "Print formatted result."
+          }
+        ]
+      },
+      {
+        "step": "Case 4 (INR to Euro):",
+        "substeps": [
+          {
+            "step": "Prompt for INR amount."
+          },
+          {
+            "step": "Read `amount`."
+          },
+          {
+            "step": "Call `converter.inrToEuro(amount)`."
+          },
+          {
+            "step": "Print formatted result."
+          }
+        ]
+      },
+      {
+        "step": "Case 5 (Yen to INR):",
+        "substeps": [
+          {
+            "step": "Prompt for Yen amount."
+          },
+          {
+            "step": "Read `amount`."
+          },
+          {
+            "step": "Call `converter.euroToInr(amount)` (Note: This is a typo in the original code, should be `yenToInr`)."
+          },
+          {
+            "step": "Print formatted result."
+          }
+        ]
+      },
+      {
+        "step": "Case 6 (INR to Yen):",
+        "substeps": [
+          {
+            "step": "Prompt for INR amount."
+          },
+          {
+            "step": "Read `amount`."
+          },
+          {
+            "step": "Call `converter.inrToYen(amount)`."
+          },
+          {
+            "step": "Print formatted result."
+          }
+        ]
+      },
+      {
+        "step": "Default:",
+        "substeps": [
+          {
+            "step": "Print 'Invalid choice'."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "algorithm": "Handle Distance Conversion",
+    "input": [
+      "scanner - A Scanner object for user input."
+    ],
+    "output": [
+      "Prints the result of the chosen distance conversion."
+    ],
+    "steps": [
+      {
+        "step": "Display distance conversion options (1-6)."
+      },
+      {
+        "step": "Read user choice `choice`."
+      },
+      {
+        "step": "Create `DistanceConverter` object `converter`."
+      },
+      {
+        "step": "Switch on `choice`:"
+      },
+      {
+        "step": "Case 1 (Meters to Kilometers):",
+        "substeps": [
+          {
+            "step": "Prompt for Meters."
+          },
+          {
+            "step": "Read `distance`."
+          },
+          {
+            "step": "Call `converter.meterToKM(distance)`."
+          },
+          {
+            "step": "Print formatted result."
+          }
+        ]
+      },
+      {
+        "step": "Case 2 (Kilometers to Meters):",
+        "substeps": [
+          {
+            "step": "Prompt for Kilometers."
+          },
+          {
+            "step": "Read `distance`."
+          },
+          {
+            "step": "Call `converter.kmToMeter(distance)`."
+          },
+          {
+            "step": "Print formatted result."
+          }
+        ]
+      },
+      {
+        "step": "Case 3 (Miles to Kilometers):",
+        "substeps": [
+          {
+            "step": "Prompt for Miles."
+          },
+          {
+            "step": "Read `distance`."
+          },
+          {
+            "step": "Call `converter.milesToKm(distance)`."
+          },
+          {
+            "step": "Print formatted result."
+          }
+        ]
+      },
+      {
+        "step": "Case 4 (Kilometers to Miles):",
+        "substeps": [
+          {
+            "step": "Prompt for Kilometers."
+          },
+          {
+            "step": "Read `distance`."
+          },
+          {
+            "step": "Call `converter.kmToMiles(distance)`."
+          },
+          {
+            "step": "Print formatted result."
+          }
+        ]
+      },
+      {
+        "step": "Case 5 (Miles to Meter):",
+        "substeps": [
+          {
+            "step": "Prompt for Miles."
+          },
+          {
+            "step": "Read `distance`."
+          },
+          {
+            "step": "Call `converter.milesToMeter(distance)`."
+          },
+          {
+            "step": "Print formatted result."
+          }
+        ]
+      },
+      {
+        "step": "Case 6 (Meter to Miles):",
+        "substeps": [
+          {
+            "step": "Prompt for Meters."
+          },
+          {
+            "step": "Read `distance`."
+          },
+          {
+            "step": "Call `converter.meterToMiles(distance)`."
+          },
+          {
+            "step": "Print formatted result."
+          }
+        ]
+      },
+      {
+        "step": "Default:",
+        "substeps": [
+          {
+            "step": "Print 'Invalid choice'."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "algorithm": "Handle Time Conversion",
+    "input": [
+      "scanner - A Scanner object for user input."
+    ],
+    "output": [
+      "Prints the result of the chosen time conversion."
+    ],
+    "steps": [
+      {
+        "step": "Display time conversion options (1-6)."
+      },
+      {
+        "step": "Read user choice `choice`."
+      },
+      {
+        "step": "Create `TimeConverter` object `converter`."
+      },
+      {
+        "step": "Switch on `choice`:"
+      },
+      {
+        "step": "Case 1 (Hours to Minutes):",
+        "substeps": [
+          {
+            "step": "Prompt for Hours."
+          },
+          {
+            "step": "Read `time`."
+          },
+          {
+            "step": "Call `converter.hoursToMinutes(time)`."
+          },
+          {
+            "step": "Print formatted result."
+          }
+        ]
+      },
+      {
+        "step": "Case 2 (Minutes to Hours):",
+        "substeps": [
+          {
+            "step": "Prompt for Minutes."
+          },
+          {
+            "step": "Read `time`."
+          },
+          {
+            "step": "Call `converter.minutesToHours(time)`."
+          },
+          {
+            "step": "Print formatted result."
+          }
+        ]
+      },
+      {
+        "step": "Case 3 (Hours to Seconds):",
+        "substeps": [
+          {
+            "step": "Prompt for Hours."
+          },
+          {
+            "step": "Read `time`."
+          },
+          {
+            "step": "Call `converter.hoursToSeconds(time)`."
+          },
+          {
+            "step": "Print formatted result."
+          }
+        ]
+      },
+      {
+        "step": "Case 4 (Seconds to Hours):",
+        "substeps": [
+          {
+            "step": "Prompt for Seconds."
+          },
+          {
+            "step": "Read `time`."
+          },
+          {
+            "step": "Call `converter.secondsToHours(time)`."
+          },
+          {
+            "step": "Print formatted result."
+          }
+        ]
+      },
+      {
+        "step": "Case 5 (Minutes to Seconds):",
+        "substeps": [
+          {
+            "step": "Prompt for Minutes."
+          },
+          {
+            "step": "Read `time`."
+          },
+          {
+            "step": "Call `converter.minutesToSeconds(time)`."
+          },
+          {
+            "step": "Print formatted result."
+          }
+        ]
+      },
+      {
+        "step": "Case 6 (Seconds to Minutes):",
+        "substeps": [
+          {
+            "step": "Prompt for Seconds."
+          },
+          {
+            "step": "Read `time`."
+          },
+          {
+            "step": "Call `converter.secondsToMinutes(time)`."
+          },
+          {
+            "step": "Print formatted result."
+          }
+        ]
+      },
+      {
+        "step": "Default:",
+        "substeps": [
+          {
+            "step": "Print 'Invalid choice'."
+          }
+        ]
+      }
+    ]
+  }
+]

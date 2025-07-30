@@ -1,0 +1,42 @@
+[
+  {
+    "algorithm": "Flying Car Operation Demonstration",
+    "input": [
+      "None"
+    ],
+    "output": [
+      "Prints a sequence of status updates and actions for a `FlyingCar` object."
+    ],
+    "steps": [
+      {
+        "step": "Create an instance of `FlyingCar`."
+      },
+      {
+        "step": "Set brand and wheel count using inherited methods."
+      },
+      {
+        "step": "Display initial status (ground mode)."
+      },
+      {
+        "step": "Execute ground behavior (call `drive()`)."
+      },
+      {
+        "step": "Initiate flight sequence:",
+        "substeps": [
+          {
+            "step": "Call `takeOff()` to switch to flight mode."
+          },
+          {
+            "step": "Call `changeAltitude()`."
+          },
+          {
+            "step": "Call `land()` to return to ground mode."
+          }
+        ]
+      },
+      {
+        "step": "Display final status."
+      }
+    ]
+  }
+]
