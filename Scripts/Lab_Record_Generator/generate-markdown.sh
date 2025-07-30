@@ -298,7 +298,7 @@ process_question() {
 
     # Extra dependent codes. Defined by $CODE_EXTENSIONS environment variable
     if [ ! ${#code_exts[@]} -eq 0 ]; then
-      for extra_code in $(fd . "$question" "${code_exts[@]}" --max-depth=1 --exclude="$MAIN_CODE_FILENAME" "${excl_patterns[@]}"); do
+      for extra_code in $(fd . "$question" "${code_exts[@]}" --exclude="$MAIN_CODE_FILENAME" "${excl_patterns[@]}"); do
         echo "${excl_patterns[@]}"
         printf -- "__%s__\n\n" "$(basename "$extra_code")"
         printf -- "\`\`\`%s\n" "${extra_code##*.}"
