@@ -290,11 +290,14 @@ process_question() {
     printf -- "\n"
 
   else
-    printf -- "__%s__\n\n" "${MAIN_CODE_FILENAME}"
-    printf -- "\`\`\`%s\n" "${MAIN_CODE_FILENAME##*.}"
-    cat "$question/$MAIN_CODE_FILENAME"
-    printf -- "\n"
-    printf '```\n'
+
+    if [[ -f "$question/$MAIN_CODE_FILENAME" ]]; then
+      printf -- "__%s__\n\n" "${MAIN_CODE_FILENAME}"
+      printf -- "\`\`\`%s\n" "${MAIN_CODE_FILENAME##*.}"
+      cat "$question/$MAIN_CODE_FILENAME"
+      printf -- "\n"
+      printf '```\n'
+    fi
 
     # Extra dependent codes. Defined by $CODE_EXTENSIONS environment variable
     if [ ! ${#code_exts[@]} -eq 0 ]; then
