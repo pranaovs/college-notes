@@ -1,0 +1,21 @@
+$ gcc -Wall -Wextra -pthread ./main.c && ./a.out
+
+Start time: 2025-08-14 15:15:39
+[PARENT] Creating child process
+[PARENT] Child process created with PID: 429421
+[PARENT] Creating thread to count vowels
+[PARENT] Waiting for child process to complete
+[CHILD] Process started (PID: 429421)
+[CHILD] Executing 'wc -l /home/personal/tmp/input/file.sig.b64'
+
+[PARENT] Found 55 vowels in total:
+  - 'a'/'A': 9 occurrences
+  - 'e'/'E': 12 occurrences
+  - 'i'/'I': 9 occurrences
+  - 'o'/'O': 10 occurrences
+  - 'u'/'U': 15 occurrences
+5 /home/personal/tmp/input/file.sig.b64
+
+[PARENT] Child process completed with status: 0
+[PARENT] Waiting for vowel counter thread to complete
+File: /home/personal/tmp/input/file.sig.b64
