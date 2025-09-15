@@ -1,0 +1,92 @@
+[
+  {
+    "algorithm": "Insert String at Index",
+    "input": [
+      "list - The ArrayList of strings.",
+      "scanner - A Scanner for user input."
+    ],
+    "output": [
+      "Prints a success or error message."
+    ],
+    "steps": [
+      {
+        "step": "Prompt for the string to insert."
+      },
+      {
+        "step": "Read string `str`."
+      },
+      {
+        "step": "Prompt for the index `index`."
+      },
+      {
+        "step": "Read `index`."
+      },
+      {
+        "step": "Check if `index >= 0` AND `index <= list.size()`."
+      },
+      {
+        "step": "If true (index is valid):",
+        "substeps": [
+          {
+            "step": "Insert `str` at `index` in `list`."
+          },
+          {
+            "step": "Print success message."
+          }
+        ]
+      },
+      {
+        "step": "Else (index is invalid):",
+        "substeps": [
+          {
+            "step": "Print error message with the valid range."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "algorithm": "List Strings by Starting Letter",
+    "input": [
+      "list - The ArrayList of strings.",
+      "scanner - A Scanner for user input."
+    ],
+    "output": [
+      "Prints matching strings or a 'not found' message."
+    ],
+    "steps": [
+      {
+        "step": "Prompt for the starting letter."
+      },
+      {
+        "step": "Read the starting letter string `letter`."
+      },
+      {
+        "step": "Initialize `found = false`."
+      },
+      {
+        "step": "Loop through each `str` in the `list`."
+      },
+      {
+        "step": "Check if `str` starts with `letter`."
+      },
+      {
+        "step": "If true:",
+        "substeps": [
+          {
+            "step": "Print `str`."
+          },
+          {
+            "step": "Set `found = true`."
+          }
+        ]
+      },
+      {
+        "step": "After the loop, check if `!found`."
+      },
+      {
+        "step": "If true, print a 'no strings found' message."
+      }
+    ]
+  }
+]

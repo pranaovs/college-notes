@@ -1,0 +1,6 @@
+1. Write a program to perform string operations using ArrayList. The program includes functions for
+(a.) appending a string to the end.
+(b.) inserting a string at a particular index.
+(c.) searching for a string
+(d) listing all strings that start with a given letter.
+(e.) sorting the strings in ascending and descending order.
