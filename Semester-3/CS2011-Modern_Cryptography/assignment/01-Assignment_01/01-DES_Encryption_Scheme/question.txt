@@ -1,0 +1,11 @@
+Implement DES from scratch:
+Key schedule (support 56-bit key; you may accept 64-bit input but ignore parity bits or validate them).
+
+Initial Permutation (IP) and final permutation (IP^-1).
+
+16 Feistel rounds using E expansion, all 8 S-boxes, P-permutation, and round subkeys.
+Implement single-block encryption and decryption functions that operate on exactly one 64-bit block (8 bytes).
+
+Unit tests: include canonical test vector:
+Key: 133457799BBCDFF1
+Plaintext: 0123456789ABCDEF

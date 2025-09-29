@@ -1,0 +1,11 @@
+Implement AES-128 from scratch:
+
+Key expansion for AES-128 (128-bit key -> round keys).
+
+SubBytes, ShiftRows, MixColumns, AddRoundKey.
+
+Implement single-block (16-byte) encryption and decryption functions.
+
+Unit tests: include NIST test vector:
+Key (128-bit): 000102030405060708090a0b0c0d0e0f
+Plaintext: 00112233445566778899aabbccddeeff

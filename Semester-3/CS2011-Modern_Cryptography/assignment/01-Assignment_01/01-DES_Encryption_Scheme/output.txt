@@ -1,0 +1,11 @@
+$ python main.py
+DES Algorithm Test
+Key:         133457799BBCDFF1
+Input:       0123456789ABCDEF
+Encrypted:   85E813540F0AB405
+Expected:    85E813540F0AB405
+
+Decrypted:   0123456789ABCDEF
+Original:    0123456789ABCDEF
+
+All DES tests passed successfully!
