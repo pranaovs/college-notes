@@ -1,0 +1,1 @@
+Write a java program to read the account balances directly within the code, file which contains the account balance of the customers. Use built in exception to check if the file is not present in that location.
