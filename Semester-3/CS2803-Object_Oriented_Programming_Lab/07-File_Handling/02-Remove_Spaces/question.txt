@@ -1,0 +1,1 @@
+Then remove the space between the words in file and write the output to another file
