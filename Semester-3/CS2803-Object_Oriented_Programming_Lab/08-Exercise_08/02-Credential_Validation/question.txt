@@ -1,0 +1,1 @@
+The username and password must be validated. The username and password must be present in a separate file and input should be got from the user and validation must be done by reading it. Upon successful validation, the user must be able to write the contents received through the commandline arguments into a new file
