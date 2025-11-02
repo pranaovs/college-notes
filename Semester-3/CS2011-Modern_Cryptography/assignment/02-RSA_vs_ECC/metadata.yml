@@ -1,0 +1,10 @@
+toc: true
+toc-depth: 2
+author:
+  - Pranaov S (24011103051)
+title: "CS2011 Modern Cryptography"
+numbersections: true
+header-includes: |
+  \usepackage{fancyhdr}
+  \pagestyle{fancy}
+  \fancyhead[L]{Source: \href{https://github.com/pranaovs/college-notes/tree/main/Semester-3/CS2011-Modern_Cryptography/assignment/02-RSA_vs_ECC/assignment.md}{assignment.md}}
