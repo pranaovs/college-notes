@@ -42,6 +42,8 @@ $(PDF_FILE): $($(INTERMEDIATE_FORMAT:=_FILE)) $(MAKE_CONFIG) $(SINGLE_PANDOC_MET
 		--include-in-header=$(PANDOC_HEADER_INCLUDE) \
 		--metadata-file=$(PANDOC_METADATA) \
 		--template=$(TEMPLATE_FILE) \
+		--standalone \
+		--embed-resources=true \
 		--from=markdown \
 		--to=pdf \
 		$(MARKDOWN_FILE) || { \

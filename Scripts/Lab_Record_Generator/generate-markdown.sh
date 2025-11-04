@@ -25,6 +25,7 @@ QUESTION_FILENAME="question.txt"
 ALGORITHM_FILENAME="algorithm.json"
 AIM_FILENAME="aim.txt"
 OUTPUT_FILENAME="output.txt"
+OUTPUT_DIRNAME="output-assets"
 
 # Required tools
 REQUIRED_TOOLS=("jq" "fd" "sed" "tr" "basename" "dirname" "printf" "echo" "getopts")
@@ -240,7 +241,7 @@ process_week() {
     warn "Date file $DATE_FILENAME not found in $week"
   fi
 
-  for question in $(fd . "$week" -t d --max-depth=1 --exclude=Common "${excl_patterns[@]}"); do
+  for question in $(fd . "$week" -t d --max-depth=1 --exclude=Common --exclude="$OUTPUT_DIRNAME" "${excl_patterns[@]}"); do
     process_question "$question" "$((heading_nesting + 1))"
 
     printf -- "\\pagebreak\n\n"
@@ -301,7 +302,7 @@ process_question() {
 
     # Extra dependent codes. Defined by $CODE_EXTENSIONS environment variable
     if [ ! ${#code_exts[@]} -eq 0 ]; then
-      for extra_code in $(fd . "$question" "${code_exts[@]}" --exclude="$MAIN_CODE_FILENAME" "${excl_patterns[@]}"); do
+      for extra_code in $(fd . "$question" "${code_exts[@]}" --exclude="$MAIN_CODE_FILENAME" --exclude="$OUTPUT_DIRNAME" "${excl_patterns[@]}"); do
         printf -- "__%s__\n\n" "$(basename "$extra_code")"
         printf -- "\`\`\`%s\n" "${extra_code##*.}"
         cat "$extra_code"
@@ -317,8 +318,17 @@ process_question() {
     cat "$question/$OUTPUT_FILENAME"
     printf -- "\n"
     printf -- "\`\`\`\n"
+  elif [[ -d "$question/$OUTPUT_DIRNAME" ]]; then
+    printf -- "%s %s\n\n" "$(heading $((heading_nesting + 1)))" "Output"
+    shopt -s nullglob
+    for img in "$question/$OUTPUT_DIRNAME"/*.{png,jpg,jpeg,gif,svg,bmp,PNG,JPG,JPEG,GIF,SVG,BMP}; do
+      if [[ -f "$img" ]]; then
+        printf -- "![$(format_name "${img%.*}")](%s)\n\n" "$img"
+      fi
+    done
+    shopt -u nullglob
   else
-    warn "Output file $OUTPUT_FILENAME not found in $question"
+    warn "Output file $OUTPUT_FILENAME or output asset directory $OUTPUT_DIRNAME not found in $question"
   fi
 
   printf -- "\n"
