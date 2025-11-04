@@ -1,0 +1,1 @@
+Write a Java program to find the maximum value from the given type of elements using a generic function.
